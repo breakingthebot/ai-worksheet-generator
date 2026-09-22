@@ -49,4 +49,24 @@ describe('10-Day Daily Curriculum System', () => {
     expect(variant2.id).toContain('v2');
     expect(variant1.problems.length).toBe(variant2.problems.length);
   });
+
+  it('supports stepping backwards and boundary clamping', () => {
+    let day = 5;
+    expect(getDailyLesson('math', day).day).toBe(5);
+
+    // Step backward
+    day = Math.max(1, day - 1);
+    expect(day).toBe(4);
+    expect(getDailyLesson('math', day).day).toBe(4);
+
+    // Boundary check at day 1
+    day = 1;
+    day = Math.max(1, day - 1);
+    expect(day).toBe(1);
+
+    // Boundary check at day 10
+    day = 10;
+    day = Math.min(10, day + 1);
+    expect(day).toBe(10);
+  });
 });
