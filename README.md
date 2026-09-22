@@ -8,6 +8,19 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Full standard 180-day US school year structured across **36 Weeks and 4 Quarters** (9 weeks / 45 days per quarter).
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
   - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
+- **🔢 Kindergarten Quarter 1 Math Progression (CCSS K.CC Counting & Cardinality)**:
+  - 10-day early numeracy continuum strictly avoiding premature written addition/subtraction equations:
+    - *Day 1*: One-to-One Counting & Tactile Subitizing 1–3 (touch-and-count points beneath apples, stars, puppies).
+    - *Day 2*: 5-Frame Array Subitizing & Numeral Formation (full row is 5, stroke practice).
+    - *Day 3*: Successive Quantities & "One More" (counting on 1–5 without restarting).
+    - *Day 4*: Comparing Sets: Which Group has MORE? (side-by-side group matching lines).
+    - *Day 5*: Comparing Sets: Which Group has FEWER? (less than, fewer, and equal quantities).
+    - *Day 6*: Ten-Frame Launch: Quantities 6 & 7 (top row 5 + bottom row extra dots).
+    - *Day 7*: Ten-Frame Quantities 8 & 9 (visualizing empty space complements to landmark 10).
+    - *Day 8*: Landmark Number 10 Benchmark (full ten-frame & 2-digit numeral 10 formation).
+    - *Day 9*: Numeral Comparison (comparing written numbers 1–10 directly: greater vs. less).
+    - *Day 10*: Quarter 1 Grand Champion Review (mixed counting, ten-frames, comparisons & champion badge).
+  - Adaptive ten-frame rendering displaying single-numeral write boxes for early counting rather than premature equations.
 - **🗺️ Core Knowledge Social Studies & Geography Track (CKHG)**:
   - 10-day foundational Kindergarten track covering **Maps vs. Globes** (3D sphere vs flat, water vs land), **Cardinal Directions & Compass Rose** (North, South, East, West), **Map Keys & Room Mapping**, **Natural Landforms** (mountains, rivers, plains), **Native American Shelters** (Tipis, Pueblos, Longhouses), **Founding Presidents** (George Washington & Abraham Lincoln), **American Symbols** (The Flag & Liberty Bell), and **Civics & Community Helpers**.
   - Word-for-word parent scripts (`🗣️ Say this`, `🖐️ What to do`, `👁️ What to look for`) and printable worksheets with primary handwriting lines and drawing scratchpads.

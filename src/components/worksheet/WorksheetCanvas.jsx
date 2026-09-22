@@ -16,6 +16,7 @@ import ReadingPassageView from '../traditional/ReadingPassageView.jsx';
 import WordProblemCard from '../traditional/WordProblemCard.jsx';
 import MatchingColumnView from '../traditional/MatchingColumnView.jsx';
 import SentenceEditingView from '../traditional/SentenceEditingView.jsx';
+import CountingObjectsView from '../math/CountingObjectsView.jsx';
 import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 
 export default function WorksheetCanvas({ worksheet }) {
@@ -140,6 +141,13 @@ export default function WorksheetCanvas({ worksheet }) {
               {problems.map((problem) => {
                 if (problem.type === 'ten-frame') {
                   return <TenFrameView key={problem.id} problem={problem} />;
+                }
+                if (
+                  problem.type === 'counting-objects' ||
+                  problem.type === 'quantity-comparison' ||
+                  problem.type === 'numeral-comparison'
+                ) {
+                  return <CountingObjectsView key={problem.id} problem={problem} />;
                 }
                 if (problem.type === 'number-bond') {
                   return <NumberBondView key={problem.id} problem={problem} />;

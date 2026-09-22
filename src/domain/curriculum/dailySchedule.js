@@ -12,355 +12,569 @@ export const DAILY_CURRICULUM = {
   // MATHEMATICS TRACK (Days 1 to 10)
   // =========================================================================
   math: [
+    // -------------------------------------------------------------------------
+    // DAY 1: One-to-One Counting & Perceptual Subitizing (1 to 3)
+    // -------------------------------------------------------------------------
     {
       day: 1,
-      title: 'Perceptual Subitizing (Quantities 1 to 3)',
-      standard: 'CCSS.MATH.K.CC.B.4 & Subitizing Bedrock',
+      title: 'One-to-One Counting & Subitizing (Quantities 1 to 3)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.4.A & K.CC.B.4.B (Touch-Count & Cardinality)',
       script: {
-        say: '“Look with your eyes, not your finger! How many dots do you see in one quick snapshot?”',
-        do: 'Point to each box for only 2 seconds, then cover it up. Ask your child to tell you the quantity from memory.',
-        lookFor: 'Does he name the number instantly (under 2 seconds)? If he points with his finger to count 1-2-3, he is not subitizing yet—stay on Day 1.',
+        say: '“Touch each red apple with your pointer finger: 1, 2, 3! How many apples are there in all?”',
+        do: 'Guide your child to physically tap each object once with their finger. Ensure their voice matches each touch.',
+        lookFor: 'Does your child tap each object once without rushing or skipping? The last number named tells the total quantity.',
       },
       generateSheet: (variant = 1) => {
-        const counts = variant % 2 === 0 ? [2, 3, 1, 3] : [1, 3, 2, 1];
+        const configs =
+          variant % 2 === 0
+            ? [
+                { id: 'p1', count: 2, icon: '🍎', label: 'Apples' },
+                { id: 'p2', count: 3, icon: '⭐', label: 'Stars' },
+                { id: 'p3', count: 1, icon: '🐶', label: 'Puppies' },
+                { id: 'p4', count: 3, icon: '🚗', label: 'Cars' },
+              ]
+            : [
+                { id: 'p1', count: 1, icon: '🍎', label: 'Apples' },
+                { id: 'p2', count: 3, icon: '⭐', label: 'Stars' },
+                { id: 'p3', count: 2, icon: '🐶', label: 'Puppies' },
+                { id: 'p4', count: 1, icon: '🚗', label: 'Cars' },
+              ];
+
         return {
           id: `math-d1-v${variant}`,
-          title: 'Math Day 1: Subitizing 1 to 3 (Flash Snapshot)',
+          title: 'Math Day 1: One-to-One Counting (Quantities 1 to 3)',
           subject: 'math',
           grade: 'K',
-          instructions: 'Look at the dots. Say how many dots you see in one quick glance without counting!',
+          instructions: 'Touch each object with your finger as you count. Write the total number in the box!',
           kidDirections: {
-            text: '👀 Look with your eyes! 🔢 How many dots are in the box? ✏️ Write the number!',
-            icons: ['👀', '🔢', '✏️'],
-            badge: 'Day 1 Math',
+            text: '👉 Touch each object with your finger! 🗣️ Count out loud: 1, 2, 3! ✏️ Write the number!',
+            icons: ['👉', '🗣️', '✏️'],
+            badge: 'Day 1 Math Bedrock',
           },
-          problems: counts.map((c, i) => ({
-            id: `p${i}`,
-            type: 'ten-frame',
+          problems: configs.map((c, i) => ({
+            id: c.id,
+            type: 'counting-objects',
             number: i + 1,
-            ...generateTenFrame(c),
+            count: c.count,
+            itemIcon: c.icon,
+            prompt: `Touch each ${c.label.toLowerCase()} and count out loud:`,
+            subtext: 'Touch each item once. The last number you say is the total!',
           })),
           cutStrip: {
             type: 'straight-strips',
             stage: 'Ages 3-5 (Bottom-Edge Cut)',
-            items: ['1 dot', '2 dots', '3 dots', '1 dot'],
+            items: ['1 item', '2 items', '3 items', 'Touch & Count!'],
           },
-          answerKey: counts.map((c, i) => ({ number: i + 1, solution: `Quantity: ${c}` })),
+          answerKey: configs.map((c, i) => ({
+            number: i + 1,
+            solution: `Total: ${c.count} ${c.label}`,
+          })),
         };
       },
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 2: Five-Frame Subitizing & Numeral Formation (Quantities 1 to 5)
+    // -------------------------------------------------------------------------
     {
       day: 2,
-      title: 'Five-Frame Subitizing (Quantities 4 & 5)',
-      standard: 'CCSS.MATH.K.CC.B.5 & Five-Structure Anchoring',
+      title: 'Five-Frame Subitizing & Numeral Formation (Quantities 1 to 5)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.A.3 & K.CC.B.5 (Five-Frame Array)',
       script: {
-        say: '“Look at the top row! If the whole top row is full, that means it is FIVE!”',
-        do: 'Slide a piece of paper down to reveal one frame at a time. Ask: "Is it full (5) or missing one (4)?"',
-        lookFor: 'Recognizes 5 instantly because the row is full, and 4 because exactly one corner is empty.',
+        say: '“Look at our 5-frame train! Each box gets one dot. If the whole top row is full, that means FIVE!”',
+        do: 'Slide your hand across the 5-frame from left to right. Ask: "Is it full (5) or missing some dots?"',
+        lookFor: 'Recognizes 5 instantly when the frame is full, and 4 because exactly one corner cell is empty.',
       },
       generateSheet: (variant = 1) => {
-        const counts = variant % 2 === 0 ? [4, 5, 4, 5] : [5, 4, 5, 4];
+        const counts = variant % 2 === 0 ? [3, 5, 4, 2] : [2, 4, 3, 5];
         return {
           id: `math-d2-v${variant}`,
-          title: 'Math Day 2: Five-Frame Subitizing (4 and 5)',
+          title: 'Math Day 2: Five-Frame Dot Patterns (1 to 5)',
           subject: 'math',
           grade: 'K',
-          instructions: 'Check the top row. A full row is 5! Write the number of dots.',
+          instructions: 'Count the dots in each 5-frame. A completely full frame is 5! Write the number.',
           kidDirections: {
-            text: '⭐ A full top row is FIVE! ✏️ Count the dots and write your answer!',
-            icons: ['⭐', '✏️'],
+            text: '⭐ A full row is FIVE! ✏️ Count the dots and write the number in the box!',
+            icons: ['⭐', '✏️', '🔢'],
             badge: 'Day 2 Math',
           },
           problems: counts.map((c, i) => ({
             id: `p${i}`,
             type: 'ten-frame',
+            promptType: 'counting',
             number: i + 1,
             ...generateTenFrame(c),
+            subtext: c === 5 ? '⭐ All 5 spaces full!' : undefined,
           })),
           cutStrip: {
             type: 'straight-strips',
             stage: 'Ages 3-5 (Bottom-Edge Cut)',
-            items: ['4 dots', '5 dots', '4 dots', '5 dots'],
+            items: ['2 dots', '3 dots', '4 dots', '5 dots!'],
           },
           answerKey: counts.map((c, i) => ({ number: i + 1, solution: `Quantity: ${c}` })),
         };
       },
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 3: Successive Quantities & "One More" (Counting On 1 to 5)
+    // -------------------------------------------------------------------------
     {
       day: 3,
-      title: 'Ten-Frames: 6 and 7 (5 + 1 and 5 + 2)',
-      standard: 'CCSS.MATH.K.OA.A.4 & Singapore CPA',
+      title: 'Successive Quantities & "One More" (Counting On 1 to 5)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.4.C (Each successive number is one larger)',
       script: {
-        say: '“You already know the top row is 5. Now just look below: 5 and 1 is 6! 5 and 2 is 7!”',
+        say: '“Every time we count up, we add ONE MORE! If we have 3 stars and get 1 more, how many do we have now?”',
+        do: 'Point to the objects, count them, then point to the "+1 More" box: "3 and one more is... 4!"',
+        lookFor: 'States the next number without needing to restart counting from 1. Grasps the "one more" rule.',
+      },
+      generateSheet: (variant = 1) => {
+        const configs =
+          variant % 2 === 0
+            ? [
+                { count: 2, icon: '🚗', label: 'Cars' },
+                { count: 3, icon: '🌲', label: 'Trees' },
+                { count: 4, icon: '🎈', label: 'Balloons' },
+                { count: 1, icon: '🌸', label: 'Flowers' },
+              ]
+            : [
+                { count: 1, icon: '🚗', label: 'Cars' },
+                { count: 2, icon: '🌲', label: 'Trees' },
+                { count: 3, icon: '🎈', label: 'Balloons' },
+                { count: 4, icon: '🌸', label: 'Flowers' },
+              ];
+
+        return {
+          id: `math-d3-v${variant}`,
+          title: 'Math Day 3: Adding "One More" (Successive Numbers)',
+          subject: 'math',
+          grade: 'K',
+          instructions: 'Count the items, then add one more! How many items do you have now?',
+          kidDirections: {
+            text: '🔢 Count the items! ➕ Add ONE MORE! ✏️ Write the new number!',
+            icons: ['🔢', '➕', '✏️'],
+            badge: 'Day 3 Math',
+          },
+          problems: configs.map((c, i) => ({
+            id: `p${i}`,
+            type: 'counting-objects',
+            number: i + 1,
+            count: c.count,
+            itemIcon: c.icon,
+            showPlusOne: true,
+            prompt: `There are ${c.count} ${c.label.toLowerCase()}. Add 1 more!`,
+            subtext: `What is 1 more than ${c.count}?`,
+          })),
+          cutStrip: {
+            type: 'straight-strips',
+            stage: 'Ages 3-5 (Bottom-Edge Cut)',
+            items: ['1 more = 2', '1 more = 3', '1 more = 4', '1 more = 5'],
+          },
+          answerKey: configs.map((c, i) => ({
+            number: i + 1,
+            solution: `${c.count} + 1 more = ${c.count + 1}`,
+          })),
+        };
+      },
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 4: Comparing Sets: Which Group has MORE? (Quantities 1 to 5)
+    // -------------------------------------------------------------------------
+    {
+      day: 4,
+      title: 'Comparing Sets: Which Group has MORE? (Quantities 1 to 5)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.C.6 (Identify greater quantity by matching/counting)',
+      script: {
+        say: '“Look at Group A and Group B! Count each group, then circle the group that has MORE!”',
+        do: 'Have your child draw matching lines between items in Group A and Group B. The group with leftover items has MORE!',
+        lookFor: 'Understands that "MORE" means the bigger quantity. Can prove it by counting both groups.',
+      },
+      generateSheet: (variant = 1) => {
+        const pairs =
+          variant % 2 === 0
+            ? [
+                { ga: 4, gb: 2, icon: '🍎', label: 'Apples' },
+                { ga: 3, gb: 5, icon: '🐟', label: 'Fish' },
+                { ga: 2, gb: 4, icon: '🐸', label: 'Frogs' },
+                { ga: 5, gb: 3, icon: '⭐', label: 'Stars' },
+              ]
+            : [
+                { ga: 3, gb: 1, icon: '🍎', label: 'Apples' },
+                { ga: 2, gb: 5, icon: '🐟', label: 'Fish' },
+                { ga: 5, gb: 4, icon: '🐸', label: 'Frogs' },
+                { ga: 1, gb: 4, icon: '⭐', label: 'Stars' },
+              ];
+
+        return {
+          id: `math-d4-v${variant}`,
+          title: 'Math Day 4: Comparing Sets (Which has MORE?)',
+          subject: 'math',
+          grade: 'K',
+          instructions: 'Count the items in Group A and Group B. Circle the group that has MORE items!',
+          kidDirections: {
+            text: '🔍 Count Group A! 🔍 Count Group B! ⭕ Circle the group that has MORE!',
+            icons: ['🔍', '⭕', '⭐'],
+            badge: 'Day 4 Math',
+          },
+          problems: pairs.map((p, i) => ({
+            id: `p${i}`,
+            type: 'quantity-comparison',
+            number: i + 1,
+            comparisonQuestion: 'Which group has MORE?',
+            groupA: { count: p.ga, icon: p.icon, label: 'Group A' },
+            groupB: { count: p.gb, icon: p.icon, label: 'Group B' },
+            prompt: `Count both groups of ${p.label.toLowerCase()}. Which group has MORE?`,
+          })),
+          cutStrip: {
+            type: 'straight-strips',
+            stage: 'Ages 3-5 (Bottom-Edge Cut)',
+            items: ['Group A: MORE', 'Group B: MORE', 'Group B: MORE', 'Group A: MORE'],
+          },
+          answerKey: pairs.map((p, i) => ({
+            number: i + 1,
+            solution: p.ga > p.gb ? `Group A has MORE (${p.ga} > ${p.gb})` : `Group B has MORE (${p.gb} > ${p.ga})`,
+          })),
+        };
+      },
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 5: Comparing Sets: Which Group has FEWER? (Quantities 1 to 5 & Equal)
+    // -------------------------------------------------------------------------
+    {
+      day: 5,
+      title: 'Comparing Sets: Which Group has FEWER? (Quantities 1 to 5 & Equal)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.C.6 (Identify less than / fewer & equal)',
+      script: {
+        say: '“Yesterday we found MORE. Today we are looking for FEWER! Which group has less?”',
+        do: 'Remind your child: "Fewer means the smaller group." Point out that when both groups have the exact same count, they are EQUAL!',
+        lookFor: 'Distinguishes "fewer" from "more" without confusion. Recognizes equal quantities.',
+      },
+      generateSheet: (variant = 1) => {
+        const pairs =
+          variant % 2 === 0
+            ? [
+                { ga: 2, gb: 5, icon: '🎈', label: 'Balloons' },
+                { ga: 4, gb: 1, icon: '🍪', label: 'Cookies' },
+                { ga: 3, gb: 3, icon: '🦆', label: 'Ducks', equal: true },
+                { ga: 5, gb: 2, icon: '🌰', label: 'Acorns' },
+              ]
+            : [
+                { ga: 1, gb: 4, icon: '🎈', label: 'Balloons' },
+                { ga: 3, gb: 5, icon: '🍪', label: 'Cookies' },
+                { ga: 2, gb: 2, icon: '🦆', label: 'Ducks', equal: true },
+                { ga: 4, gb: 2, icon: '🌰', label: 'Acorns' },
+              ];
+
+        return {
+          id: `math-d5-v${variant}`,
+          title: 'Math Day 5: Comparing Sets (Which has FEWER?)',
+          subject: 'math',
+          grade: 'K',
+          instructions: 'Count both groups. Circle the group with FEWER items. If they have the same, circle Equal!',
+          kidDirections: {
+            text: '🔍 Count both groups! ⭕ Circle the group with FEWER items (or Equal)!',
+            icons: ['🔍', '⭕', '🍪'],
+            badge: 'Day 5 Math',
+          },
+          problems: pairs.map((p, i) => ({
+            id: `p${i}`,
+            type: 'quantity-comparison',
+            number: i + 1,
+            allowEqual: true,
+            comparisonQuestion: 'Which group has FEWER?',
+            groupA: { count: p.ga, icon: p.icon, label: 'Group A' },
+            groupB: { count: p.gb, icon: p.icon, label: 'Group B' },
+            prompt: `Count both groups of ${p.label.toLowerCase()}. Which group has FEWER?`,
+          })),
+          cutStrip: {
+            type: 'straight-strips',
+            stage: 'Ages 3-5 (Bottom-Edge Cut)',
+            items: ['Group A: FEWER', 'Group B: FEWER', 'EQUAL! (=)', 'Group B: FEWER'],
+          },
+          answerKey: pairs.map((p, i) => ({
+            number: i + 1,
+            solution:
+              p.ga === p.gb
+                ? `EQUAL (${p.ga} = ${p.gb})`
+                : p.ga < p.gb
+                ? `Group A has FEWER (${p.ga} < ${p.gb})`
+                : `Group B has FEWER (${p.gb} < ${p.ga})`,
+          })),
+        };
+      },
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 6: Ten-Frame Introduction: Quantities 6 & 7 (5 and Some More)
+    // -------------------------------------------------------------------------
+    {
+      day: 6,
+      title: 'Ten-Frame Introduction: Quantities 6 & 7 (5 and Some More)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.5 & Singapore CPA (Ten-Frames 6 & 7)',
+      script: {
+        say: '“Our 5-frame grew into a TEN-FRAME! The top row is always 5. How many extra dots are below? 5 and 1 is 6! 5 and 2 is 7!”',
         do: 'Have your child place their hand over the top row and say "5", then lift their hand and count the bottom dots.',
-        lookFor: 'Says "5" without counting the top row, then counts on: "...6, 7!"',
+        lookFor: 'Says "5" automatically for the top row without counting, then counts on: "...6, 7!"',
       },
       generateSheet: (variant = 1) => {
         const counts = variant % 2 === 0 ? [6, 7, 6, 7] : [7, 6, 7, 6];
         return {
-          id: `math-d3-v${variant}`,
-          title: 'Math Day 3: Ten-Frames 6 and 7 (Counting On from 5)',
+          id: `math-d6-v${variant}`,
+          title: 'Math Day 6: Ten-Frames 6 and 7 (5 and Some More)',
           subject: 'math',
           grade: 'K',
-          instructions: 'Top row is 5. How many extra dots are below? Find the total!',
+          instructions: 'The top row is 5. Count the extra dots on the bottom to find the total!',
           kidDirections: {
-            text: '🖐️ Top row is 5! ➕ Add the extra dots below to find how many in all!',
+            text: '🖐️ Top row is 5! ➕ Count on: 5... 6, 7! ✏️ Write the total in the box!',
             icons: ['🖐️', '➕', '✏️'],
-            badge: 'Day 3 Math',
+            badge: 'Day 6 Math',
           },
           problems: counts.map((c, i) => ({
             id: `p${i}`,
             type: 'ten-frame',
+            promptType: 'counting',
             number: i + 1,
             ...generateTenFrame(c),
+            subtext: `Top row is 5. Extra bottom dots: ${c - 5}`,
           })),
           cutStrip: {
             type: 'straight-strips',
             stage: 'Ages 3-5 (Bottom-Edge Cut)',
-            items: ['6 dots', '7 dots', '6 dots', '7 dots'],
+            items: ['5 + 1 = 6', '5 + 2 = 7', '6 dots', '7 dots'],
           },
-          answerKey: counts.map((c, i) => ({ number: i + 1, solution: `Total: ${c} (5 + ${c - 5})` })),
+          answerKey: counts.map((c, i) => ({
+            number: i + 1,
+            solution: `Total: ${c} (5 top + ${c - 5} bottom)`,
+          })),
         };
       },
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 7: Ten-Frame Quantities 8 & 9 (Noticing Empty Spaces)
+    // -------------------------------------------------------------------------
     {
-      day: 4,
-      title: 'Ten-Frames: 8 and 9 (Noticing Empty Spaces)',
-      standard: 'CCSS.MATH.K.OA.A.4 & Complements',
+      day: 7,
+      title: 'Ten-Frame Quantities 8 & 9 (Noticing the Empty Spaces)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.5 & Landmark Benchmark',
       script: {
-        say: '“Almost full! Look at the empty boxes. How many are missing to make 10?”',
-        do: 'Point to the empty spaces: "If 2 are empty, that means 8 are filled. If 1 is empty, that means 9!"',
-        lookFor: 'Notices that 8 has 2 empty boxes and 9 has only 1 empty box.',
+        say: '“Look at how full this ten-frame is! If there are 2 empty boxes, that means 8 dots! If only 1 box is empty, that means 9!”',
+        do: 'Point to the empty spaces: "If 2 are empty, 8 are full. If 1 is empty, 9 are full!"',
+        lookFor: 'Notices the empty spaces and uses the landmark 10 to identify 8 and 9.',
       },
       generateSheet: (variant = 1) => {
         const counts = variant % 2 === 0 ? [8, 9, 8, 9] : [9, 8, 9, 8];
         return {
-          id: `math-d4-v${variant}`,
-          title: 'Math Day 4: Ten-Frames 8 and 9 (Looking at Empty Boxes)',
+          id: `math-d7-v${variant}`,
+          title: 'Math Day 7: Ten-Frames 8 and 9 (Looking at Empty Spaces)',
           subject: 'math',
           grade: 'K',
-          instructions: 'Count the dots and look at how many empty boxes are left to make 10.',
+          instructions: 'Count the dots! Notice how many empty spaces are left to reach 10.',
           kidDirections: {
-            text: '🔍 Look at the empty spaces! ✏️ How many dots are there? How many more to make 10?',
-            icons: ['🔍', '✏️'],
-            badge: 'Day 4 Math',
+            text: '🔍 Look at the empty spaces! ✏️ How many dots are filled in the frame?',
+            icons: ['🔍', '✏️', '🔟'],
+            badge: 'Day 7 Math',
           },
           problems: counts.map((c, i) => ({
             id: `p${i}`,
             type: 'ten-frame',
+            promptType: 'counting',
             number: i + 1,
             ...generateTenFrame(c),
+            subtext: `Hint: ${10 - c} empty ${10 - c === 1 ? 'box' : 'boxes'} remaining`,
           })),
           cutStrip: {
             type: 'straight-strips',
             stage: 'Ages 3-5 (Bottom-Edge Cut)',
-            items: ['8 dots', '9 dots', '2 empty', '1 empty'],
+            items: ['8 dots (2 empty)', '9 dots (1 empty)', '8 dots', '9 dots'],
           },
-          answerKey: counts.map((c, i) => ({ number: i + 1, solution: `${c} filled + ${10 - c} empty = 10` })),
+          answerKey: counts.map((c, i) => ({
+            number: i + 1,
+            solution: `Total: ${c} dots (${10 - c} empty spaces)`,
+          })),
         };
       },
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 8: The Landmark Number 10 (Full Ten-Frame & Cardinality)
+    // -------------------------------------------------------------------------
     {
-      day: 5,
-      title: 'Ten-Frame Complements to 10 (Fact Families)',
-      standard: 'CCSS.MATH.K.OA.A.4 & Base-10 Automaticity',
+      day: 8,
+      title: 'The Landmark Number 10 (Full Ten-Frame & Cardinality)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.A.3 & K.CC.B.5 (Numeral 10 Benchmark)',
       script: {
-        say: '“Let’s play the Make Ten Game! If I have 7 dots, how many more do we need to reach 10?”',
-        do: 'Have your child fill in the equation: "7 + ___ = 10".',
-        lookFor: 'Can state the missing complement (3) quickly without counting each empty square one-by-one.',
+        say: '“Every single box is full! 5 on top and 5 on bottom makes TEN! Numeral 10 has two digits: a 1 and a 0!”',
+        do: 'Hold up all 10 fingers. Count fingers 1 to 10, then show how the full ten-frame holds all 10 dots.',
+        lookFor: 'Instantly recognizes 10 when all boxes are filled. Writes numeral 10 correctly with 1 first, then 0.',
       },
       generateSheet: (variant = 1) => {
-        const counts = variant % 2 === 0 ? [6, 8, 7, 9] : [7, 6, 9, 8];
+        const counts = variant % 2 === 0 ? [10, 9, 10, 8] : [10, 8, 10, 9];
         return {
-          id: `math-d5-v${variant}`,
-          title: 'Math Day 5: Complements to 10 Mastery Check',
+          id: `math-d8-v${variant}`,
+          title: 'Math Day 8: The Landmark Number 10 (Full Ten-Frame)',
           subject: 'math',
           grade: 'K',
-          instructions: 'Complete the equation to make 10 for every ten-frame.',
+          instructions: 'Check each frame! If every single box is full, the answer is 10!',
           kidDirections: {
-            text: '🎯 Make 10! ✏️ Write the equation for each box: Dots + Empty = 10!',
-            icons: ['🎯', '✏️'],
-            badge: 'Day 5 Math',
+            text: '🔟 All boxes full is TEN! ✏️ Write the number 10 (a 1 and a 0)!',
+            icons: ['🔟', '✏️', '⭐'],
+            badge: 'Day 8 Math',
           },
           problems: counts.map((c, i) => ({
             id: `p${i}`,
             type: 'ten-frame',
+            promptType: 'counting',
             number: i + 1,
             ...generateTenFrame(c),
-          })),
-          cutStrip: null,
-          answerKey: counts.map((c, i) => ({ number: i + 1, solution: `${c} + ${10 - c} = 10` })),
-        };
-      },
-    },
-    {
-      day: 6,
-      title: 'Number Bonds to 5 (Part-Whole Circles)',
-      standard: 'CCSS.MATH.K.OA.A.3 & Singapore Math CPA',
-      script: {
-        say: '“The big circle at the top is the Whole family! The two bottom circles add together to make the whole!”',
-        do: 'Use 5 coins or counters. Put 3 in one hand and 2 in the other. Show how they combine to make 5.',
-        lookFor: 'Understands that parts combine to make the top circle.',
-      },
-      generateSheet: (variant = 1) => {
-        const pairs = variant % 2 === 0 ? [[5, 3], [4, 2], [5, 4], [4, 1]] : [[5, 2], [4, 3], [5, 1], [3, 2]];
-        return {
-          id: `math-d6-v${variant}`,
-          title: 'Math Day 6: Number Bonds to 5',
-          subject: 'math',
-          grade: 'K',
-          instructions: 'Find the missing part in each number bond.',
-          kidDirections: {
-            text: '⭕ The top circle is the whole! ✏️ Find the missing friend in the bottom circle!',
-            icons: ['⭕', '✏️'],
-            badge: 'Day 6 Math',
-          },
-          problems: pairs.map(([w, pA], i) => ({
-            id: `p${i}`,
-            type: 'number-bond',
-            number: i + 1,
-            ...createNumberBond(w, pA, 'partB'),
-          })),
-          cutStrip: null,
-          answerKey: pairs.map(([w, pA], i) => ({ number: i + 1, solution: `Missing: ${w - pA} (${pA} + ${w - pA} = ${w})` })),
-        };
-      },
-    },
-    {
-      day: 7,
-      title: 'Number Bonds to 7 (Finding the Missing Branch)',
-      standard: 'CCSS.MATH.K.OA.A.3 & Part-Whole Reasoning',
-      script: {
-        say: '“Whole is 7! If one part is 5, what is the other part?”',
-        do: 'Point to the whole, then point to part A. Ask: "What plus 5 gives 7?"',
-        lookFor: 'Mentally solves 7 - 5 = 2 without getting confused about which circle is the whole.',
-      },
-      generateSheet: (variant = 1) => {
-        const pairs = variant % 2 === 0 ? [[7, 5], [6, 4], [7, 3], [6, 2]] : [[7, 4], [7, 2], [6, 5], [7, 1]];
-        return {
-          id: `math-d7-v${variant}`,
-          title: 'Math Day 7: Number Bonds to 7',
-          subject: 'math',
-          grade: 'K',
-          instructions: 'Calculate the missing number for sums up to 7.',
-          kidDirections: {
-            text: '🔍 Find the missing number! ✏️ Write your answer in the empty circle!',
-            icons: ['🔍', '✏️'],
-            badge: 'Day 7 Math',
-          },
-          problems: pairs.map(([w, pA], i) => ({
-            id: `p${i}`,
-            type: 'number-bond',
-            number: i + 1,
-            ...createNumberBond(w, pA, 'partB'),
-          })),
-          cutStrip: null,
-          answerKey: pairs.map(([w, pA], i) => ({ number: i + 1, solution: `Missing: ${w - pA} (${pA} + ${w - pA} = ${w})` })),
-        };
-      },
-    },
-    {
-      day: 8,
-      title: 'Number Bonds to 10 (Combinations that Make 10)',
-      standard: 'CCSS.MATH.K.OA.A.4 & Singapore CPA',
-      script: {
-        say: '“Big challenge! Every whole number today is 10! What pairs make 10?”',
-        do: 'Review the pairs: 9+1, 8+2, 7+3, 6+4, 5+5.',
-        lookFor: 'Quickly names the complement to 10 without needing to count on fingers.',
-      },
-      generateSheet: (variant = 1) => {
-        const pairs = variant % 2 === 0 ? [[10, 7], [10, 4], [10, 8], [10, 5]] : [[10, 6], [10, 3], [10, 9], [10, 2]];
-        return {
-          id: `math-d8-v${variant}`,
-          title: 'Math Day 8: Number Bonds to 10',
-          subject: 'math',
-          grade: 'K',
-          instructions: 'Complete each part-whole bond with whole equal to 10.',
-          kidDirections: {
-            text: '🔟 The top circle is TEN! ✏️ Fill in the missing partner to make 10!',
-            icons: ['🔟', '✏️'],
-            badge: 'Day 8 Math',
-          },
-          problems: pairs.map(([w, pA], i) => ({
-            id: `p${i}`,
-            type: 'number-bond',
-            number: i + 1,
-            ...createNumberBond(w, pA, 'partB'),
-          })),
-          cutStrip: null,
-          answerKey: pairs.map(([w, pA], i) => ({ number: i + 1, solution: `Missing: ${w - pA} (${pA} + ${w - pA} = 10)` })),
-        };
-      },
-    },
-    {
-      day: 9,
-      title: 'Cut & Paste Math Sorting (Fine Motor & Fact Families)',
-      standard: 'Pediatric Motor Progression & Fact Families',
-      script: {
-        say: '“Grab your safety scissors! Cut along the straight dashed line at the bottom, then paste each number where it fits!”',
-        do: 'Remind him of "thumbs-up" scissor holding position. Only cut along the bottom strip.',
-        lookFor: 'Holds scissors with thumb pointing up toward ceiling and cuts straight lines.',
-      },
-      generateSheet: (variant = 1) => {
-        const pairs = [[6, 2], [8, 5], [7, 4], [9, 6]];
-        return {
-          id: `math-d9-v${variant}`,
-          title: 'Math Day 9: Cut-and-Paste Fact Sorting',
-          subject: 'math',
-          grade: 'K',
-          instructions: 'Cut the answer tiles along the bottom edge and paste them in the right circle.',
-          kidDirections: {
-            text: '✂️ Snip the numbers along the bottom line! 📋 Paste them into the right circle!',
-            icons: ['✂️', '📋'],
-            badge: 'Day 9 Math',
-          },
-          problems: pairs.map(([w, pA], i) => ({
-            id: `p${i}`,
-            type: 'number-bond',
-            number: i + 1,
-            ...createNumberBond(w, pA, 'partB'),
+            subtext: c === 10 ? '⭐ Completely full ten-frame = 10!' : undefined,
           })),
           cutStrip: {
             type: 'straight-strips',
-            stage: 'Pediatric Motor Safe Cut (Ages 4-5)',
-            items: ['4', '3', '3', '3'],
+            stage: 'Ages 3-5 (Bottom-Edge Cut)',
+            items: ['10 Full!', '9 dots', '10 Full!', '8 dots'],
           },
-          answerKey: pairs.map(([w, pA], i) => ({ number: i + 1, solution: `Missing: ${w - pA}` })),
+          answerKey: counts.map((c, i) => ({
+            number: i + 1,
+            solution: c === 10 ? '10 (Full ten-frame)' : `${c} dots`,
+          })),
         };
       },
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 9: Number Comparison: Greater vs. Less (Numerals 1 to 10)
+    // -------------------------------------------------------------------------
+    {
+      day: 9,
+      title: 'Numeral Comparison: Greater vs. Less (Numbers 1 to 10)',
+      standard: 'CCSS.MATH.CONTENT.K.CC.C.7 (Compare two written numerals 1 to 10)',
+      script: {
+        say: '“Now you are comparing real written numbers like a big kid! Look at 4 and 8. Which number is greater?”',
+        do: 'If your child hesitates, refer back to ten-frames: "Which number would fill more boxes in our frame?"',
+        lookFor: 'Compares numerals directly without needing to draw dots for each number.',
+      },
+      generateSheet: (variant = 1) => {
+        const pairs =
+          variant % 2 === 0
+            ? [
+                { a: 4, b: 8, greater: 8 },
+                { a: 7, b: 3, greater: 7 },
+                { a: 9, b: 5, greater: 9 },
+                { a: 2, b: 6, greater: 6 },
+              ]
+            : [
+                { a: 3, b: 7, greater: 7 },
+                { a: 8, b: 5, greater: 8 },
+                { a: 6, b: 9, greater: 9 },
+                { a: 1, b: 5, greater: 5 },
+              ];
+
+        return {
+          id: `math-d9-v${variant}`,
+          title: 'Math Day 9: Comparing Written Numbers (1 to 10)',
+          subject: 'math',
+          grade: 'K',
+          instructions: 'Look at each number pair. Circle the GREATER (bigger) number in each box!',
+          kidDirections: {
+            text: '🔢 Look at the two numbers! ⭕ Circle the GREATER (bigger) number!',
+            icons: ['🔢', '⭕', '⭐'],
+            badge: 'Day 9 Math',
+          },
+          problems: pairs.map((p, i) => ({
+            id: `p${i}`,
+            type: 'numeral-comparison',
+            number: i + 1,
+            numA: p.a,
+            numB: p.b,
+            prompt: `Which number is GREATER: ${p.a} or ${p.b}?`,
+            subtext: `Draw a circle around ${p.greater}!`,
+          })),
+          cutStrip: {
+            type: 'straight-strips',
+            stage: 'Ages 3-5 (Bottom-Edge Cut)',
+            items: [`${pairs[0].greater} is greater`, `${pairs[1].greater} is greater`, `${pairs[2].greater} is greater`, `${pairs[3].greater} is greater`],
+          },
+          answerKey: pairs.map((p, i) => ({
+            number: i + 1,
+            solution: `${p.greater} is greater than ${p.greater === p.a ? p.b : p.a}`,
+          })),
+        };
+      },
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 10: Kindergarten Quarter 1 Grand Champion Review
+    // -------------------------------------------------------------------------
     {
       day: 10,
-      title: 'Math Day 10: Mixed Review & Celebration Challenge',
-      standard: 'CCSS.MATH.K.OA.A.4 Cumulative Review',
+      title: 'Quarter 1 Math Grand Champion Review & Mastery Check',
+      standard: 'CCSS.MATH.CONTENT.K.CC Cumulative Mastery Review',
       script: {
-        say: '“You made it to Day 10! Let’s show off how fast your brain can solve ten-frames and number bonds!”',
-        do: 'Celebrate each completed problem with a high-five.',
-        lookFor: 'Confidence and speed in switching between ten-frames and number bonds.',
+        say: '“Congratulations on Day 10! Today is your Grand Champion Counting Challenge! Show how fast you can count, read ten-frames, and compare numbers!”',
+        do: 'Give your child a high-five before starting! Cheer for each completed section.',
+        lookFor: 'Confident, independent counting, quick ten-frame recognition, and clear numeral writing.',
       },
       generateSheet: (variant = 1) => ({
         id: `math-d10-v${variant}`,
-        title: 'Math Day 10: Milestone Mastery Celebration',
+        title: 'Math Day 10: Quarter 1 Grand Champion Review',
         subject: 'math',
         grade: 'K',
-        instructions: 'Solve the mixed ten-frame and number bond challenge!',
+        instructions: 'Complete the Grand Champion counting and comparison challenge!',
         kidDirections: {
-          text: '🏆 Day 10 Champion! ✏️ Show what you know on ten-frames and number bonds!',
-          icons: ['🏆', '✏️'],
-          badge: 'Day 10 Math',
+          text: '🏆 Day 10 Grand Champion! ✏️ Show all your amazing counting and number skills!',
+          icons: ['🏆', '✏️', '⭐'],
+          badge: 'Day 10 Math Champion',
         },
         problems: [
-          { id: 'p1', type: 'ten-frame', number: 1, ...generateTenFrame(8) },
-          { id: 'p2', type: 'number-bond', number: 2, ...createNumberBond(10, 7, 'partB') },
-          { id: 'p3', type: 'ten-frame', number: 3, ...generateTenFrame(6) },
-          { id: 'p4', type: 'number-bond', number: 4, ...createNumberBond(8, 5, 'partB') },
+          {
+            id: 'p1',
+            type: 'counting-objects',
+            number: 1,
+            count: 5,
+            itemIcon: '🍎',
+            prompt: 'Touch each apple and count out loud:',
+            subtext: 'Write the number of apples in the box!',
+          },
+          {
+            id: 'p2',
+            type: 'ten-frame',
+            promptType: 'counting',
+            number: 2,
+            ...generateTenFrame(7),
+            subtext: 'Top row is 5. 5 and 2 is...?',
+          },
+          {
+            id: 'p3',
+            type: 'quantity-comparison',
+            number: 3,
+            comparisonQuestion: 'Which group has MORE?',
+            groupA: { count: 4, icon: '🐟', label: 'Group A' },
+            groupB: { count: 2, icon: '🐟', label: 'Group B' },
+            prompt: 'Which group has MORE fish: Group A (4) or Group B (2)?',
+          },
+          {
+            id: 'p4',
+            type: 'numeral-comparison',
+            number: 4,
+            numA: 10,
+            numB: 6,
+            prompt: 'Which number is GREATER: 10 or 6?',
+            subtext: 'Circle the full ten-frame number (10)!',
+          },
         ],
-        cutStrip: null,
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['⭐ Math Star', 'Counting Champion', '10 Days Complete!', '🏆'],
+        },
         answerKey: [
-          { number: 1, solution: '8 filled + 2 empty = 10' },
-          { number: 2, solution: 'Missing part: 3 (7 + 3 = 10)' },
-          { number: 3, solution: '6 filled + 4 empty = 10' },
-          { number: 4, solution: 'Missing part: 3 (5 + 3 = 8)' },
+          { number: 1, solution: '5 apples' },
+          { number: 2, solution: '7 dots (5 top + 2 bottom)' },
+          { number: 3, solution: 'Group A has MORE (4 > 2)' },
+          { number: 4, solution: '10 is greater than 6' },
         ],
       }),
     },

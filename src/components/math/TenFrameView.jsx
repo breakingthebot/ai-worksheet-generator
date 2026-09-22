@@ -7,7 +7,7 @@ import React from 'react';
 import WorkspaceBox from '../common/WorkspaceBox.jsx';
 
 export default function TenFrameView({ problem }) {
-  const { number, topRow, bottomRow, count, complement } = problem;
+  const { number, topRow, bottomRow, count, complement, promptType, subtext, showComplement } = problem;
 
   return (
     <WorkspaceBox title={`Problem #${number}`} className="flex flex-col items-center">
@@ -41,17 +41,33 @@ export default function TenFrameView({ problem }) {
         </div>
       </div>
 
-      {/* Structured student prompt */}
-      <div className="mt-3 text-center text-sm font-semibold text-slate-800">
-        <span>How many dots? </span>
-        <span className="inline-block border-b-2 border-slate-800 w-8 text-center"></span>
-        <span className="ml-3">How many more to make 10? </span>
-        <span className="inline-block border-b-2 border-slate-800 w-8 text-center"></span>
-      </div>
+      {/* Structured student prompt: Adaptive for Early Kindergarten Counting vs Mid-Year Complements */}
+      {showComplement || promptType === 'equation' ? (
+        <>
+          <div className="mt-3 text-center text-sm font-semibold text-slate-800">
+            <span>How many dots? </span>
+            <span className="inline-block border-b-2 border-slate-800 w-8 text-center"></span>
+            <span className="ml-3">How many more to make 10? </span>
+            <span className="inline-block border-b-2 border-slate-800 w-8 text-center"></span>
+          </div>
 
-      <div className="mt-2 text-xs font-mono text-slate-500">
-        Equation: _____ + _____ = 10
-      </div>
+          <div className="mt-2 text-xs font-mono text-slate-500">
+            Equation: _____ + _____ = 10
+          </div>
+        </>
+      ) : (
+        <div className="mt-3 text-center flex flex-col items-center">
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
+            <span>How many dots in all?</span>
+            <div className="w-11 h-9 border-2 border-slate-900 rounded-lg bg-slate-50 flex items-center justify-center shadow-inner"></div>
+          </div>
+          {subtext && (
+            <div className="text-[11px] text-slate-500 font-medium mt-1">
+              {subtext}
+            </div>
+          )}
+        </div>
+      )}
     </WorkspaceBox>
   );
 }
