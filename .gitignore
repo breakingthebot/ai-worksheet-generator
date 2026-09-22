@@ -13,7 +13,8 @@ BUILD_NOTES*
 build_notes*
 CHANGELOG*
 changelog*
-notes/
+/notes/
+!src/components/notes/
 skills/
 docs/
 research/
@@ -21,6 +22,10 @@ prompts/
 starting_prompt.md
 *.pdf
 *.docx
+student_*.json
+*progress*.json
+
+
 
 
 # 3. Environment Variables & Secrets

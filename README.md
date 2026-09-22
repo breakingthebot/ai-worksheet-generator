@@ -1,16 +1,19 @@
-# AI Worksheet Generator
+# AI Worksheet Generator & Curriculum Studio
 
-An evidence-based educational tool that generates print-ready worksheets and teacher answer keys anchored to real curriculum standards (Common Core State Standards, Singapore Math CPA, and Orton-Gillingham Phonics).
+An evidence-based educational studio that combines a structured K-1 curriculum roadmap, print-ready worksheets, and local session observation logging anchored in Common Core State Standards (CCSS), Singapore Math CPA, and Orton-Gillingham Phonics.
 
 ## Features
 
-- **Singapore Math & CCSS Numeracy**: Generates 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds instead of abstract drills.
-- **Orton-Gillingham Phonics**: Strictly controlled decodable text (CVC words, blends, digraphs) with Elkonin sound boxes and handwriting guidelines.
-- **Core Knowledge & Inquiry Science**: Classification activities (Living vs Non-Living) and outdoor survival science scenarios.
-- **Pediatric Motor & Ergonomic Safeguards**: Bottom-of-page scissor cut strips with thick dashed guidelines designed for early fine-motor stages.
+- **Curriculum Roadmap & Milestone Tracking**: Progressive learning pathways for Mathematics, Phonics, and Science with explicit criteria for *"When to Move On"* (mastery) versus *"When to Keep Practicing"* (warning signs).
+- **"Why We Are Doing This" Parent & Educator Guides**: Collapsible guidance banner on every worksheet explaining the cognitive goal, curriculum standard, and verbal coaching prompts.
+- **Kid-Friendly Directions**: Age-tailored directions with visual emoji icons (✏️, ✂️, 🔢) so young learners can understand tasks independently.
+- **Local Session Observation Storage**: In-app logging tool that saves session scores, timing, and qualitative child observations directly to `student_progress.json` for AI progress analysis.
+- **Singapore Math & CCSS Numeracy**: 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds instead of abstract arithmetic drills.
+- **Orton-Gillingham Phonics**: Controlled decodable CVC words with Elkonin sound boxes and handwriting guidelines.
+- **Core Knowledge & Inquiry Science**: Biological classification (Living vs. Non-Living) and outdoor wilderness survival STEM (Rule of Threes).
+- **Pediatric Motor Safeguards**: Bottom-of-page scissor cut strips with thick dashed lines designed for early developmental fine-motor stages.
 - **1-Click Print & PDF**: Pixel-perfect `@media print` styling for standard 8.5×11 Letter paper.
-- **Teacher Answer Keys**: Instant solution companion with grading rubrics.
-- **Offline Out-of-the-Box**: Includes a deterministic generator engine that works immediately without API keys.
+- **Teacher Answer Keys**: Companion solution keys with pedagogical rubrics.
 
 ## Quickstart
 
@@ -30,19 +33,14 @@ Open your browser at `http://localhost:5173`.
 npm test
 ```
 
-## AI Configuration (Optional)
+## Collaborative AI Workflow
 
-The application works 100% offline out-of-the-box using its built-in pedagogical compiler. If you wish to connect an AI provider:
-
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Add your Gemini or OpenAI API key:
-   ```env
-   VITE_AI_PROVIDER="gemini"
-   VITE_GEMINI_API_KEY="your-api-key-here"
-   ```
+1. Explore the **Curriculum Roadmap** in the app to identify your child's current milestone.
+2. Select and print the corresponding worksheet.
+3. Work through the sheet with your child and click **"Log Child Notes"** to record their score and qualitative observations (what clicked, where they hesitated).
+4. In our conversation, ask Antigravity to analyze the notes:
+   > *"Check my notes in student_progress.json and advise what we should practice next."*
+5. Antigravity analyzes the cognitive roadblocks, advises whether to advance or reinforce, and writes the next custom worksheet straight into your app!
 
 ## License
 
