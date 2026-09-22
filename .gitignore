@@ -1,0 +1,46 @@
+# ==============================================================================
+# Git Exclusion Rules — Strict Code-Only & Privacy Boundary
+# ==============================================================================
+
+# 1. Ignore ALL Markdown & Discussion/Note Files except README.md
+*.md
+!README.md
+
+# 2. Agent Guidelines, Developer Notes, Prompts & Research
+AGENTS*
+agents*
+BUILD_NOTES*
+build_notes*
+CHANGELOG*
+changelog*
+notes/
+skills/
+docs/
+research/
+prompts/
+starting_prompt.md
+*.pdf
+*.docx
+
+
+# 3. Environment Variables & Secrets
+.env
+.env.local
+.env.*
+!.env.example
+
+# 4. Dependencies & Build Artifacts
+node_modules/
+dist/
+build/
+coverage/
+
+# 5. System, Editor & Log Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
