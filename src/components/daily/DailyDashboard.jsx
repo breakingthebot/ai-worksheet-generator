@@ -251,10 +251,10 @@ export default function DailyDashboard({
               <div className="flex items-center gap-1 bg-amber-50 p-1 rounded-xl border border-amber-200">
                 {tradSheets.map((ts, idx) => {
                   const label =
-                    ts.id === 'ws-trad-math-k-fluency'
-                      ? 'Facts within 5'
-                      : ts.id === 'ws-trad-math-k-counting'
-                      ? 'Counting & Sets'
+                    ts.id === 'ws-trad-math-k-counting'
+                      ? 'Day 1: Counting & Sets'
+                      : ts.id === 'ws-trad-math-k-fluency'
+                      ? 'Q2 Target: Addition within 5'
                       : ts.id === 'ws-trad-math-addition'
                       ? 'Grade 1 Facts'
                       : ts.id === 'ws-trad-reading-k-cvc'

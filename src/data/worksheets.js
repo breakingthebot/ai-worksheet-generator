@@ -549,101 +549,26 @@ export const WORKSHEET_LIBRARY = [
   },
 
   // =========================================================================
-  // TRADITIONAL WORKSHEET: Kindergarten Math Fact Fluency (Within 5)
-  // =========================================================================
-  {
-    id: 'ws-trad-math-k-fluency',
-    milestoneId: 'math-m1',
-    title: 'Kindergarten Math: Single-Digit Addition & Subtraction (Within 5)',
-    subject: 'math',
-    grade: 'K',
-    parentGuide: {
-      whyWeAreDoingThis:
-        'CCSS Kindergarten math benchmark standard requires fact fluency within 5 (1+1, 2+2, 3+1, 4+1, 5-2, etc.) using concrete objects and simple vertical stacked formats.',
-      standard: 'CCSS.MATH.CONTENT.K.OA.A.5',
-      whatToWatchFor:
-        'Encourage instant recall for 1+1, 2+1, 2+2. For subtraction, encourage fingers or crossing out. Check that they do not confuse + and - symbols.',
-      verbalCue: '“Add the numbers together! If you have 2 apples and get 2 more, you have 4!”',
-    },
-    kidDirections: {
-      text: '✏️ Solve the Kindergarten math facts within 5. 📖 Read the story problem and draw your work!',
-      icons: ['✏️', '📖', '🔢'],
-      badge: 'Kindergarten Fact Fluency Drill',
-    },
-    instructions: 'Complete the vertical addition and subtraction problems. Then solve the story problems below.',
-    verticalMath: {
-      title: 'Section A: Kindergarten Math Fact Drills (Within 5)',
-      problems: [
-        { number: 1, topNumber: 1, bottomNumber: 1, operator: '+' },
-        { number: 2, topNumber: 2, bottomNumber: 1, operator: '+' },
-        { number: 3, topNumber: 1, bottomNumber: 3, operator: '+' },
-        { number: 4, topNumber: 2, bottomNumber: 2, operator: '+' },
-        { number: 5, topNumber: 3, bottomNumber: 1, operator: '+' },
-        { number: 6, topNumber: 4, bottomNumber: 1, operator: '+' },
-        { number: 7, topNumber: 2, bottomNumber: 1, operator: '-' },
-        { number: 8, topNumber: 3, bottomNumber: 1, operator: '-' },
-        { number: 9, topNumber: 4, bottomNumber: 2, operator: '-' },
-        { number: 10, topNumber: 5, bottomNumber: 1, operator: '-' },
-        { number: 11, topNumber: 5, bottomNumber: 2, operator: '-' },
-        { number: 12, topNumber: 5, bottomNumber: 4, operator: '-' },
-      ],
-    },
-    wordProblems: [
-      {
-        number: 13,
-        story: 'Leo has 2 green toy frogs. 2 more green frogs jump over to play. How many frogs are there altogether?',
-        prompt: 'Draw the frogs in the scratchpad, write the addition sentence (2 + 2 = _), and write the answer.',
-      },
-      {
-        number: 14,
-        story: 'There were 5 shiny butterflies resting on a flower. 2 butterflies flew up into the sky. How many butterflies are left on the flower?',
-        prompt: 'Draw 5 butterflies and cross out 2. Write the subtraction sentence (5 - 2 = _).',
-      },
-    ],
-    cutStrip: {
-      type: 'straight-strips',
-      stage: 'Ages 3-5 (Bottom-Edge Cut)',
-      items: ['1 + 1 = 2', '2 + 2 = 4', '3 + 2 = 5', '5 - 2 = 3'],
-    },
-    answerKey: [
-      { number: 1, solution: '2' },
-      { number: 2, solution: '3' },
-      { number: 3, solution: '4' },
-      { number: 4, solution: '4' },
-      { number: 5, solution: '4' },
-      { number: 6, solution: '5' },
-      { number: 7, solution: '1' },
-      { number: 8, solution: '2' },
-      { number: 9, solution: '2' },
-      { number: 10, solution: '4' },
-      { number: 11, solution: '3' },
-      { number: 12, solution: '1' },
-      { number: 13, solution: '2 + 2 = 4 frogs' },
-      { number: 14, solution: '5 - 2 = 3 butterflies' },
-    ],
-  },
-
-  // =========================================================================
-  // TRADITIONAL WORKSHEET: Kindergarten Math Counting & Comparison
+  // TRADITIONAL WORKSHEET: Kindergarten Math Counting & Comparison (Day 1 Bedrock)
   // =========================================================================
   {
     id: 'ws-trad-math-k-counting',
     milestoneId: 'math-m1',
-    title: 'Kindergarten Math: Counting Objects, Number Writing & Comparison',
+    title: 'Kindergarten Math (Day 1 Bedrock): Counting Objects, Number Writing & Comparison',
     subject: 'math',
     grade: 'K',
     parentGuide: {
       whyWeAreDoingThis:
-        'Kindergarten traditional math drills build one-to-one counting cardinality, correct numeral formation, and the ability to visually compare sets without guessing.',
-      standard: 'CCSS.MATH.CONTENT.K.CC.B.4 & K.CC.C.7',
+        'Kindergarten Day 1 math focuses strictly on counting cardinality, number recognition, and comparing sets (CCSS K.CC) — NOT addition or subtraction! Children learn one-to-one correspondence by touching each object once and determining which set has more.',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.4 & K.CC.C.7 (Kindergarten Launchpad)',
       whatToWatchFor:
-        'Does your child touch each item once when counting? Watch that numbers like 3, 5, and 7 are written with correct orientation.',
-      verbalCue: '“Count each object carefully, write the number in the box, and circle which group has MORE!”',
+        'Does your child touch each item once when counting? Verify that numbers like 3, 5, and 7 are written with correct orientation without reversing.',
+      verbalCue: '“Count each object carefully with your eyes and finger, write the number in the box, and circle which group has MORE!”',
     },
     kidDirections: {
       text: '🔢 Count the objects in each box. ✏️ Match the numbers to dots and circle which group has MORE!',
       icons: ['🔢', '✏️', '⭐'],
-      badge: 'Kindergarten Counting & Comparison Drill',
+      badge: 'Day 1 Kindergarten Counting Drill',
     },
     instructions: 'Draw a line from each numeral to the matching dots in Section A. Then answer the comparison questions in Section B.',
     matchingData: {
@@ -696,7 +621,7 @@ export const WORKSHEET_LIBRARY = [
       {
         number: 8,
         story: 'Mia has 3 red crayons in her cup. Her teacher gives her 2 more crayons. How many crayons does Mia have now?',
-        prompt: 'Draw the crayons, write the addition equation, and state the total.',
+        prompt: 'Draw the crayons, write the number, and state the total.',
       },
     ],
     cutStrip: {
@@ -713,6 +638,81 @@ export const WORKSHEET_LIBRARY = [
       { number: 6, solution: '6 Stars' },
       { number: 7, solution: '9' },
       { number: 8, solution: '3 + 2 = 5 crayons' },
+    ],
+  },
+
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Kindergarten Math Fact Fluency (Quarter 2 Milestone)
+  // =========================================================================
+  {
+    id: 'ws-trad-math-k-fluency',
+    milestoneId: 'math-m1',
+    title: 'Kindergarten Math (Quarter 2 Target): Single-Digit Addition & Subtraction (Within 5)',
+    subject: 'math',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'Addition and subtraction are NOT Day 1 Kindergarten skills. In a standard 180-day school year, operations are introduced in Quarter 2 (around Week 10 / Day 46+) after children have mastered counting, subitizing, and ten-frames. Use this sheet when your child is ready for mid-year written fact fluency within 5!',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.5 (Quarter 2 Benchmark)',
+      whatToWatchFor:
+        'Encourage fingers or crossing out. Check that your child understands the difference between putting groups together (+) and taking away (-).',
+      verbalCue: '“Now that you know your numbers, let’s see what happens when we put groups together!”',
+    },
+    kidDirections: {
+      text: '✏️ Solve the Kindergarten math facts within 5. 📖 Read the story problem and draw your work!',
+      icons: ['✏️', '📖', '🔢'],
+      badge: 'Quarter 2 Fact Fluency Drill',
+    },
+    instructions: 'Complete the vertical addition and subtraction problems. Then solve the story problems below.',
+    verticalMath: {
+      title: 'Section A: Kindergarten Math Fact Drills (Within 5)',
+      problems: [
+        { number: 1, topNumber: 1, bottomNumber: 1, operator: '+' },
+        { number: 2, topNumber: 2, bottomNumber: 1, operator: '+' },
+        { number: 3, topNumber: 1, bottomNumber: 3, operator: '+' },
+        { number: 4, topNumber: 2, bottomNumber: 2, operator: '+' },
+        { number: 5, topNumber: 3, bottomNumber: 1, operator: '+' },
+        { number: 6, topNumber: 4, bottomNumber: 1, operator: '+' },
+        { number: 7, topNumber: 2, bottomNumber: 1, operator: '-' },
+        { number: 8, topNumber: 3, bottomNumber: 1, operator: '-' },
+        { number: 9, topNumber: 4, bottomNumber: 2, operator: '-' },
+        { number: 10, topNumber: 5, bottomNumber: 1, operator: '-' },
+        { number: 11, topNumber: 5, bottomNumber: 2, operator: '-' },
+        { number: 12, topNumber: 5, bottomNumber: 4, operator: '-' },
+      ],
+    },
+    wordProblems: [
+      {
+        number: 13,
+        story: 'Leo has 2 green toy frogs. 2 more green frogs jump over to play. How many frogs are there altogether?',
+        prompt: 'Draw the frogs in the scratchpad, write the addition sentence (2 + 2 = _), and write the answer.',
+      },
+      {
+        number: 14,
+        story: 'There were 5 shiny butterflies resting on a flower. 2 butterflies flew up into the sky. How many butterflies are left on the flower?',
+        prompt: 'Draw 5 butterflies and cross out 2. Write the subtraction sentence (5 - 2 = _).',
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['1 + 1 = 2', '2 + 2 = 4', '3 + 2 = 5', '5 - 2 = 3'],
+    },
+    answerKey: [
+      { number: 1, solution: '2' },
+      { number: 2, solution: '3' },
+      { number: 3, solution: '4' },
+      { number: 4, solution: '4' },
+      { number: 5, solution: '4' },
+      { number: 6, solution: '5' },
+      { number: 7, solution: '1' },
+      { number: 8, solution: '2' },
+      { number: 9, solution: '2' },
+      { number: 10, solution: '4' },
+      { number: 11, solution: '3' },
+      { number: 12, solution: '1' },
+      { number: 13, solution: '2 + 2 = 4 frogs' },
+      { number: 14, solution: '5 - 2 = 3 butterflies' },
     ],
   },
 

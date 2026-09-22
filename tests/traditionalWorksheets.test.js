@@ -50,10 +50,10 @@ describe('Traditional Classroom Worksheets', () => {
     // Kindergarten Math: Should return Kindergarten sheets within 5, NOT Grade 1-2 sheets!
     const kMath = getTraditionalWorksheets('math', 'Kindergarten');
     expect(kMath.length).toBe(2);
-    expect(kMath[0].id).toBe('ws-trad-math-k-fluency');
+    expect(kMath[0].id).toBe('ws-trad-math-k-counting');
     expect(kMath[0].grade).toBe('K');
     expect(kMath[0].title).toContain('Kindergarten Math');
-    expect(kMath[1].id).toBe('ws-trad-math-k-counting');
+    expect(kMath[1].id).toBe('ws-trad-math-k-fluency');
 
     // 1st Grade Math: Should return Grade 1 sheet
     const grade1Math = getTraditionalWorksheets('math', '1st Grade');
