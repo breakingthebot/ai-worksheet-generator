@@ -6,6 +6,12 @@
 import React, { useState } from 'react';
 import { getDailyLesson } from '../../domain/curriculum/dailySchedule.js';
 import { getTraditionalWorksheets } from '../../data/worksheets.js';
+import {
+  getAcademicPacingForDay,
+  QUARTERS,
+  WEEKLY_PACING_36,
+  getWeeksForQuarter,
+} from '../../domain/curriculum/academicYear180.js';
 import WorksheetCanvas from '../worksheet/WorksheetCanvas.jsx';
 import {
   Printer,
@@ -20,10 +26,14 @@ import {
   ChevronRight,
   Undo2,
   GraduationCap,
+  Calendar,
+  Layers,
+  Award,
+  X,
 } from 'lucide-react';
 
 export default function DailyDashboard({
-  studentDays = { math: 1, phonics: 1, science: 1 },
+  studentDays = { math: 1, phonics: 1, science: 1, socialStudies: 1 },
   currentGrade = 'Kindergarten',
   onUpdateDay,
   onUpdateGrade,
@@ -33,13 +43,16 @@ export default function DailyDashboard({
   const [activeSubject, setActiveSubject] = useState('math');
   const [sheetMode, setSheetMode] = useState('daily'); // 'daily' | 'traditional'
   const [selectedTradIndex, setSelectedTradIndex] = useState(0);
-  const [variantSeeds, setVariantSeeds] = useState({ math: 1, phonics: 1, science: 1 });
+  const [variantSeeds, setVariantSeeds] = useState({ math: 1, phonics: 1, science: 1, socialStudies: 1 });
   const [quickNote, setQuickNote] = useState('');
   const [noteSaved, setNoteSaved] = useState(false);
+  const [isPacingModalOpen, setIsPacingModalOpen] = useState(false);
+  const [selectedQuarterTab, setSelectedQuarterTab] = useState(1);
 
   const currentDayNumber = studentDays[activeSubject] || 1;
   const currentVariant = variantSeeds[activeSubject] || 1;
   const lesson = getDailyLesson(activeSubject, currentDayNumber);
+  const pacing = getAcademicPacingForDay(currentDayNumber);
 
   const tradSheets = getTraditionalWorksheets(activeSubject);
   const activeTradSheet = tradSheets[selectedTradIndex] || tradSheets[0];
@@ -121,12 +134,59 @@ export default function DailyDashboard({
             )}
           </div>
 
+          {/* 180-Day School Year Pacing Banner */}
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-indigo-50/80 via-slate-50 to-amber-50/80 border border-indigo-100 rounded-xl p-2.5">
+            <div className="flex items-center gap-2.5">
+              <span className="p-1.5 bg-indigo-600 text-white rounded-lg shrink-0">
+                <Calendar className="w-4 h-4" />
+              </span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-black text-indigo-950">
+                    Quarter {pacing.quarter} • Week {pacing.week}
+                  </span>
+                  <span className="text-[11px] font-semibold text-slate-500">
+                    (Instructional Day {currentDayNumber} of 180)
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-600 font-medium">
+                  Theme: {pacing.theme}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <div className="hidden sm:flex items-center gap-2">
+                <div className="w-20 bg-slate-200 h-2 rounded-full overflow-hidden">
+                  <div
+                    className="bg-indigo-600 h-full rounded-full transition-all"
+                    style={{ width: `${Math.max(4, pacing.progressPercent)}%` }}
+                  ></div>
+                </div>
+                <span className="text-[10px] font-extrabold text-slate-600">
+                  {pacing.progressPercent}%
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsPacingModalOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-indigo-50 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-200 shadow-2xs transition-colors cursor-pointer"
+                title="Open complete 36-week academic calendar"
+              >
+                <Layers className="w-3.5 h-3.5 text-indigo-600" />
+                <span>36-Week Pacing Guide</span>
+              </button>
+            </div>
+          </div>
+
           {/* Subject Track Switchers */}
           <div className="flex flex-wrap gap-2">
             {[
               { id: 'math', label: 'Math', icon: '📐' },
               { id: 'phonics', label: 'Phonics', icon: '🔤' },
               { id: 'science', label: 'Science', icon: '🔬' },
+              { id: 'socialStudies', label: 'Social Studies', icon: '🗺️' },
             ].map((sub) => {
               const day = studentDays[sub.id] || 1;
               const isSelected = activeSubject === sub.id;
@@ -278,6 +338,26 @@ export default function DailyDashboard({
 
                 <h3 className="text-base font-extrabold text-slate-900 leading-snug">{lesson.title}</h3>
                 <p className="text-[11px] text-slate-400 font-medium">{lesson.standard}</p>
+
+                {/* 180-Day Curriculum Focus Anchor */}
+                <div className="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3 space-y-1 text-xs">
+                  <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-indigo-800">
+                    <span>Q{pacing.quarter} • Week {pacing.week} Anchor</span>
+                    <span>180-Day School Year</span>
+                  </div>
+                  <div className="font-extrabold text-indigo-950 text-xs leading-snug">
+                    {activeSubject === 'math' && pacing.mathFocus}
+                    {activeSubject === 'phonics' && pacing.phonicsFocus}
+                    {activeSubject === 'science' && pacing.scienceFocus}
+                    {activeSubject === 'socialStudies' && pacing.socialStudiesFocus}
+                  </div>
+                  {pacing.milestone && (
+                    <div className="pt-1.5 border-t border-indigo-200/60 flex items-center gap-1.5 text-[11px] font-bold text-amber-800">
+                      <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                      <span>{pacing.milestone}</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Word-for-Word Parent Script Box */}
@@ -419,6 +499,118 @@ export default function DailyDashboard({
           <WorksheetCanvas worksheet={activeSheet} />
         </section>
       </div>
+
+      {/* 180-Day Academic Calendar & Pacing Guide Modal */}
+      {isPacingModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs no-print">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col border border-slate-200 overflow-hidden">
+            {/* Modal Header */}
+            <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+              <div className="flex items-center gap-2.5">
+                <span className="p-2 bg-indigo-600 text-white rounded-xl shadow-xs">
+                  <Calendar className="w-5 h-5" />
+                </span>
+                <div>
+                  <h2 className="text-base sm:text-lg font-black text-slate-900">
+                    180-Day Academic Calendar & Curriculum Pacing Guide
+                  </h2>
+                  <p className="text-xs text-slate-500">
+                    36 Weeks × 5 Days across 4 Quarters • CCSS, Singapore Math CPA, Orton-Gillingham, CKSci & CKHG
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsPacingModalOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Quarter Selector Tabs */}
+            <div className="px-5 pt-3 border-b border-slate-200 bg-white flex flex-wrap gap-2">
+              {QUARTERS.map((q) => (
+                <button
+                  key={q.quarter}
+                  onClick={() => setSelectedQuarterTab(q.quarter)}
+                  className={`px-4 py-2 text-xs font-bold rounded-t-xl transition-all border-b-2 cursor-pointer ${
+                    selectedQuarterTab === q.quarter
+                      ? 'border-indigo-600 text-indigo-700 bg-indigo-50/50'
+                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  Quarter {q.quarter} (Days {q.days[0]}–{q.days[1]})
+                </button>
+              ))}
+            </div>
+
+            {/* Modal Body: Weeks List */}
+            <div className="p-5 overflow-y-auto space-y-4 divide-y divide-slate-100">
+              <div className="mb-2 p-3 bg-indigo-50/60 rounded-xl border border-indigo-100 text-xs text-indigo-950">
+                <span className="font-extrabold">{QUARTERS[selectedQuarterTab - 1].name}: </span>
+                {QUARTERS[selectedQuarterTab - 1].description}
+                <div className="mt-1 text-[11px] font-bold text-indigo-700">
+                  🎯 Quarter Milestone: {QUARTERS[selectedQuarterTab - 1].milestone}
+                </div>
+              </div>
+
+              {getWeeksForQuarter(selectedQuarterTab).map((w) => (
+                <div key={w.week} className="pt-3 first:pt-0 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-black bg-indigo-600 text-white">
+                        Week {w.week}
+                      </span>
+                      <span className="text-xs font-bold text-slate-500">
+                        Days {w.days[0]}–{w.days[1]}
+                      </span>
+                      <span className="text-xs font-black text-slate-900">
+                        • {w.theme}
+                      </span>
+                    </div>
+                    {w.milestone && (
+                      <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                        🏆 {w.milestone}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* 4 Subjects Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 text-[11px]">
+                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <span className="font-bold text-indigo-900 block mb-0.5">📐 Math</span>
+                      <span className="text-slate-700">{w.mathFocus}</span>
+                    </div>
+                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <span className="font-bold text-purple-900 block mb-0.5">🔤 Phonics</span>
+                      <span className="text-slate-700">{w.phonicsFocus}</span>
+                    </div>
+                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <span className="font-bold text-emerald-900 block mb-0.5">🔬 Science</span>
+                      <span className="text-slate-700">{w.scienceFocus}</span>
+                    </div>
+                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <span className="font-bold text-amber-900 block mb-0.5">🗺️ Social Studies</span>
+                      <span className="text-slate-700">{w.socialStudiesFocus}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
+              <span>Full 180-Day School Year • Kindergarten to Grade 5 Continuum</span>
+              <button
+                onClick={() => setIsPacingModalOpen(false)}
+                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-colors cursor-pointer"
+              >
+                Close Pacing Guide
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,14 +7,15 @@ import { describe, it, expect } from 'vitest';
 import { DAILY_CURRICULUM, getDailyLesson } from '../src/domain/curriculum/dailySchedule.js';
 
 describe('10-Day Daily Curriculum System', () => {
-  it('contains full 10-day tracks for math, phonics, and science', () => {
+  it('contains full 10-day tracks for math, phonics, science, and social studies', () => {
     expect(DAILY_CURRICULUM.math.length).toBe(10);
     expect(DAILY_CURRICULUM.phonics.length).toBe(10);
     expect(DAILY_CURRICULUM.science.length).toBe(10);
+    expect(DAILY_CURRICULUM.socialStudies.length).toBe(10);
   });
 
   it('guarantees that every day contains a word-for-word parent script', () => {
-    ['math', 'phonics', 'science'].forEach((subject) => {
+    ['math', 'phonics', 'science', 'socialStudies'].forEach((subject) => {
       DAILY_CURRICULUM[subject].forEach((lesson) => {
         expect(lesson.day).toBeGreaterThanOrEqual(1);
         expect(lesson.title).toBeTruthy();
@@ -28,7 +29,7 @@ describe('10-Day Daily Curriculum System', () => {
   });
 
   it('generates valid printable worksheets and answer keys for every day', () => {
-    ['math', 'phonics', 'science'].forEach((subject) => {
+    ['math', 'phonics', 'science', 'socialStudies'].forEach((subject) => {
       for (let day = 1; day <= 10; day++) {
         const lesson = getDailyLesson(subject, day);
         const sheet = lesson.generateSheet(1);

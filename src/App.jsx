@@ -24,7 +24,7 @@ export default function App() {
 
   const [progressData, setProgressData] = useState({
     selectedGrade: 'Kindergarten',
-    studentDays: { math: 1, phonics: 1, science: 1 },
+    studentDays: { math: 1, phonics: 1, science: 1, socialStudies: 1 },
     sessions: [],
     milestoneStatus: {},
   });
@@ -43,7 +43,7 @@ export default function App() {
         const data = await res.json();
         setProgressData({
           selectedGrade: data.selectedGrade || 'Kindergarten',
-          studentDays: data.studentDays || { math: 1, phonics: 1, science: 1 },
+          studentDays: data.studentDays || { math: 1, phonics: 1, science: 1, socialStudies: 1 },
           sessions: data.sessions || [],
           milestoneStatus: data.milestoneStatus || {},
         });
@@ -126,7 +126,7 @@ export default function App() {
   const handleResetToDay1 = async () => {
     const updatedPayload = {
       ...progressData,
-      studentDays: { math: 1, phonics: 1, science: 1 },
+      studentDays: { math: 1, phonics: 1, science: 1, socialStudies: 1 },
       lastUpdated: new Date().toISOString(),
     };
     await handleSaveProgress(updatedPayload);

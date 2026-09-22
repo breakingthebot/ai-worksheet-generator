@@ -470,6 +470,83 @@ export const WORKSHEET_LIBRARY = [
       { number: 3, solution: 'Priority #3 (3 Days): Dehydration / Water' },
     ],
   },
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Social Studies & Map Exploration (Grade K-1)
+  // =========================================================================
+  {
+    id: 'ws-trad-social-geography',
+    milestoneId: 'soc-m1',
+    title: 'Grade K-1 Social Studies: Map Navigation, Landforms & Compass Rose',
+    subject: 'socialStudies',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'Spatial reasoning and geographic literacy allow young learners to understand maps, directional orientation, and their place in the world.',
+      standard: 'CKHG Kindergarten Unit 1: Spatial Sense & Map Skills',
+      whatToWatchFor:
+        'Check if your child remembers that North is UP and South is DOWN on maps, and that blue indicates water.',
+      verbalCue: '“North points UP to the top of our map, and South points DOWN to the bottom!”',
+    },
+    kidDirections: {
+      text: '🧭 Use the Compass Rose to answer direction questions. 🗺️ Match geographic features and circle the best answers!',
+      icons: ['🧭', '🗺️', '✏️'],
+      badge: 'Traditional Social Studies Drill',
+    },
+    instructions: 'Draw lines to match geographic terms in Section A. Then answer the direction and history questions in Section B.',
+    matchingData: {
+      title: 'Section A: Geographic Terms Matching',
+      instructions: 'Draw a straight line from each term on the left to its matching meaning on the right:',
+      pairs: [
+        { id: 'm1', left: 'Globe', right: 'Round 3D sphere model of planet Earth' },
+        { id: 'm2', left: 'Map', right: 'Flat drawing of a room, city, or country' },
+        { id: 'm3', left: 'Compass Rose', right: 'Tool pointing North, South, East, West' },
+        { id: 'm4', left: 'River', right: 'Flowing natural stream of fresh water' },
+      ],
+    },
+    problems: [
+      {
+        id: 'p1',
+        type: 'social-studies',
+        number: 5,
+        topic: 'compass-rose',
+        icon: '🧭',
+        prompt: 'Which direction points UP to the top of a standard map?',
+        options: ['North', 'South', 'East', 'West'],
+      },
+      {
+        id: 'p2',
+        type: 'social-studies',
+        number: 6,
+        topic: 'maps-globes',
+        icon: '🌊',
+        prompt: 'Why are oceans colored BLUE on maps and globes?',
+        options: ['Because water absorbs and reflects blue light', 'Because of green trees', 'Because of red rocks', 'Because of snow'],
+      },
+      {
+        id: 'p3',
+        type: 'social-studies',
+        number: 7,
+        topic: 'presidents',
+        icon: '🏛️',
+        prompt: 'Who was our 1st President and is known as the "Father of Our Country"?',
+        options: ['George Washington', 'Abraham Lincoln', 'Thomas Jefferson', 'Theodore Roosevelt'],
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['North = UP', 'South = DOWN', 'East = Sunrise', 'West = Sunset'],
+    },
+    answerKey: [
+      { number: 1, solution: 'Globe -> Round 3D sphere model of planet Earth' },
+      { number: 2, solution: 'Map -> Flat drawing of a room, city, or country' },
+      { number: 3, solution: 'Compass Rose -> Tool pointing North, South, East, West' },
+      { number: 4, solution: 'River -> Flowing natural stream of fresh water' },
+      { number: 5, solution: 'North' },
+      { number: 6, solution: 'Because water absorbs and reflects blue light' },
+      { number: 7, solution: 'George Washington' },
+    ],
+  },
 ];
 
 export function getAllWorksheets() {

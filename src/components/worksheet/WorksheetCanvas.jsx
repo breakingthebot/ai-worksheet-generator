@@ -9,6 +9,7 @@ import TenFrameView from '../math/TenFrameView.jsx';
 import NumberBondView from '../math/NumberBondView.jsx';
 import DictationGrid from '../phonics/DictationGrid.jsx';
 import ScienceSection from '../science/ScienceSection.jsx';
+import SocialStudiesSection from '../social/SocialStudiesSection.jsx';
 import ScissorCutStrip from '../ergonomics/ScissorCutStrip.jsx';
 import VerticalMathGrid from '../traditional/VerticalMathGrid.jsx';
 import ReadingPassageView from '../traditional/ReadingPassageView.jsx';
@@ -148,6 +149,9 @@ export default function WorksheetCanvas({ worksheet }) {
                 }
                 if (problem.type === 'science-classification' || problem.type === 'science-inquiry') {
                   return <ScienceSection key={problem.id} problem={problem} />;
+                }
+                if (problem.type === 'social-studies') {
+                  return <SocialStudiesSection key={problem.id} problem={problem} />;
                 }
                 return (
                   <div key={problem.id} className="border p-3 rounded">

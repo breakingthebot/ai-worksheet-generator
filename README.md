@@ -4,20 +4,28 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
 
 ## Features
 
+- **📅 180-Day School Year Academic Pacing Engine**:
+  - Full standard 180-day US school year structured across **36 Weeks and 4 Quarters** (9 weeks / 45 days per quarter).
+  - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
+  - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
+- **🗺️ Core Knowledge Social Studies & Geography Track (CKHG)**:
+  - 10-day foundational Kindergarten track covering **Maps vs. Globes** (3D sphere vs flat, water vs land), **Cardinal Directions & Compass Rose** (North, South, East, West), **Map Keys & Room Mapping**, **Natural Landforms** (mountains, rivers, plains), **Native American Shelters** (Tipis, Pueblos, Longhouses), **Founding Presidents** (George Washington & Abraham Lincoln), **American Symbols** (The Flag & Liberty Bell), and **Civics & Community Helpers**.
+  - Word-for-word parent scripts (`🗣️ Say this`, `🖐️ What to do`, `👁️ What to look for`) and printable worksheets with primary handwriting lines and drawing scratchpads.
 - **✨ Personalized Custom Adventure Studio**: Create fun, custom worksheets starring your child and their pets/friends as the main heroes!
   - Supports **Kindergarten through 5th Grade** across **Language Arts, Math, Science, and Social Studies**.
   - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.
   - Generates reading passages, ruled primary handwriting lines for writing, and dedicated scratchpad drawing boxes for showing math work.
   - Powered by Google Gemini API with a zero-setup, offline deterministic curriculum engine fallback.
-- **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts.
+- **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts across **Math, Phonics, Science, and Social Studies**.
 - **Traditional Classroom Multi-Section Worksheets**:
   - *Math*: 12-problem vertical addition/subtraction drills, real-world story problems, and scratchpad drawing boxes.
   - *Reading Comprehension*: Informational passages with line numbers, highlighted vocabulary banks, multiple-choice bubbles, and written short-answer lines.
   - *Grammar & Mechanics*: Sentence editing clinic (capitalization & ending punctuation corrections) and 2-column parts-of-speech matching.
   - *Science Diagrams*: Anatomy matching (roots, stems, leaves, flowers) and photosynthesis inquiry questions.
-- **Curriculum Roadmap & Milestone Tracking**: Progressive learning pathways for Mathematics, Phonics, and Science with explicit criteria for *"When to Move On"* (mastery) versus *"When to Keep Practicing"* (warning signs).
+  - *Social Studies Drills*: Geographic matching, compass rose direction drills, and history facts.
+- **Curriculum Roadmap & Milestone Tracking**: Progressive learning pathways for Mathematics, Phonics, Science, and Social Studies with explicit criteria for *"When to Move On"* (mastery) versus *"When to Keep Practicing"* (warning signs).
 - **"Why We Are Doing This" Parent & Educator Guides**: Collapsible guidance banner on every worksheet explaining the cognitive goal, curriculum standard, and verbal coaching prompts.
-- **Kid-Friendly Directions**: Age-tailored directions with visual emoji icons (✏️, ✂️, 🔢) so young learners can understand tasks independently.
+- **Kid-Friendly Directions**: Age-tailored directions with visual emoji icons (✏️, ✂️, 🔢, 🧭) so young learners can understand tasks independently.
 - **Local Session Observation Storage**: In-app logging tool that saves session scores, timing, and qualitative child observations directly to `student_progress.json` for AI progress analysis.
 - **Singapore Math & CCSS Numeracy**: 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds alongside vertical arithmetic drills.
 - **Orton-Gillingham Phonics**: Controlled decodable CVC words with Elkonin sound boxes and handwriting guidelines.

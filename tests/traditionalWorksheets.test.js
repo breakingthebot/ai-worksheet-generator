@@ -45,7 +45,7 @@ describe('Traditional Classroom Worksheets', () => {
 
   it('filters traditional worksheets by subject using getTraditionalWorksheets helper', () => {
     const allTrad = getTraditionalWorksheets();
-    expect(allTrad.length).toBe(4);
+    expect(allTrad.length).toBe(5);
 
     const mathTrad = getTraditionalWorksheets('math');
     expect(mathTrad.length).toBe(1);
@@ -56,5 +56,9 @@ describe('Traditional Classroom Worksheets', () => {
 
     const scienceTrad = getTraditionalWorksheets('science');
     expect(scienceTrad.length).toBe(1);
+
+    const socialTrad = getTraditionalWorksheets('socialStudies');
+    expect(socialTrad.length).toBe(1);
+    expect(socialTrad[0].id).toBe('ws-trad-social-geography');
   });
 });
