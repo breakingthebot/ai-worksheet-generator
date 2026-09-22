@@ -5,17 +5,18 @@
 
 import React, { useState, useEffect } from 'react';
 import DailyDashboard from './components/daily/DailyDashboard.jsx';
+import CustomAdventureStudio from './components/custom/CustomAdventureStudio.jsx';
 import ControlPanel from './components/controls/ControlPanel.jsx';
 import WorksheetCanvas from './components/worksheet/WorksheetCanvas.jsx';
 import RoadmapView from './components/roadmap/RoadmapView.jsx';
 import SessionNotesDrawer from './components/notes/SessionNotesDrawer.jsx';
 import AnswerKeyModal from './components/worksheet/AnswerKeyModal.jsx';
-import { getWorksheetById } from './data/worksheets.js';
+import { getWorksheetById, addCustomWorksheet } from './data/worksheets.js';
 import { getMilestoneById } from './domain/curriculum/roadmap.js';
-import { Calendar, BookOpen, Map, PenTool } from 'lucide-react';
+import { Calendar, BookOpen, Map, PenTool, Sparkles } from 'lucide-react';
 
 export default function App() {
-  const [activeView, setActiveView] = useState('daily'); // 'daily' | 'worksheet' | 'roadmap'
+  const [activeView, setActiveView] = useState('daily'); // 'daily' | 'adventure' | 'worksheet' | 'roadmap'
   const [activeWorksheetId, setActiveWorksheetId] = useState('ws-math-tenframe-complements');
   const [isNotesDrawerOpen, setIsNotesDrawerOpen] = useState(false);
   const [isAnswerKeyOpen, setIsAnswerKeyOpen] = useState(false);
@@ -106,6 +107,11 @@ export default function App() {
     setIsNotesDrawerOpen(true);
   };
 
+  const handleSaveCustomToLibrary = (customSheet) => {
+    addCustomWorksheet(customSheet);
+    setActiveWorksheetId(customSheet.id);
+  };
+
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col text-slate-900 font-sans">
       {/* Top Navigation */}
@@ -131,6 +137,17 @@ export default function App() {
           >
             <Calendar className="w-3.5 h-3.5" />
             Today's Lesson
+          </button>
+          <button
+            onClick={() => setActiveView('adventure')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              activeView === 'adventure'
+                ? 'bg-gradient-to-r from-indigo-600 to-pink-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            Custom Adventure
           </button>
           <button
             onClick={() => setActiveView('worksheet')}
@@ -176,6 +193,10 @@ export default function App() {
             onUpdateDay={handleUpdateStudentDay}
             onLogQuickNote={handleLogQuickNote}
           />
+        )}
+
+        {activeView === 'adventure' && (
+          <CustomAdventureStudio onSaveToLibrary={handleSaveCustomToLibrary} />
         )}
 
         {activeView === 'worksheet' && (

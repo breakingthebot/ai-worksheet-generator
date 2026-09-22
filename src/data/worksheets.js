@@ -486,3 +486,15 @@ export function getTraditionalWorksheets(subject) {
   }
   return WORKSHEET_LIBRARY.filter((w) => w.id.startsWith('ws-trad-') && w.subject === subject);
 }
+
+export function addCustomWorksheet(sheet) {
+  if (!sheet || !sheet.id) return null;
+  // Deduplicate if already present
+  const existingIdx = WORKSHEET_LIBRARY.findIndex((w) => w.id === sheet.id);
+  if (existingIdx >= 0) {
+    WORKSHEET_LIBRARY[existingIdx] = sheet;
+  } else {
+    WORKSHEET_LIBRARY.unshift(sheet);
+  }
+  return sheet;
+}

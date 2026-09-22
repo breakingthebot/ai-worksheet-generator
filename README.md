@@ -4,6 +4,11 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
 
 ## Features
 
+- **✨ Personalized Custom Adventure Studio**: Create fun, custom worksheets starring your child and their pets/friends as the main heroes!
+  - Supports **Kindergarten through 5th Grade** across **Language Arts, Math, Science, and Social Studies**.
+  - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.
+  - Generates reading passages, ruled primary handwriting lines for writing, and dedicated scratchpad drawing boxes for showing math work.
+  - Powered by Google Gemini API with a zero-setup, offline deterministic curriculum engine fallback.
 - **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts.
 - **Traditional Classroom Multi-Section Worksheets**:
   - *Math*: 12-problem vertical addition/subtraction drills, real-world story problems, and scratchpad drawing boxes.
