@@ -4,11 +4,17 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
 
 ## Features
 
+- **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts.
+- **Traditional Classroom Multi-Section Worksheets**:
+  - *Math*: 12-problem vertical addition/subtraction drills, real-world story problems, and scratchpad drawing boxes.
+  - *Reading Comprehension*: Informational passages with line numbers, highlighted vocabulary banks, multiple-choice bubbles, and written short-answer lines.
+  - *Grammar & Mechanics*: Sentence editing clinic (capitalization & ending punctuation corrections) and 2-column parts-of-speech matching.
+  - *Science Diagrams*: Anatomy matching (roots, stems, leaves, flowers) and photosynthesis inquiry questions.
 - **Curriculum Roadmap & Milestone Tracking**: Progressive learning pathways for Mathematics, Phonics, and Science with explicit criteria for *"When to Move On"* (mastery) versus *"When to Keep Practicing"* (warning signs).
 - **"Why We Are Doing This" Parent & Educator Guides**: Collapsible guidance banner on every worksheet explaining the cognitive goal, curriculum standard, and verbal coaching prompts.
 - **Kid-Friendly Directions**: Age-tailored directions with visual emoji icons (✏️, ✂️, 🔢) so young learners can understand tasks independently.
 - **Local Session Observation Storage**: In-app logging tool that saves session scores, timing, and qualitative child observations directly to `student_progress.json` for AI progress analysis.
-- **Singapore Math & CCSS Numeracy**: 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds instead of abstract arithmetic drills.
+- **Singapore Math & CCSS Numeracy**: 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds alongside vertical arithmetic drills.
 - **Orton-Gillingham Phonics**: Controlled decodable CVC words with Elkonin sound boxes and handwriting guidelines.
 - **Core Knowledge & Inquiry Science**: Biological classification (Living vs. Non-Living) and outdoor wilderness survival STEM (Rule of Threes).
 - **Pediatric Motor Safeguards**: Bottom-of-page scissor cut strips with thick dashed lines designed for early developmental fine-motor stages.

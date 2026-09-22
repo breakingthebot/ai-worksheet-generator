@@ -1,6 +1,6 @@
 // src/components/worksheet/WorksheetCanvas.jsx
-// Printable 8.5x11 (Letter) worksheet page canvas with Parent Guide and Kid-Friendly Directions.
-// Connects to: src/components/common/StudentHeader.jsx, src/components/ergonomics/ScissorCutStrip.jsx
+// Printable 8.5x11 (Letter) worksheet page canvas supporting Traditional and Developmental layouts.
+// Connects to: src/components/traditional/, src/components/math/, src/components/phonics/
 // Created: 2026-09-22
 
 import React, { useState } from 'react';
@@ -10,13 +10,32 @@ import NumberBondView from '../math/NumberBondView.jsx';
 import DictationGrid from '../phonics/DictationGrid.jsx';
 import ScienceSection from '../science/ScienceSection.jsx';
 import ScissorCutStrip from '../ergonomics/ScissorCutStrip.jsx';
-import { HelpCircle, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import VerticalMathGrid from '../traditional/VerticalMathGrid.jsx';
+import ReadingPassageView from '../traditional/ReadingPassageView.jsx';
+import WordProblemCard from '../traditional/WordProblemCard.jsx';
+import MatchingColumnView from '../traditional/MatchingColumnView.jsx';
+import SentenceEditingView from '../traditional/SentenceEditingView.jsx';
+import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 
 export default function WorksheetCanvas({ worksheet }) {
   if (!worksheet) return null;
 
   const [isGuideOpen, setIsGuideOpen] = useState(true);
-  const { title, framework, instructions, problems, cutStrip, nonsenseDrill, parentGuide, kidDirections } = worksheet;
+  const {
+    title,
+    framework,
+    instructions,
+    problems = [],
+    verticalMath,
+    readingPassage,
+    wordProblems = [],
+    matchingData,
+    editingData,
+    cutStrip,
+    nonsenseDrill,
+    parentGuide,
+    kidDirections,
+  } = worksheet;
 
   return (
     <div className="w-full max-w-[840px] mx-auto space-y-4">
@@ -93,31 +112,54 @@ export default function WorksheetCanvas({ worksheet }) {
             </p>
           </div>
 
-          {/* Problems Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {problems.map((problem) => {
-              if (problem.type === 'ten-frame') {
-                return <TenFrameView key={problem.id} problem={problem} />;
-              }
-              if (problem.type === 'number-bond') {
-                return <NumberBondView key={problem.id} problem={problem} />;
-              }
-              if (problem.type === 'phonics-dictation') {
-                return <DictationGrid key={problem.id} problem={problem} />;
-              }
-              if (problem.type === 'science-classification' || problem.type === 'science-inquiry') {
-                return <ScienceSection key={problem.id} problem={problem} />;
-              }
-              return (
-                <div key={problem.id} className="border p-3 rounded">
-                  <span className="font-bold">#{problem.number}: </span>
-                  {problem.prompt || problem.word || problem.item}
-                </div>
-              );
-            })}
-          </div>
+          {/* TRADITIONAL COMPONENT 1: Reading Comprehension Passage */}
+          {readingPassage && <ReadingPassageView passageData={readingPassage} />}
 
-          {/* Nonsense Drill for Phonics */}
+          {/* TRADITIONAL COMPONENT 2: Vertical Stacked Arithmetic Drills */}
+          {verticalMath && <VerticalMathGrid problems={verticalMath.problems} title={verticalMath.title} />}
+
+          {/* TRADITIONAL COMPONENT 3: Story Word Problems */}
+          {wordProblems && wordProblems.length > 0 && (
+            <div className="space-y-4 mb-6">
+              {wordProblems.map((wp) => (
+                <WordProblemCard key={wp.id || wp.number} problem={wp} />
+              ))}
+            </div>
+          )}
+
+          {/* TRADITIONAL COMPONENT 4: Matching Columns */}
+          {matchingData && <MatchingColumnView matchingData={matchingData} />}
+
+          {/* TRADITIONAL COMPONENT 5: Sentence Editing & Grammar */}
+          {editingData && <SentenceEditingView editingData={editingData} />}
+
+          {/* DEVELOPMENTAL COMPONENT: Standard Problem Grid (Ten-frames, Bonds, etc.) */}
+          {problems && problems.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {problems.map((problem) => {
+                if (problem.type === 'ten-frame') {
+                  return <TenFrameView key={problem.id} problem={problem} />;
+                }
+                if (problem.type === 'number-bond') {
+                  return <NumberBondView key={problem.id} problem={problem} />;
+                }
+                if (problem.type === 'phonics-dictation') {
+                  return <DictationGrid key={problem.id} problem={problem} />;
+                }
+                if (problem.type === 'science-classification' || problem.type === 'science-inquiry') {
+                  return <ScienceSection key={problem.id} problem={problem} />;
+                }
+                return (
+                  <div key={problem.id} className="border p-3 rounded">
+                    <span className="font-bold">#{problem.number}: </span>
+                    {problem.prompt || problem.word || problem.item}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Optional Nonsense Word Drill for Phonics */}
           {nonsenseDrill && (
             <div className="mt-6 p-4 border-2 border-dashed border-amber-300 bg-amber-50/50 rounded-lg">
               <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900 mb-2">
@@ -143,7 +185,7 @@ export default function WorksheetCanvas({ worksheet }) {
 
           {/* Page Footer */}
           <footer className="mt-6 pt-3 border-t border-slate-200 flex justify-between items-center text-[10px] text-slate-400">
-            <span>AI-Worksheet Generator — Curriculum Blueprint & Learning Pathway</span>
+            <span>AI-Worksheet Studio — Traditional & Developmental K-12 Curriculum Engine</span>
             <span>Page 1 of 1</span>
           </footer>
         </div>

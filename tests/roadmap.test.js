@@ -49,7 +49,13 @@ describe('Curated Worksheet Catalog', () => {
       expect(sheet.parentGuide.whyWeAreDoingThis).toBeTruthy();
       expect(sheet.kidDirections).toBeDefined();
       expect(sheet.kidDirections.text).toBeTruthy();
-      expect(sheet.problems.length).toBeGreaterThan(0);
+      const hasContent =
+        (sheet.problems && sheet.problems.length > 0) ||
+        sheet.verticalMath ||
+        sheet.readingPassage ||
+        sheet.editingData ||
+        sheet.matchingData;
+      expect(hasContent).toBeTruthy();
       expect(sheet.answerKey.length).toBeGreaterThan(0);
     });
   });

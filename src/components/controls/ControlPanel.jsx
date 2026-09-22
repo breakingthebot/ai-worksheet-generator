@@ -1,10 +1,10 @@
 // src/components/controls/ControlPanel.jsx
-// Left sidebar navigation uniting the Curated Catalog, Print actions, and Notes logging.
+// Left sidebar navigation uniting the Curated Catalog, Format Filters, and Print actions.
 // Connects to: src/data/worksheets.js, src/App.jsx
 // Created: 2026-09-22
 
-import React from 'react';
-import { Printer, BookOpen, Key, Brain, Map, PenTool, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Printer, BookOpen, Key, Brain, Map, PenTool } from 'lucide-react';
 import { getAllWorksheets } from '../../data/worksheets.js';
 
 export default function ControlPanel({
@@ -16,8 +16,19 @@ export default function ControlPanel({
   onOpenAnswerKey,
   progressData = {},
 }) {
+  const [formatFilter, setFormatFilter] = useState('all'); // 'all' | 'traditional' | 'cpa'
   const allSheets = getAllWorksheets();
   const sessionCount = progressData.sessions?.length || 0;
+
+  const filteredSheets = allSheets.filter((s) => {
+    if (formatFilter === 'traditional') {
+      return s.id.startsWith('ws-trad-');
+    }
+    if (formatFilter === 'cpa') {
+      return !s.id.startsWith('ws-trad-');
+    }
+    return true;
+  });
 
   const handlePrint = () => {
     window.print();
@@ -34,13 +45,13 @@ export default function ControlPanel({
           <div>
             <h2 className="text-base font-extrabold text-slate-900 tracking-tight">Worksheet Studio</h2>
             <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider block">
-              ● Collaborative AI Brain
+              ● Traditional & CPA Modes
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main View Switcher (Roadmap vs Worksheet) */}
+      {/* Main View Switcher (Today's Lesson vs Sheet Library vs Roadmap) */}
       <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-xl">
         <button
           onClick={() => onChangeView('worksheet')}
@@ -66,15 +77,42 @@ export default function ControlPanel({
         </button>
       </div>
 
+      {/* Format Filter Pills (Traditional vs Visual) */}
+      <div>
+        <label className="block text-[10px] font-black uppercase tracking-wider text-slate-500 mb-1.5">
+          Worksheet Format Style
+        </label>
+        <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-lg text-[11px] font-bold">
+          <button
+            onClick={() => setFormatFilter('all')}
+            className={`py-1 rounded ${formatFilter === 'all' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'}`}
+          >
+            All ({allSheets.length})
+          </button>
+          <button
+            onClick={() => setFormatFilter('traditional')}
+            className={`py-1 rounded ${formatFilter === 'traditional' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'}`}
+          >
+            Traditional
+          </button>
+          <button
+            onClick={() => setFormatFilter('cpa')}
+            className={`py-1 rounded ${formatFilter === 'cpa' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'}`}
+          >
+            Visual CPA
+          </button>
+        </div>
+      </div>
+
       {/* Curated Worksheets Catalog */}
       <div>
         <div className="flex justify-between items-center mb-2">
           <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-            Available Worksheets ({allSheets.length})
+            Available Sheets ({filteredSheets.length})
           </label>
         </div>
         <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
-          {allSheets.map((sheet) => (
+          {filteredSheets.map((sheet) => (
             <button
               key={sheet.id}
               onClick={() => {
@@ -89,8 +127,13 @@ export default function ControlPanel({
             >
               <div className="flex justify-between items-center mb-0.5">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
-                  {sheet.subject} • {sheet.grade === 'K' ? 'Kindergarten' : `Gr ${sheet.grade}`}
+                  {sheet.subject} • {sheet.grade === 'K' ? 'Kindergarten' : `Grade ${sheet.grade}`}
                 </span>
+                {sheet.id.startsWith('ws-trad-') && (
+                  <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded">
+                    Traditional
+                  </span>
+                )}
               </div>
               <p className="line-clamp-1">{sheet.title}</p>
             </button>
@@ -127,9 +170,9 @@ export default function ControlPanel({
 
       {/* Persistent Note Callout */}
       <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl text-[11px] text-slate-600 space-y-1">
-        <span className="font-bold text-slate-700 block">💬 Antigravity Pair-Tutor:</span>
+        <span className="font-bold text-slate-700 block">💬 Real Classroom Quality:</span>
         <p className="text-slate-500 leading-normal">
-          Save your child’s notes here. In our chat, tell me what you need, and I will analyze his progress and craft the next sheet!
+          Toggle between Traditional Multi-Section Packets (drills, reading passages, word problems) and Visual CPA Models (ten-frames, bonds).
         </p>
       </div>
     </aside>
