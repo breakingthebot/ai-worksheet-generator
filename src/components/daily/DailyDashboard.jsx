@@ -19,11 +19,15 @@ import {
   ChevronLeft,
   ChevronRight,
   Undo2,
+  GraduationCap,
 } from 'lucide-react';
 
 export default function DailyDashboard({
   studentDays = { math: 1, phonics: 1, science: 1 },
+  currentGrade = 'Kindergarten',
   onUpdateDay,
+  onUpdateGrade,
+  onResetToDay1,
   onLogQuickNote,
 }) {
   const [activeSubject, setActiveSubject] = useState('math');
@@ -94,6 +98,29 @@ export default function DailyDashboard({
       <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4 no-print">
         {/* Left: Subject Tracks and Format Switcher */}
         <div className="flex flex-col gap-3">
+          {/* Grade Level Badge & Reset Helper */}
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-indigo-900 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-xl">
+                <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
+                {currentGrade} Level
+              </span>
+              <span className="text-[11px] text-slate-500 font-semibold">
+                ● Kindergarten Foundational Bedrock (Day {currentDayNumber} of 10)
+              </span>
+            </div>
+            {onResetToDay1 && (
+              <button
+                type="button"
+                onClick={onResetToDay1}
+                className="text-[11px] font-bold text-slate-500 hover:text-indigo-700 underline transition-colors cursor-pointer"
+                title="Reset all tracks back to Kindergarten Day 1"
+              >
+                Reset to Kindergarten Day 1
+              </button>
+            )}
+          </div>
+
           {/* Subject Track Switchers */}
           <div className="flex flex-wrap gap-2">
             {[
@@ -211,7 +238,7 @@ export default function DailyDashboard({
                       <ChevronLeft className="w-3.5 h-3.5 text-slate-700" />
                     </button>
                     <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
-                      {activeSubject.toUpperCase()} • DAY {currentDayNumber} OF 10
+                      {currentGrade.toUpperCase()} {activeSubject.toUpperCase()} • DAY {currentDayNumber} OF 10
                     </span>
                     <button
                       onClick={handleAdvance}

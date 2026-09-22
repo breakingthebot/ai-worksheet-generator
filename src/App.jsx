@@ -13,7 +13,7 @@ import SessionNotesDrawer from './components/notes/SessionNotesDrawer.jsx';
 import AnswerKeyModal from './components/worksheet/AnswerKeyModal.jsx';
 import { getWorksheetById, addCustomWorksheet } from './data/worksheets.js';
 import { getMilestoneById } from './domain/curriculum/roadmap.js';
-import { Calendar, BookOpen, Map, PenTool, Sparkles } from 'lucide-react';
+import { Calendar, BookOpen, Map, PenTool, Sparkles, GraduationCap } from 'lucide-react';
 
 export default function App() {
   const [activeView, setActiveView] = useState('daily'); // 'daily' | 'adventure' | 'worksheet' | 'roadmap'
@@ -23,6 +23,7 @@ export default function App() {
   const [activeMilestone, setActiveMilestone] = useState(null);
 
   const [progressData, setProgressData] = useState({
+    selectedGrade: 'Kindergarten',
     studentDays: { math: 1, phonics: 1, science: 1 },
     sessions: [],
     milestoneStatus: {},
@@ -41,6 +42,7 @@ export default function App() {
       if (res.ok) {
         const data = await res.json();
         setProgressData({
+          selectedGrade: data.selectedGrade || 'Kindergarten',
           studentDays: data.studentDays || { math: 1, phonics: 1, science: 1 },
           sessions: data.sessions || [],
           milestoneStatus: data.milestoneStatus || {},
@@ -112,6 +114,24 @@ export default function App() {
     setActiveWorksheetId(customSheet.id);
   };
 
+  const handleUpdateGrade = async (newGrade) => {
+    const updatedPayload = {
+      ...progressData,
+      selectedGrade: newGrade,
+      lastUpdated: new Date().toISOString(),
+    };
+    await handleSaveProgress(updatedPayload);
+  };
+
+  const handleResetToDay1 = async () => {
+    const updatedPayload = {
+      ...progressData,
+      studentDays: { math: 1, phonics: 1, science: 1 },
+      lastUpdated: new Date().toISOString(),
+    };
+    await handleSaveProgress(updatedPayload);
+  };
+
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col text-slate-900 font-sans">
       {/* Top Navigation */}
@@ -173,8 +193,23 @@ export default function App() {
           </button>
         </div>
 
-        {/* Child Notes Indicator */}
+        {/* Grade Selector & Child Notes */}
         <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
+            <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
+            <span className="text-[10px] font-black uppercase text-slate-500">Grade:</span>
+            <select
+              value={progressData.selectedGrade || 'Kindergarten'}
+              onChange={(e) => handleUpdateGrade(e.target.value)}
+              className="bg-white border border-slate-200 rounded-lg px-2 py-0.5 text-xs font-black text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+            >
+              <option value="Kindergarten">Kindergarten (K)</option>
+              <option value="1st Grade">1st Grade</option>
+              <option value="2nd Grade">2nd Grade</option>
+              <option value="3rd Grade">3rd Grade</option>
+            </select>
+          </div>
+
           <button
             onClick={() => setIsNotesDrawerOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-700 font-bold text-xs rounded-lg border border-indigo-200 hover:bg-indigo-100 transition-colors"
@@ -190,7 +225,10 @@ export default function App() {
         {activeView === 'daily' && (
           <DailyDashboard
             studentDays={progressData.studentDays}
+            currentGrade={progressData.selectedGrade || 'Kindergarten'}
             onUpdateDay={handleUpdateStudentDay}
+            onUpdateGrade={handleUpdateGrade}
+            onResetToDay1={handleResetToDay1}
             onLogQuickNote={handleLogQuickNote}
           />
         )}
