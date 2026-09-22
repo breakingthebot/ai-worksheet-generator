@@ -8,7 +8,12 @@ import React from 'react';
 export default function MatchingColumnView({ matchingData }) {
   if (!matchingData) return null;
 
-  const { title = 'Section: Matching Columns', instructions = 'Draw a straight line from Column A to its matching partner in Column B.', columnA = [], columnB = [] } = matchingData;
+  const {
+    title = 'Section: Matching Columns',
+    instructions = 'Draw a straight line from Column A to its matching partner in Column B.',
+    columnA = matchingData.pairs ? matchingData.pairs.map((p) => ({ text: p.left })) : [],
+    columnB = matchingData.pairs ? matchingData.pairs.map((p) => ({ text: p.right })) : [],
+  } = matchingData;
 
   return (
     <div className="border border-slate-300 rounded-xl p-4 bg-white shadow-xs space-y-3 mb-6 break-inside-avoid">

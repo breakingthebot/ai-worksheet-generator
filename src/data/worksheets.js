@@ -547,6 +547,338 @@ export const WORKSHEET_LIBRARY = [
       { number: 7, solution: 'George Washington' },
     ],
   },
+
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Kindergarten Math Fact Fluency (Within 5)
+  // =========================================================================
+  {
+    id: 'ws-trad-math-k-fluency',
+    milestoneId: 'math-m1',
+    title: 'Kindergarten Math: Single-Digit Addition & Subtraction (Within 5)',
+    subject: 'math',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'CCSS Kindergarten math benchmark standard requires fact fluency within 5 (1+1, 2+2, 3+1, 4+1, 5-2, etc.) using concrete objects and simple vertical stacked formats.',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.5',
+      whatToWatchFor:
+        'Encourage instant recall for 1+1, 2+1, 2+2. For subtraction, encourage fingers or crossing out. Check that they do not confuse + and - symbols.',
+      verbalCue: '“Add the numbers together! If you have 2 apples and get 2 more, you have 4!”',
+    },
+    kidDirections: {
+      text: '✏️ Solve the Kindergarten math facts within 5. 📖 Read the story problem and draw your work!',
+      icons: ['✏️', '📖', '🔢'],
+      badge: 'Kindergarten Fact Fluency Drill',
+    },
+    instructions: 'Complete the vertical addition and subtraction problems. Then solve the story problems below.',
+    verticalMath: {
+      title: 'Section A: Kindergarten Math Fact Drills (Within 5)',
+      problems: [
+        { number: 1, topNumber: 1, bottomNumber: 1, operator: '+' },
+        { number: 2, topNumber: 2, bottomNumber: 1, operator: '+' },
+        { number: 3, topNumber: 1, bottomNumber: 3, operator: '+' },
+        { number: 4, topNumber: 2, bottomNumber: 2, operator: '+' },
+        { number: 5, topNumber: 3, bottomNumber: 1, operator: '+' },
+        { number: 6, topNumber: 4, bottomNumber: 1, operator: '+' },
+        { number: 7, topNumber: 2, bottomNumber: 1, operator: '-' },
+        { number: 8, topNumber: 3, bottomNumber: 1, operator: '-' },
+        { number: 9, topNumber: 4, bottomNumber: 2, operator: '-' },
+        { number: 10, topNumber: 5, bottomNumber: 1, operator: '-' },
+        { number: 11, topNumber: 5, bottomNumber: 2, operator: '-' },
+        { number: 12, topNumber: 5, bottomNumber: 4, operator: '-' },
+      ],
+    },
+    wordProblems: [
+      {
+        number: 13,
+        story: 'Leo has 2 green toy frogs. 2 more green frogs jump over to play. How many frogs are there altogether?',
+        prompt: 'Draw the frogs in the scratchpad, write the addition sentence (2 + 2 = _), and write the answer.',
+      },
+      {
+        number: 14,
+        story: 'There were 5 shiny butterflies resting on a flower. 2 butterflies flew up into the sky. How many butterflies are left on the flower?',
+        prompt: 'Draw 5 butterflies and cross out 2. Write the subtraction sentence (5 - 2 = _).',
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['1 + 1 = 2', '2 + 2 = 4', '3 + 2 = 5', '5 - 2 = 3'],
+    },
+    answerKey: [
+      { number: 1, solution: '2' },
+      { number: 2, solution: '3' },
+      { number: 3, solution: '4' },
+      { number: 4, solution: '4' },
+      { number: 5, solution: '4' },
+      { number: 6, solution: '5' },
+      { number: 7, solution: '1' },
+      { number: 8, solution: '2' },
+      { number: 9, solution: '2' },
+      { number: 10, solution: '4' },
+      { number: 11, solution: '3' },
+      { number: 12, solution: '1' },
+      { number: 13, solution: '2 + 2 = 4 frogs' },
+      { number: 14, solution: '5 - 2 = 3 butterflies' },
+    ],
+  },
+
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Kindergarten Math Counting & Comparison
+  // =========================================================================
+  {
+    id: 'ws-trad-math-k-counting',
+    milestoneId: 'math-m1',
+    title: 'Kindergarten Math: Counting Objects, Number Writing & Comparison',
+    subject: 'math',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'Kindergarten traditional math drills build one-to-one counting cardinality, correct numeral formation, and the ability to visually compare sets without guessing.',
+      standard: 'CCSS.MATH.CONTENT.K.CC.B.4 & K.CC.C.7',
+      whatToWatchFor:
+        'Does your child touch each item once when counting? Watch that numbers like 3, 5, and 7 are written with correct orientation.',
+      verbalCue: '“Count each object carefully, write the number in the box, and circle which group has MORE!”',
+    },
+    kidDirections: {
+      text: '🔢 Count the objects in each box. ✏️ Match the numbers to dots and circle which group has MORE!',
+      icons: ['🔢', '✏️', '⭐'],
+      badge: 'Kindergarten Counting & Comparison Drill',
+    },
+    instructions: 'Draw a line from each numeral to the matching dots in Section A. Then answer the comparison questions in Section B.',
+    matchingData: {
+      title: 'Section A: Number to Quantity Matching',
+      instructions: 'Draw a line from the numeral in Column A to the matching dots in Column B:',
+      columnA: [
+        { text: 'Numeral 3' },
+        { text: 'Numeral 5' },
+        { text: 'Numeral 7' },
+        { text: 'Numeral 10' },
+      ],
+      columnB: [
+        { text: '● ● ● (Three Dots)' },
+        { text: '● ● ● ● ● (Five Dots)' },
+        { text: '● ● ● ● ● ● ● (Seven Dots)' },
+        { text: '● ● ● ● ● ● ● ● ● ● (Ten Dots)' },
+      ],
+    },
+    problems: [
+      {
+        id: 'p1',
+        type: 'social-studies',
+        number: 5,
+        topic: 'citizenship',
+        icon: '🍎',
+        prompt: 'Group A has 4 apples. Group B has 7 apples. Which group has MORE apples?',
+        subtext: 'Compare the two quantities.',
+        options: ['Group B (7 apples) has MORE', 'Group A (4 apples) has MORE', 'They are equal'],
+      },
+      {
+        id: 'p2',
+        type: 'social-studies',
+        number: 6,
+        topic: 'citizenship',
+        icon: '⭐',
+        prompt: 'Count the stars: ⭐ ⭐ ⭐ ⭐ ⭐ ⭐. How many stars did you count?',
+        options: ['6 Stars', '5 Stars', '7 Stars', '4 Stars'],
+      },
+      {
+        id: 'p3',
+        type: 'social-studies',
+        number: 7,
+        topic: 'citizenship',
+        icon: '🔢',
+        prompt: 'Which number comes right after 8 when counting?',
+        options: ['9', '7', '10', '6'],
+      },
+    ],
+    wordProblems: [
+      {
+        number: 8,
+        story: 'Mia has 3 red crayons in her cup. Her teacher gives her 2 more crayons. How many crayons does Mia have now?',
+        prompt: 'Draw the crayons, write the addition equation, and state the total.',
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['1, 2, 3', '4, 5, 6', '7, 8, 9', '10 Stars!'],
+    },
+    answerKey: [
+      { number: 1, solution: 'Numeral 3 -> ● ● ● (Three Dots)' },
+      { number: 2, solution: 'Numeral 5 -> ● ● ● ● ● (Five Dots)' },
+      { number: 3, solution: 'Numeral 7 -> ● ● ● ● ● ● ● (Seven Dots)' },
+      { number: 4, solution: 'Numeral 10 -> ● ● ● ● ● ● ● ● ● ● (Ten Dots)' },
+      { number: 5, solution: 'Group B (7 apples) has MORE' },
+      { number: 6, solution: '6 Stars' },
+      { number: 7, solution: '9' },
+      { number: 8, solution: '3 + 2 = 5 crayons' },
+    ],
+  },
+
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Kindergarten Phonics & CVC Decoding
+  // =========================================================================
+  {
+    id: 'ws-trad-reading-k-cvc',
+    milestoneId: 'phonics-p1',
+    title: 'Kindergarten Phonics: Short-Vowel CVC Words & Rhyme Matching',
+    subject: 'phonics',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'Kindergarten traditional phonics requires matching decodable 3-letter CVC words to pictures and recognizing auditory rhyming families.',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & RF.K.3.B',
+      whatToWatchFor:
+        'Have your child tap out the 3 sounds /k/ - /a/ - /t/ before matching. Ensure they blend continuously without adding /uh/ to consonants.',
+      verbalCue: '“Tap each sound box with your finger, then slide them together: c-a-t -> cat!”',
+    },
+    kidDirections: {
+      text: '🔤 Read the CVC words. ✏️ Match each word to its meaning in Section A. ⭐ Find the rhyming words in Section B!',
+      icons: ['🔤', '✏️', '⭐'],
+      badge: 'Kindergarten Phonics & Rhyme Drill',
+    },
+    instructions: 'Match the decodable CVC words in Column A to their meaning in Column B. Then answer the rhyming questions below.',
+    matchingData: {
+      title: 'Section A: CVC Word Match-Up',
+      instructions: 'Draw a line from the sounded-out word in Column A to its picture meaning in Column B:',
+      columnA: [
+        { text: 'c - a - t' },
+        { text: 's - u - n' },
+        { text: 'p - i - n' },
+        { text: 'b - e - d' },
+      ],
+      columnB: [
+        { text: 'cat 🐱 (meowing pet)' },
+        { text: 'sun ☀️ (bright sky)' },
+        { text: 'pin 🧷 (sharp sewing tool)' },
+        { text: 'bed 🛏️ (cozy sleep place)' },
+      ],
+    },
+    problems: [
+      {
+        id: 'p1',
+        type: 'social-studies',
+        number: 5,
+        topic: 'citizenship',
+        icon: '🎩',
+        prompt: 'Which word RHYMES with "hat"?',
+        subtext: 'Words that rhyme have the same ending sound (-at).',
+        options: ['cat', 'dog', 'pig', 'sun'],
+      },
+      {
+        id: 'p2',
+        type: 'social-studies',
+        number: 6,
+        topic: 'citizenship',
+        icon: '🐸',
+        prompt: 'Which word RHYMES with "hop"?',
+        subtext: 'Words that rhyme have the same ending sound (-op).',
+        options: ['mop', 'mat', 'run', 'bed'],
+      },
+      {
+        id: 'p3',
+        type: 'social-studies',
+        number: 7,
+        topic: 'citizenship',
+        icon: '👂',
+        prompt: 'What is the very FIRST sound you hear in the word "sun"?',
+        options: ['/s/ sound', '/m/ sound', '/t/ sound', '/p/ sound'],
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['cat / sat / mat', 'sun / run / fun', 'pin / win / tin', 'bed / red / fed'],
+    },
+    answerKey: [
+      { number: 1, solution: 'c-a-t -> cat 🐱' },
+      { number: 2, solution: 's-u-n -> sun ☀️' },
+      { number: 3, solution: 'p-i-n -> pin 🧷' },
+      { number: 4, solution: 'b-e-d -> bed 🛏️' },
+      { number: 5, solution: 'cat (rhymes with hat)' },
+      { number: 6, solution: 'mop (rhymes with hop)' },
+      { number: 7, solution: '/s/ sound' },
+    ],
+  },
+
+  // =========================================================================
+  // TRADITIONAL WORKSHEET: Kindergarten Science Living & 5 Senses
+  // =========================================================================
+  {
+    id: 'ws-trad-science-k-living',
+    milestoneId: 'science-s1',
+    title: 'Kindergarten Science: Living vs. Non-Living & The 5 Senses',
+    subject: 'science',
+    grade: 'K',
+    parentGuide: {
+      whyWeAreDoingThis:
+        'Kindergarten science teaches children to distinguish living things (which need food, water, air, and grow) from non-living objects, and to connect the five sense organs to observation.',
+      standard: 'NGSS K-LS1-1 & Core Knowledge CKSci Unit 1',
+      whatToWatchFor:
+        'Ask: "Does a bicycle grow bigger if you give it water?" Helps the child understand that non-living things never eat or grow.',
+      verbalCue: '“Living things eat, drink, and grow! Non-living things do not!”',
+    },
+    kidDirections: {
+      text: '🔬 Match your 5 senses to what they do in Section A. 🌿 Check which items are LIVING or NON-LIVING!',
+      icons: ['🔬', '🌿', '✏️'],
+      badge: 'Kindergarten Science Drill',
+    },
+    instructions: 'Draw a line from the sense organ in Column A to its function in Column B. Then answer the living vs. non-living questions.',
+    matchingData: {
+      title: 'Section A: The Five Senses Match-Up',
+      instructions: 'Draw a line from the sense organ in Column A to how it explores the world in Column B:',
+      columnA: [
+        { text: 'Eyes 👀' },
+        { text: 'Ears 👂' },
+        { text: 'Hands / Skin ✋' },
+        { text: 'Nose 👃' },
+      ],
+      columnB: [
+        { text: 'Sense of Sight (See bright colors)' },
+        { text: 'Sense of Hearing (Listen to birds)' },
+        { text: 'Sense of Touch (Feel soft puppy fur)' },
+        { text: 'Sense of Smell (Smell pine needles)' },
+      ],
+    },
+    problems: [
+      {
+        id: 'p1',
+        type: 'science-classification',
+        number: 5,
+        item: 'Fluffy Dog Puppy (Barks, drinks milk, grows)',
+      },
+      {
+        id: 'p2',
+        type: 'science-classification',
+        number: 6,
+        item: 'Metal Toy Truck (Made of steel and plastic)',
+      },
+      {
+        id: 'p3',
+        type: 'social-studies',
+        number: 7,
+        topic: 'citizenship',
+        icon: '🌱',
+        prompt: 'What 3 things does a living plant NEED to stay alive and grow?',
+        options: ['Water, Sunlight, and Soil', 'Juice, Candy, and Toys', 'Shoes, Socks, and Hats', 'Ice cream and Cake'],
+      },
+    ],
+    cutStrip: {
+      type: 'straight-strips',
+      stage: 'Ages 3-5 (Bottom-Edge Cut)',
+      items: ['Eyes = Sight', 'Ears = Sound', 'Skin = Touch', 'Nose = Smell'],
+    },
+    answerKey: [
+      { number: 1, solution: 'Eyes -> Sight' },
+      { number: 2, solution: 'Ears -> Hearing' },
+      { number: 3, solution: 'Hands/Skin -> Touch' },
+      { number: 4, solution: 'Nose -> Smell' },
+      { number: 5, solution: 'Puppy: Living (Eats, drinks, grows)' },
+      { number: 6, solution: 'Metal Truck: Non-Living' },
+      { number: 7, solution: 'Water, Sunlight, and Soil' },
+    ],
+  },
 ];
 
 export function getAllWorksheets() {
@@ -557,11 +889,46 @@ export function getWorksheetById(id) {
   return WORKSHEET_LIBRARY.find((w) => w.id === id) || WORKSHEET_LIBRARY[0];
 }
 
-export function getTraditionalWorksheets(subject) {
-  if (!subject) {
-    return WORKSHEET_LIBRARY.filter((w) => w.id.startsWith('ws-trad-'));
+/**
+ * Normalizes grade strings into canonical grade levels ('K', '1', '2', '3', '4', '5').
+ * @param {string} grade 
+ * @returns {string}
+ */
+export function normalizeGrade(grade) {
+  if (!grade) return 'K';
+  const g = String(grade).toLowerCase().trim();
+  if (g.startsWith('k') || g.includes('kindergarten')) return 'K';
+  if (g.includes('1') || g.includes('first')) return '1';
+  if (g.includes('2') || g.includes('second')) return '2';
+  if (g.includes('3') || g.includes('third')) return '3';
+  if (g.includes('4') || g.includes('fourth')) return '4';
+  if (g.includes('5') || g.includes('fifth')) return '5';
+  return 'K';
+}
+
+/**
+ * Retrieves traditional worksheets filtered by subject and optionally by grade level.
+ * @param {string} subject 
+ * @param {string} grade 
+ * @returns {Array}
+ */
+export function getTraditionalWorksheets(subject, grade) {
+  let list = WORKSHEET_LIBRARY.filter((w) => w.id.startsWith('ws-trad-'));
+  if (subject) {
+    list = list.filter((w) => w.subject === subject);
   }
-  return WORKSHEET_LIBRARY.filter((w) => w.id.startsWith('ws-trad-') && w.subject === subject);
+  if (grade) {
+    const targetGrade = normalizeGrade(grade);
+    const gradeFiltered = list.filter((w) => {
+      const wGrade = normalizeGrade(w.grade);
+      return wGrade === targetGrade;
+    });
+    // If exact grade matches exist, return them; otherwise fallback to subject list
+    if (gradeFiltered.length > 0) {
+      return gradeFiltered;
+    }
+  }
+  return list;
 }
 
 export function addCustomWorksheet(sheet) {

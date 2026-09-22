@@ -54,10 +54,15 @@ export default function DailyDashboard({
   const lesson = getDailyLesson(activeSubject, currentDayNumber);
   const pacing = getAcademicPacingForDay(currentDayNumber);
 
-  const tradSheets = getTraditionalWorksheets(activeSubject);
+  const tradSheets = getTraditionalWorksheets(activeSubject, currentGrade);
   const activeTradSheet = tradSheets[selectedTradIndex] || tradSheets[0];
 
   const activeSheet = sheetMode === 'daily' ? lesson.generateSheet(currentVariant) : (activeTradSheet || lesson.generateSheet(currentVariant));
+
+  // Reset selected traditional sheet when subject or grade changes
+  React.useEffect(() => {
+    setSelectedTradIndex(0);
+  }, [activeSubject, currentGrade]);
 
   const handleSubjectChange = (subjectId) => {
     setActiveSubject(subjectId);
@@ -241,26 +246,44 @@ export default function DailyDashboard({
               </button>
             </div>
 
-            {/* Sub-tabs if multiple traditional sheets exist */}
+            {/* Sub-tabs if multiple traditional sheets exist for this grade */}
             {sheetMode === 'traditional' && tradSheets.length > 1 && (
               <div className="flex items-center gap-1 bg-amber-50 p-1 rounded-xl border border-amber-200">
-                {tradSheets.map((ts, idx) => (
-                  <button
-                    key={ts.id}
-                    onClick={() => setSelectedTradIndex(idx)}
-                    className={`px-2.5 py-1 text-[11px] rounded-lg font-bold transition-all ${
-                      selectedTradIndex === idx
-                        ? 'bg-white text-amber-900 shadow-xs'
-                        : 'text-amber-800 hover:text-amber-950'
-                    }`}
-                  >
-                    {ts.id === 'ws-trad-reading-beaver'
+                {tradSheets.map((ts, idx) => {
+                  const label =
+                    ts.id === 'ws-trad-math-k-fluency'
+                      ? 'Facts within 5'
+                      : ts.id === 'ws-trad-math-k-counting'
+                      ? 'Counting & Sets'
+                      : ts.id === 'ws-trad-math-addition'
+                      ? 'Grade 1 Facts'
+                      : ts.id === 'ws-trad-reading-k-cvc'
+                      ? 'CVC & Rhyme'
+                      : ts.id === 'ws-trad-reading-beaver'
                       ? 'Reading Passage'
                       : ts.id === 'ws-trad-grammar-mechanics'
                       ? 'Grammar & Mechanics'
-                      : ts.title.split(':')[0]}
-                  </button>
-                ))}
+                      : ts.id === 'ws-trad-science-k-living'
+                      ? 'Living vs Non-Living'
+                      : ts.id === 'ws-trad-science-plants'
+                      ? 'Plant Anatomy'
+                      : ts.id === 'ws-trad-social-geography'
+                      ? 'Maps & Compass'
+                      : ts.title.split(':')[1]?.trim() || ts.title.split(':')[0];
+                  return (
+                    <button
+                      key={ts.id}
+                      onClick={() => setSelectedTradIndex(idx)}
+                      className={`px-2.5 py-1 text-[11px] rounded-lg font-bold transition-all cursor-pointer ${
+                        selectedTradIndex === idx
+                          ? 'bg-white text-amber-900 shadow-xs'
+                          : 'text-amber-800 hover:text-amber-950'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -420,8 +443,8 @@ export default function DailyDashboard({
               {/* Traditional Worksheet Parent Guide */}
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
-                    TRADITIONAL CLASSROOM PACKET • GRADE {activeTradSheet.grade}
+                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                    {activeTradSheet.grade === 'K' ? 'KINDERGARTEN LEVEL' : `GRADE ${activeTradSheet.grade}`} • TRADITIONAL CLASSROOM DRILL
                   </span>
                 </div>
                 <h3 className="text-base font-extrabold text-slate-900">{activeTradSheet.title}</h3>
