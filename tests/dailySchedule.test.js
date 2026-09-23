@@ -109,4 +109,86 @@ describe('10-Day Daily Curriculum System', () => {
     expect(day9Sheet.problems[0].numA).toBeDefined();
     expect(day9Sheet.problems[0].numB).toBeDefined();
   });
+
+  it('guarantees every day across all 4 subjects has an explicit strictBoundary ("No Further") guardrail', () => {
+    ['math', 'phonics', 'science', 'socialStudies'].forEach((subject) => {
+      for (let day = 1; day <= 10; day++) {
+        const lesson = getDailyLesson(subject, day);
+        expect(lesson.strictBoundary).toBeDefined();
+        expect(typeof lesson.strictBoundary).toBe('string');
+        expect(lesson.strictBoundary.length).toBeGreaterThan(10);
+      }
+    });
+  });
+
+  it('guarantees Phonics Days 1-10 follows strict Science of Reading prerequisites without premature leaps', () => {
+    // Day 1: Letter 'm' only
+    const day1Lesson = getDailyLesson('phonics', 1);
+    expect(day1Lesson.strictBoundary).toContain('Letter m');
+    const day1Sheet = day1Lesson.generateSheet(1);
+    day1Sheet.problems.forEach((p) => {
+      expect(p.word).toBe('m');
+      expect(p.phonemes).toEqual(['m']);
+      expect(p.soundClues).toBeDefined();
+    });
+
+    // Day 2: Short vowel 'a' only
+    const day2Lesson = getDailyLesson('phonics', 2);
+    expect(day2Lesson.strictBoundary).toContain('Short vowel a');
+    const day2Sheet = day2Lesson.generateSheet(1);
+    day2Sheet.problems.forEach((p) => {
+      expect(p.word).toBe('a');
+      expect(p.phonemes).toEqual(['a']);
+    });
+
+    // Day 3: Stop consonant 't' only
+    const day3Lesson = getDailyLesson('phonics', 3);
+    expect(day3Lesson.strictBoundary).toContain('Stop consonant t');
+    const day3Sheet = day3Lesson.generateSheet(1);
+    day3Sheet.problems.forEach((p) => {
+      expect(p.word).toBe('t');
+      expect(p.phonemes).toEqual(['t']);
+    });
+
+    // Day 4: First blending - VC word "at"
+    const day4Lesson = getDailyLesson('phonics', 4);
+    expect(day4Lesson.strictBoundary).toContain('"at"');
+    const day4Sheet = day4Lesson.generateSheet(1);
+    day4Sheet.problems.forEach((p) => {
+      expect(p.word).toBe('at');
+      expect(p.phonemes).toEqual(['a', 't']);
+    });
+
+    // Day 5: First CVC word "mat"
+    const day5Lesson = getDailyLesson('phonics', 5);
+    expect(day5Lesson.strictBoundary).toContain('"mat"');
+    const day5Sheet = day5Lesson.generateSheet(1);
+    const day5Words = day5Sheet.problems.map((p) => p.word);
+    expect(day5Words).toContain('mat');
+    expect(day5Words).toContain('at');
+
+    // Day 6: Continuous 's' and "sat"
+    const day6Sheet = getDailyLesson('phonics', 6).generateSheet(1);
+    expect(day6Sheet.problems.some((p) => p.word === 'sat')).toBe(true);
+
+    // Day 7: Consonant 'p' (pat, tap, map)
+    const day7Sheet = getDailyLesson('phonics', 7).generateSheet(1);
+    expect(day7Sheet.problems.some((p) => p.word === 'pat')).toBe(true);
+    expect(day7Sheet.problems.some((p) => p.word === 'tap')).toBe(true);
+
+    // Day 8: Short vowel 'i' (sit, tip, pit)
+    const day8Sheet = getDailyLesson('phonics', 8).generateSheet(1);
+    expect(day8Sheet.problems.some((p) => p.word === 'sit')).toBe(true);
+
+    // Day 9: Consonant 'n' (pan, pin, tan, man)
+    const day9Sheet = getDailyLesson('phonics', 9).generateSheet(1);
+    expect(day9Sheet.problems.some((p) => p.word === 'pan')).toBe(true);
+    expect(day9Sheet.problems.some((p) => p.word === 'pin')).toBe(true);
+
+    // Day 10: Reading Champion phrases
+    const day10Lesson = getDailyLesson('phonics', 10);
+    const day10Sheet = day10Lesson.generateSheet(1);
+    expect(day10Sheet.decodablePhrases).toBeDefined();
+    expect(day10Sheet.decodablePhrases.length).toBeGreaterThan(0);
+  });
 });

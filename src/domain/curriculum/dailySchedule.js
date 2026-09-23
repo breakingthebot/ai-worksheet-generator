@@ -19,6 +19,7 @@ export const DAILY_CURRICULUM = {
       day: 1,
       title: 'One-to-One Counting & Subitizing (Quantities 1 to 3)',
       standard: 'CCSS.MATH.CONTENT.K.CC.B.4.A & K.CC.B.4.B (Touch-Count & Cardinality)',
+      strictBoundary: 'Strictly one-to-one touch counting (1 to 3). No addition or subtraction equations.',
       script: {
         say: '“Touch each red apple with your pointer finger: 1, 2, 3! How many apples are there in all?”',
         do: 'Guide your child to physically tap each object once with their finger. Ensure their voice matches each touch.',
@@ -80,6 +81,7 @@ export const DAILY_CURRICULUM = {
       day: 2,
       title: 'Five-Frame Subitizing & Numeral Formation (Quantities 1 to 5)',
       standard: 'CCSS.MATH.CONTENT.K.CC.A.3 & K.CC.B.5 (Five-Frame Array)',
+      strictBoundary: 'Five-frame arrays (1 to 5). No complements or double-row ten-frames yet.',
       script: {
         say: '“Look at our 5-frame train! Each box gets one dot. If the whole top row is full, that means FIVE!”',
         do: 'Slide your hand across the 5-frame from left to right. Ask: "Is it full (5) or missing some dots?"',
@@ -123,6 +125,7 @@ export const DAILY_CURRICULUM = {
       day: 3,
       title: 'Successive Quantities & "One More" (Counting On 1 to 5)',
       standard: 'CCSS.MATH.CONTENT.K.CC.B.4.C (Each successive number is one larger)',
+      strictBoundary: 'Successive "+1 more" counting on (1 to 5). No multi-step operations.',
       script: {
         say: '“Every time we count up, we add ONE MORE! If we have 3 stars and get 1 more, how many do we have now?”',
         do: 'Point to the objects, count them, then point to the "+1 More" box: "3 and one more is... 4!"',
@@ -185,6 +188,7 @@ export const DAILY_CURRICULUM = {
       day: 4,
       title: 'Comparing Sets: Which Group has MORE? (Quantities 1 to 5)',
       standard: 'CCSS.MATH.CONTENT.K.CC.C.6 (Identify greater quantity by matching/counting)',
+      strictBoundary: 'Comparing sets (Which has MORE?). Quantities within 5 only.',
       script: {
         say: '“Look at Group A and Group B! Count each group, then circle the group that has MORE!”',
         do: 'Have your child draw matching lines between items in Group A and Group B. The group with leftover items has MORE!',
@@ -246,6 +250,7 @@ export const DAILY_CURRICULUM = {
       day: 5,
       title: 'Comparing Sets: Which Group has FEWER? (Quantities 1 to 5 & Equal)',
       standard: 'CCSS.MATH.CONTENT.K.CC.C.6 (Identify less than / fewer & equal)',
+      strictBoundary: 'Comparing sets (Which has FEWER / Equal). No inequality symbols (< or >).',
       script: {
         say: '“Yesterday we found MORE. Today we are looking for FEWER! Which group has less?”',
         do: 'Remind your child: "Fewer means the smaller group." Point out that when both groups have the exact same count, they are EQUAL!',
@@ -313,6 +318,7 @@ export const DAILY_CURRICULUM = {
       day: 6,
       title: 'Ten-Frame Introduction: Quantities 6 & 7 (5 and Some More)',
       standard: 'CCSS.MATH.CONTENT.K.CC.B.5 & Singapore CPA (Ten-Frames 6 & 7)',
+      strictBoundary: 'Ten-frame quantities 6 and 7 (5 + some more). No operations beyond 7.',
       script: {
         say: '“Our 5-frame grew into a TEN-FRAME! The top row is always 5. How many extra dots are below? 5 and 1 is 6! 5 and 2 is 7!”',
         do: 'Have your child place their hand over the top row and say "5", then lift their hand and count the bottom dots.',
@@ -359,6 +365,7 @@ export const DAILY_CURRICULUM = {
       day: 7,
       title: 'Ten-Frame Quantities 8 & 9 (Noticing the Empty Spaces)',
       standard: 'CCSS.MATH.CONTENT.K.CC.B.5 & Landmark Benchmark',
+      strictBoundary: 'Ten-frame quantities 8 and 9 (focus on 1 or 2 empty spaces). No formal addition sentences.',
       script: {
         say: '“Look at how full this ten-frame is! If there are 2 empty boxes, that means 8 dots! If only 1 box is empty, that means 9!”',
         do: 'Point to the empty spaces: "If 2 are empty, 8 are full. If 1 is empty, 9 are full!"',
@@ -405,6 +412,7 @@ export const DAILY_CURRICULUM = {
       day: 8,
       title: 'The Landmark Number 10 (Full Ten-Frame & Cardinality)',
       standard: 'CCSS.MATH.CONTENT.K.CC.A.3 & K.CC.B.5 (Numeral 10 Benchmark)',
+      strictBoundary: 'Full ten-frame benchmark (Quantity 10). Numeral 10 formation only; no teen numbers (11+).',
       script: {
         say: '“Every single box is full! 5 on top and 5 on bottom makes TEN! Numeral 10 has two digits: a 1 and a 0!”',
         do: 'Hold up all 10 fingers. Count fingers 1 to 10, then show how the full ten-frame holds all 10 dots.',
@@ -451,6 +459,7 @@ export const DAILY_CURRICULUM = {
       day: 9,
       title: 'Numeral Comparison: Greater vs. Less (Numbers 1 to 10)',
       standard: 'CCSS.MATH.CONTENT.K.CC.C.7 (Compare two written numerals 1 to 10)',
+      strictBoundary: 'Direct numeral comparison 1 to 10 (greater vs less). No abstract <, >, = symbols.',
       script: {
         say: '“Now you are comparing real written numbers like a big kid! Look at 4 and 8. Which number is greater?”',
         do: 'If your child hesitates, refer back to ten-frames: "Which number would fill more boxes in our frame?"',
@@ -512,6 +521,7 @@ export const DAILY_CURRICULUM = {
       day: 10,
       title: 'Quarter 1 Math Grand Champion Review & Mastery Check',
       standard: 'CCSS.MATH.CONTENT.K.CC Cumulative Mastery Review',
+      strictBoundary: 'Review of counting, ten-frames, and numeral comparison 1-10. No multi-digit or addition operations.',
       script: {
         say: '“Congratulations on Day 10! Today is your Grand Champion Counting Challenge! Show how fast you can count, read ten-frames, and compare numbers!”',
         do: 'Give your child a high-five before starting! Cheer for each completed section.',
@@ -581,365 +591,727 @@ export const DAILY_CURRICULUM = {
   ],
 
   // =========================================================================
-  // PHONICS & READING TRACK (Days 1 to 10)
+  // PHONICS & READING TRACK (Days 1 to 10 - Science of Reading Prerequisites)
+  // Sequence: m -> a -> t -> at -> mat -> s/sat -> p/pat/tap -> i/sit -> n/pan -> Champion Phrases
   // =========================================================================
   phonics: [
+    // -------------------------------------------------------------------------
+    // DAY 1: Continuous Consonant /m/ (Sound Clues & Letter Formation)
+    // -------------------------------------------------------------------------
     {
       day: 1,
-      title: 'Continuous Consonants /m/ and /s/',
+      title: 'Continuous Consonant /m/ (Sound Clues & Formation)',
       standard: 'CCSS.ELA-LITERACY.RF.K.1.D & Orton-Gillingham Phase 1',
+      strictBoundary: 'Letter m sound and letter formation only. No blending or unintroduced letters.',
       script: {
-        say: '“Keep the sound going with your mouth! /mmmmmm/... /ssssss/! Do not add a \'uh\' at the end!”',
-        do: 'Look in a mirror together. Notice lips closed for /m/, teeth gently touching for /s/.',
-        lookFor: 'Produces continuous pure sounds without saying "muh" or "suh".',
+        say: '“Keep the sound humming with your mouth closed: /mmmmmm/! Feel your lips tickle. Do not add \'uh\' at the end!”',
+        do: 'Look in a mirror together. Notice lips closed tight for /m/. Trace lowercase \'m\' in the air: down, up and over, up and over!',
+        lookFor: 'Produces pure continuous /m/ without saying "muh". Traces lowercase m correctly on handwriting lines.',
       },
       generateSheet: (variant = 1) => ({
         id: `phonics-d1-v${variant}`,
-        title: 'Phonics Day 1: Continuous Sounds /m/ and /s/',
+        title: 'Phonics Day 1: Letter Sound /m/',
         subject: 'phonics',
         grade: 'K',
-        instructions: 'Practice saying the continuous sounds /m/ and /s/. Write the letters on the guidelines.',
+        instructions: 'Practice saying the humming sound /m/. Trace and write lowercase m on the guidelines.',
         kidDirections: {
-          text: '🗣️ Make the sound: /mmmm/ and /ssss/! ✏️ Trace and write the letters!',
-          icons: ['🗣️', '✏️'],
+          text: '👄 Press your lips: /mmmm/! ✏️ Trace and write the letter m!',
+          icons: ['👄', '✏️'],
           badge: 'Day 1 Phonics',
         },
         problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'm', phonemes: ['m'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 's', phonemes: ['s'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'm', phonemes: ['m'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 's', phonemes: ['s'] },
-        ],
-        cutStrip: null,
-        answerKey: [
-          { number: 1, solution: 'Sound: /m/ (lips pressed, continuous)' },
-          { number: 2, solution: 'Sound: /s/ (teeth gently together, hissing air)' },
-          { number: 3, solution: 'Sound: /m/' },
-          { number: 4, solution: 'Sound: /s/' },
-        ],
-      }),
-    },
-    {
-      day: 2,
-      title: 'Short /a/ and /t/ (First Blends: "at", "mat", "sat")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Early Blending',
-      script: {
-        say: '“Let’s blend: /m/... /a/... /t/... MAT! Slide your finger across the letters as you say it fast!”',
-        do: 'Tap each box, then slide your finger under the word to blend.',
-        lookFor: 'Connects the sounds smoothly instead of saying isolated letters and guessing.',
-      },
-      generateSheet: (variant = 1) => ({
-        id: `phonics-d2-v${variant}`,
-        title: 'Phonics Day 2: Short /a/ Blends (mat, sat, at)',
-        subject: 'phonics',
-        grade: 'K',
-        instructions: 'Tap the sound circles, blend the word, and write it on the handwriting lines.',
-        kidDirections: {
-          text: '👉 Tap each circle: /m/ - /a/ - /t/. 🏃 Say it fast: MAT! ✏️ Write the word!',
-          icons: ['👉', '🏃', '✏️'],
-          badge: 'Day 2 Phonics',
-        },
-        problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'mat', phonemes: ['m', 'a', 't'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'sat', phonemes: ['s', 'a', 't'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'at', phonemes: ['a', 't'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'mat', phonemes: ['m', 'a', 't'] },
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'm',
+            phonemes: ['m'],
+            soundClues: [{ icon: '👄', label: 'Lips together /m/' }, { icon: '🥛', label: 'Milk' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'm',
+            phonemes: ['m'],
+            soundClues: [{ icon: '🐵', label: 'Monkey' }, { icon: '🌙', label: 'Moon' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'm',
+            phonemes: ['m'],
+            soundClues: [{ icon: '👄', label: 'Lips together /m/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'm',
+            phonemes: ['m'],
+            soundClues: [{ icon: '⭐', label: 'Pure /m/' }],
+          },
         ],
         cutStrip: {
           type: 'word-tiles',
           stage: 'Ages 4-6',
-          items: ['mat', 'sat', 'at', 'mat'],
+          items: ['m', 'm', 'm', '/m/ sound'],
         },
         answerKey: [
-          { number: 1, solution: 'M-A-T (/m/ /æ/ /t/)' },
-          { number: 2, solution: 'S-A-T (/s/ /æ/ /t/)' },
-          { number: 3, solution: 'A-T (/æ/ /t/)' },
-          { number: 4, solution: 'M-A-T (/m/ /æ/ /t/)' },
+          { number: 1, solution: 'Sound: /m/ (lips pressed, continuous humming)' },
+          { number: 2, solution: 'Sound: /m/ (Monkey, Moon)' },
+          { number: 3, solution: 'Sound: /m/' },
+          { number: 4, solution: 'Sound: /m/' },
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 2: Short Vowel /a/ (Apple Sound & Formation)
+    // -------------------------------------------------------------------------
+    {
+      day: 2,
+      title: 'Short Vowel /a/ (Apple Sound & Formation)',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Orton-Gillingham Phase 1',
+      strictBoundary: 'Short vowel a sound and letter formation only. No unintroduced vowels or consonants.',
+      script: {
+        say: '“Open your mouth wide like you are biting a juicy red apple: /a/! Drop your chin: /a/ /a/ apple!”',
+        do: 'Hold an imaginary apple to your mouth and say "/a/ /a/ apple". Trace lowercase \'a\': around the apple, down the leaf!',
+        lookFor: 'Opens mouth cleanly for short /a/. Does not confuse with long /A/ or other vowel sounds.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d2-v${variant}`,
+        title: 'Phonics Day 2: Short Vowel /a/',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Open your mouth wide for short /a/. Trace and write lowercase a on the guidelines.',
+        kidDirections: {
+          text: '🍎 Open wide for apple: /a/! ✏️ Trace and write lowercase a!',
+          icons: ['🍎', '✏️'],
+          badge: 'Day 2 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'a',
+            phonemes: ['a'],
+            soundClues: [{ icon: '🍎', label: 'Apple /æ/' }, { icon: '🐜', label: 'Ant' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'a',
+            phonemes: ['a'],
+            soundClues: [{ icon: '🪓', label: 'Axe' }, { icon: '🐊', label: 'Alligator' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'a',
+            phonemes: ['a'],
+            soundClues: [{ icon: '🍎', label: 'Apple /æ/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'a',
+            phonemes: ['a'],
+            soundClues: [{ icon: '⭐', label: 'Short a' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['a', 'a', 'a', '/a/ sound'],
+        },
+        answerKey: [
+          { number: 1, solution: 'Sound: /a/ (open jaw, Apple, Ant)' },
+          { number: 2, solution: 'Sound: /a/ (Axe, Alligator)' },
+          { number: 3, solution: 'Sound: /a/' },
+          { number: 4, solution: 'Sound: /a/' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 3: Stop Consonant /t/ (Crisp Unvoiced Tap)
+    // -------------------------------------------------------------------------
     {
       day: 3,
-      title: 'Consonant /p/ ("pat", "tap", "map")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & CVC Phonics',
+      title: 'Stop Consonant /t/ (Crisp Unvoiced Tap)',
+      standard: 'CCSS.ELA-LITERACY.RF.K.1.D & Orton-Gillingham Phase 1',
+      strictBoundary: 'Stop consonant t sound and letter formation only. Pure /t/ without "tuh".',
       script: {
-        say: '“The letter P makes a soft pop sound: /p/! Feel the puff of air on your hand!”',
-        do: 'Hold your hand in front of your mouth to feel the air burst on /p/.',
-        lookFor: 'Does not add "uh" to make "puh". Keeps sound crisp.',
+        say: '“The letter T makes a crisp ticking sound: /t/ /t/ /t/! Tap the tip of your tongue behind your teeth. Never say \'tuh\'!”',
+        do: 'Pretend to be a ticking clock: "/t/ /t/ /t/". Trace lowercase \'t\': down tall from the sky line, cross at the fence!',
+        lookFor: 'Keeps /t/ unvoiced and unclipped with no trailing vowel. Starts stroke at sky line.',
       },
       generateSheet: (variant = 1) => ({
         id: `phonics-d3-v${variant}`,
-        title: 'Phonics Day 3: Adding /p/ (pat, tap, map)',
+        title: 'Phonics Day 3: Letter Sound /t/',
         subject: 'phonics',
         grade: 'K',
-        instructions: 'Tap out each sound and write the word on the line.',
+        instructions: 'Tap your tongue for crisp /t/. Trace and write lowercase t on the guidelines.',
         kidDirections: {
-          text: '💨 Feel the puff of air on /p/! ✏️ Blend and write your words!',
-          icons: ['💨', '✏️'],
+          text: '🪀 Tap your tongue: /t/ /t/! ✏️ Trace and write lowercase t!',
+          icons: ['🪀', '✏️'],
           badge: 'Day 3 Phonics',
         },
         problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'pat', phonemes: ['p', 'a', 't'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'tap', phonemes: ['t', 'a', 'p'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'map', phonemes: ['m', 'a', 'p'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'pat', phonemes: ['p', 'a', 't'] },
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 't',
+            phonemes: ['t'],
+            soundClues: [{ icon: '🪀', label: 'Top /t/' }, { icon: '🐯', label: 'Tiger' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 't',
+            phonemes: ['t'],
+            soundClues: [{ icon: '🐢', label: 'Turtle' }, { icon: '⛺', label: 'Tent' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 't',
+            phonemes: ['t'],
+            soundClues: [{ icon: '🪀', label: 'Tongue tap /t/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 't',
+            phonemes: ['t'],
+            soundClues: [{ icon: '⭐', label: 'Pure /t/' }],
+          },
         ],
-        cutStrip: null,
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['t', 't', 't', '/t/ sound'],
+        },
         answerKey: [
-          { number: 1, solution: 'P-A-T' },
-          { number: 2, solution: 'T-A-P' },
-          { number: 3, solution: 'M-A-P' },
+          { number: 1, solution: 'Sound: /t/ (crisp unvoiced tap, Top, Tiger)' },
+          { number: 2, solution: 'Sound: /t/ (Turtle, Tent)' },
+          { number: 3, solution: 'Sound: /t/' },
+          { number: 4, solution: 'Sound: /t/' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 4: First Blending: VC Word "at" (/a/ + /t/)
+    // -------------------------------------------------------------------------
+    {
+      day: 4,
+      title: 'First Blending: The Word "at" (/a/ + /t/)',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Early VC Blending',
+      strictBoundary: 'Blending mastered sounds /a/ + /t/ into "at" only. No 3-letter CVC words yet.',
+      script: {
+        say: '“You know /a/ and you know /t/! Put them together: /a/... /t/... AT! Like \'Look at that!\' You just read your first word!”',
+        do: 'Tap the first circle for /a/, tap the second circle for /t/, then slide your finger underneath and say "at".',
+        lookFor: 'Smoothly blends /a/ and /t/ without pausing in between.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d4-v${variant}`,
+        title: 'Phonics Day 4: Blending the Word "at"',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Tap the sound circles for /a/ and /t/. Slide them together to say and write AT!',
+        kidDirections: {
+          text: '👉 Tap /a/, tap /t/! 🏃 Slide together: AT! ✏️ Write "at" on the lines!',
+          icons: ['👉', '🏃', '✏️'],
+          badge: 'Day 4 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'at',
+            phonemes: ['a', 't'],
+            soundClues: [{ icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'at',
+            phonemes: ['a', 't'],
+            soundClues: [{ icon: '👉', label: 'Slide /a/ + /t/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'at',
+            phonemes: ['a', 't'],
+            soundClues: [{ icon: '⭐', label: 'Word: "at"' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'at',
+            phonemes: ['a', 't'],
+            soundClues: [{ icon: '🏆', label: 'Champion: "at"' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['at', 'at', 'at', 'at!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'A-T (/æ/ /t/ = "at")' },
+          { number: 2, solution: 'A-T' },
+          { number: 3, solution: 'A-T' },
+          { number: 4, solution: 'A-T' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 5: First 3-Letter CVC Blending: "mat" (/m/ + /a/ + /t/)
+    // -------------------------------------------------------------------------
+    {
+      day: 5,
+      title: 'First 3-Letter CVC Word: "mat" (/m/ + /a/ + /t/)',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & CVC Orthographic Mapping',
+      strictBoundary: 'Blending 3-sound CVC "mat" using only learned letters (m, a, t). No other letters.',
+      script: {
+        say: '“Put our continuous /m/ in front of \'at\': /m/... /a/... /t/... MAT! A cat sits on a welcome mat!”',
+        do: 'Tap the 3 sound circles: 1 (/m/), 2 (/a/), 3 (/t/). Slide your finger fast: MAT!',
+        lookFor: 'Blends all 3 sounds without dropping the middle vowel /a/ or guessing.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d5-v${variant}`,
+        title: 'Phonics Day 5: First CVC Word "mat"',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Tap the 3 sound circles: /m/ - /a/ - /t/. Say it fast to read MAT, and write it!',
+        kidDirections: {
+          text: '👉 Tap 3 sounds: /m/ - /a/ - /t/! 🏃 Say it fast: MAT! ✏️ Write the word!',
+          icons: ['👉', '🏃', '✏️'],
+          badge: 'Day 5 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'mat',
+            phonemes: ['m', 'a', 't'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'at',
+            phonemes: ['a', 't'],
+            soundClues: [{ icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'mat',
+            phonemes: ['m', 'a', 't'],
+            soundClues: [{ icon: '🐱', label: 'Welcome Mat' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'mat',
+            phonemes: ['m', 'a', 't'],
+            soundClues: [{ icon: '⭐', label: 'M-A-T' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['mat', 'at', 'mat', 'M-A-T'],
+        },
+        answerKey: [
+          { number: 1, solution: 'M-A-T (/m/ /æ/ /t/ = "mat")' },
+          { number: 2, solution: 'A-T (/æ/ /t/ = "at")' },
+          { number: 3, solution: 'M-A-T' },
+          { number: 4, solution: 'M-A-T' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 6: Continuous Consonant /s/ & Blending "sat"
+    // -------------------------------------------------------------------------
+    {
+      day: 6,
+      title: 'Continuous Consonant /s/ & Word "sat" (/s/ + /a/ + /t/)',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Sound Substitution',
+      strictBoundary: 'Letter s sound and blending "sat" with known letters (m, a, t). No other vowels or letters.',
+      script: {
+        say: '“Listen to the snake sound: /ssssss/! If we change the /m/ in \'mat\' to /s/, what word is it? /s/... /a/... /t/... SAT! The cat sat on the mat!”',
+        do: 'Show how changing the first letter changes the whole word from mat to sat.',
+        lookFor: 'Distinguishes /s/ from /m/ at the start of the word. Reads "sat" accurately.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d6-v${variant}`,
+        title: 'Phonics Day 6: Adding /s/ & Word "sat"',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Learn the hissing sound /s/ and blend /s/ - /a/ - /t/ to read SAT!',
+        kidDirections: {
+          text: '🐍 Hiss like a snake: /s/! 🏃 /s/ + /a/ + /t/ = SAT! ✏️ Write your words!',
+          icons: ['🐍', '🏃', '✏️'],
+          badge: 'Day 6 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'sat',
+            phonemes: ['s', 'a', 't'],
+            soundClues: [{ icon: '🐍', label: '/s/' }, { icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'mat',
+            phonemes: ['m', 'a', 't'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 's',
+            phonemes: ['s'],
+            soundClues: [{ icon: '🐍', label: 'Sun /s/' }, { icon: '⭐', label: 'Star' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'sat',
+            phonemes: ['s', 'a', 't'],
+            soundClues: [{ icon: '🪑', label: 'Cat SAT down' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['sat', 'mat', 'sat', 'at'],
+        },
+        answerKey: [
+          { number: 1, solution: 'S-A-T (/s/ /æ/ /t/ = "sat")' },
+          { number: 2, solution: 'M-A-T (/m/ /æ/ /t/ = "mat")' },
+          { number: 3, solution: 'Sound: /s/' },
+          { number: 4, solution: 'S-A-T' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 7: Stop Consonant /p/ & Words "pat", "tap", "map"
+    // -------------------------------------------------------------------------
+    {
+      day: 7,
+      title: 'Stop Consonant /p/ & Words "pat", "tap", "map"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & CVC Word Building',
+      strictBoundary: 'Consonant p and CVC words using only m, a, t, s, p. No other vowels.',
+      script: {
+        say: '“The letter P makes a soft air pop: /p/! Hold your hand in front of your mouth: feel the puff of air? /p/... /a/... /t/... PAT!”',
+        do: 'Feel the puff of air on your hand for /p/. Then blend P-A-T and reverse to T-A-P.',
+        lookFor: 'Keeps /p/ soft without "puh". Reverses letters to read "tap" without hesitation.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d7-v${variant}`,
+        title: 'Phonics Day 7: Consonant /p/ (pat, tap, map)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Feel the puff on /p/! Tap the sounds to read PAT, TAP, and MAP.',
+        kidDirections: {
+          text: '💨 Feel the puff on /p/! 🏃 Blend pat, tap, and map! ✏️ Write your words!',
+          icons: ['💨', '🏃', '✏️'],
+          badge: 'Day 7 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'pat',
+            phonemes: ['p', 'a', 't'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'tap',
+            phonemes: ['t', 'a', 'p'],
+            soundClues: [{ icon: '🪀', label: '/t/' }, { icon: '🍎', label: '/a/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'map',
+            phonemes: ['m', 'a', 'p'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '🍎', label: '/a/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'pat',
+            phonemes: ['p', 'a', 't'],
+            soundClues: [{ icon: '🐶', label: 'PAT the puppy' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['pat', 'tap', 'map', 'pat'],
+        },
+        answerKey: [
+          { number: 1, solution: 'P-A-T (/p/ /æ/ /t/ = "pat")' },
+          { number: 2, solution: 'T-A-P (/t/ /æ/ /p/ = "tap")' },
+          { number: 3, solution: 'M-A-P (/m/ /æ/ /p/ = "map")' },
           { number: 4, solution: 'P-A-T' },
         ],
       }),
     },
-    {
-      day: 4,
-      title: 'Consonant /n/ ("pan", "tan", "man")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Word Families',
-      script: {
-        say: '“Notice the -an word family! P-AN, T-AN, M-AN. They all rhyme!”',
-        do: 'Point out how only the first letter changes while "-an" stays the same.',
-        lookFor: 'Recognizes the rhyming pattern and blends -an automatically.',
-      },
-      generateSheet: (variant = 1) => ({
-        id: `phonics-d4-v${variant}`,
-        title: 'Phonics Day 4: -AN Family (pan, tan, man)',
-        subject: 'phonics',
-        grade: 'K',
-        instructions: 'Read and write the -an rhyming family words.',
-        kidDirections: {
-          text: '🎵 Rhyme time! /p/ + an = PAN! ✏️ Write each rhyming word!',
-          icons: ['🎵', '✏️'],
-          badge: 'Day 4 Phonics',
-        },
-        problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'pan', phonemes: ['p', 'a', 'n'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'tan', phonemes: ['t', 'a', 'n'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'man', phonemes: ['m', 'a', 'n'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'pan', phonemes: ['p', 'a', 'n'] },
-        ],
-        cutStrip: null,
-        answerKey: [
-          { number: 1, solution: 'P-A-N' },
-          { number: 2, solution: 'T-A-N' },
-          { number: 3, solution: 'M-A-N' },
-          { number: 4, solution: 'P-A-N' },
-        ],
-      }),
-    },
-    {
-      day: 5,
-      title: 'Hard /c/ & Nonsense Word Challenge ("cat", "cap", "can")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Nonsense Decoding',
-      script: {
-        say: '“Today we read real words AND silly alien words! Use your sounds: does D-A-P make sense? It is silly!”',
-        do: 'Encourage him to laugh at the nonsense words while decoding them accurately.',
-        lookFor: 'Does not try to turn "dap" into "dad" or "dog"—decodes the exact letters printed.',
-      },
-      generateSheet: (variant = 1) => ({
-        id: `phonics-d5-v${variant}`,
-        title: 'Phonics Day 5: Hard /c/ and Nonsense Word Challenge',
-        subject: 'phonics',
-        grade: 'K',
-        instructions: 'Write the C words and decode the silly alien words at the bottom!',
-        kidDirections: {
-          text: '🐱 C makes /k/! 👽 Read the silly alien words at the bottom!',
-          icons: ['🐱', '👽', '✏️'],
-          badge: 'Day 5 Phonics',
-        },
-        problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'cat', phonemes: ['c', 'a', 't'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'cap', phonemes: ['c', 'a', 'p'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'can', phonemes: ['c', 'a', 'n'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'cat', phonemes: ['c', 'a', 't'] },
-        ],
-        nonsenseDrill: {
-          instructions: 'Silly Alien Words (Read with your sounds):',
-          words: ['dap', 'zat', 'vab'],
-        },
-        cutStrip: null,
-        answerKey: [
-          { number: 1, solution: 'C-A-T' },
-          { number: 2, solution: 'C-A-P' },
-          { number: 3, solution: 'C-A-N' },
-          { number: 4, solution: 'C-A-T' },
-        ],
-      }),
-    },
-    // Days 6-10 Short vowels progression (o, i, u, e, mixed review)
-    {
-      day: 6,
-      title: 'Short /o/ CVC Words ("mop", "pot", "top", "not")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Short Vowel O',
-      script: {
-        say: '“Open your mouth wide like an oval: /o/! M-O-P spells MOP!”',
-        do: 'Check mouth shape: jaw drops open wide for /o/.',
-        lookFor: 'Distinguishes short /o/ from short /a/.',
-      },
-      generateSheet: (variant = 1) => ({
-        id: `phonics-d6-v${variant}`,
-        title: 'Phonics Day 6: Short /o/ Words (mop, pot, top)',
-        subject: 'phonics',
-        grade: 'K',
-        instructions: 'Tap out each sound with short /o/ and write the words.',
-        kidDirections: {
-          text: '⭕ Open wide for /o/! ✏️ Tap and write your words!',
-          icons: ['⭕', '✏️'],
-          badge: 'Day 6 Phonics',
-        },
-        problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'mop', phonemes: ['m', 'o', 'p'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'pot', phonemes: ['p', 'o', 't'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'top', phonemes: ['t', 'o', 'p'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'not', phonemes: ['n', 'o', 't'] },
-        ],
-        cutStrip: null,
-        answerKey: [
-          { number: 1, solution: 'M-O-P' },
-          { number: 2, solution: 'P-O-T' },
-          { number: 3, solution: 'T-O-P' },
-          { number: 4, solution: 'N-O-T' },
-        ],
-      }),
-    },
-    {
-      day: 7,
-      title: 'Short /i/ CVC Words ("sit", "pin", "tip", "pit")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Short Vowel I',
-      script: {
-        say: '“Smile with your mouth: /i/ like an icky insect! S-I-T spells SIT!”',
-        do: 'Smile when making the /i/ sound so vocal cords stay crisp.',
-        lookFor: 'Does not confuse short /e/ and short /i/.',
-      },
-      generateSheet: (variant = 1) => ({
-        id: `phonics-d7-v${variant}`,
-        title: 'Phonics Day 7: Short /i/ Words (sit, pin, tip)',
-        subject: 'phonics',
-        grade: 'K',
-        instructions: 'Practice smiling short /i/ words.',
-        kidDirections: {
-          text: '😁 Smile for /i/! ✏️ Blend and write: S-I-T spells SIT!',
-          icons: ['😁', '✏️'],
-          badge: 'Day 7 Phonics',
-        },
-        problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'sit', phonemes: ['s', 'i', 't'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'pin', phonemes: ['p', 'i', 'n'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'tip', phonemes: ['t', 'i', 'p'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'pit', phonemes: ['p', 'i', 't'] },
-        ],
-        cutStrip: null,
-        answerKey: [
-          { number: 1, solution: 'S-I-T' },
-          { number: 2, solution: 'P-I-N' },
-          { number: 3, solution: 'T-I-P' },
-          { number: 4, solution: 'P-I-T' },
-        ],
-      }),
-    },
+
+    // -------------------------------------------------------------------------
+    // DAY 8: Short Vowel /i/ & Words "sit", "tip", "pit", "it"
+    // -------------------------------------------------------------------------
     {
       day: 8,
-      title: 'Short /u/ CVC Words ("sun", "cup", "nut", "rug")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Short Vowel U',
+      title: 'Short Vowel /i/ & Words "sit", "tip", "pit", "it"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Short Vowel Discrimination',
+      strictBoundary: 'Short vowel i and CVC words with known consonants (m, s, t, p). No other vowels (o, u, e).',
       script: {
-        say: '“Sound /u/ like pushing up an umbrella: /u/ /u/ /u/! S-U-N spells SUN!”',
-        do: 'Point thumb up when saying /u/.',
-        lookFor: 'Produces guttural /u/ cleanly without nasal distortion.',
+        say: '“Smile big with your mouth: /i/ like an icky insect! S-I-T spells SIT! Notice how your mouth is smiling for /i/ but dropped open for /a/!”',
+        do: 'Compare mouth shapes: smile for /i/ (sit), drop jaw for /a/ (sat).',
+        lookFor: 'Does not confuse short /i/ with short /a/ or short /e/. Reads "sit" and "tip" cleanly.',
       },
       generateSheet: (variant = 1) => ({
         id: `phonics-d8-v${variant}`,
-        title: 'Phonics Day 8: Short /u/ Words (sun, cup, nut)',
+        title: 'Phonics Day 8: Short Vowel /i/ (sit, tip, pit)',
         subject: 'phonics',
         grade: 'K',
-        instructions: 'Read and write short /u/ words.',
+        instructions: 'Smile for short /i/! Tap out each sound and write the words on the guidelines.',
         kidDirections: {
-          text: '☂️ /u/ like umbrella! ✏️ Tap and write your words!',
-          icons: ['☂️', '✏️'],
+          text: '😁 Smile for /i/! 🏃 /s/ + /i/ + /t/ = SIT! ✏️ Write your short /i/ words!',
+          icons: ['😁', '🏃', '✏️'],
           badge: 'Day 8 Phonics',
         },
         problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'sun', phonemes: ['s', 'u', 'n'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'cup', phonemes: ['c', 'u', 'p'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'nut', phonemes: ['n', 'u', 't'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'rug', phonemes: ['r', 'u', 'g'] },
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'sit',
+            phonemes: ['s', 'i', 't'],
+            soundClues: [{ icon: '🐍', label: '/s/' }, { icon: '😁', label: '/i/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'tip',
+            phonemes: ['t', 'i', 'p'],
+            soundClues: [{ icon: '🪀', label: '/t/' }, { icon: '😁', label: '/i/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'pit',
+            phonemes: ['p', 'i', 't'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '😁', label: '/i/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'it',
+            phonemes: ['i', 't'],
+            soundClues: [{ icon: '😁', label: '/i/' }, { icon: '🪀', label: '/t/' }],
+          },
         ],
-        cutStrip: null,
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['sit', 'tip', 'pit', 'it'],
+        },
         answerKey: [
-          { number: 1, solution: 'S-U-N' },
-          { number: 2, solution: 'C-U-P' },
-          { number: 3, solution: 'N-U-T' },
-          { number: 4, solution: 'R-U-G' },
+          { number: 1, solution: 'S-I-T (/s/ /ɪ/ /t/ = "sit")' },
+          { number: 2, solution: 'T-I-P (/t/ /ɪ/ /p/ = "tip")' },
+          { number: 3, solution: 'P-I-T (/p/ /ɪ/ /t/ = "pit")' },
+          { number: 4, solution: 'I-T (/ɪ/ /t/ = "it")' },
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 9: Nasal Consonant /n/ & Words "pan", "pin", "tan", "man"
+    // -------------------------------------------------------------------------
     {
       day: 9,
-      title: 'Short /e/ CVC Words ("bed", "red", "net", "pet")',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Short Vowel E',
+      title: 'Nasal Consonant /n/ & Words "pan", "pin", "tan", "man"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Word Families (-an, -in)',
+      strictBoundary: 'Consonant n and words with known letters (m, a, t, s, p, i, n). No other vowels.',
       script: {
-        say: '“Short /e/ like an egg in an eggcup: /e/! B-E-D spells BED!”',
-        do: 'Make an open chin shape for /e/.',
-        lookFor: 'Accurately distinguishes /e/ from /a/.',
+        say: '“Put the tip of your tongue on the roof of your mouth: /nnnnnn/! Feel the air come out your nose! P-A-N spells PAN. P-I-N spells PIN!”',
+        do: 'Gently pinch your nose while saying /n/ to feel the vibration. Compare \'pan\' (short a) vs \'pin\' (short i).',
+        lookFor: 'Understands the nasal sound /n/. Switches vowel from pan to pin accurately.',
       },
       generateSheet: (variant = 1) => ({
         id: `phonics-d9-v${variant}`,
-        title: 'Phonics Day 9: Short /e/ Words (bed, red, net)',
+        title: 'Phonics Day 9: Consonant /n/ (pan, pin, tan, man)',
         subject: 'phonics',
         grade: 'K',
-        instructions: 'Read and write short /e/ words.',
+        instructions: 'Feel the nasal vibration on /n/! Tap and write rhyming words with -an and -in.',
         kidDirections: {
-          text: '🥚 /e/ like egg! ✏️ Tap the circles and write the words!',
-          icons: ['🥚', '✏️'],
+          text: '👃 Tongue up for /n/! 🏃 Blend pan and pin! ✏️ Write your words on the lines!',
+          icons: ['👃', '🏃', '✏️'],
           badge: 'Day 9 Phonics',
         },
         problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'bed', phonemes: ['b', 'e', 'd'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'red', phonemes: ['r', 'e', 'd'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'net', phonemes: ['n', 'e', 't'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'pet', phonemes: ['p', 'e', 't'] },
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'pan',
+            phonemes: ['p', 'a', 'n'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '🍎', label: '/a/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'pin',
+            phonemes: ['p', 'i', 'n'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '😁', label: '/i/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'tan',
+            phonemes: ['t', 'a', 'n'],
+            soundClues: [{ icon: '🪀', label: '/t/' }, { icon: '🍎', label: '/a/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'man',
+            phonemes: ['m', 'a', 'n'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '🍎', label: '/a/' }, { icon: '👃', label: '/n/' }],
+          },
         ],
-        cutStrip: null,
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['pan', 'pin', 'tan', 'man'],
+        },
         answerKey: [
-          { number: 1, solution: 'B-E-D' },
-          { number: 2, solution: 'R-E-D' },
-          { number: 3, solution: 'N-E-T' },
-          { number: 4, solution: 'P-E-T' },
+          { number: 1, solution: 'P-A-N (/p/ /æ/ /n/ = "pan")' },
+          { number: 2, solution: 'P-I-N (/p/ /ɪ/ /n/ = "pin")' },
+          { number: 3, solution: 'T-A-N (/t/ /æ/ /n/ = "tan")' },
+          { number: 4, solution: 'M-A-N (/m/ /æ/ /n/ = "man")' },
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 10: High-Frequency Words & Decodable Champion Phrases
+    // -------------------------------------------------------------------------
     {
       day: 10,
-      title: 'Phonics Day 10: All 5 Short Vowels Grand Review',
-      standard: 'CCSS.ELA-LITERACY.RF.K.2.D & Comprehensive Orthographic Mapping',
+      title: 'High-Frequency Words & Decodable Champion Phrases',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.C & Decodable Phrase Fluency',
+      strictBoundary: 'Cumulative review of learned letters (m, a, t, s, p, i, n) and heart words "the", "a". No advanced blends/digraphs.',
       script: {
-        say: '“You know all 5 short vowels now: A, E, I, O, U! Let’s show how you can decode ANY 3-letter word!”',
-        do: 'Celebrate completion with a sticker or high-five.',
-        lookFor: 'Effortless switching between different middle vowel sounds.',
+        say: '“Look at you reading real sentences! The word \'the\' is a heart word we remember by heart. Read with me: \'A cat sat on a mat!\' You are a reading champion!”',
+        do: 'Point to each word in the decodable phrase together. Celebrate reading a full sentence independently!',
+        lookFor: 'Reads sight word \'the\' automatically and sounds out decodable words without guessing.',
       },
       generateSheet: (variant = 1) => ({
         id: `phonics-d10-v${variant}`,
-        title: 'Phonics Day 10: 5-Vowel Grand Champion Review',
+        title: 'Phonics Day 10: Reading Champion Phrases',
         subject: 'phonics',
         grade: 'K',
-        instructions: 'Read and write words with all 5 short vowels (A, E, I, O, U)!',
+        instructions: 'Read and write your favorite decodable words and read champion phrases!',
         kidDirections: {
-          text: '🌟 Phonics Star! ✏️ Tap and write words with A, E, I, O, and U!',
-          icons: ['🌟', '✏️'],
-          badge: 'Day 10 Phonics',
+          text: '🏆 Champion Reader! 📖 Read decodable phrases! ✏️ Write your champion words!',
+          icons: ['🏆', '📖', '✏️'],
+          badge: 'Day 10 Phonics Champion',
         },
         problems: [
-          { id: 'p1', type: 'phonics-dictation', number: 1, word: 'cat', phonemes: ['c', 'a', 't'] },
-          { id: 'p2', type: 'phonics-dictation', number: 2, word: 'mop', phonemes: ['m', 'o', 'p'] },
-          { id: 'p3', type: 'phonics-dictation', number: 3, word: 'sit', phonemes: ['s', 'i', 't'] },
-          { id: 'p4', type: 'phonics-dictation', number: 4, word: 'sun', phonemes: ['s', 'u', 'n'] },
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'sat',
+            phonemes: ['s', 'a', 't'],
+            soundClues: [{ icon: '🪑', label: 'sat' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'pan',
+            phonemes: ['p', 'a', 'n'],
+            soundClues: [{ icon: '🍳', label: 'pan' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'pin',
+            phonemes: ['p', 'i', 'n'],
+            soundClues: [{ icon: '🧷', label: 'pin' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'mat',
+            phonemes: ['m', 'a', 't'],
+            soundClues: [{ icon: '🚪', label: 'mat' }],
+          },
         ],
-        cutStrip: null,
+        decodablePhrases: ['a mat', 'the pan', 'pat the cat', 'sit on a mat'],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['a mat', 'the pan', 'sat on mat', 'Champion! 🏆'],
+        },
         answerKey: [
-          { number: 1, solution: 'C-A-T (short a)' },
-          { number: 2, solution: 'M-O-P (short o)' },
-          { number: 3, solution: 'S-I-T (short i)' },
-          { number: 4, solution: 'S-U-N (short u)' },
+          { number: 1, solution: 'S-A-T (decodable word)' },
+          { number: 2, solution: 'P-A-N (decodable word)' },
+          { number: 3, solution: 'P-I-N (decodable word)' },
+          { number: 4, solution: 'M-A-T (decodable word)' },
         ],
       }),
     },
@@ -953,6 +1325,7 @@ export const DAILY_CURRICULUM = {
       day: 1,
       title: 'Living vs. Non-Living: The 3 Rules (Eat, Drink, Grow)',
       standard: 'NGSS K-LS1-1 & Core Knowledge Science',
+      strictBoundary: 'Living vs non-living basic rules (eat, drink, grow). No cellular biology or complex systems.',
       script: {
         say: '“Everything in the world is living or non-living! Ask the 3 questions: Does it drink water? Does it eat? Does it grow?”',
         do: 'Point to a pet or houseplant: "Is this living?" Point to a chair: "Is this living?"',
@@ -988,6 +1361,7 @@ export const DAILY_CURRICULUM = {
       day: 2,
       title: 'What Seeds Need to Sprout',
       standard: 'NGSS K-LS1-1 & Plant Biology',
+      strictBoundary: 'Plant growth basics (sunlight and water). No photosynthesis biochemistry.',
       script: {
         say: '“A tiny seed is asleep! What does it need to wake up and grow into a big plant?”',
         do: 'Wet a paper towel and examine an apple or bean seed together.',
@@ -1031,6 +1405,7 @@ export const DAILY_CURRICULUM = {
       day: 3,
       title: 'Animal Coverings (Fur, Feathers, Scales)',
       standard: 'NGSS K-ESS3-1 & Zoology',
+      strictBoundary: 'External animal coverings (fur, feathers, scales). No internal anatomy.',
       script: {
         say: '“Animals wear special coats to survive in the wild! Birds wear feathers, bears wear thick fur, fish wear shiny scales!”',
         do: 'Touch a faux-fur blanket or feather to talk about textures.',
@@ -1074,6 +1449,7 @@ export const DAILY_CURRICULUM = {
       day: 4,
       title: 'Daily Weather Tracking & Pattern Recognition',
       standard: 'NGSS K-ESS2-1 & Earth Science',
+      strictBoundary: 'Observable weather conditions (sunny, rainy, cloudy, windy) and clothing. No meteorology systems.',
       script: {
         say: '“Let’s look out the window! Is it sunny, cloudy, or rainy today? What clothes do we wear?”',
         do: 'Step outside or check window: check thermometer or wind.',
@@ -1117,6 +1493,7 @@ export const DAILY_CURRICULUM = {
       day: 5,
       title: 'Wilderness Survival: The Rule of Threes',
       standard: 'Applied Science: Physiological Threats',
+      strictBoundary: 'Survival priority sequence (air, shelter, water). No complex medical interventions.',
       script: {
         say: '“Wilderness explorers have one supreme rule: 3 minutes without air, 3 hours without shelter in freezing cold, 3 days without water!”',
         do: 'Count to 3 together. Emphasize that freezing cold is dangerous way faster than being hungry.',
@@ -1161,6 +1538,7 @@ export const DAILY_CURRICULUM = {
       day: 6,
       title: 'Wilderness Water: Finding & Filtering Clean Water',
       standard: 'Earth Science & Environmental Filtration',
+      strictBoundary: 'Water purification concepts (filtering and boiling). No chemical water purification formulas.',
       script: {
         say: '“In nature, river water can have tiny germs! Explorers must always filter and boil water before drinking!”',
         do: 'Talk about why we never drink straight from muddy puddles.',
@@ -1194,6 +1572,7 @@ export const DAILY_CURRICULUM = {
       day: 7,
       title: 'Pushes and Pulls: Forces and Movement',
       standard: 'NGSS K-PS2-1 & Physics of Motion',
+      strictBoundary: 'Basic push vs pull directional forces. No Newton law equations or friction calculations.',
       script: {
         say: '“To make a toy move, you have to Push it away or Pull it toward you! A gentle push moves it slowly; a hard push makes it zoom!”',
         do: 'Push a toy car across the table. Then pull a wagon or string.',
@@ -1237,6 +1616,7 @@ export const DAILY_CURRICULUM = {
       day: 8,
       title: 'Our Five Senses: Sight and Sound',
       standard: 'Core Knowledge Science Unit 5 (Human Biology)',
+      strictBoundary: 'Senses of sight (eyes) and hearing (ears). No optical or acoustic physics.',
       script: {
         say: '“Our eyes give us sight and our ears give us hearing! Close your eyes: what sounds do you hear right now?”',
         do: 'Sit quietly for 10 seconds with eyes closed to count sounds.',
@@ -1280,6 +1660,7 @@ export const DAILY_CURRICULUM = {
       day: 9,
       title: 'Our Five Senses: Touch, Smell & Taste',
       standard: 'Core Knowledge Science Unit 5',
+      strictBoundary: 'Senses of touch, smell, and taste. No neurobiology or nerve pathway mechanisms.',
       script: {
         say: '“Your hands feel textures: rough tree bark or soft cat fur. Your nose smells pine needles!”',
         do: 'Touch two different surfaces (e.g. carpet vs smooth table).',
@@ -1313,6 +1694,7 @@ export const DAILY_CURRICULUM = {
       day: 10,
       title: 'Science Day 10: Junior Scientist Certificate Challenge',
       standard: 'Core Knowledge & NGSS Review',
+      strictBoundary: 'Cumulative review of kindergarten observations, senses, and living needs. No upper-grade science.',
       script: {
         say: '“You are officially a Junior Scientist! You know living things, animal coats, forces, and survival science!”',
         do: 'Draw a gold star or award the printed sheet proudly.',
@@ -1350,6 +1732,7 @@ export const DAILY_CURRICULUM = {
       day: 1,
       title: 'Maps vs. Globes (Water is Blue, Land is Green/Brown)',
       standard: 'CKHG Kindergarten Unit 1: Let’s Explore Our World',
+      strictBoundary: 'Basic distinction between round globes and flat maps (land vs water colors). No latitude/longitude coordinates.',
       script: {
         say: '“Look at this globe! It is shaped like a round ball, just like planet Earth! Can you point to the blue water and the green land?”',
         do: 'Hold up a round ball or globe and a flat piece of paper. Ask: "Which one is shaped like our Earth?"',
@@ -1414,6 +1797,7 @@ export const DAILY_CURRICULUM = {
       day: 2,
       title: 'Cardinal Directions & The Compass Rose (N, S, E, W)',
       standard: 'CKHG Kindergarten Unit 1: Spatial Directions',
+      strictBoundary: 'Cardinal directions (North, South, East, West). No intermediate degrees or azimuth navigation.',
       script: {
         say: '“Every map has a helper called a Compass Rose! North points UP toward the cold North Pole, and South points DOWN toward the South Pole!”',
         do: 'Stand up together. Reach both arms high for North! Touch your toes for South! Point to where the sun rises for East, and where it sets for West.',
@@ -1478,6 +1862,7 @@ export const DAILY_CURRICULUM = {
       day: 3,
       title: 'Map Keys, Symbols & Room Mapping',
       standard: 'CKHG Kindergarten Unit 1: Map Symbols and Keys',
+      strictBoundary: 'Map keys and pictorial symbols for familiar rooms. No topographic contour lines or scale ratios.',
       script: {
         say: '“A map key is like a secret code! A little blue square means your bed, and an open line means your door!”',
         do: 'Look around the room. Ask: "If you looked down like a bird from the ceiling, what shapes would you see for our bed and table?"',
@@ -1539,6 +1924,7 @@ export const DAILY_CURRICULUM = {
       day: 4,
       title: 'Earth’s Natural Landforms (Mountains, Oceans, Rivers, Plains)',
       standard: 'CKHG Kindergarten Unit 1: Landforms & Water Bodies',
+      strictBoundary: 'Four fundamental landforms and bodies of water (mountain, river, plain, ocean). No plate tectonics or erosion chemistry.',
       script: {
         say: '“Planet Earth has tall rocky mountains that scrape the sky, flat grassy plains for animals to run, and rushing rivers!”',
         do: 'Make a tall triangle peak with your hands for a mountain, then hold your hand flat for a plain.',
@@ -1601,6 +1987,7 @@ export const DAILY_CURRICULUM = {
       day: 5,
       title: 'Native American Shelters (Tipis, Pueblos, Longhouses)',
       standard: 'CKHG Kindergarten Unit 2: Native Americans',
+      strictBoundary: 'Traditional shelter structures and natural regional materials (tipi, pueblo, longhouse). No complex anthropological treaties.',
       script: {
         say: '“Long ago, Native Americans built ingenious homes from natural materials! Plains tribes made cone-shaped tipis from buffalo hides, while Southwest tribes built adobe pueblos from clay and stone!”',
         do: 'Show a picture of a cone-shaped tipi and a stacked pueblo village.',
@@ -1664,6 +2051,7 @@ export const DAILY_CURRICULUM = {
       day: 6,
       title: 'Native American Culture: Respect for Nature & Storytelling',
       standard: 'CKHG Kindergarten Unit 2: Culture & Traditions',
+      strictBoundary: 'Values of ecological gratitude, storytelling, and animal symbolism. No modern geopolitical history.',
       script: {
         say: '“Native American cultures teach deep gratitude for Mother Earth! They only take what they need and treat animals, trees, and water like family.”',
         do: 'Talk about how we can show gratitude when we eat, and how we take care of outdoor animals and trees.',
@@ -1724,6 +2112,7 @@ export const DAILY_CURRICULUM = {
       day: 7,
       title: 'Founding Presidents: George Washington (Father of Our Country)',
       standard: 'CKHG Kindergarten Unit 4: Mount Rushmore & Presidents',
+      strictBoundary: 'George Washington: 1st president, profile on quarter, Mount Rushmore. No constitutional law or wartime politics.',
       script: {
         say: '“George Washington was the first President of our country! People called him the \'Father of Our Country\' because he led America when it was brand new.”',
         do: 'Show a one-dollar bill or quarter coin. Point to George Washington’s face.',
@@ -1786,6 +2175,7 @@ export const DAILY_CURRICULUM = {
       day: 8,
       title: 'Presidents: Abraham Lincoln (Honest Abe & The Log Cabin)',
       standard: 'CKHG Kindergarten Unit 4: Abraham Lincoln',
+      strictBoundary: 'Abraham Lincoln: 16th president, penny, log cabin, honesty. No Civil War battle tactics.',
       script: {
         say: '“Abraham Lincoln grew up in a one-room log cabin in the woods. He worked hard, loved reading books, and everyone called him \'Honest Abe\'!”',
         do: 'Show a copper penny. Point to Abraham Lincoln and note his tall hat and beard.',
@@ -1849,6 +2239,7 @@ export const DAILY_CURRICULUM = {
       day: 9,
       title: 'American Symbols: The Flag & The Liberty Bell',
       standard: 'CKHG Kindergarten Unit 5: American Symbols',
+      strictBoundary: 'American flag (colors, stars, stripes) and the Liberty Bell. No constitutional amendments.',
       script: {
         say: '“Our American Flag has 13 red and white stripes for the first 13 colonies, and 50 stars for all 50 states! And the Liberty Bell rang to celebrate freedom!”',
         do: 'Look at a flag picture. Count some stripes together and notice the blue box with white stars.',
@@ -1912,6 +2303,7 @@ export const DAILY_CURRICULUM = {
       day: 10,
       title: 'Community Helpers & Good Citizenship',
       standard: 'CKHG Civics & Community Life',
+      strictBoundary: 'Community helpers and foundational citizenship (kindness, helping, rules). No municipal government structure.',
       script: {
         say: '“Our community is strong because people help each other! Firefighters put out fires, doctors heal us, and YOU are a citizen who helps by being kind and following rules!”',
         do: 'Ask: "When you see someone who dropped their toys, how can you be a good community helper?"',

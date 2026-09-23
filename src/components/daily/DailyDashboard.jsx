@@ -31,6 +31,7 @@ import {
   Award,
   X,
   Eye,
+  ShieldAlert,
 } from 'lucide-react';
 
 export default function DailyDashboard({
@@ -400,6 +401,19 @@ export default function DailyDashboard({
                     </div>
                   )}
                 </div>
+
+                {/* Strict Daily Progression Boundary ("No Further") Guardrail */}
+                {lesson.strictBoundary && (
+                  <div className="bg-rose-50/80 border border-rose-200/90 rounded-xl p-3 text-xs space-y-1">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-rose-800">
+                      <ShieldAlert className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Progression Boundary ("No Further")</span>
+                    </div>
+                    <p className="text-rose-950 font-bold leading-snug">
+                      {lesson.strictBoundary}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Word-for-Word Parent Script Box */}

@@ -8,6 +8,22 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Full standard 180-day US school year structured across **36 Weeks and 4 Quarters** (9 weeks / 45 days per quarter).
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
   - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
+- **🛡️ Strict Daily Progression Boundaries ("No Further" Guardrails)**:
+  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
+  - Rendered directly inside the **Parent Guide Cockpit** so parents and tutors know exactly what skills are targeted and what concepts are strictly disallowed on each day.
+- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–10)**:
+  - Strict evidence-based prerequisite sequence eliminating premature leaps:
+    - *Day 1*: Continuous Consonant `/m/` (lips pressed, humming air, handwriting formation).
+    - *Day 2*: Short Vowel `/a/` (jaw dropped apple sound `/æ/`, formation).
+    - *Day 3*: Stop Consonant `/t/` (unvoiced tongue tap behind teeth, no "tuh").
+    - *Day 4*: First Blending: VC Word "at" (`/a/` + `/t/` = at).
+    - *Day 5*: First 3-Letter CVC Blending: "mat" (`/m/` + `/a/` + `/t/` = mat).
+    - *Day 6*: Continuous Consonant `/s/` & Word "sat" (`/s/` + `/a/` + `/t/` = sat).
+    - *Day 7*: Stop Consonant `/p/` & Words "pat", "tap", "map" (feel the puff of air).
+    - *Day 8*: Short Vowel `/i/` & Words "sit", "tip", "pit", "it" (smile for `/i/`).
+    - *Day 9*: Nasal Consonant `/n/` & Rhyming Families "pan", "pin", "tan", "man".
+    - *Day 10*: High-Frequency Words ("the", "a") & Decodable Champion Phrases (*"a mat"*, *"the pan"*, *"sit on a mat"*).
+  - Enhanced `DictationGrid` with visual sound clue icon badges (🍎 Apple, 🪀 Top, 👄 Lips), single-letter vs word headings, and labeled primary guidelines (Sky line, dashed Fence midline, baseline Grass).
 - **🔢 Kindergarten Quarter 1 Math Progression (CCSS K.CC Counting & Cardinality)**:
   - 10-day early numeracy continuum strictly avoiding premature written addition/subtraction equations:
     - *Day 1*: One-to-One Counting & Tactile Subitizing 1–3 (touch-and-count points beneath apples, stars, puppies).
