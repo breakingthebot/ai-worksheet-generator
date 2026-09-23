@@ -9,37 +9,31 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
   - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
 - **🛡️ Strict Daily Progression Boundaries ("No Further" Guardrails)**:
-  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
+  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies; 80 lessons total) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
   - Rendered directly inside the **Parent Guide Cockpit** so parents and tutors know exactly what skills are targeted and what concepts are strictly disallowed on each day.
-- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–10)**:
+- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–20)**:
   - Strict evidence-based prerequisite sequence eliminating premature leaps:
-    - *Day 1*: Continuous Consonant `/m/` (lips pressed, humming air, handwriting formation).
-    - *Day 2*: Short Vowel `/a/` (jaw dropped apple sound `/æ/`, formation).
-    - *Day 3*: Stop Consonant `/t/` (unvoiced tongue tap behind teeth, no "tuh").
-    - *Day 4*: First Blending: VC Word "at" (`/a/` + `/t/` = at).
-    - *Day 5*: First 3-Letter CVC Blending: "mat" (`/m/` + `/a/` + `/t/` = mat).
-    - *Day 6*: Continuous Consonant `/s/` & Word "sat" (`/s/` + `/a/` + `/t/` = sat).
-    - *Day 7*: Stop Consonant `/p/` & Words "pat", "tap", "map" (feel the puff of air).
-    - *Day 8*: Short Vowel `/i/` & Words "sit", "tip", "pit", "it" (smile for `/i/`).
-    - *Day 9*: Nasal Consonant `/n/` & Rhyming Families "pan", "pin", "tan", "man".
-    - *Day 10*: High-Frequency Words ("the", "a") & Decodable Champion Phrases (*"a mat"*, *"the pan"*, *"sit on a mat"*).
-  - Enhanced `DictationGrid` with visual sound clue icon badges (🍎 Apple, 🪀 Top, 👄 Lips), single-letter vs word headings, and labeled primary guidelines (Sky line, dashed Fence midline, baseline Grass).
-- **🔢 Kindergarten Quarter 1 Math Progression (CCSS K.CC Counting & Cardinality)**:
-  - 10-day early numeracy continuum strictly avoiding premature written addition/subtraction equations:
-    - *Day 1*: One-to-One Counting & Tactile Subitizing 1–3 (touch-and-count points beneath apples, stars, puppies).
-    - *Day 2*: 5-Frame Array Subitizing & Numeral Formation (full row is 5, stroke practice).
-    - *Day 3*: Successive Quantities & "One More" (counting on 1–5 without restarting).
-    - *Day 4*: Comparing Sets: Which Group has MORE? (side-by-side group matching lines).
-    - *Day 5*: Comparing Sets: Which Group has FEWER? (less than, fewer, and equal quantities).
-    - *Day 6*: Ten-Frame Launch: Quantities 6 & 7 (top row 5 + bottom row extra dots).
-    - *Day 7*: Ten-Frame Quantities 8 & 9 (visualizing empty space complements to landmark 10).
-    - *Day 8*: Landmark Number 10 Benchmark (full ten-frame & 2-digit numeral 10 formation).
-    - *Day 9*: Numeral Comparison (comparing written numbers 1–10 directly: greater vs. less).
-    - *Day 10*: Quarter 1 Grand Champion Review (mixed counting, ten-frames, comparisons & champion badge).
-  - Adaptive ten-frame rendering displaying single-numeral write boxes for early counting rather than premature equations.
-- **🗺️ Core Knowledge Social Studies & Geography Track (CKHG)**:
-  - 10-day foundational Kindergarten track covering **Maps vs. Globes** (3D sphere vs flat, water vs land), **Cardinal Directions & Compass Rose** (North, South, East, West), **Map Keys & Room Mapping**, **Natural Landforms** (mountains, rivers, plains), **Native American Shelters** (Tipis, Pueblos, Longhouses), **Founding Presidents** (George Washington & Abraham Lincoln), **American Symbols** (The Flag & Liberty Bell), and **Civics & Community Helpers**.
-  - Word-for-word parent scripts (`🗣️ Say this`, `🖐️ What to do`, `👁️ What to look for`) and printable worksheets with primary handwriting lines and drawing scratchpads.
+    - *Days 1–3*: Sound clues and formations for `/m/`, short `/a/`, and stop consonant `/t/`.
+    - *Days 4–6*: First blending with VC "at", CVC "mat", and continuous `/s/` / "sat".
+    - *Days 7–9*: Stop consonant `/p/` ("pat", "tap", "map"), short `/i/` ("sit", "tip", "pit"), and nasal `/n/` ("pan", "pin").
+    - *Day 10*: High-frequency words ("the", "a") and Decodable Champion Phrases.
+    - *Days 11–14*: Voiced stop `/d/` ("dad", "pad"), short `/o/` ("mop", "pot"), velar stop `/k/` spelled `c` ("cat", "can"), and voiced `/g/` ("gap", "got", "tag", "pig").
+    - *Day 15*: Stop consonant `/b/` with explicit **b/d Directionality Anchor** ("bat before ball" multisensory cue to eliminate reversal).
+    - *Days 16–18*: Short `/u/` ("sun", "cup", "nut", "bug"), breath `/h/` & letter `k` ("hat", "hot", "hut", "kid"), and short `/e/` ("bed", "red", "net", "pet").
+    - *Day 19*: Heart Words ("is", "see", "to", "I") and 5-vowel minimal pair contrast ("pat", "pet", "pit", "pot").
+    - *Day 20*: Grand Champion 5 Short Vowels Decodable Story Fluency (*"A big pig had a red cup. The cat sat in the hot sun!"*).
+- **🔢 Kindergarten Math Progression (Days 1–20 CCSS K.CC & Singapore CPA)**:
+  - Early numeracy and decomposition continuum without premature multi-digit operations:
+    - *Days 1–5*: Tactile counting points 1–3, 5-frame arrays, successive "one more", and comparing sets for MORE and FEWER.
+    - *Days 6–10*: Ten-frame landmarks (6 to 10), empty space complements, and direct numeral comparisons 1–10.
+    - *Days 11–16*: Singapore Math CPA Part-Whole Number Bonds (decomposing 3, 4, 5, 6, 7, 8, 9 with visual part-whole bonds).
+    - *Day 17*: Complements to 10 ("Friends of 10" with ten-frames calculating empty boxes).
+    - *Days 18–19*: Teen Numbers 11 to 20 ("Ten and Some More" one-to-one touch points to landmark 20).
+    - *Day 20*: Mid-Quarter 1 Math Grand Champion Review.
+- **🔬 NGSS Inquiry Science Track (Days 1–20)**:
+  - Living vs. Non-Living, plant needs and life cycles, animal parents and offspring, weather tracking, pushes and pulls, gravity, plant anatomy (roots, stems, leaves), flowers & seeds, habitats (ocean, forest, desert, arctic), animal diets (herbivores, carnivores, omnivores), day vs. night sky, the four seasons, states of matter (solids vs. liquids), sound vibrations, light & shadows, and the Day 20 Nature Detective Grand Champion review.
+- **🗺️ Core Knowledge Social Studies & Geography Track (Days 1–20 CKHG)**:
+  - Maps vs. globes, cardinal directions & compass rose, map keys, landforms, types of communities (urban, suburban, rural), transportation (land, water, air), basic economics (goods vs. services, needs vs. wants), the 7 continents, the 5 oceans, the White House & national capital, the Statue of Liberty, national holidays (4th of July & Thanksgiving), and the Day 20 Junior Global Citizen Grand Champion review.
 - **✨ Personalized Custom Adventure Studio**: Create fun, custom worksheets starring your child and their pets/friends as the main heroes!
   - Supports **Kindergarten through 5th Grade** across **Language Arts, Math, Science, and Social Studies**.
   - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.
