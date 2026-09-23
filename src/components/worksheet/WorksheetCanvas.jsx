@@ -153,7 +153,11 @@ export default function WorksheetCanvas({ worksheet, showCountingDots = false })
                   problem.type === 'quantity-comparison' ||
                   problem.type === 'numeral-comparison' ||
                   problem.type === 'concrete-addition' ||
-                  problem.type === 'concrete-subtraction'
+                  problem.type === 'concrete-subtraction' ||
+                  problem.type === 'vertical-math' ||
+                  problem.type === 'story-problem' ||
+                  problem.type === 'fact-family' ||
+                  problem.type === 'equation-balance'
                 ) {
                   return <CountingObjectsView key={problem.id} problem={problem} />;
                 }

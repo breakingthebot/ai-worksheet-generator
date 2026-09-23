@@ -6,6 +6,10 @@
 import { generateTenFrame } from '../math/tenFrame.js';
 import { createNumberBond } from '../math/numberBonds.js';
 import { getDecodableWords, generateNonsenseWords } from '../phonics/ogSequence.js';
+import { mathDays31_40 } from './days31_40/mathDays31_40.js';
+import { phonicsDays31_40 } from './days31_40/phonicsDays31_40.js';
+import { scienceDays31_40 } from './days31_40/scienceDays31_40.js';
+import { socialStudiesDays31_40 } from './days31_40/socialStudiesDays31_40.js';
 
 export const DAILY_CURRICULUM = {
   // =========================================================================
@@ -1764,6 +1768,7 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+    ...mathDays31_40,
   ],
 
   // =========================================================================
@@ -3950,6 +3955,7 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+    ...phonicsDays31_40,
   ],
 
   // =========================================================================
@@ -5839,6 +5845,7 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+    ...scienceDays31_40,
   ],
 
   // =========================================================================
@@ -8004,18 +8011,19 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+    ...socialStudiesDays31_40,
   ],
 };
 
 /**
  * Retrieves the lesson object for a given subject and day number.
  * @param {'math'|'phonics'|'science'|'socialStudies'} subject 
- * @param {number} dayNumber (1 to 30)
+ * @param {number} dayNumber (1 to 40)
  * @returns {object}
  */
 export function getDailyLesson(subject, dayNumber) {
   const track = DAILY_CURRICULUM[subject] || DAILY_CURRICULUM.math;
-  const maxDay = track.length || 30;
+  const maxDay = track.length || 40;
   const safeDay = Math.max(1, Math.min(maxDay, dayNumber));
   return track.find((d) => d.day === safeDay) || track[0];
 }

@@ -9,9 +9,9 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
   - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
 - **🛡️ Strict Daily Progression Boundaries ("No Further" Guardrails)**:
-  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies; 120 lessons total across Days 1–30) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
+  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies; 160 lessons total across Days 1–40) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
   - Rendered directly inside the **Parent Guide Cockpit** so parents and tutors know exactly what skills are targeted and what concepts are strictly disallowed on each day.
-- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–30)**:
+- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–40)**:
   - Strict evidence-based prerequisite sequence eliminating premature leaps:
     - *Days 1–3*: Sound clues and formations for `/m/`, short `/a/`, and stop consonant `/t/`.
     - *Days 4–6*: First blending with VC "at", CVC "mat", and continuous `/s/` / "sat".
@@ -28,7 +28,12 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
     - *Day 26*: The FLOSS Rule (doubling `ff`, `ll`, `ss` in single-syllable short-vowel words: puff, bell, hill, miss).
     - *Days 27–29*: Consonant `w` & question digraph `wh` (wet, win, whip), final `x` (/ks/) & initial `y` (/j/), letter pair `qu` (/kw/) & buzzing `z` (quick, quiz, zip, buzz).
     - *Day 30*: Complete Alphabet (A–Z) & Digraph Grand Champion Decodable Reader (*"The quick fox ran past the bell. A duck swam to the big red ship."*).
-- **🔢 Kindergarten Math Progression (Days 1–30 CCSS K.CC, K.OA & Singapore CPA)**:
+    - *Days 31–33*: Initial L-Blends (`bl`, `cl`, `fl`, `gl`, `pl`, `sl`) with short vowels and decodables (*"The black cat can clap. A red sled on the hill."*).
+    - *Days 34–36*: Initial R-Blends (`br`, `cr`, `dr`, `fr`, `gr`, `tr`, `pr`) with short vowels and decodables (*"A frog can grin at the little crab."*).
+    - *Days 37–38*: Initial S-Blends (`sm`, `sn`, `sp`, `st`, `sw`) with short vowels and decodables (*"Stop at the red light. The duck swam past the big ship."*).
+    - *Day 39*: Blend vs. Digraph Contrast (hearing two distinct phonemes in blends vs. two letters making one phoneme in digraphs: `ship` vs `slip`, `chin` vs `crab`).
+    - *Day 40*: Pre-Quarter 1 Phonics Grand Champion Decodable Reader (*"The green frog can swim to the red sled. A crab on a black rock can spin and grin."*).
+- **🔢 Kindergarten Math Progression (Days 1–40 CCSS K.CC, K.OA & Singapore CPA)**:
   - Early numeracy, decomposition, and concrete operations continuum:
     - *Days 1–5*: Tactile counting points 1–3, 5-frame arrays, successive "one more", and comparing sets for MORE and FEWER.
     - *Days 6–10*: Ten-frame landmarks (6 to 10), empty space complements, and direct numeral comparisons 1–10.
@@ -42,10 +47,20 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
     - *Days 26–28*: Concept of Taking Away (−), introducing the minus symbol with concrete crossed-out visuals, and subtraction facts within 4 ($4-2=2, 3-2=1, 4-3=1$).
     - *Day 29*: Subtracting Zero ($n-0=n$) and Subtracting All ($n-n=0$).
     - *Day 30*: Month 2 Fact Fluency Grand Champion (Mixed addition and subtraction within 5).
-- **🔬 NGSS Inquiry Science Track (Days 1–30)**:
-  - Living vs. Non-Living, plant needs and life cycles, animal parents and offspring, weather tracking, pushes and pulls, gravity, plant anatomy (roots, stems, leaves), flowers & seeds, habitats (ocean, forest, desert, arctic), animal diets, day vs. night sky, the four seasons, states of matter (solids vs. liquids), sound vibrations, light & shadows, Day 20 review, animal camouflage, nocturnal vs. diurnal animals, winter preparations (hibernate, migrate, adapt), the water cycle (sun, clouds, rain), melting/freezing phase changes, air & wind as matter, ramps & friction, magnetic attraction & repulsion, sink vs. float buoyancy, and the Month 2 Young Scientist Grand Champion review.
-- **🗺️ Core Knowledge Social Studies & Geography Track (Days 1–30 CKHG)**:
-  - Maps vs. globes, cardinal directions & compass rose, map keys, landforms, community types (urban, suburban, rural), transportation, economics (goods vs. services, needs vs. wants), 7 continents, 5 oceans, national symbols (White House, Statue of Liberty), holidays, Day 20 review, Great Americans (Dr. George Washington Carver, Benjamin Franklin, Helen Keller & Anne Sullivan), community landmarks (libraries, post offices, fire stations), neighborhood street maps & safety, voting & majority rule, good sportsmanship & fair play, world cultures & celebrations, caring for Earth (Reduce, Reuse, Recycle), and the Month 2 Junior Global Leader Grand Champion review.
+    - *Day 31*: Strategy: Counting On from a Number (starting with numeral and counting forward 1 or 2 dots: $3+1=4, 3+2=5$).
+    - *Day 32*: Addition Word Stories (Join situations with workspace drawing boxes: kittens, frogs, apples, ducklings).
+    - *Day 33*: Vertical Addition Notation Intro (Stacked number towers with touch points: $2+1=3, 3+2=5$).
+    - *Day 34*: Subtraction Word Stories (Take-away situations with cross-out drawings: strawberries, toy cars, balloons, cookies).
+    - *Day 35*: Vertical Subtraction Notation Intro (Stacked subtraction towers with touch points: $4-1=3, 5-2=3, 3-2=1$).
+    - *Day 36*: Fact Families for 3 and 4 (Addition & subtraction triads showing inverse relationship: $2+1=3, 1+2=3, 3-1=2, 3-2=1$).
+    - *Day 37*: Fact Families for 5 (The 5-family triads: $3+2=5, 2+3=5, 5-2=3, 5-3=2$ and $4+1=5, 1+4=5, 5-1=4, 5-4=1$).
+    - *Day 38*: Comparing Equations: True or False? (Equality as a balance scale: evaluating truth of $2+2=4$ vs $3+1=5$).
+    - *Day 39*: Missing Addends within 5 ($3 + \Box = 5$, $2 + \Box = 4$, $4 + \Box = 5$).
+    - *Day 40*: Pre-Quarter 1 Math Grand Champion Review (Mixed horizontal, vertical towers, word problems, and fact families within 5).
+- **🔬 NGSS Inquiry Science Track (Days 1–40)**:
+  - Living vs. Non-Living, plant needs and life cycles, animal parents and offspring, weather tracking, pushes and pulls, gravity, plant anatomy (roots, stems, leaves), flowers & seeds, habitats (ocean, forest, desert, arctic), animal diets, day vs. night sky, the four seasons, states of matter (solids vs. liquids), sound vibrations, light & shadows, Day 20 review, animal camouflage, nocturnal vs. diurnal animals, winter preparations (hibernate, migrate, adapt), the water cycle (sun, clouds, rain), melting/freezing phase changes, air & wind as matter, ramps & friction, magnetic attraction & repulsion, sink vs. float buoyancy, Month 2 review, sunlight warming Earth surfaces, designing shade structures to cool down, local weather patterns & clothing, severe weather thunderstorm safety ("When thunder roars, go indoors!"), animal habitats (freshwater pond, saltwater ocean & coral reefs, dry desert & camel/cactus adaptations, tropical rainforest & canopy layers), living things changing their environment (beavers building dams, earthworms tunneling soil), and the Pre-Quarter 1 Young Scientist Grand Champion review.
+- **🗺️ Core Knowledge Social Studies & Geography Track (Days 1–40 CKHG)**:
+  - Maps vs. globes, cardinal directions & compass rose, map keys, landforms, community types (urban, suburban, rural), transportation, economics (goods vs. services, needs vs. wants), 7 continents, 5 oceans, national symbols (White House, Statue of Liberty), holidays, Day 20 review, Great Americans (Dr. George Washington Carver, Benjamin Franklin, Helen Keller & Anne Sullivan), community landmarks (libraries, post offices, fire stations), neighborhood street maps & safety, voting & majority rule, good sportsmanship & fair play, world cultures & celebrations, caring for Earth (Reduce, Reuse, Recycle), Month 2 review, American symbols (The Liberty Bell & Philadelphia freedom bell, The Bald Eagle as national emblem of strength, The US Flag 50 stars & 13 stripes with the Pledge of Allegiance), Great Americans (Abraham Lincoln "Honest Abe" log cabin & love of books, George Washington 1st President & Father of Our Country on dollar bill and quarter), American landmarks (Mount Rushmore 60-foot stone presidential carvings in South Dakota), community rules & laws (traffic safety, seat belts, sharing swings), being a good neighbor (kindness, helping elders, keeping parks clean), money basics & US coins (Penny 1¢, Nickel 5¢, Dime 10¢, Quarter 25¢), and the Pre-Quarter 1 Junior Global Leader Grand Champion review.
 - **✨ Personalized Custom Adventure Studio**: Create fun, custom worksheets starring your child and their pets/friends as the main heroes!
   - Supports **Kindergarten through 5th Grade** across **Language Arts, Math, Science, and Social Studies**.
   - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.

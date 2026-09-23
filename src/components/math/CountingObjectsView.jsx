@@ -32,9 +32,143 @@ export default function CountingObjectsView({ problem }) {
     totalCount,
     takeAwayCount,
     remainingCount,
+    topNumber,
+    bottomNumber,
+    operator = '+',
+    story,
+    equation,
+    whole,
+    answer,
   } = problem;
 
-  // Render Case 1: Concrete Addition (Part A + Part B = Total)
+  // Render Case 1: Vertical Math Notation (+ / -)
+  if (type === 'vertical-math') {
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: Vertical ${operator === '-' ? 'Subtraction' : 'Addition'}`}
+        className="flex flex-col items-center justify-between"
+      >
+        <p className="text-xs font-semibold text-slate-800 mb-1">{prompt || 'Solve the vertical math problem:'}</p>
+        <div className="flex items-center justify-center my-2 p-3 bg-slate-50/80 rounded-xl border border-slate-200">
+          <div className="flex flex-col items-end text-3xl font-black font-mono text-slate-900 tracking-wider">
+            <div className="flex items-center gap-2">
+              {itemIcon && <span className="text-xl select-none">{itemIcon}</span>}
+              <span>{topNumber}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`text-2xl font-black ${operator === '-' ? 'text-red-600' : 'text-indigo-600'} select-none`}>
+                {operator}
+              </span>
+              <span>{bottomNumber}</span>
+            </div>
+            <div className="w-24 border-b-4 border-slate-900 my-1"></div>
+            <div className="w-14 h-10 border-2 border-slate-900 rounded-lg bg-white flex items-center justify-center text-xl font-bold text-slate-900 shadow-inner">
+              {problem.showAnswer ? answer : ''}
+            </div>
+          </div>
+        </div>
+        {subtext && <p className="text-[10px] text-slate-500 italic text-center">{subtext}</p>}
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 2: Math Word Story with Drawing Workspace
+  if (type === 'story-problem') {
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: Math Word Story`}
+        className="flex flex-col justify-between"
+      >
+        <div className="space-y-1 mb-2">
+          {story && <p className="text-xs font-medium text-slate-800 leading-snug">{story}</p>}
+          <p className="text-xs font-extrabold text-indigo-950">{prompt}</p>
+        </div>
+        {/* Child Drawing Box */}
+        <div className="border-2 border-dashed border-amber-300 rounded-xl p-2 bg-amber-50/40 flex flex-col items-center justify-center min-h-[65px]">
+          <span className="text-[9px] font-black uppercase tracking-wider text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full mb-1">
+            Draw Your Picture Here
+          </span>
+          <div className="flex gap-2 text-2xl select-none opacity-40">
+            {itemIcon}
+          </div>
+        </div>
+        {/* Horizontal Equation Box */}
+        <div className="mt-2 pt-2 border-t border-slate-200 flex items-center justify-center gap-2 text-xs font-bold text-slate-800">
+          <span>Equation:</span>
+          <div className="min-w-[70px] h-8 px-2 border-2 border-slate-900 rounded-lg bg-white flex items-center justify-center font-mono text-sm font-bold">
+            {problem.showAnswer ? equation : ''}
+          </div>
+        </div>
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 3: Fact Family Card (Whole & Parts)
+  if (type === 'fact-family' && whole !== undefined) {
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: Fact Family (${whole})`}
+        className="flex flex-col justify-between"
+      >
+        <p className="text-xs font-semibold text-slate-800 mb-1">{prompt || `Number partners for ${whole}:`}</p>
+        {/* Number Bond Triad */}
+        <div className="flex items-center justify-center gap-3 my-1">
+          <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-black shadow-xs">
+            {whole}
+          </div>
+          <span className="text-xs font-bold text-slate-400">breaks into</span>
+          <div className="flex gap-2">
+            <span className="w-8 h-8 rounded-lg bg-indigo-100 border border-indigo-300 text-indigo-900 flex items-center justify-center text-sm font-black">
+              {partA}
+            </span>
+            <span className="w-8 h-8 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-900 flex items-center justify-center text-sm font-black">
+              {partB}
+            </span>
+          </div>
+        </div>
+        {/* 4 Connected Fact Equations */}
+        <div className="grid grid-cols-2 gap-1 text-[11px] font-mono font-bold text-slate-800 bg-slate-50 p-2 rounded-lg border border-slate-200 mt-1">
+          <div className="p-1 bg-white rounded border border-slate-200 text-center">
+            {partA} + {partB} = {whole}
+          </div>
+          <div className="p-1 bg-white rounded border border-slate-200 text-center">
+            {partB} + {partA} = {whole}
+          </div>
+          <div className="p-1 bg-white rounded border border-slate-200 text-center">
+            {whole} − {partA} = {partB}
+          </div>
+          <div className="p-1 bg-white rounded border border-slate-200 text-center">
+            {whole} − {partB} = {partA}
+          </div>
+        </div>
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 4: Equation Balance / True or False Check
+  if (type === 'equation-balance') {
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: True or False?`}
+        className="flex flex-col justify-between"
+      >
+        <p className="text-xs font-semibold text-slate-800 mb-1">{prompt || 'Is this equation TRUE or FALSE?'}</p>
+        <div className="my-2 p-3 bg-indigo-50/60 rounded-xl border border-indigo-200 flex items-center justify-center">
+          <span className="text-2xl font-black font-mono text-indigo-950 tracking-wider">{equation}</span>
+        </div>
+        <div className="flex items-center justify-around gap-2 pt-2 border-t border-slate-200">
+          <button type="button" className="px-4 py-1 rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-900 text-xs font-black">
+            TRUE (✓)
+          </button>
+          <button type="button" className="px-4 py-1 rounded-lg border-2 border-rose-600 bg-rose-50 text-rose-900 text-xs font-black">
+            FALSE (✕)
+          </button>
+        </div>
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 5: Concrete Addition (Part A + Part B = Total)
   if (type === 'concrete-addition' && partA && partB) {
     const iconA = partA.icon || itemIcon;
     const iconB = partB.icon || itemIcon;

@@ -6,12 +6,12 @@
 import { describe, it, expect } from 'vitest';
 import { DAILY_CURRICULUM, getDailyLesson } from '../src/domain/curriculum/dailySchedule.js';
 
-describe('30-Day Daily Curriculum System', () => {
-  it('contains full 30-day tracks for math, phonics, science, and social studies', () => {
-    expect(DAILY_CURRICULUM.math.length).toBe(30);
-    expect(DAILY_CURRICULUM.phonics.length).toBe(30);
-    expect(DAILY_CURRICULUM.science.length).toBe(30);
-    expect(DAILY_CURRICULUM.socialStudies.length).toBe(30);
+describe('40-Day Daily Curriculum System', () => {
+  it('contains full 40-day tracks for math, phonics, science, and social studies', () => {
+    expect(DAILY_CURRICULUM.math.length).toBe(40);
+    expect(DAILY_CURRICULUM.phonics.length).toBe(40);
+    expect(DAILY_CURRICULUM.science.length).toBe(40);
+    expect(DAILY_CURRICULUM.socialStudies.length).toBe(40);
   });
 
   it('guarantees that every day contains a word-for-word parent script', () => {
@@ -28,9 +28,9 @@ describe('30-Day Daily Curriculum System', () => {
     });
   });
 
-  it('generates valid printable worksheets and answer keys for every day (Days 1 to 30)', () => {
+  it('generates valid printable worksheets and answer keys for every day (Days 1 to 40)', () => {
     ['math', 'phonics', 'science', 'socialStudies'].forEach((subject) => {
-      for (let day = 1; day <= 30; day++) {
+      for (let day = 1; day <= 40; day++) {
         const lesson = getDailyLesson(subject, day);
         const sheet = lesson.generateSheet(1);
 
@@ -51,7 +51,7 @@ describe('30-Day Daily Curriculum System', () => {
     expect(variant1.problems.length).toBe(variant2.problems.length);
   });
 
-  it('supports stepping backwards and boundary clamping up to Day 30', () => {
+  it('supports stepping backwards and boundary clamping up to Day 40', () => {
     let day = 5;
     expect(getDailyLesson('math', day).day).toBe(5);
 
@@ -65,11 +65,11 @@ describe('30-Day Daily Curriculum System', () => {
     day = Math.max(1, day - 1);
     expect(day).toBe(1);
 
-    // Boundary check at day 30
-    day = 30;
-    day = Math.min(30, day + 1);
-    expect(day).toBe(30);
-    expect(getDailyLesson('math', day).day).toBe(30);
+    // Boundary check at day 40
+    day = 40;
+    day = Math.min(40, day + 1);
+    expect(day).toBe(40);
+    expect(getDailyLesson('math', day).day).toBe(40);
   });
 
   it('guarantees Kindergarten Math Days 1-10 adhere to CCSS K.CC Counting & Cardinality without premature operations', () => {
@@ -136,7 +136,7 @@ describe('30-Day Daily Curriculum System', () => {
 
   it('guarantees every day across all 4 subjects has an explicit strictBoundary ("No Further") guardrail', () => {
     ['math', 'phonics', 'science', 'socialStudies'].forEach((subject) => {
-      for (let day = 1; day <= 30; day++) {
+      for (let day = 1; day <= 40; day++) {
         const lesson = getDailyLesson(subject, day);
         expect(lesson.strictBoundary).toBeDefined();
         expect(typeof lesson.strictBoundary).toBe('string');
@@ -411,5 +411,220 @@ describe('30-Day Daily Curriculum System', () => {
     // Social Studies Day 29: Reduce, Reuse, Recycle
     const socDay29 = getDailyLesson('socialStudies', 29).generateSheet(1);
     expect(socDay29.problems[0].options[0]).toContain('BLUE recycling bin');
+  });
+
+  it('guarantees Math Days 31-40 cover counting on, vertical addition/subtraction, story problems, and fact families within 5', () => {
+    // Day 31: Counting On Strategy
+    const mathDay31 = getDailyLesson('math', 31);
+    expect(mathDay31.strictBoundary).toContain('Counting on strategy within 5');
+    const d31Sheet = mathDay31.generateSheet(1);
+    expect(d31Sheet.problems[0].type).toBe('counting-objects');
+    expect(d31Sheet.problems[0].targetNumber).toBeDefined();
+
+    // Day 32: Addition Word Stories (Join situations)
+    const mathDay32 = getDailyLesson('math', 32);
+    expect(mathDay32.strictBoundary).toContain('Single-step join addition');
+    const d32Sheet = mathDay32.generateSheet(1);
+    expect(d32Sheet.problems[0].type).toBe('story-problem');
+    expect(d32Sheet.problems[0].story).toContain('kittens');
+
+    // Day 33: Vertical Addition Towers
+    const mathDay33 = getDailyLesson('math', 33);
+    expect(mathDay33.strictBoundary).toContain('Vertical addition');
+    const d33Sheet = mathDay33.generateSheet(1);
+    expect(d33Sheet.problems[0].type).toBe('vertical-math');
+    expect(d33Sheet.problems[0].operator).toBe('+');
+    expect(d33Sheet.problems[0].topNumber).toBe(2);
+    expect(d33Sheet.problems[0].bottomNumber).toBe(1);
+
+    // Day 34: Subtraction Word Stories (Take-away situations)
+    const mathDay34 = getDailyLesson('math', 34);
+    expect(mathDay34.strictBoundary).toContain('take-away situations');
+    const d34Sheet = mathDay34.generateSheet(1);
+    expect(d34Sheet.problems[0].type).toBe('story-problem');
+    expect(d34Sheet.problems[0].story).toContain('strawberries');
+
+    // Day 35: Vertical Subtraction Towers
+    const mathDay35 = getDailyLesson('math', 35);
+    expect(mathDay35.strictBoundary).toContain('Vertical subtraction');
+    const d35Sheet = mathDay35.generateSheet(1);
+    expect(d35Sheet.problems[0].type).toBe('vertical-math');
+    expect(d35Sheet.problems[0].operator).toBe('-');
+    expect(d35Sheet.problems[0].topNumber).toBe(4);
+    expect(d35Sheet.problems[0].bottomNumber).toBe(1);
+
+    // Day 36: Fact Families for 3 and 4
+    const mathDay36 = getDailyLesson('math', 36);
+    expect(mathDay36.strictBoundary).toContain('Inverse relationship');
+    const d36Sheet = mathDay36.generateSheet(1);
+    expect(d36Sheet.problems[0].type).toBe('fact-family');
+    expect(d36Sheet.problems[0].whole).toBe(3);
+    expect(d36Sheet.problems[0].partA).toBe(2);
+    expect(d36Sheet.problems[0].partB).toBe(1);
+
+    // Day 37: Fact Families for 5
+    const mathDay37 = getDailyLesson('math', 37);
+    expect(mathDay37.strictBoundary).toContain('Fact family triads for target sum 5');
+    const d37Sheet = mathDay37.generateSheet(1);
+    expect(d37Sheet.problems[0].type).toBe('fact-family');
+    expect(d37Sheet.problems[0].whole).toBe(5);
+
+    // Day 38: Comparing Equations (True or False balance)
+    const mathDay38 = getDailyLesson('math', 38);
+    expect(mathDay38.strictBoundary).toContain('Equation truth evaluation within 5');
+    const d38Sheet = mathDay38.generateSheet(1);
+    expect(d38Sheet.problems[0].type).toBe('equation-balance');
+    expect(d38Sheet.problems[0].answer).toBe('True');
+    expect(d38Sheet.problems[1].answer).toBe('False');
+
+    // Day 39: Missing Addends within 5
+    const mathDay39 = getDailyLesson('math', 39);
+    expect(mathDay39.strictBoundary).toContain('Missing addend equations within 5');
+    const d39Sheet = mathDay39.generateSheet(1);
+    expect(d39Sheet.problems[0].prompt).toContain('3 + [ ? ] = 5');
+
+    // Day 40: Pre-Q1 Math Grand Champion Review
+    const mathDay40 = getDailyLesson('math', 40);
+    expect(mathDay40.strictBoundary).toContain('Pre-Quarter 1 comprehensive fluency review');
+    const d40Sheet = mathDay40.generateSheet(1);
+    expect(d40Sheet.problems.some((p) => p.type === 'vertical-math')).toBe(true);
+    expect(d40Sheet.problems.some((p) => p.type === 'story-problem')).toBe(true);
+    expect(d40Sheet.problems.some((p) => p.type === 'fact-family')).toBe(true);
+  });
+
+  it('guarantees Phonics Days 31-40 systematically introduce initial consonant blends (l-blends, r-blends, s-blends) and blend vs digraph contrast', () => {
+    // Day 31: Initial L-Blends bl & cl
+    const d31Sheet = getDailyLesson('phonics', 31).generateSheet(1);
+    expect(d31Sheet.problems.some((p) => p.word === 'black')).toBe(true);
+    expect(d31Sheet.problems.some((p) => p.word === 'clap')).toBe(true);
+
+    // Day 32: Initial L-Blends fl, gl & pl
+    const d32Sheet = getDailyLesson('phonics', 32).generateSheet(1);
+    expect(d32Sheet.problems.some((p) => p.word === 'flag')).toBe(true);
+    expect(d32Sheet.problems.some((p) => p.word === 'glad')).toBe(true);
+    expect(d32Sheet.problems.some((p) => p.word === 'plum')).toBe(true);
+
+    // Day 33: Initial L-Blend sl & decodable sentences
+    const d33Sheet = getDailyLesson('phonics', 33).generateSheet(1);
+    expect(d33Sheet.problems.some((p) => p.word === 'sled')).toBe(true);
+    expect(d33Sheet.decodableSentences[0]).toContain('red sled');
+
+    // Day 34: Initial R-Blends br & cr
+    const d34Sheet = getDailyLesson('phonics', 34).generateSheet(1);
+    expect(d34Sheet.problems.some((p) => p.word === 'crab')).toBe(true);
+    expect(d34Sheet.problems.some((p) => p.word === 'brag')).toBe(true);
+
+    // Day 35: Initial R-Blends dr, fr & gr
+    const d35Sheet = getDailyLesson('phonics', 35).generateSheet(1);
+    expect(d35Sheet.problems.some((p) => p.word === 'drum')).toBe(true);
+    expect(d35Sheet.problems.some((p) => p.word === 'frog')).toBe(true);
+    expect(d35Sheet.problems.some((p) => p.word === 'grin')).toBe(true);
+
+    // Day 36: Initial R-Blends tr & pr
+    const d36Sheet = getDailyLesson('phonics', 36).generateSheet(1);
+    expect(d36Sheet.problems.some((p) => p.word === 'trip')).toBe(true);
+    expect(d36Sheet.problems.some((p) => p.word === 'trap')).toBe(true);
+
+    // Day 37: Initial S-Blends sm, sn & sp
+    const d37Sheet = getDailyLesson('phonics', 37).generateSheet(1);
+    expect(d37Sheet.problems.some((p) => p.word === 'spot')).toBe(true);
+    expect(d37Sheet.problems.some((p) => p.word === 'smell')).toBe(true);
+
+    // Day 38: Initial S-Blends st & sw
+    const d38Sheet = getDailyLesson('phonics', 38).generateSheet(1);
+    expect(d38Sheet.problems.some((p) => p.word === 'stop')).toBe(true);
+    expect(d38Sheet.problems.some((p) => p.word === 'swim')).toBe(true);
+
+    // Day 39: Blend vs Digraph Contrast (ship vs slip, chin vs crab)
+    const d39Sheet = getDailyLesson('phonics', 39).generateSheet(1);
+    expect(d39Sheet.problems[0].prompt).toContain('ship');
+    expect(d39Sheet.problems[1].prompt).toContain('slip');
+
+    // Day 40: Pre-Q1 Grand Champion Decodable Reader
+    const d40Sheet = getDailyLesson('phonics', 40).generateSheet(1);
+    expect(d40Sheet.decodableSentences[0]).toContain('green frog can swim');
+    expect(d40Sheet.decodableSentences[1]).toContain('crab on a black rock');
+  });
+
+  it('guarantees Science and Social Studies Days 31-40 cover sunlight/weather safety/habitats and American symbols/presidents/coins', () => {
+    // Science Day 31: Sun Warms Earth
+    const sciDay31 = getDailyLesson('science', 31).generateSheet(1);
+    expect(sciDay31.problems[0].options[0]).toContain('warm and hot');
+
+    // Science Day 32: Creating Shade
+    const sciDay32 = getDailyLesson('science', 32).generateSheet(1);
+    expect(sciDay32.problems[0].options[0]).toContain('umbrella');
+
+    // Science Day 34: Severe Weather Thunderstorm Safety
+    const sciDay34 = getDailyLesson('science', 34).generateSheet(1);
+    expect(sciDay34.problems[0].options[0]).toContain('When thunder roars, go indoors');
+
+    // Science Day 35: Freshwater Pond
+    const sciDay35 = getDailyLesson('science', 35).generateSheet(1);
+    expect(sciDay35.problems[0].options[0]).toContain('bullfrog');
+
+    // Science Day 36: Saltwater Ocean
+    const sciDay36 = getDailyLesson('science', 36).generateSheet(1);
+    expect(sciDay36.problems[0].options[0]).toContain('blue whale');
+
+    // Science Day 37: Dry Desert
+    const sciDay37 = getDailyLesson('science', 37).generateSheet(1);
+    expect(sciDay37.problems[0].options[0]).toContain('stores water');
+
+    // Science Day 38: Tropical Rainforest
+    const sciDay38 = getDailyLesson('science', 38).generateSheet(1);
+    expect(sciDay38.problems[0].options[0]).toContain('Warm, heavy rain');
+
+    // Science Day 39: Beavers & Worms changing environment
+    const sciDay39 = getDailyLesson('science', 39).generateSheet(1);
+    expect(sciDay39.problems[0].options[0]).toContain('busy beaver');
+
+    // Social Studies Day 31: Liberty Bell
+    const socDay31 = getDailyLesson('socialStudies', 31).generateSheet(1);
+    expect(socDay31.problems[0].options[0]).toContain('freedom and liberty');
+    expect(socDay31.problems[1].options[0]).toContain('zigzag crack');
+
+    // Social Studies Day 32: Bald Eagle
+    const socDay32 = getDailyLesson('socialStudies', 32).generateSheet(1);
+    expect(socDay32.problems[0].options[0]).toContain('Bald Eagle');
+
+    // Social Studies Day 33: US Flag & Pledge
+    const socDay33 = getDailyLesson('socialStudies', 33).generateSheet(1);
+    expect(socDay33.problems[0].options[0]).toContain('50 states');
+    expect(socDay33.problems[2].options[0]).toContain('Over their heart');
+
+    // Social Studies Day 34: Abraham Lincoln
+    const socDay34 = getDailyLesson('socialStudies', 34).generateSheet(1);
+    expect(socDay34.problems[0].options[0]).toContain('log cabin');
+    expect(socDay34.problems[1].prompt).toContain('Honest Abe');
+    expect(socDay34.problems[1].options[0]).toContain('always told the truth');
+
+    // Social Studies Day 35: George Washington
+    const socDay35 = getDailyLesson('socialStudies', 35).generateSheet(1);
+    expect(socDay35.problems[0].options[0]).toContain('George Washington');
+    expect(socDay35.problems[1].options[0]).toContain('Father of Our Country');
+
+    // Social Studies Day 36: Mount Rushmore
+    const socDay36 = getDailyLesson('socialStudies', 36).generateSheet(1);
+    expect(socDay36.problems[0].options[0]).toContain('faces of four US presidents');
+
+    // Social Studies Day 37: Community Rules
+    const socDay37 = getDailyLesson('socialStudies', 37).generateSheet(1);
+    expect(socDay37.problems[0].options[0]).toContain('Stop on Red');
+
+    // Social Studies Day 38: Good Neighbor
+    const socDay38 = getDailyLesson('socialStudies', 38).generateSheet(1);
+    expect(socDay38.problems[0].options[0]).toContain('helps pick up');
+
+    // Social Studies Day 39: Coins (Penny, Dime, Quarter)
+    const socDay39 = getDailyLesson('socialStudies', 39).generateSheet(1);
+    expect(socDay39.problems[0].options[0]).toContain('The Penny');
+    expect(socDay39.problems[1].options[0]).toContain('The Dime');
+    expect(socDay39.problems[2].options[0]).toContain('The Quarter');
+
+    // Social Studies Day 40: Pre-Q1 Global Citizen Champion
+    const socDay40 = getDailyLesson('socialStudies', 40).generateSheet(1);
+    expect(socDay40.problems[0].options[0]).toContain('Liberty Bell');
+    expect(socDay40.problems[1].options[0]).toContain('George Washington');
   });
 });
