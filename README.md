@@ -9,9 +9,9 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.
   - Real-time instructional day tracking (`Quarter • Week • Day X of 180`) with progress indicators.
 - **🛡️ Strict Daily Progression Boundaries ("No Further" Guardrails)**:
-  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies; 80 lessons total) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
+  - Every single lesson across all 4 subjects (Math, Phonics, Science, Social Studies; 120 lessons total across Days 1–30) enforces an explicit cognitive boundary preventing premature conceptual leaps or unintroduced prerequisites.
   - Rendered directly inside the **Parent Guide Cockpit** so parents and tutors know exactly what skills are targeted and what concepts are strictly disallowed on each day.
-- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–20)**:
+- **🔤 Science of Reading & Orton-Gillingham Phonics Progression (Days 1–30)**:
   - Strict evidence-based prerequisite sequence eliminating premature leaps:
     - *Days 1–3*: Sound clues and formations for `/m/`, short `/a/`, and stop consonant `/t/`.
     - *Days 4–6*: First blending with VC "at", CVC "mat", and continuous `/s/` / "sat".
@@ -22,18 +22,30 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
     - *Days 16–18*: Short `/u/` ("sun", "cup", "nut", "bug"), breath `/h/` & letter `k` ("hat", "hot", "hut", "kid"), and short `/e/` ("bed", "red", "net", "pet").
     - *Day 19*: Heart Words ("is", "see", "to", "I") and 5-vowel minimal pair contrast ("pat", "pet", "pit", "pot").
     - *Day 20*: Grand Champion 5 Short Vowels Decodable Story Fluency (*"A big pig had a red cup. The cat sat in the hot sun!"*).
-- **🔢 Kindergarten Math Progression (Days 1–20 CCSS K.CC & Singapore CPA)**:
-  - Early numeracy and decomposition continuum without premature multi-digit operations:
+    - *Days 21–23*: Consonant Digraphs `sh` (/ʃ/ - ship, shop, fish), `th` (/θ/ - thin, thick, path), and `ch` (/tʃ/ - chin, chop, chat).
+    - *Day 24*: The `-ck` spelling rule immediately following short vowels (duck, sock, back, pick).
+    - *Day 25*: Digraph review and connected decodable sentences (*"The duck had a fish in a dish."*).
+    - *Day 26*: The FLOSS Rule (doubling `ff`, `ll`, `ss` in single-syllable short-vowel words: puff, bell, hill, miss).
+    - *Days 27–29*: Consonant `w` & question digraph `wh` (wet, win, whip), final `x` (/ks/) & initial `y` (/j/), letter pair `qu` (/kw/) & buzzing `z` (quick, quiz, zip, buzz).
+    - *Day 30*: Complete Alphabet (A–Z) & Digraph Grand Champion Decodable Reader (*"The quick fox ran past the bell. A duck swam to the big red ship."*).
+- **🔢 Kindergarten Math Progression (Days 1–30 CCSS K.CC, K.OA & Singapore CPA)**:
+  - Early numeracy, decomposition, and concrete operations continuum:
     - *Days 1–5*: Tactile counting points 1–3, 5-frame arrays, successive "one more", and comparing sets for MORE and FEWER.
     - *Days 6–10*: Ten-frame landmarks (6 to 10), empty space complements, and direct numeral comparisons 1–10.
     - *Days 11–16*: Singapore Math CPA Part-Whole Number Bonds (decomposing 3, 4, 5, 6, 7, 8, 9 with visual part-whole bonds).
     - *Day 17*: Complements to 10 ("Friends of 10" with ten-frames calculating empty boxes).
     - *Days 18–19*: Teen Numbers 11 to 20 ("Ten and Some More" one-to-one touch points to landmark 20).
     - *Day 20*: Mid-Quarter 1 Math Grand Champion Review.
-- **🔬 NGSS Inquiry Science Track (Days 1–20)**:
-  - Living vs. Non-Living, plant needs and life cycles, animal parents and offspring, weather tracking, pushes and pulls, gravity, plant anatomy (roots, stems, leaves), flowers & seeds, habitats (ocean, forest, desert, arctic), animal diets (herbivores, carnivores, omnivores), day vs. night sky, the four seasons, states of matter (solids vs. liquids), sound vibrations, light & shadows, and the Day 20 Nature Detective Grand Champion review.
-- **🗺️ Core Knowledge Social Studies & Geography Track (Days 1–20 CKHG)**:
-  - Maps vs. globes, cardinal directions & compass rose, map keys, landforms, types of communities (urban, suburban, rural), transportation (land, water, air), basic economics (goods vs. services, needs vs. wants), the 7 continents, the 5 oceans, the White House & national capital, the Statue of Liberty, national holidays (4th of July & Thanksgiving), and the Day 20 Junior Global Citizen Grand Champion review.
+    - *Days 21–23*: Concept of Putting Together (+), introducing plus and equal symbols with ten-frames, and addition facts for 3 and 4 (including doubles $2+2=4$).
+    - *Day 24*: Adding Zero ($n+0=n$; Identity Property of Addition).
+    - *Day 25*: All Ways to Make 5 ($4+1=5$, $3+2=5$, $2+3=5$, $1+4=5$, $5+0=5$).
+    - *Days 26–28*: Concept of Taking Away (−), introducing the minus symbol with concrete crossed-out visuals, and subtraction facts within 4 ($4-2=2, 3-2=1, 4-3=1$).
+    - *Day 29*: Subtracting Zero ($n-0=n$) and Subtracting All ($n-n=0$).
+    - *Day 30*: Month 2 Fact Fluency Grand Champion (Mixed addition and subtraction within 5).
+- **🔬 NGSS Inquiry Science Track (Days 1–30)**:
+  - Living vs. Non-Living, plant needs and life cycles, animal parents and offspring, weather tracking, pushes and pulls, gravity, plant anatomy (roots, stems, leaves), flowers & seeds, habitats (ocean, forest, desert, arctic), animal diets, day vs. night sky, the four seasons, states of matter (solids vs. liquids), sound vibrations, light & shadows, Day 20 review, animal camouflage, nocturnal vs. diurnal animals, winter preparations (hibernate, migrate, adapt), the water cycle (sun, clouds, rain), melting/freezing phase changes, air & wind as matter, ramps & friction, magnetic attraction & repulsion, sink vs. float buoyancy, and the Month 2 Young Scientist Grand Champion review.
+- **🗺️ Core Knowledge Social Studies & Geography Track (Days 1–30 CKHG)**:
+  - Maps vs. globes, cardinal directions & compass rose, map keys, landforms, community types (urban, suburban, rural), transportation, economics (goods vs. services, needs vs. wants), 7 continents, 5 oceans, national symbols (White House, Statue of Liberty), holidays, Day 20 review, Great Americans (Dr. George Washington Carver, Benjamin Franklin, Helen Keller & Anne Sullivan), community landmarks (libraries, post offices, fire stations), neighborhood street maps & safety, voting & majority rule, good sportsmanship & fair play, world cultures & celebrations, caring for Earth (Reduce, Reuse, Recycle), and the Month 2 Junior Global Leader Grand Champion review.
 - **✨ Personalized Custom Adventure Studio**: Create fun, custom worksheets starring your child and their pets/friends as the main heroes!
   - Supports **Kindergarten through 5th Grade** across **Language Arts, Math, Science, and Social Studies**.
   - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.

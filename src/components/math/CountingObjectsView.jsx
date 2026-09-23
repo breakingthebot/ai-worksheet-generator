@@ -27,9 +27,173 @@ export default function CountingObjectsView({ problem }) {
     groupB,
     comparisonQuestion = 'Which group has MORE?',
     targetNumber,
+    partA,
+    partB,
+    totalCount,
+    takeAwayCount,
+    remainingCount,
   } = problem;
 
-  // Render Case 1: Quantity Comparison (Group A vs Group B)
+  // Render Case 1: Concrete Addition (Part A + Part B = Total)
+  if (type === 'concrete-addition' && partA && partB) {
+    const iconA = partA.icon || itemIcon;
+    const iconB = partB.icon || itemIcon;
+    const total = (partA.count || 0) + (partB.count || 0);
+
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: Putting Together (+)`}
+        className="flex flex-col justify-between"
+      >
+        <div className="text-center mb-1.5">
+          <p className="text-xs font-semibold text-slate-800">{prompt || 'Put the groups together and count in all:'}</p>
+          {subtext && <p className="text-[10px] text-slate-500">{subtext}</p>}
+        </div>
+
+        {/* Concrete Groups Joined by Plus Sign */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 my-2 bg-slate-50/70 p-3 rounded-xl border border-slate-200">
+          {/* Group A Box */}
+          <div className="flex flex-col items-center border border-indigo-200 bg-indigo-50/50 rounded-xl p-2 min-w-[80px]">
+            {partA.label && (
+              <span className="text-[9px] font-black uppercase text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded-full mb-1">
+                {partA.label}
+              </span>
+            )}
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {Array.from({ length: partA.count }).map((_, idx) => (
+                <div key={`pa-${idx}`} className="flex flex-col items-center">
+                  <span className="text-2xl select-none" role="img" aria-label="item-a">
+                    {iconA}
+                  </span>
+                  <span className="w-3.5 h-3.5 rounded-full border border-indigo-400 bg-white text-[9px] font-black text-indigo-700 flex items-center justify-center mt-0.5 shadow-2xs">
+                    {idx + 1}
+                  </span>
+                </div>
+              ))}
+              {partA.count === 0 && (
+                <span className="text-xs font-bold text-slate-400 italic py-2">0 items</span>
+              )}
+            </div>
+          </div>
+
+          {/* Plus Sign */}
+          <div className="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-black shrink-0 shadow-xs">
+            +
+          </div>
+
+          {/* Group B Box */}
+          <div className="flex flex-col items-center border border-emerald-200 bg-emerald-50/50 rounded-xl p-2 min-w-[80px]">
+            {partB.label && (
+              <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full mb-1">
+                {partB.label}
+              </span>
+            )}
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {Array.from({ length: partB.count }).map((_, idx) => (
+                <div key={`pb-${idx}`} className="flex flex-col items-center">
+                  <span className="text-2xl select-none" role="img" aria-label="item-b">
+                    {iconB}
+                  </span>
+                  <span className="w-3.5 h-3.5 rounded-full border border-emerald-400 bg-white text-[9px] font-black text-emerald-700 flex items-center justify-center mt-0.5 shadow-2xs">
+                    {partA.count + idx + 1}
+                  </span>
+                </div>
+              ))}
+              {partB.count === 0 && (
+                <span className="text-xs font-bold text-slate-400 italic py-2">0 items</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Concrete Equation Fill-in Boxes */}
+        <div className="mt-2 pt-2 border-t border-slate-200 flex items-center justify-center gap-2 text-base font-black text-slate-800">
+          <div className="w-9 h-8 border-2 border-indigo-400 rounded-lg bg-white flex items-center justify-center text-sm font-extrabold text-indigo-900 shadow-2xs">
+            {partA.count}
+          </div>
+          <span>+</span>
+          <div className="w-9 h-8 border-2 border-emerald-400 rounded-lg bg-white flex items-center justify-center text-sm font-extrabold text-emerald-900 shadow-2xs">
+            {partB.count}
+          </div>
+          <span>=</span>
+          <div className="w-10 h-8 border-2 border-slate-900 rounded-lg bg-white flex items-center justify-center text-base font-black text-slate-900 shadow-inner">
+            {problem.showAnswer ? total : ''}
+          </div>
+        </div>
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 2: Concrete Subtraction (Take Away with Cross-Out Visuals)
+  if (type === 'concrete-subtraction' && totalCount !== undefined && takeAwayCount !== undefined) {
+    const left = remainingCount !== undefined ? remainingCount : totalCount - takeAwayCount;
+
+    return (
+      <WorkspaceBox
+        title={`Problem #${number}: Taking Away (−)`}
+        className="flex flex-col justify-between"
+      >
+        <div className="text-center mb-1.5">
+          <p className="text-xs font-semibold text-slate-800">{prompt || `Cross out ${takeAwayCount} and count what is left:`}</p>
+          {subtext && <p className="text-[10px] text-slate-500">{subtext}</p>}
+        </div>
+
+        {/* Objects with Cross-Outs for Subtrahend */}
+        <div className="my-2 bg-slate-50/70 p-3 rounded-xl border border-slate-200 flex flex-wrap justify-center items-center gap-3 min-h-[75px]">
+          {Array.from({ length: totalCount }).map((_, idx) => {
+            const isTakenAway = idx >= left;
+            return (
+              <div
+                key={`sub-${idx}`}
+                className={`relative flex flex-col items-center transition-all ${
+                  isTakenAway ? 'opacity-40' : 'opacity-100'
+                }`}
+              >
+                <span className="text-3xl select-none" role="img" aria-label="item">
+                  {itemIcon}
+                </span>
+
+                {isTakenAway ? (
+                  <>
+                    <span className="absolute inset-0 flex items-center justify-center text-red-600 font-black text-2xl select-none">
+                      ✕
+                    </span>
+                    <span className="w-3.5 h-3.5 rounded-full border border-red-300 bg-red-50 text-[8px] font-black text-red-700 flex items-center justify-center mt-0.5">
+                      ✕
+                    </span>
+                  </>
+                ) : (
+                  <span className="w-3.5 h-3.5 rounded-full border border-emerald-400 bg-white text-[9px] font-black text-emerald-700 flex items-center justify-center mt-0.5 shadow-2xs">
+                    {idx + 1}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+          {totalCount === 0 && (
+            <span className="text-xs font-bold text-slate-400 italic py-2">0 items</span>
+          )}
+        </div>
+
+        {/* Concrete Equation Fill-in Boxes */}
+        <div className="mt-2 pt-2 border-t border-slate-200 flex items-center justify-center gap-2 text-base font-black text-slate-800">
+          <div className="w-9 h-8 border-2 border-slate-400 rounded-lg bg-white flex items-center justify-center text-sm font-extrabold text-slate-900 shadow-2xs">
+            {totalCount}
+          </div>
+          <span className="text-red-600 font-black">−</span>
+          <div className="w-9 h-8 border-2 border-red-300 rounded-lg bg-red-50/50 flex items-center justify-center text-sm font-extrabold text-red-700 shadow-2xs">
+            {takeAwayCount}
+          </div>
+          <span>=</span>
+          <div className="w-10 h-8 border-2 border-slate-900 rounded-lg bg-white flex items-center justify-center text-base font-black text-slate-900 shadow-inner">
+            {problem.showAnswer ? left : ''}
+          </div>
+        </div>
+      </WorkspaceBox>
+    );
+  }
+
+  // Render Case 3: Quantity Comparison (Group A vs Group B)
   if (type === 'quantity-comparison' && groupA && groupB) {
     return (
       <WorkspaceBox

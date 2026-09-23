@@ -1028,6 +1028,742 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 21: Concept of Putting Together (Addition within 3)
+    // -------------------------------------------------------------------------
+    {
+      day: 21,
+      title: 'Concept of Putting Together (Addition Stories within 3)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 & K.OA.A.2 (Represent Addition with Objects)',
+      strictBoundary: 'Concrete set addition within 3 using physical objects. No abstract numerals without pictorial representation.',
+      script: {
+        say: '“Here are 2 yellow ducks swimming in the pond: 1, 2! Now 1 more duck joins them! Put them together: how many ducks are in the pond now? 1, 2, 3! 2 and 1 make 3!”',
+        do: 'Place two toys in a circle. Slide one more toy in. Have your child touch and count all toys from left to right.',
+        lookFor: 'Understands that putting groups together makes the total quantity grow bigger. Counts all three objects accurately.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d21-v${variant}`,
+        title: 'Math Day 21: Putting Together (Addition within 3)',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Put the groups together! Touch each picture to count them all, and write the numbers.',
+        kidDirections: {
+          text: '🦆 2 ducks + 1 duck! 👉 Touch each one: 1, 2, 3! ✏️ Write the total!',
+          icons: ['🦆', '👉', '✏️'],
+          badge: 'Day 21 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 2, icon: '🦆', label: 'In Pond' },
+            partB: { count: 1, icon: '🦆', label: 'Joined' },
+            prompt: '2 ducks in the pond + 1 duck joins. How many in all?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-addition',
+            number: 2,
+            partA: { count: 1, icon: '🍎', label: 'Plate' },
+            partB: { count: 1, icon: '🍎', label: 'Bowl' },
+            prompt: '1 apple + 1 apple. How many apples in all?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-addition',
+            number: 3,
+            partA: { count: 1, icon: '⭐', label: 'Sky' },
+            partB: { count: 2, icon: '⭐', label: 'Cloud' },
+            prompt: '1 star + 2 stars. How many stars in all?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-addition',
+            number: 4,
+            partA: { count: 2, icon: '🚗', label: 'Road' },
+            partB: { count: 1, icon: '🚗', label: 'Garage' },
+            prompt: '2 cars + 1 car. How many cars in all?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Put Together', '2 + 1 = 3', '1 + 1 = 2', '⭐ Addition Star!'],
+        },
+        answerKey: [
+          { number: 1, solution: '2 + 1 = 3 ducks' },
+          { number: 2, solution: '1 + 1 = 2 apples' },
+          { number: 3, solution: '1 + 2 = 3 stars' },
+          { number: 4, solution: '2 + 1 = 3 cars' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 22: Introducing Plus (+) and Equal (=) with Ten-Frames
+    // -------------------------------------------------------------------------
+    {
+      day: 22,
+      title: 'Introducing Plus (+) and Equal (=) with Ten-Frames',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 (Understand Symbols + and =)',
+      strictBoundary: 'Symbols + and = grounded in 5-frames/ten-frames. Sums within 4.',
+      script: {
+        say: '“The plus sign + means put together! The equal sign = means is the same as! 1 dot plus 1 dot equals 2 dots!”',
+        do: 'Trace the + sign with your finger: down and across! Trace the = sign: two flat parallel tracks.',
+        lookFor: 'Identifies the plus sign as "put together" and the equal sign as "shows the total amount".',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d22-v${variant}`,
+        title: 'Math Day 22: Symbols Plus (+) and Equal (=)',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Trace the plus and equal signs! Count the objects and complete the addition equations.',
+        kidDirections: {
+          text: '➕ Plus means PUT TOGETHER! 🟰 Equal means TOTAL! ✏️ Write your answers!',
+          icons: ['➕', '🟰', '✏️'],
+          badge: 'Day 22 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 1, icon: '🐶', label: 'Puppies' },
+            partB: { count: 2, icon: '🐶', label: 'More' },
+            prompt: '1 puppy + 2 puppies = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-addition',
+            number: 2,
+            partA: { count: 2, icon: '🎈', label: 'Red' },
+            partB: { count: 2, icon: '🎈', label: 'Blue' },
+            prompt: '2 balloons + 2 balloons = ?',
+          },
+          {
+            id: 'p3',
+            type: 'ten-frame',
+            number: 3,
+            ...generateTenFrame(3),
+            prompt: 'Ten-frame addition: 2 dots + 1 dot = 3 dots',
+          },
+          {
+            id: 'p4',
+            type: 'ten-frame',
+            number: 4,
+            ...generateTenFrame(4),
+            prompt: 'Ten-frame addition: 3 dots + 1 dot = 4 dots',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['+ means Add', '= means Total', '1 + 2 = 3', '2 + 2 = 4'],
+        },
+        answerKey: [
+          { number: 1, solution: '1 + 2 = 3 puppies' },
+          { number: 2, solution: '2 + 2 = 4 balloons' },
+          { number: 3, solution: '2 dots + 1 dot = 3 dots' },
+          { number: 4, solution: '3 dots + 1 dot = 4 dots' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 23: Addition Facts for 3 and 4 (Doubles 2+2=4)
+    // -------------------------------------------------------------------------
+    {
+      day: 23,
+      title: 'Addition Facts for 3 and 4 (Doubles 2+2=4)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.5 (Fluency Within 5)',
+      strictBoundary: 'Addition facts for sums of 3 and 4. No sums exceeding 4 yet.',
+      script: {
+        say: '“2 ladybugs on this leaf and 2 on that leaf! That is a DOUBLE! 2 + 2 = 4! What other ways make 4? 3 + 1 = 4!”',
+        do: 'Hold up two fingers on your left hand and two on your right. Clap them together: 4 fingers!',
+        lookFor: 'Recognizes the double 2+2=4 instantly and shows that order doesn’t change the sum (3+1 and 1+3).',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d23-v${variant}`,
+        title: 'Math Day 23: Addition Facts for 3 and 4',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Practice the addition facts that make 3 and 4! Notice the double 2 + 2 = 4!',
+        kidDirections: {
+          text: '🐞 2 + 2 = 4 DOUBLE! 🐸 3 + 1 = 4! ✏️ Fill in the sums!',
+          icons: ['🐞', '🐸', '✏️'],
+          badge: 'Day 23 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 2, icon: '🐞', label: 'Leaf A' },
+            partB: { count: 2, icon: '🐞', label: 'Leaf B' },
+            prompt: 'Double fact: 2 ladybugs + 2 ladybugs = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-addition',
+            number: 2,
+            partA: { count: 3, icon: '🐸', label: 'Log' },
+            partB: { count: 1, icon: '🐸', label: 'Rock' },
+            prompt: '3 frogs + 1 frog = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-addition',
+            number: 3,
+            partA: { count: 1, icon: '🐟', label: 'Left' },
+            partB: { count: 3, icon: '🐟', label: 'Right' },
+            prompt: '1 fish + 3 fish = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-addition',
+            number: 4,
+            partA: { count: 2, icon: '🍪', label: 'Plate' },
+            partB: { count: 1, icon: '🍪', label: 'Jar' },
+            prompt: '2 cookies + 1 cookie = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['2 + 2 = 4 (Double)', '3 + 1 = 4', '1 + 3 = 4', '2 + 1 = 3'],
+        },
+        answerKey: [
+          { number: 1, solution: '2 + 2 = 4 ladybugs' },
+          { number: 2, solution: '3 + 1 = 4 frogs' },
+          { number: 3, solution: '1 + 3 = 4 fish' },
+          { number: 4, solution: '2 + 1 = 3 cookies' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 24: Adding Zero (The Identity Property of Addition)
+    // -------------------------------------------------------------------------
+    {
+      day: 24,
+      title: 'Adding Zero (The Identity Property of Addition)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 & K.OA.A.2 (Zero in Addition)',
+      strictBoundary: 'Adding zero to numbers 0 through 4 (n + 0 = n). Visualizing an empty group.',
+      script: {
+        say: '“You have 3 juicy strawberries on your plate. Mom brings 0 strawberries. How many strawberries do you have? Still 3! Adding zero leaves the number unchanged!”',
+        do: 'Show an open hand with 3 coins and an empty hand with 0 coins. Put them together: still 3 coins!',
+        lookFor: 'Explains that zero means nothing was added, so the original number stays the same.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d24-v${variant}`,
+        title: 'Math Day 24: Adding Zero (n + 0 = n)',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Add zero to each number. Remember: adding 0 means adding nothing at all!',
+        kidDirections: {
+          text: '🍓 3 + 0 = 3! 🧸 Adding zero keeps the number the SAME! ✏️ Write the answers!',
+          icons: ['🍓', '🧸', '✏️'],
+          badge: 'Day 24 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 3, icon: '🍓', label: 'Plate' },
+            partB: { count: 0, icon: '🍓', label: 'Bowl (Empty)' },
+            prompt: '3 strawberries + 0 strawberries = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-addition',
+            number: 2,
+            partA: { count: 4, icon: '🧸', label: 'Bed' },
+            partB: { count: 0, icon: '🧸', label: 'Floor (Empty)' },
+            prompt: '4 teddy bears + 0 teddy bears = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-addition',
+            number: 3,
+            partA: { count: 0, icon: '⚽', label: 'Box (Empty)' },
+            partB: { count: 2, icon: '⚽', label: 'Grass' },
+            prompt: '0 soccer balls + 2 soccer balls = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-addition',
+            number: 4,
+            partA: { count: 1, icon: '🧁', label: 'Stand' },
+            partB: { count: 0, icon: '🧁', label: 'Oven (Empty)' },
+            prompt: '1 cupcake + 0 cupcakes = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['3 + 0 = 3', '4 + 0 = 4', '0 + 2 = 2', 'Zero Rule: Same!'],
+        },
+        answerKey: [
+          { number: 1, solution: '3 + 0 = 3 strawberries' },
+          { number: 2, solution: '4 + 0 = 4 bears' },
+          { number: 3, solution: '0 + 2 = 2 soccer balls' },
+          { number: 4, solution: '1 + 0 = 1 cupcake' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 25: All Ways to Make 5 (Decomposing and Composing 5)
+    // -------------------------------------------------------------------------
+    {
+      day: 25,
+      title: 'All Ways to Make 5 (Decomposing and Composing 5)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.3 & K.OA.A.5 (Decompose and Add Within 5)',
+      strictBoundary: 'All combinations that make 5. No numbers greater than 5.',
+      script: {
+        say: '“High five! Your whole hand has 5 fingers. Look at the ways to make 5: 4 and 1, 3 and 2, 2 and 3, 1 and 4, and 5 and 0!”',
+        do: 'Use five counters. Have child push 4 to one side and 1 to the other. Then 3 and 2.',
+        lookFor: 'Systematically shows all number partner pairs that add up to 5.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d25-v${variant}`,
+        title: 'Math Day 25: All Ways to Make 5',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Find all the number partners that add up to 5! Complete each addition problem.',
+        kidDirections: {
+          text: '🖐️ High Five! 4+1, 3+2, 2+3, 1+4 all make 5! ✏️ Write your sums!',
+          icons: ['🖐️', '🐝', '✏️'],
+          badge: 'Day 25 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 4, icon: '🐝', label: 'Hive' },
+            partB: { count: 1, icon: '🐝', label: 'Flower' },
+            prompt: '4 bees + 1 bee = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-addition',
+            number: 2,
+            partA: { count: 3, icon: '🦋', label: 'Garden' },
+            partB: { count: 2, icon: '🦋', label: 'Tree' },
+            prompt: '3 butterflies + 2 butterflies = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-addition',
+            number: 3,
+            partA: { count: 2, icon: '🐢', label: 'Grass' },
+            partB: { count: 3, icon: '🐢', label: 'Sand' },
+            prompt: '2 turtles + 3 turtles = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-addition',
+            number: 4,
+            partA: { count: 1, icon: '🐬', label: 'Surface' },
+            partB: { count: 4, icon: '🐬', label: 'Deep' },
+            prompt: '1 dolphin + 4 dolphins = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['4 + 1 = 5', '3 + 2 = 5', '2 + 3 = 5', '1 + 4 = 5'],
+        },
+        answerKey: [
+          { number: 1, solution: '4 + 1 = 5 bees' },
+          { number: 2, solution: '3 + 2 = 5 butterflies' },
+          { number: 3, solution: '2 + 3 = 5 turtles' },
+          { number: 4, solution: '1 + 4 = 5 dolphins' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 26: Concept of Taking Away (Concrete Subtraction Stories)
+    // -------------------------------------------------------------------------
+    {
+      day: 26,
+      title: 'Concept of Taking Away (Concrete Subtraction Stories)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 & K.OA.A.2 (Represent Subtraction with Objects)',
+      strictBoundary: 'Physical take-away subtraction from sets up to 4. No minus symbol without physical crossing-out.',
+      script: {
+        say: '“4 little birds were sitting on a fence. 1 bird flew away! Whoosh! How many birds are still sitting on the fence? Count them: 1, 2, 3!”',
+        do: 'Line up 4 small blocks. Have your child physically pick up 1 block and hide it behind their back.',
+        lookFor: 'Understands that taking away makes the group smaller. Accurately counts the remaining objects.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d26-v${variant}`,
+        title: 'Math Day 26: Taking Away (Subtraction Stories)',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Cross out the ones that go away! Count how many objects are left in the group.',
+        kidDirections: {
+          text: '🐦 4 birds on a fence! 💨 1 flies away! ✏️ Cross out 1 and count who is left!',
+          icons: ['🐦', '💨', '✏️'],
+          badge: 'Day 26 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-subtraction',
+            number: 1,
+            totalCount: 4,
+            takeAwayCount: 1,
+            itemIcon: '🐦',
+            prompt: '4 birds on a fence. 1 flies away. How many are left?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-subtraction',
+            number: 2,
+            totalCount: 3,
+            takeAwayCount: 1,
+            itemIcon: '🍪',
+            prompt: '3 cookies on a plate. 1 is eaten. How many are left?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-subtraction',
+            number: 3,
+            totalCount: 4,
+            takeAwayCount: 2,
+            itemIcon: '🍎',
+            prompt: '4 apples in a basket. 2 are given to friends. How many are left?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-subtraction',
+            number: 4,
+            totalCount: 2,
+            takeAwayCount: 1,
+            itemIcon: '🎈',
+            prompt: '2 balloons. 1 pops! How many are left?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Take Away', '4 − 1 = 3', '3 − 1 = 2', '⭐ Subtraction Star!'],
+        },
+        answerKey: [
+          { number: 1, solution: '4 − 1 = 3 birds left' },
+          { number: 2, solution: '3 − 1 = 2 cookies left' },
+          { number: 3, solution: '4 − 2 = 2 apples left' },
+          { number: 4, solution: '2 − 1 = 1 balloon left' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 27: Introducing Minus (−) with Ten-Frames and Sets
+    // -------------------------------------------------------------------------
+    {
+      day: 27,
+      title: 'Introducing Minus (−) with Ten-Frames and Sets',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 (Understand the Minus Sign −)',
+      strictBoundary: 'Minus symbol grounded in concrete sets and 5-frames. Minuends within 5.',
+      script: {
+        say: '“The minus sign − means TAKE AWAY! 5 take away 1 equals 4: 5 − 1 = 4!”',
+        do: 'Trace the flat minus line in the air. Tap 5 fingers, fold 1 down: 4 remain.',
+        lookFor: 'Reads the equation correctly aloud as "5 minus 1 equals 4".',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d27-v${variant}`,
+        title: 'Math Day 27: The Minus Sign (−)',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Read the minus sign as "take away". Cross out the items and write how many are left.',
+        kidDirections: {
+          text: '➖ Minus means TAKE AWAY! 🚗 5 − 1 = 4! ✏️ Write your answers!',
+          icons: ['➖', '🚗', '✏️'],
+          badge: 'Day 27 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-subtraction',
+            number: 1,
+            totalCount: 5,
+            takeAwayCount: 1,
+            itemIcon: '🚗',
+            prompt: '5 cars parked. 1 drives away: 5 − 1 = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-subtraction',
+            number: 2,
+            totalCount: 5,
+            takeAwayCount: 2,
+            itemIcon: '⭐',
+            prompt: '5 stars in the sky. 2 hide behind clouds: 5 − 2 = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-subtraction',
+            number: 3,
+            totalCount: 4,
+            takeAwayCount: 1,
+            itemIcon: '🐶',
+            prompt: '4 puppies playing. 1 runs home: 4 − 1 = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-subtraction',
+            number: 4,
+            totalCount: 3,
+            takeAwayCount: 2,
+            itemIcon: '🐸',
+            prompt: '3 frogs on a log. 2 hop away: 3 − 2 = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['− means Take Away', '5 − 1 = 4', '5 − 2 = 3', '4 − 1 = 3'],
+        },
+        answerKey: [
+          { number: 1, solution: '5 − 1 = 4 cars' },
+          { number: 2, solution: '5 − 2 = 3 stars' },
+          { number: 3, solution: '4 − 1 = 3 puppies' },
+          { number: 4, solution: '3 − 2 = 1 frog' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 28: Subtraction Facts Within 4 (4−2, 3−2, 4−3, 3−1)
+    // -------------------------------------------------------------------------
+    {
+      day: 28,
+      title: 'Subtraction Facts Within 4 (4−2, 3−2, 4−3, 3−1)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.5 (Fluently Subtract Within 5)',
+      strictBoundary: 'Subtraction facts with minuends up to 4. No minuends greater than 5.',
+      script: {
+        say: '“Double 2 was 4 (2+2=4). If we take 2 away from 4, what is left? Exactly 2! 4 − 2 = 2!”',
+        do: 'Show four fingers. Fold two down. Observe the symmetry.',
+        lookFor: 'Recognizes the inverse relationship between 2+2=4 and 4-2=2.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d28-v${variant}`,
+        title: 'Math Day 28: Subtraction Facts Within 4',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Practice subtraction facts with numbers up to 4! Cross out and solve.',
+        kidDirections: {
+          text: '🍒 4 − 2 = 2! 🍇 3 − 2 = 1! ✏️ Subtract and write the answer!',
+          icons: ['🍒', '🍇', '✏️'],
+          badge: 'Day 28 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-subtraction',
+            number: 1,
+            totalCount: 4,
+            takeAwayCount: 2,
+            itemIcon: '🍒',
+            prompt: '4 cherries. 2 are picked: 4 − 2 = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-subtraction',
+            number: 2,
+            totalCount: 3,
+            takeAwayCount: 2,
+            itemIcon: '🍇',
+            prompt: '3 grapes. 2 are eaten: 3 − 2 = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-subtraction',
+            number: 3,
+            totalCount: 4,
+            takeAwayCount: 3,
+            itemIcon: '🥕',
+            prompt: '4 carrots. Bunny eats 3: 4 − 3 = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-subtraction',
+            number: 4,
+            totalCount: 3,
+            takeAwayCount: 1,
+            itemIcon: '🍓',
+            prompt: '3 strawberries. 1 is washed: 3 − 1 = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['4 − 2 = 2', '3 − 2 = 1', '4 − 3 = 1', '3 − 1 = 2'],
+        },
+        answerKey: [
+          { number: 1, solution: '4 − 2 = 2 cherries' },
+          { number: 2, solution: '3 − 2 = 1 grape' },
+          { number: 3, solution: '4 − 3 = 1 carrot' },
+          { number: 4, solution: '3 − 1 = 2 strawberries' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 29: Subtracting Zero (n−0=n) & Subtracting All (n−n=0)
+    // -------------------------------------------------------------------------
+    {
+      day: 29,
+      title: 'Subtracting Zero (n−0=n) & Subtracting All (n−n=0)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.1 & K.OA.A.2 (Zero Principles in Subtraction)',
+      strictBoundary: 'Subtracting 0 and subtracting all (n - 0 = n and n - n = 0). Minuends within 5.',
+      script: {
+        say: '“If you have 4 stickers and give away 0 stickers, you still have 4 stickers (4 − 0 = 4)! But if you give away all 4 stickers, you have 0 left (4 − 4 = 0)!”',
+        do: 'Place 4 pennies on the table. Ask child to take away 0 (touch nothing). Then ask them to take away all 4.',
+        lookFor: 'Articulates that subtracting nothing leaves the number alone, while subtracting everything leaves zero.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d29-v${variant}`,
+        title: 'Math Day 29: Subtracting Zero and Subtracting All',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Watch what happens when you subtract zero or subtract the whole group!',
+        kidDirections: {
+          text: '⭐ 4 − 0 = 4 (None left behind)! 💥 4 − 4 = 0 (All gone)! ✏️ Write your answers!',
+          icons: ['⭐', '💥', '✏️'],
+          badge: 'Day 29 Math',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-subtraction',
+            number: 1,
+            totalCount: 4,
+            takeAwayCount: 0,
+            itemIcon: '⭐',
+            prompt: '4 stars. Take away 0: 4 − 0 = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-subtraction',
+            number: 2,
+            totalCount: 4,
+            takeAwayCount: 4,
+            itemIcon: '⭐',
+            prompt: '4 stars. Take away all 4: 4 − 4 = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-subtraction',
+            number: 3,
+            totalCount: 5,
+            takeAwayCount: 0,
+            itemIcon: '🐟',
+            prompt: '5 fish. Take away 0: 5 − 0 = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-subtraction',
+            number: 4,
+            totalCount: 5,
+            takeAwayCount: 5,
+            itemIcon: '🐟',
+            prompt: '5 fish. Take away all 5: 5 − 5 = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['4 − 0 = 4', '4 − 4 = 0', '5 − 0 = 5', '5 − 5 = 0'],
+        },
+        answerKey: [
+          { number: 1, solution: '4 − 0 = 4 stars' },
+          { number: 2, solution: '4 − 4 = 0 stars' },
+          { number: 3, solution: '5 − 0 = 5 fish' },
+          { number: 4, solution: '5 − 5 = 0 fish' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 30: Month 2 Math Fact Fluency Grand Champion (Within 5)
+    // -------------------------------------------------------------------------
+    {
+      day: 30,
+      title: 'Month 2 Math Fact Fluency Grand Champion (Within 5)',
+      standard: 'CCSS.MATH.CONTENT.K.OA.A.5 (Month 2 Fact Fluency Grand Champion Within 5)',
+      strictBoundary: 'Fluency within 5 (mixed + and −). No operations exceeding 5.',
+      script: {
+        say: '“Day 30 Grand Champion! You can put together and take away all the way up to 5! Celebrate how fast your math brain is growing!”',
+        do: 'Give a huge high-five for completing Month 2 Math! Let child point out the plus and minus signs before solving.',
+        lookFor: 'Distinguishes between plus (+) and minus (−) symbols accurately and solves facts within 5 with speed and joy.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `math-d30-v${variant}`,
+        title: 'Math Day 30: Month 2 Fact Fluency Grand Champion',
+        subject: 'math',
+        grade: 'K',
+        instructions: 'Celebrate 30 Days of Kindergarten Math! Show your plus and minus fluency within 5!',
+        kidDirections: {
+          text: '🏆 Day 30 Grand Champion! ➕ Plus and ➖ Minus! ✏️ Complete your champion worksheet!',
+          icons: ['🏆', '➕', '➖', '✏️'],
+          badge: 'Day 30 Math Champion',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'concrete-addition',
+            number: 1,
+            partA: { count: 3, icon: '🦁', label: 'Pride A' },
+            partB: { count: 2, icon: '🦁', label: 'Pride B' },
+            prompt: 'Addition Champion: 3 lions + 2 lions = ?',
+          },
+          {
+            id: 'p2',
+            type: 'concrete-subtraction',
+            number: 2,
+            totalCount: 5,
+            takeAwayCount: 3,
+            itemIcon: '🦁',
+            prompt: 'Subtraction Champion: 5 lions − 3 lions = ?',
+          },
+          {
+            id: 'p3',
+            type: 'concrete-addition',
+            number: 3,
+            partA: { count: 2, icon: '🐼', label: 'Left' },
+            partB: { count: 2, icon: '🐼', label: 'Right' },
+            prompt: 'Double Champion: 2 pandas + 2 pandas = ?',
+          },
+          {
+            id: 'p4',
+            type: 'concrete-subtraction',
+            number: 4,
+            totalCount: 4,
+            takeAwayCount: 1,
+            itemIcon: '🐼',
+            prompt: 'Subtraction Champion: 4 pandas − 1 panda = ?',
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['3 + 2 = 5', '5 − 3 = 2', '2 + 2 = 4', '🏆 Day 30 Math Champion!'],
+        },
+        answerKey: [
+          { number: 1, solution: '3 + 2 = 5 lions' },
+          { number: 2, solution: '5 − 3 = 2 lions' },
+          { number: 3, solution: '2 + 2 = 4 pandas' },
+          { number: 4, solution: '4 − 1 = 3 pandas' },
+        ],
+      }),
+    },
   ],
 
   // =========================================================================
@@ -2482,6 +3218,738 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 21: Consonant Digraph "sh" (/ʃ/) & Words "ship", "shop", "fish", "dish"
+    // -------------------------------------------------------------------------
+    {
+      day: 21,
+      title: 'Consonant Digraph "sh" (/ʃ/) & Words "ship", "shop", "fish", "dish"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.B & Orton-Gillingham Phase 2 Consonant Digraph /ʃ/',
+      strictBoundary: 'Digraph sh (two letters, one sound). No unintroduced digraphs (th, ch).',
+      script: {
+        say: '“Put your finger to your lips: /shhhhh/! Two letters S and H team up to make ONE brand new quiet sound: /sh/! S-H-I-P spells SHIP!”',
+        do: 'Make the "quiet" gesture with your pointer finger over lips. Show that s and h make one sound together, not /s/ /h/.',
+        lookFor: 'Recognizes that "sh" counts as a single phoneme tap. Writes s and h together in the first sound box.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d21-v${variant}`,
+        title: 'Phonics Day 21: Consonant Digraph "sh" (ship, shop, fish, dish)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Two letters team up for one sound: /sh/! Tap the sounds and write your words.',
+        kidDirections: {
+          text: '🤫 /sh/ is the quiet sound! 🚢 /sh/ + /i/ + /p/ = SHIP! ✏️ Write your digraph words!',
+          icons: ['🤫', '🚢', '✏️'],
+          badge: 'Day 21 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'ship',
+            phonemes: ['sh', 'i', 'p'],
+            soundClues: [{ icon: '🤫', label: '/sh/' }, { icon: '😁', label: '/i/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'shop',
+            phonemes: ['sh', 'o', 'p'],
+            soundClues: [{ icon: '🤫', label: '/sh/' }, { icon: '😮', label: '/o/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'fish',
+            phonemes: ['f', 'i', 'sh'],
+            soundClues: [{ icon: '🐟', label: '/f/' }, { icon: '😁', label: '/i/' }, { icon: '🤫', label: '/sh/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'dish',
+            phonemes: ['d', 'i', 'sh'],
+            soundClues: [{ icon: '🥁', label: '/d/' }, { icon: '😁', label: '/i/' }, { icon: '🤫', label: '/sh/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['ship', 'shop', 'fish', 'dish'],
+        },
+        answerKey: [
+          { number: 1, solution: 'SH-I-P (/ʃ/ /ɪ/ /p/ = "ship")' },
+          { number: 2, solution: 'SH-O-P (/ʃ/ /ɒ/ /p/ = "shop")' },
+          { number: 3, solution: 'F-I-SH (/f/ /ɪ/ /ʃ/ = "fish")' },
+          { number: 4, solution: 'D-I-SH (/d/ /ɪ/ /ʃ/ = "dish")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 22: Consonant Digraph "th" (/θ/) & Words "thin", "thick", "path", "moth"
+    // -------------------------------------------------------------------------
+    {
+      day: 22,
+      title: 'Consonant Digraph "th" (/θ/) & Words "thin", "thick", "path", "moth"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.B & Orton-Gillingham Phase 2 Consonant Digraph /θ/',
+      strictBoundary: 'Digraph th (tongue between teeth). Short vowel CVC/CCVC words.',
+      script: {
+        say: '“Stick your tongue slightly between your teeth and blow soft air: /thhhhh/! T and H make the tongue sound! T-H-I-N spells THIN!”',
+        do: 'Look in the mirror: check that tongue tip peeks out between upper and lower front teeth for /th/.',
+        lookFor: 'Produces unvoiced /th/ without substituting /f/ (e.g. says "thin", not "fin"). Writes th together.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d22-v${variant}`,
+        title: 'Phonics Day 22: Consonant Digraph "th" (thin, thick, path, moth)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Gently stick your tongue between teeth: /th/! Tap and spell each word.',
+        kidDirections: {
+          text: '👅 Tongue between teeth: /th/! 🏃 /th/ + /i/ + /n/ = THIN! ✏️ Write your words!',
+          icons: ['👅', '🏃', '✏️'],
+          badge: 'Day 22 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'thin',
+            phonemes: ['th', 'i', 'n'],
+            soundClues: [{ icon: '👅', label: '/th/' }, { icon: '😁', label: '/i/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'thick',
+            phonemes: ['th', 'i', 'ck'],
+            soundClues: [{ icon: '👅', label: '/th/' }, { icon: '😁', label: '/i/' }, { icon: '🥫', label: '/k/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'path',
+            phonemes: ['p', 'a', 'th'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '🍎', label: '/a/' }, { icon: '👅', label: '/th/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'moth',
+            phonemes: ['m', 'o', 'th'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '😮', label: '/o/' }, { icon: '👅', label: '/th/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['thin', 'thick', 'path', 'moth'],
+        },
+        answerKey: [
+          { number: 1, solution: 'TH-I-N (/θ/ /ɪ/ /n/ = "thin")' },
+          { number: 2, solution: 'TH-I-CK (/θ/ /ɪ/ /k/ = "thick")' },
+          { number: 3, solution: 'P-A-TH (/p/ /æ/ /θ/ = "path")' },
+          { number: 4, solution: 'M-O-TH (/m/ /ɒ/ /θ/ = "moth")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 23: Consonant Digraph "ch" (/tʃ/) & Words "chin", "chop", "chat", "rich"
+    // -------------------------------------------------------------------------
+    {
+      day: 23,
+      title: 'Consonant Digraph "ch" (/tʃ/) & Words "chin", "chop", "chat", "rich"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.B & Orton-Gillingham Phase 2 Consonant Digraph /tʃ/',
+      strictBoundary: 'Digraph ch (chin-chucker sound). No trigraph -tch.',
+      script: {
+        say: '“Touch your chin: /ch-ch-ch/ like a choo-choo train! C and H make the happy /ch/ sound! C-H-I-N spells CHIN!”',
+        do: 'Move your bent elbows like train wheels: "ch-ch-ch, choo-choo!" Touch chin when saying /ch/.',
+        lookFor: 'Articulates crisp /tʃ/ without confusing it with continuous /sh/. Writes ch neatly.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d23-v${variant}`,
+        title: 'Phonics Day 23: Consonant Digraph "ch" (chin, chop, chat, rich)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Chug like a train: /ch-ch-ch/! Tap each sound and write the words on the lines.',
+        kidDirections: {
+          text: '🚂 /ch/ like a choo-choo train! 🧔 /ch/ + /i/ + /n/ = CHIN! ✏️ Write your ch words!',
+          icons: ['🚂', '🧔', '✏️'],
+          badge: 'Day 23 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'chin',
+            phonemes: ['ch', 'i', 'n'],
+            soundClues: [{ icon: '🚂', label: '/ch/' }, { icon: '😁', label: '/i/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'chop',
+            phonemes: ['ch', 'o', 'p'],
+            soundClues: [{ icon: '🚂', label: '/ch/' }, { icon: '😮', label: '/o/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'chat',
+            phonemes: ['ch', 'a', 't'],
+            soundClues: [{ icon: '🚂', label: '/ch/' }, { icon: '🍎', label: '/a/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'rich',
+            phonemes: ['r', 'i', 'ch'],
+            soundClues: [{ icon: '🔴', label: '/r/' }, { icon: '😁', label: '/i/' }, { icon: '🚂', label: '/ch/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['chin', 'chop', 'chat', 'rich'],
+        },
+        answerKey: [
+          { number: 1, solution: 'CH-I-N (/tʃ/ /ɪ/ /n/ = "chin")' },
+          { number: 2, solution: 'CH-O-P (/tʃ/ /ɒ/ /p/ = "chop")' },
+          { number: 3, solution: 'CH-A-T (/tʃ/ /æ/ /t/ = "chat")' },
+          { number: 4, solution: 'R-I-CH (/r/ /ɪ/ /tʃ/ = "rich")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 24: The "-ck" Rule & Words "duck", "sock", "back", "pick"
+    // -------------------------------------------------------------------------
+    {
+      day: 24,
+      title: 'The "-ck" Rule & Words "duck", "sock", "back", "pick"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.D & Orton-Gillingham Spelling Rule: -ck',
+      strictBoundary: 'Spelling rule -ck after single short vowel at end of one-syllable word.',
+      script: {
+        say: '“Here is a secret spelling rule: When you hear /k/ right after a short vowel at the end of a short word, we spell it with C and K together: -ck! D-U-C-K spells DUCK!”',
+        do: 'Point to the vowel in "duck": "Is /u/ short? Yes! Does /k/ come right after? Yes! That means -CK team!"',
+        lookFor: 'Applies -ck to spell final /k/ after a short vowel. Does not write just "c" or "k".',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d24-v${variant}`,
+        title: 'Phonics Day 24: The "-ck" Spelling Rule (duck, sock, back, pick)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Use the -ck team right after short vowels! Tap the sounds and spell each word.',
+        kidDirections: {
+          text: '🦆 Short vowel + /k/ at the end = -CK! 🧦 /s/ + /o/ + /ck/ = SOCK! ✏️ Write your words!',
+          icons: ['🦆', '🧦', '✏️'],
+          badge: 'Day 24 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'duck',
+            phonemes: ['d', 'u', 'ck'],
+            soundClues: [{ icon: '🥁', label: '/d/' }, { icon: '☀️', label: '/u/' }, { icon: '🦆', label: '/ck/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'sock',
+            phonemes: ['s', 'o', 'ck'],
+            soundClues: [{ icon: '🐍', label: '/s/' }, { icon: '😮', label: '/o/' }, { icon: '🧦', label: '/ck/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'back',
+            phonemes: ['b', 'a', 'ck'],
+            soundClues: [{ icon: '🦇', label: '/b/' }, { icon: '🍎', label: '/a/' }, { icon: '🔙', label: '/ck/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'pick',
+            phonemes: ['p', 'i', 'ck'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '😁', label: '/i/' }, { icon: '⛏️', label: '/ck/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['duck', 'sock', 'back', 'pick'],
+        },
+        answerKey: [
+          { number: 1, solution: 'D-U-CK (/d/ /ʌ/ /k/ = "duck")' },
+          { number: 2, solution: 'S-O-CK (/s/ /ɒ/ /k/ = "sock")' },
+          { number: 3, solution: 'B-A-CK (/b/ /æ/ /k/ = "back")' },
+          { number: 4, solution: 'P-I-CK (/p/ /ɪ/ /k/ = "pick")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 25: Consonant Digraph Review & Decodable Sentences
+    // -------------------------------------------------------------------------
+    {
+      day: 25,
+      title: 'Consonant Digraph Review (sh, th, ch, ck) & Decodable Sentences',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.B & Digraph Fluency Integration',
+      strictBoundary: 'Synthesis of sh, th, ch, ck with short vowels. No silent-e or vowel teams.',
+      script: {
+        say: '“Day 25 Digraph Detective! You know SH, TH, CH, and CK! Let’s read full decodable sentences smoothly: The duck had a fish in a dish!”',
+        do: 'Track under each word with your child’s finger. Model smooth scooping: read with phrasing, not robot words.',
+        lookFor: 'Accurately reads words containing sh, th, ch, and ck within connected decodable text.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d25-v${variant}`,
+        title: 'Phonics Day 25: Digraph Review & Decodable Sentences',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Review all 4 digraphs: sh, th, ch, and ck! Read the decodable sentences out loud.',
+        kidDirections: {
+          text: '⭐ Digraph Detective! 📖 Read each sentence out loud! ✏️ Write the digraph words!',
+          icons: ['⭐', '📖', '✏️'],
+          badge: 'Day 25 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'ship',
+            phonemes: ['sh', 'i', 'p'],
+            soundClues: [{ icon: '🤫', label: '/sh/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'bath',
+            phonemes: ['b', 'a', 'th'],
+            soundClues: [{ icon: '👅', label: '/th/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'chop',
+            phonemes: ['ch', 'o', 'p'],
+            soundClues: [{ icon: '🚂', label: '/ch/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'rock',
+            phonemes: ['r', 'o', 'ck'],
+            soundClues: [{ icon: '🪨', label: '/ck/' }],
+          },
+        ],
+        decodablePhrases: [
+          'The duck had a fish in a dish.',
+          'I see a big ship on the path.',
+          'Chad can chop the big log.',
+          'Put the red sock in the sack.',
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['sh th ch ck', 'Digraph Star', 'Smooth Reader', '⭐ Day 25 Reader!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'SH-I-P (/ʃ/ /ɪ/ /p/)' },
+          { number: 2, solution: 'B-A-TH (/b/ /æ/ /θ/)' },
+          { number: 3, solution: 'CH-O-P (/tʃ/ /ɒ/ /p/)' },
+          { number: 4, solution: 'R-O-CK (/r/ /ɒ/ /k/)' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 26: The FLOSS Rule & Words "puff", "bell", "hill", "miss"
+    // -------------------------------------------------------------------------
+    {
+      day: 26,
+      title: 'The FLOSS Rule & Words "puff", "bell", "hill", "miss"',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.D & Orton-Gillingham FLOSS Rule (ff, ll, ss)',
+      strictBoundary: 'FLOSS rule (ff, ll, ss) in single-syllable short vowel words. No zz yet.',
+      script: {
+        say: '“Remember dental FLOSS! When a 1-syllable word has 1 short vowel ending in f, l, or s, we double the final letter: P-U-F-F spells PUFF! B-E-L-L spells BELL!”',
+        do: 'Pretend to floss teeth: F-L-S! Show child: 1 vowel + ending in f, l, or s = twin letters at the end!',
+        lookFor: 'Doubles the final consonant (ff, ll, ss) when spelling single-syllable short vowel words.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d26-v${variant}`,
+        title: 'Phonics Day 26: The FLOSS Rule (puff, bell, hill, miss)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Double the final letter for F, L, and S! Tap the sounds and write your words.',
+        kidDirections: {
+          text: '🦷 Remember FLOSS! Double ff, ll, ss at the end! 🔔 /b/ + /e/ + /ll/ = BELL! ✏️ Write your words!',
+          icons: ['🦷', '🔔', '✏️'],
+          badge: 'Day 26 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'puff',
+            phonemes: ['p', 'u', 'ff'],
+            soundClues: [{ icon: '💨', label: '/p/' }, { icon: '☀️', label: '/u/' }, { icon: '💨', label: '/ff/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'bell',
+            phonemes: ['b', 'e', 'll'],
+            soundClues: [{ icon: '🦇', label: '/b/' }, { icon: '🥚', label: '/e/' }, { icon: '🔔', label: '/ll/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'hill',
+            phonemes: ['h', 'i', 'll'],
+            soundClues: [{ icon: '🌬️', label: '/h/' }, { icon: '😁', label: '/i/' }, { icon: '⛰️', label: '/ll/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'miss',
+            phonemes: ['m', 'i', 'ss'],
+            soundClues: [{ icon: '👄', label: '/m/' }, { icon: '😁', label: '/i/' }, { icon: '🐍', label: '/ss/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['puff', 'bell', 'hill', 'miss'],
+        },
+        answerKey: [
+          { number: 1, solution: 'P-U-FF (/p/ /ʌ/ /f/ = "puff")' },
+          { number: 2, solution: 'B-E-LL (/b/ /ɛ/ /l/ = "bell")' },
+          { number: 3, solution: 'H-I-LL (/h/ /ɪ/ /l/ = "hill")' },
+          { number: 4, solution: 'M-I-SS (/m/ /ɪ/ /s/ = "miss")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 27: Consonant "w" & Question Digraph "wh" ("wet", "win", "wag", "whip")
+    // -------------------------------------------------------------------------
+    {
+      day: 27,
+      title: 'Consonant "w" & Question Digraph "wh" ("wet", "win", "wag", "whip")',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.A & Consonant w + Digraph wh',
+      strictBoundary: 'Consonant w and question digraph wh (/hw/ or /w/).',
+      script: {
+        say: '“Pucker your lips round like blowing bubbles: /w-w-w/! W-E-T spells WET! W and H team up for question words: W-H-I-P spells WHIP!”',
+        do: 'Round lips into a tight circle to produce /w/. Contrast /w/ with /v/ (no teeth on lips for w).',
+        lookFor: 'Forms rounded lips without biting lower lip. Writes w with slant down-up-down-up strokes.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d27-v${variant}`,
+        title: 'Phonics Day 27: Consonant "w" & Digraph "wh" (wet, win, wag, whip)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Round your lips for /w/! Tap out each sound and write the words neatly.',
+        kidDirections: {
+          text: '🌊 Round lips for /w/! 🐶 /w/ + /a/ + /g/ = WAG! ✏️ Write your w and wh words!',
+          icons: ['🌊', '🐶', '✏️'],
+          badge: 'Day 27 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'wet',
+            phonemes: ['w', 'e', 't'],
+            soundClues: [{ icon: '💧', label: '/w/' }, { icon: '🥚', label: '/e/' }, { icon: '🪀', label: '/t/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'win',
+            phonemes: ['w', 'i', 'n'],
+            soundClues: [{ icon: '🏆', label: '/w/' }, { icon: '😁', label: '/i/' }, { icon: '👃', label: '/n/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'wag',
+            phonemes: ['w', 'a', 'g'],
+            soundClues: [{ icon: '🐕', label: '/w/' }, { icon: '🍎', label: '/a/' }, { icon: '🎸', label: '/g/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'whip',
+            phonemes: ['wh', 'i', 'p'],
+            soundClues: [{ icon: '💨', label: '/wh/' }, { icon: '😁', label: '/i/' }, { icon: '💨', label: '/p/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['wet', 'win', 'wag', 'whip'],
+        },
+        answerKey: [
+          { number: 1, solution: 'W-E-T (/w/ /ɛ/ /t/ = "wet")' },
+          { number: 2, solution: 'W-I-N (/w/ /ɪ/ /n/ = "win")' },
+          { number: 3, solution: 'W-A-G (/w/ /æ/ /g/ = "wag")' },
+          { number: 4, solution: 'WH-I-P (/w/ /ɪ/ /p/ = "whip")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 28: Final "x" (/ks/) & Initial "y" (/j/) ("box", "fox", "six", "yes")
+    // -------------------------------------------------------------------------
+    {
+      day: 28,
+      title: 'Final "x" (/ks/) & Initial "y" (/j/) ("box", "fox", "six", "yes")',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.A & Final /ks/ (x) and Initial /j/ (y)',
+      strictBoundary: 'Letter x (end of words) and consonant y (beginning of words only). No vowel y.',
+      script: {
+        say: '“Letter X says /ks/ like a snapshot click at the end of a word: B-O-X spells BOX! F-O-X spells FOX! Letter Y says /j/ like YES!”',
+        do: 'Cross arms into an X for /ks/. Nod enthusiastically for Y: "Yes, yes, /j/!"',
+        lookFor: 'Hears two sounds in letter x (/k/ + /s/) written as one letter x. Distinguishes consonant y (/j/).',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d28-v${variant}`,
+        title: 'Phonics Day 28: Letters "x" & "y" (box, fox, six, yes)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Letter x says /ks/ at the end! Letter y says /j/ at the start! Tap and write.',
+        kidDirections: {
+          text: '📦 /ks/ at the end of BOX! 🦊 /ks/ at the end of FOX! ✏️ Write your x and y words!',
+          icons: ['📦', '🦊', '✏️'],
+          badge: 'Day 28 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'box',
+            phonemes: ['b', 'o', 'x'],
+            soundClues: [{ icon: '🦇', label: '/b/' }, { icon: '😮', label: '/o/' }, { icon: '📦', label: '/ks/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'fox',
+            phonemes: ['f', 'o', 'x'],
+            soundClues: [{ icon: '🐟', label: '/f/' }, { icon: '😮', label: '/o/' }, { icon: '🦊', label: '/ks/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'six',
+            phonemes: ['s', 'i', 'x'],
+            soundClues: [{ icon: '🐍', label: '/s/' }, { icon: '😁', label: '/i/' }, { icon: '6️⃣', label: '/ks/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'yes',
+            phonemes: ['y', 'e', 's'],
+            soundClues: [{ icon: '👍', label: '/j/' }, { icon: '🥚', label: '/e/' }, { icon: '🐍', label: '/s/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['box', 'fox', 'six', 'yes'],
+        },
+        answerKey: [
+          { number: 1, solution: 'B-O-X (/b/ /ɒ/ /ks/ = "box")' },
+          { number: 2, solution: 'F-O-X (/f/ /ɒ/ /ks/ = "fox")' },
+          { number: 3, solution: 'S-I-X (/s/ /ɪ/ /ks/ = "six")' },
+          { number: 4, solution: 'Y-E-S (/j/ /ɛ/ /s/ = "yes")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 29: Letter Team "qu" & Consonant "z" ("quick", "quiz", "zip", "buzz")
+    // -------------------------------------------------------------------------
+    {
+      day: 29,
+      title: 'Letter Team "qu" & Consonant "z" ("quick", "quiz", "zip", "buzz")',
+      standard: 'CCSS.ELA-LITERACY.RF.K.3.A & Letter Team qu + Consonant z',
+      strictBoundary: 'Letter pair qu and consonant z/zz. No diphthongs or r-controlled vowels.',
+      script: {
+        say: '“Q is the buddy letter: it NEVER goes anywhere without U! QU says /kw/ like quick! Letter Z buzzes like a bee: /zzzzz/! Z-I-P spells ZIP!”',
+        do: 'Quack like a duck or speed run for "quick"! Buzz like a bee touching your throat to feel vocal cord vibration for /z/.',
+        lookFor: 'Always writes \'u\' immediately following \'q\'. Pronounces /kw/ as a blended onset.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d29-v${variant}`,
+        title: 'Phonics Day 29: "qu" & "z" (quick, quiz, zip, buzz)',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Q and U always stick together for /kw/! Buzz for Z! Tap each sound and write.',
+        kidDirections: {
+          text: '⚡ QU says /kw/! 🐝 Z buzzes like a bee! ✏️ Write quick, quiz, zip, and buzz!',
+          icons: ['⚡', '🐝', '✏️'],
+          badge: 'Day 29 Phonics',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'quick',
+            phonemes: ['qu', 'i', 'ck'],
+            soundClues: [{ icon: '⚡', label: '/kw/' }, { icon: '😁', label: '/i/' }, { icon: '🥫', label: '/ck/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'quiz',
+            phonemes: ['qu', 'i', 'z'],
+            soundClues: [{ icon: '⚡', label: '/kw/' }, { icon: '😁', label: '/i/' }, { icon: '🐝', label: '/z/' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'zip',
+            phonemes: ['z', 'i', 'p'],
+            soundClues: [{ icon: '🤐', label: '/z/' }, { icon: '😁', label: '/i/' }, { icon: '💨', label: '/p/' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'buzz',
+            phonemes: ['b', 'u', 'zz'],
+            soundClues: [{ icon: '🦇', label: '/b/' }, { icon: '☀️', label: '/u/' }, { icon: '🐝', label: '/zz/' }],
+          },
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['quick', 'quiz', 'zip', 'buzz'],
+        },
+        answerKey: [
+          { number: 1, solution: 'QU-I-CK (/kw/ /ɪ/ /k/ = "quick")' },
+          { number: 2, solution: 'QU-I-Z (/kw/ /ɪ/ /z/ = "quiz")' },
+          { number: 3, solution: 'Z-I-P (/z/ /ɪ/ /p/ = "zip")' },
+          { number: 4, solution: 'B-U-ZZ (/b/ /ʌ/ /z/ = "buzz")' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 30: Grand Champion Complete Alphabet & Digraph Story Fluency
+    // -------------------------------------------------------------------------
+    {
+      day: 30,
+      title: 'Grand Champion Complete Alphabet & Digraph Story Fluency',
+      standard: 'CCSS.ELA-LITERACY.RF.K.4 (Read Emergent-Reader Texts with Purpose)',
+      strictBoundary: 'Complete kindergarten alphabet (A-Z) and primary digraphs (sh, th, ch, ck, wh). No long vowels or silent-e.',
+      script: {
+        say: '“Day 30 Reading Champion! You have conquered ALL 26 letters of the alphabet and the power digraphs: sh, th, ch, ck, and wh! You are officially an independent reader!”',
+        do: 'Celebrate this momentous milestone! Have child wear an imaginary reading crown and read the champion story aloud to the whole family.',
+        lookFor: 'Reads the complete decodable story with confidence, expression, and accurate decoding of digraphs and short vowels.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `phonics-d30-v${variant}`,
+        title: 'Phonics Day 30: Complete Alphabet & Digraph Grand Champion',
+        subject: 'phonics',
+        grade: 'K',
+        instructions: 'Read the complete Day 30 champion story! You know all 26 letters and 5 digraphs!',
+        kidDirections: {
+          text: '🏆 Day 30 Phonics Champion! 📖 Read your complete decodable story! ✏️ Write your champion words!',
+          icons: ['🏆', '📖', '⭐'],
+          badge: 'Day 30 Phonics Champion',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'phonics-dictation',
+            number: 1,
+            word: 'fox',
+            phonemes: ['f', 'o', 'x'],
+            soundClues: [{ icon: '🦊', label: 'ends in /ks/' }],
+          },
+          {
+            id: 'p2',
+            type: 'phonics-dictation',
+            number: 2,
+            word: 'quick',
+            phonemes: ['qu', 'i', 'ck'],
+            soundClues: [{ icon: '⚡', label: 'qu + ck' }],
+          },
+          {
+            id: 'p3',
+            type: 'phonics-dictation',
+            number: 3,
+            word: 'bell',
+            phonemes: ['b', 'e', 'll'],
+            soundClues: [{ icon: '🔔', label: 'FLOSS rule' }],
+          },
+          {
+            id: 'p4',
+            type: 'phonics-dictation',
+            number: 4,
+            word: 'rich',
+            phonemes: ['r', 'i', 'ch'],
+            soundClues: [{ icon: '🚂', label: 'ends in /ch/' }],
+          },
+        ],
+        decodablePhrases: [
+          'The quick fox ran past the bell.',
+          'A duck swam to the big red ship.',
+          'Chad had a fish in a glass dish.',
+          'Can you zip up the thick red coat?',
+        ],
+        cutStrip: {
+          type: 'word-tiles',
+          stage: 'Ages 4-6',
+          items: ['A to Z Master', 'Digraph Champion', 'Independent Reader', '🏆 Day 30 Phonics Champion!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'F-O-X (/f/ /ɒ/ /ks/)' },
+          { number: 2, solution: 'QU-I-CK (/kw/ /ɪ/ /k/)' },
+          { number: 3, solution: 'B-E-LL (/b/ /ɛ/ /l/)' },
+          { number: 4, solution: 'R-I-CH (/r/ /ɪ/ /tʃ/)' },
+        ],
+      }),
+    },
   ],
 
   // =========================================================================
@@ -3518,6 +4986,856 @@ export const DAILY_CURRICULUM = {
           { number: 2, solution: 'The icy ARCTIC ❄️' },
           { number: 3, solution: 'A LIQUID (Water) 💧' },
           { number: 4, solution: 'A SHADOW 👥' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 21: Animal Camouflage: Hiding in Plain Sight
+    // -------------------------------------------------------------------------
+    {
+      day: 21,
+      title: 'Animal Camouflage: Hiding in Plain Sight',
+      standard: 'NGSS K-LS1-1 (Animal External Features & Survival Adaptations)',
+      strictBoundary: 'Visual camouflage and coloration matching environment. No cellular or genetic terminology.',
+      script: {
+        say: '“Animal hide-and-seek! Some animals have special fur or skin that blends into their home so other animals cannot spot them! A white polar bear blends into white snow: that is CAMOUFLAGE!”',
+        do: 'Look at pictures of animals in their natural habitats. Point out how their patterns match grass, sand, or snow.',
+        lookFor: 'Understands that camouflage helps animals stay hidden from predators or sneak up on food.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d21-v${variant}`,
+        title: 'Science Day 21: Animal Camouflage (Hiding in Nature)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Discover how animals use camouflage to blend into their habitats!',
+        kidDirections: {
+          text: '🐻‍❄️ White fur in white snow! 🦎 Camouflage means HIDING! ✏️ Circle the best answers!',
+          icons: ['🐻‍❄️', '🦎', '✏️'],
+          badge: 'Day 21 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'Why does an Arctic polar bear have pure WHITE fur?',
+            options: [
+              'To blend in with white ice and snow (Camouflage) ❄️',
+              'Because it loves drinking milk',
+              'To be easily seen by seals',
+              'To match green leaves',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'How does a chameleon lizard hide from danger in a leafy green tree?',
+            options: [
+              'It changes its skin color to GREEN 🦎',
+              'It barks loudly like a dog',
+              'It flies into the clouds',
+              'It digs underground',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'What does a stick insect look like to trick hungry birds?',
+            options: [
+              'A brown tree twig or stick 🌿',
+              'A bright red strawberry',
+              'A shiny metal coin',
+              'A blue ocean wave',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Why do baby deer (fawns) have white spots on their brown fur?',
+            options: [
+              'Spots look like sunlight shining through forest leaves 🦌',
+              'To play connect-the-dots',
+              'Because they got splashed with paint',
+              'To show how old they are',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Polar Bear Snow', 'Green Chameleon', 'Stick Insect', 'Camouflage = Hide!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'To blend in with white ice and snow (Camouflage) ❄️' },
+          { number: 2, solution: 'It changes its skin color to GREEN 🦎' },
+          { number: 3, solution: 'A brown tree twig or stick 🌿' },
+          { number: 4, solution: 'Spots look like sunlight shining through forest leaves 🦌' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 22: Nocturnal vs. Diurnal Animals (Night vs. Day)
+    // -------------------------------------------------------------------------
+    {
+      day: 22,
+      title: 'Nocturnal vs. Diurnal Animals (Night vs. Day)',
+      standard: 'NGSS K-ESS2-1 & K-LS1-1 (Patterns in Nature & Animal Behaviors)',
+      strictBoundary: 'Nocturnal vs diurnal patterns (owl/bat vs dog/squirrel). No circadian biology.',
+      script: {
+        say: '“When the sun sets, most of us go to sleep. But NOCTURNAL animals wake up! Owls and bats have huge eyes and sharp ears to hunt in the dark!”',
+        do: 'Cover eyes with hands like nighttime: "Hoo-hoo! Who is awake right now?" Contrast with daytime birds.',
+        lookFor: 'Identifies nocturnal animals as active at night and diurnal animals as active in the daylight.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d22-v${variant}`,
+        title: 'Science Day 22: Nocturnal vs. Diurnal Animals',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Learn which animals stay awake in the sunshine and which hunt in the moonlight!',
+        kidDirections: {
+          text: '🦉 Owls hunt at NIGHT (Nocturnal)! 🐕 Dogs play in DAYLIGHT (Diurnal)! ✏️ Circle your answers!',
+          icons: ['🦉', '🌙', '🐕', '✏️'],
+          badge: 'Day 22 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'Which animal is NOCTURNAL (wakes up and hunts at night)?',
+            options: ['A barn OWL with giant night eyes 🦉', 'A daytime rooster', 'A sunny garden butterfly', 'A squirrel'],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'Which creature sleeps in a cave during the day and flies out at sunset?',
+            options: ['A brown BAT 🦇', 'A honeybee', 'A farm pig', 'A horse'],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'When is a DIURNAL animal (like a pet puppy or squirrel) awake?',
+            options: ['During the sunny DAYTIME ☀️', 'Only at midnight', 'Under freezing snow', 'During lightning storms'],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Why do night hunters like owls have such giant round eyes?',
+            options: [
+              'To catch tiny bits of moonlight in the dark 👁️',
+              'To wear sunglasses',
+              'To read books at night',
+              'To blow bubbles',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Owl: Nocturnal', 'Bat: Night Flier', 'Puppy: Daytime', 'Night Vision Eyes'],
+        },
+        answerKey: [
+          { number: 1, solution: 'A barn OWL with giant night eyes 🦉' },
+          { number: 2, solution: 'A brown BAT 🦇' },
+          { number: 3, solution: 'During the sunny DAYTIME ☀️' },
+          { number: 4, solution: 'To catch tiny bits of moonlight in the dark 👁️' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 23: How Animals Prepare for Winter (Hibernate, Migrate, Adapt)
+    // -------------------------------------------------------------------------
+    {
+      day: 23,
+      title: 'How Animals Prepare for Winter (Hibernate, Migrate, Adapt)',
+      standard: 'NGSS K-ESS2-1 (Weather Patterns and Seasonal Changes)',
+      strictBoundary: 'Three winter adaptations: hibernate (sleep), migrate (move), adapt (grow thick fur/store seeds).',
+      script: {
+        say: '“Winter is freezing cold with no berries or bugs to eat! Animals have 3 big tricks: Hibernate (deep sleep in a den), Migrate (fly south to warm weather), or Adapt (grow a warm winter coat and store nuts)!”',
+        do: 'Act out the 3 words: curl up and snore for hibernate, flap wings for migrate, pretend to bury acorns for adapt.',
+        lookFor: 'Distinguishes between sleeping all winter (bears), traveling south (geese), and gathering nuts (squirrels).',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d23-v${variant}`,
+        title: 'Science Day 23: Winter Survival (Hibernate, Migrate, Adapt)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Learn how forest creatures survive freezing winter snow and chilly winds!',
+        kidDirections: {
+          text: '🐻 Bears HIBERNATE (Sleep)! 🦆 Birds MIGRATE (Fly South)! 🐿️ Squirrels STORE nuts! ✏️ Circle the answers!',
+          icons: ['🐻', '🦆', '🐿️', '✏️'],
+          badge: 'Day 23 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'What does a big black bear do in a warm winter cave?',
+            options: [
+              'HIBERNATES (sleeps through the freezing winter) 🐻',
+              'Goes swimming in the ice',
+              'Plants sunflower seeds',
+              'Buys a snowmobile',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'When flocks of geese fly south in a big V-shape before winter, what is this called?',
+            options: [
+              'MIGRATING to warmer weather 🦆',
+              'Playing freeze tag',
+              'Building a snow fort',
+              'Riding a school bus',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'What does a busy squirrel do during autumn before the snow falls?',
+            options: [
+              'Gathers and buries acorns to eat all winter 🐿️',
+              'Takes a long nap in a beach chair',
+              'Swims across the ocean',
+              'Flies south to Florida',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'What happens to the brown fur of a snowshoe hare when winter arrives?',
+            options: [
+              'It turns PURE WHITE to match the snow 🐇',
+              'It turns bright neon pink',
+              'It falls off completely',
+              'It turns into feathers',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Bear Hibernates', 'Geese Migrate', 'Squirrel Stores Nuts', 'Winter Survival!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'HIBERNATES (sleeps through the freezing winter) 🐻' },
+          { number: 2, solution: 'MIGRATING to warmer weather 🦆' },
+          { number: 3, solution: 'Gathers and buries acorns to eat all winter 🐿️' },
+          { number: 4, solution: 'It turns PURE WHITE to match the snow 🐇' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 24: Water Wonders: The Water Cycle Basics (Evaporation, Clouds, Rain)
+    // -------------------------------------------------------------------------
+    {
+      day: 24,
+      title: 'Water Wonders: The Water Cycle Basics (Evaporation, Clouds, Rain)',
+      standard: 'NGSS K-ESS2-1 (Water on Earth & Weather Phenomena)',
+      strictBoundary: 'Evaporation (sun warms water), condensation (clouds form), precipitation (rain falls). No complex chemistry.',
+      script: {
+        say: '“Have you ever seen a rain puddle disappear on a sunny day? Where did the water go? The warm sun turned it into invisible water vapor that floated into the sky to form clouds! When clouds get heavy, it rains: that is the Water Cycle!”',
+        do: 'Wipe a damp sponge across a chalkboard or tabletop. Watch it dry and vanish into the air together.',
+        lookFor: 'Explains that water does not disappear forever—it rises into the sky and returns as rain.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d24-v${variant}`,
+        title: 'Science Day 24: The Water Cycle (Sun, Clouds, Rain)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Follow the amazing journey of water from sidewalk puddles to fluffy rain clouds!',
+        kidDirections: {
+          text: '☀️ Sun warms puddles! ☁️ Water floats up into CLOUDS! 🌧️ Rain falls down! ✏️ Circle the answers!',
+          icons: ['☀️', '☁️', '🌧️', '✏️'],
+          badge: 'Day 24 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'Where does sidewalk puddle water go when the hot sun shines on it?',
+            options: [
+              'It EVAPORATES up into the sky air 💧',
+              'A giant monster drinks it',
+              'It freezes into ice cubes instantly',
+              'It turns into candy',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'What are white fluffy clouds in the sky actually made of?',
+            options: [
+              'Billions of tiny water droplets floating together ☁️',
+              'Mashed potatoes',
+              'White cotton candy',
+              'Soap bubbles',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'What happens when a rain cloud gets too full and heavy with water?',
+            options: [
+              'RAIN falls down to the ground 🌧️',
+              'The cloud pops like a balloon',
+              'It turns into a rainbow kite',
+              'It floats to outer space',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Where does rainwater go after soaking into the ground and rivers?',
+            options: [
+              'Back to lakes, rivers, and the giant ocean 🌊',
+              'It leaves Earth forever',
+              'Into outer space',
+              'Under the kitchen sink',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Sun Warms Water', 'Clouds Gather', 'Rain Falls', 'Water Cycle Round!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'It EVAPORATES up into the sky air 💧' },
+          { number: 2, solution: 'Billions of tiny water droplets floating together ☁️' },
+          { number: 3, solution: 'RAIN falls down to the ground 🌧️' },
+          { number: 4, solution: 'Back to lakes, rivers, and the giant ocean 🌊' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 25: States of Matter: Melting, Freezing, Boiling (Ice to Water to Steam)
+    // -------------------------------------------------------------------------
+    {
+      day: 25,
+      title: 'States of Matter: Melting, Freezing, Boiling (Ice to Water to Steam)',
+      standard: 'NGSS K-PS1-1 (Matter and Its Interactions: Phase Changes)',
+      strictBoundary: 'Solid (ice) melts to liquid (water); water freezes back to ice. Heating and cooling.',
+      script: {
+        say: '“Water is magic! When it is freezing cold, it is a hard SOLID called ice. When it warms up, it MELTS into a LIQUID! When it gets boiling hot in a tea kettle, it turns into GAS called steam!”',
+        do: 'Hold an ice cube in your warm hands: feel it melt from solid ice to wet liquid water drips.',
+        lookFor: 'Understands that heating melts ice into liquid water and cooling freezes liquid water into solid ice.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d25-v${variant}`,
+        title: 'Science Day 25: Phase Changes (Melting & Freezing)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Explore how temperature changes matter between solid ice, liquid water, and steam!',
+        kidDirections: {
+          text: '🧊 Ice is SOLID! 💧 Water is LIQUID! ♨️ Heat MELTS ice! ✏️ Circle the right answer!',
+          icons: ['🧊', '💧', '♨️', '✏️'],
+          badge: 'Day 25 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'What happens to a cold ice cube when you hold it in your warm hands?',
+            options: [
+              'It MELTS into liquid water 💧',
+              'It freezes into a bigger rock',
+              'It turns into orange juice',
+              'It turns into bread',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'What happens when you put a tray of liquid water into a freezing freezer?',
+            options: [
+              'It FREEZES into solid ice cubes 🧊',
+              'It boils into steam',
+              'It turns into chocolate milk',
+              'It disappears into a puddle',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'When water in a hot teapot boils, what is the cloudy white vapor called?',
+            options: ['STEAM (Water vapor / Gas) ♨️', 'Smoke from wood', 'White paint', 'Snowflakes'],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Can ice, liquid water, and steam all turn back into each other?',
+            options: [
+              'YES! Heating and cooling changes water back and forth 🔄',
+              'No, once ice melts it is gone forever',
+              'Only on Saturdays',
+              'Never',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Ice = Solid', 'Water = Liquid', 'Steam = Gas', 'Heat Melts Ice!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'It MELTS into liquid water 💧' },
+          { number: 2, solution: 'It FREEZES into solid ice cubes 🧊' },
+          { number: 3, solution: 'STEAM (Water vapor / Gas) ♨️' },
+          { number: 4, solution: 'YES! Heating and cooling changes water back and forth 🔄' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 26: Air and Wind (Air is Real Matter; Wind is Moving Air)
+    // -------------------------------------------------------------------------
+    {
+      day: 26,
+      title: 'Air and Wind (Air is Real Matter; Wind is Moving Air)',
+      standard: 'NGSS K-PS1-1 & K-ESS2-1 (Air as Matter and Moving Wind)',
+      strictBoundary: 'Air takes up space (balloons, bubbles) and wind is moving air (kites, pinwheels). No atmospheric pressure formulas.',
+      script: {
+        say: '“Blow air onto your hand: can you feel the breeze? Even though air is invisible, it is REAL matter that takes up space! When we blow into a balloon, air pushes it open! Moving air outside is called WIND!”',
+        do: 'Blow up a small balloon and let the neck go: listen to the whoosh and feel the escaping air.',
+        lookFor: 'Recognizes that air is not empty nothingness—it pushes against objects and causes wind.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d26-v${variant}`,
+        title: 'Science Day 26: Air and Wind (Moving Air)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Feel the power of invisible air and moving wind!',
+        kidDirections: {
+          text: '🎈 Air takes up SPACE inside a balloon! 🪁 WIND is moving air! ✏️ Circle the answers!',
+          icons: ['🎈', '🪁', '🌬️', '✏️'],
+          badge: 'Day 26 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'What fills up a rubber balloon when you blow into it?',
+            options: [
+              'AIR (an invisible gas that takes up space) 🎈',
+              'Water droplets',
+              'Heavy rocks',
+              'Nothing at all (it is empty)',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'What is WIND?',
+            options: [
+              'Moving air pushing trees and kites 🌬️',
+              'Sunshine warming the ground',
+              'Raindrops hitting the window',
+              'Cold snow on a mountain',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'Which fun outdoor toy needs moving WIND to fly high in the blue sky?',
+            options: ['A diamond KITE 🪁', 'A heavy bowling ball', 'A wooden toy truck', 'A coloring book'],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'What pushes the giant white sails of a sailboat across the bay?',
+            options: ['The WIND pushing on the canvas sails ⛵', 'Undersea fish', 'A giant magnet', 'The sun rays'],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Air = Real Matter', 'Wind = Moving Air', 'Kites Fly in Wind', 'Sailboats Glide!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'AIR (an invisible gas that takes up space) 🎈' },
+          { number: 2, solution: 'Moving air pushing trees and kites 🌬️' },
+          { number: 3, solution: 'A diamond KITE 🪁' },
+          { number: 4, solution: 'The WIND pushing on the canvas sails ⛵' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 27: Ramps and Rollers: Gravity and Friction (Steep vs. Flat)
+    // -------------------------------------------------------------------------
+    {
+      day: 27,
+      title: 'Ramps and Rollers: Gravity and Friction (Steep vs. Flat)',
+      standard: 'NGSS K-PS2-1 & K-PS2-2 (Forces: Pushes, Pulls, and Motion)',
+      strictBoundary: 'Steep ramps roll faster than gentle ramps; smooth surfaces slide easier than carpet. Qualitative comparison.',
+      script: {
+        say: '“Gravity pulls toy cars down a ramp! If the ramp is STEEP, the car zooms down super fast! But if the ramp is covered in fuzzy carpet, FRICTION rubs against the wheels and slows it down!”',
+        do: 'Prop a book against a block to make a ramp. Roll a toy car down wood vs towel or carpet.',
+        lookFor: 'Notices that steeper angles make cars travel faster and rough surfaces slow motion down (friction).',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d27-v${variant}`,
+        title: 'Science Day 27: Ramps, Rollers, and Friction',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Test how ramps and surfaces change how fast toy cars zoom!',
+        kidDirections: {
+          text: '🏎️ STEEP ramps roll faster! 🧶 Fuzzy carpet SLOWS things down (Friction)! ✏️ Circle the answers!',
+          icons: ['🏎️', '🧶', '📐', '✏️'],
+          badge: 'Day 27 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'Which ramp will make a toy car zoom down the FASTEST?',
+            options: [
+              'A STEEP high ramp 📐',
+              'A completely flat ramp on the floor',
+              'An upside-down ramp',
+              'A ramp covered in sticky tape',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'What happens when you roll a toy car across a thick, fuzzy carpet?',
+            options: [
+              'Friction SLOWS the car down 🧶',
+              'The car zooms twice as fast',
+              'The car flies into the air',
+              'The car turns into a boat',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'What invisible pull brings a toy car rolling down to the bottom of the ramp?',
+            options: [
+              'GRAVITY pulling everything downward 🌎',
+              'Wind blowing backward',
+              'Sunlight shining bright',
+              'Water splashing',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Which object will ROLL easily down a ramp: a round tennis ball or a square block?',
+            options: [
+              'The ROUND tennis ball 🎾',
+              'The square wooden block',
+              'Neither will move',
+              'The flat book',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Steep Ramp = Fast', 'Carpet = Friction', 'Gravity Pulls Down', 'Rounds Roll!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'A STEEP high ramp 📐' },
+          { number: 2, solution: 'Friction SLOWS the car down 🧶' },
+          { number: 3, solution: 'GRAVITY pulling everything downward 🌎' },
+          { number: 4, solution: 'The ROUND tennis ball 🎾' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 28: Magnets: Attract and Repel (The Power of Magnetic Force)
+    // -------------------------------------------------------------------------
+    {
+      day: 28,
+      title: 'Magnets: Attract and Repel (The Power of Magnetic Force)',
+      standard: 'NGSS K-PS2-1 (Forces: Magnetic Attraction)',
+      strictBoundary: 'Magnets pull magnetic metals (iron/steel) and do NOT pull plastic, wood, or glass.',
+      script: {
+        say: '“Magnets have an invisible force! They pull on objects made of iron or steel, like paperclips and metal spoons! SNAP! But they will never stick to a plastic toy or a wooden block!”',
+        do: 'Hold a refrigerator magnet near a metal paperclip: feel the pull before they touch. Try touching a wooden block.',
+        lookFor: 'Predicts that metals like iron/steel stick to magnets, while wood, paper, and plastic do not.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d28-v${variant}`,
+        title: 'Science Day 28: Magnets (Attract & Repel)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Test the invisible pull of magnets on everyday objects!',
+        kidDirections: {
+          text: '🧲 Magnets pull METAL paperclips! 🪵 Wood and plastic DO NOT stick! ✏️ Circle the answers!',
+          icons: ['🧲', '📎', '✏️'],
+          badge: 'Day 28 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'Which item will stick to a magnet with a magnetic SNAP?',
+            options: [
+              'A steel metal paperclip 📎',
+              'A wooden toothpick',
+              'A plastic toy spoon',
+              'A cotton shirt',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'What happens when you hold a magnet near a wooden building block?',
+            options: [
+              'Nothing happens (wood is not magnetic) 🪵',
+              'The magnet sticks tight',
+              'The wood melts',
+              'The block explodes',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'Where do families often use magnets in the kitchen?',
+            options: [
+              'Sticking artwork and photos on the REFRIGERATOR door 🖼️',
+              'Inside the oven to bake cookies',
+              'In the cereal bowl',
+              'Inside the drinking glasses',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'When a magnet pulls an iron object toward itself, what is that called?',
+            options: [
+              'ATTRACT (Magnetic Pull) 🧲',
+              'Pushing away',
+              'Melting',
+              'Bouncing',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Pulls Steel Clip', 'Wood: No Magnet', 'Attract = Pull', 'Fridge Magnets!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'A steel metal paperclip 📎' },
+          { number: 2, solution: 'Nothing happens (wood is not magnetic) 🪵' },
+          { number: 3, solution: 'Sticking artwork and photos on the REFRIGERATOR door 🖼️' },
+          { number: 4, solution: 'ATTRACT (Magnetic Pull) 🧲' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 29: Sink vs. Float: Density Exploration (Heavy vs. Lightweight)
+    // -------------------------------------------------------------------------
+    {
+      day: 29,
+      title: 'Sink vs. Float: Density Exploration (Heavy vs. Lightweight)',
+      standard: 'NGSS K-PS1-1 (Structure and Properties of Matter: Buoyancy)',
+      strictBoundary: 'Observational buoyancy (cork/wood float, rock/metal key sinks). Shape matters (boat shapes). No density equations.',
+      script: {
+        say: '“Drop a small pebble in a bowl of water: PLOP! It sinks straight to the bottom! But a cork or plastic toy boat floats on the top! Objects that stay on top FLOAT; objects that drop to the bottom SINK!”',
+        do: 'Fill a basin with water. Drop in an apple (floats) and a coin or pebble (sinks). Discuss.',
+        lookFor: 'Accurately distinguishes between sinking to the bottom and floating on the surface.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d29-v${variant}`,
+        title: 'Science Day 29: Sink or Float (Buoyancy Discovery)',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Predict which objects float on water and which sink to the bottom!',
+        kidDirections: {
+          text: '⛵ Boats FLOAT on top! 🪨 Heavy stones SINK to the bottom! ✏️ Circle the answers!',
+          icons: ['⛵', '🪨', '💧', '✏️'],
+          badge: 'Day 29 Science',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'If you drop a heavy stone into a bucket of water, what happens?',
+            options: [
+              'It SINKS straight down to the bottom 🪨',
+              'It floats like a cloud on top',
+              'It flies into the air',
+              'It turns into a fish',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'Which object will stay on top and FLOAT across the bathtub?',
+            options: [
+              'A yellow rubber ducky toy 🦆',
+              'A heavy metal key',
+              'A metal coin',
+              'A stone pebble',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'Why does a giant cruise ship made of steel float on the ocean?',
+            options: [
+              'It is shaped like a wide hollow bowl filled with air 🚢',
+              'It has invisible wings',
+              'The ocean is made of glue',
+              'Magnets hold it up',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Does a lightweight cork from a bottle sink or float?',
+            options: [
+              'It FLOATS on top of the water 🍾',
+              'It sinks like an anchor',
+              'It melts away',
+              'It disappears',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Rock Sinks', 'Duck Floats', 'Air Helps Floating', 'Sink or Float Star!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'It SINKS straight down to the bottom 🪨' },
+          { number: 2, solution: 'A yellow rubber ducky toy 🦆' },
+          { number: 3, solution: 'It is shaped like a wide hollow bowl filled with air 🚢' },
+          { number: 4, solution: 'It FLOATS on top of the water 🍾' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 30: Young Scientist Month 2 Grand Champion Review
+    // -------------------------------------------------------------------------
+    {
+      day: 30,
+      title: 'Young Scientist Month 2 Grand Champion Review',
+      standard: 'NGSS K-PS2-1, K-LS1-1 & K-ESS2-1 (Month 2 Cumulative Inquiry Review)',
+      strictBoundary: 'Comprehensive review of physical and life science concepts covered in Days 21–29.',
+      script: {
+        say: '“Day 30 Young Scientist Grand Champion! You understand camouflage, nocturnal animals, winter habits, water cycles, phases of matter, wind, ramps, magnets, and sinking and floating! Put on your lab goggles: you are a genuine scientific thinker!”',
+        do: 'Celebrate 30 days of science inquiry with a high-five! Ask your child to pick their favorite science experiment from Month 2.',
+        lookFor: 'Demonstrates broad mastery across physical science and life science topics with joyful curiosity.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `sci-d30-v${variant}`,
+        title: 'Science Day 30: Month 2 Young Scientist Grand Champion',
+        subject: 'science',
+        grade: 'K',
+        instructions: 'Show off your scientific knowledge on this Day 30 Grand Champion challenge!',
+        kidDirections: {
+          text: '🏆 Day 30 Science Champion! 🔬 Show off your smart science brain! ✏️ Circle the answers!',
+          icons: ['🏆', '🔬', '⭐', '✏️'],
+          badge: 'Day 30 Science Champion',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'science-inquiry',
+            number: 1,
+            prompt: 'How does a chameleon use camouflage to stay safe?',
+            options: [
+              'It changes its skin color to match its surroundings 🦎',
+              'It barks loudly at birds',
+              'It rolls down a ramp',
+              'It freezes into ice',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'science-inquiry',
+            number: 2,
+            prompt: 'When solid ice warms up in the hot sun, what happens?',
+            options: [
+              'It MELTS into liquid water 💧',
+              'It turns into steel',
+              'It freezes into a rock',
+              'It becomes wood',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'science-inquiry',
+            number: 3,
+            prompt: 'What kind of object will a magnet stick to?',
+            options: [
+              'A metal steel paperclip 📎',
+              'A wooden toy block',
+              'A plastic straw',
+              'A wool blanket',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'science-inquiry',
+            number: 4,
+            prompt: 'Why does a rubber ducky stay on top of bathwater?',
+            options: [
+              'Because it FLOATS on the surface 🦆',
+              'Because it sinks to the bottom',
+              'Because it is heavy like a rock',
+              'Because it is magnetic',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Camouflage Master', 'Ice Melts to Liquid', 'Magnet Attracts Steel', '🏆 Day 30 Science Champion!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'It changes its skin color to match its surroundings 🦎' },
+          { number: 2, solution: 'It MELTS into liquid water 💧' },
+          { number: 3, solution: 'A metal steel paperclip 📎' },
+          { number: 4, solution: 'Because it FLOATS on the surface 🦆' },
         ],
       }),
     },
@@ -4831,18 +7149,873 @@ export const DAILY_CURRICULUM = {
         ],
       }),
     },
+
+    // -------------------------------------------------------------------------
+    // DAY 21: Great Americans: Dr. George Washington Carver
+    // -------------------------------------------------------------------------
+    {
+      day: 21,
+      title: 'Great Americans: Dr. George Washington Carver (Peanuts & Soil)',
+      standard: 'CKHG Kindergarten Unit 3: Great Americans (George Washington Carver)',
+      strictBoundary: 'George Washington Carver\'s inventions with peanuts and caring for farm soil. No college-level agronomy.',
+      script: {
+        say: '“Dr. George Washington Carver was a brilliant American scientist and teacher! He helped farmers care for soil and discovered over 300 amazing things to make from humble peanuts!”',
+        do: 'Look at a peanut in a shell. Discuss how one tiny plant could be turned into cooking oil, lotion, paper, and food.',
+        lookFor: 'Recognizes George Washington Carver as an inventive scientist who loved plants and helped American farmers.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d21-v${variant}`,
+        title: 'Social Studies Day 21: Dr. George Washington Carver',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Learn about the famous scientist who discovered 300 uses for peanuts!',
+        kidDirections: {
+          text: '🥜 Dr. Carver was a plant scientist! 🌱 He discovered 300 uses for peanuts! ✏️ Circle the answers!',
+          icons: ['🥜', '🌱', '🔬', '✏️'],
+          badge: 'Day 21 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'great-americans',
+            icon: '🥜',
+            prompt: 'Which tiny plant did Dr. George Washington Carver discover 300 uses for?',
+            options: ['The PEANUT 🥜', 'A coconut', 'A pine tree', 'An onion'],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'great-americans',
+            icon: '🌱',
+            prompt: 'What was Dr. Carver\'s job as a scientist?',
+            options: [
+              'Helping farmers take care of soil and grow healthy crops 🚜',
+              'Driving a race car',
+              'Painting roller coasters',
+              'Singing opera songs',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'great-americans',
+            icon: '🔬',
+            prompt: 'What popular, delicious spread is made from crushed peanuts?',
+            options: ['PEANUT BUTTER 🥪', 'Chocolate ice cream', 'Lemonade', 'Apple applesauce'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'great-americans',
+            icon: '🌾',
+            prompt: 'Why did Dr. Carver tell farmers to plant sweet potatoes and peanuts?',
+            options: [
+              'To keep the farm soil rich, healthy, and fertile 🌾',
+              'To feed giant dinosaurs',
+              'To make the dirt purple',
+              'To build houses out of them',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['George W. Carver', 'Peanut Scientist', 'Helped Farmers', 'Plant Pioneer!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'The PEANUT 🥜' },
+          { number: 2, solution: 'Helping farmers take care of soil and grow healthy crops 🚜' },
+          { number: 3, solution: 'PEANUT BUTTER 🥪' },
+          { number: 4, solution: 'To keep the farm soil rich, healthy, and fertile 🌾' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 22: Great Americans: Benjamin Franklin
+    // -------------------------------------------------------------------------
+    {
+      day: 22,
+      title: 'Great Americans: Benjamin Franklin (Inventor & Leader)',
+      standard: 'CKHG Kindergarten Unit 3: Great Americans (Benjamin Franklin)',
+      strictBoundary: 'Benjamin Franklin\'s key inventions (lightning rod, bifocals) and helping the community (library, fire department).',
+      script: {
+        say: '“Benjamin Franklin was a curious inventor and American founding father! He proved lightning was electricity with a kite, invented the lightning rod to keep houses safe, and started the first public library!”',
+        do: 'Look at a pair of eyeglasses or a picture of an old-fashioned library. Explain how Franklin helped his neighbors.',
+        lookFor: 'Connects Benjamin Franklin with inventions like lightning protection, reading glasses (bifocals), and lending libraries.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d22-v${variant}`,
+        title: 'Social Studies Day 22: Benjamin Franklin (Inventor)',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Discover the inventions of America\'s famous founding inventor Benjamin Franklin!',
+        kidDirections: {
+          text: '⚡ Kite in a thunderstorm! 👓 Inventor of bifocals & public library! ✏️ Circle the answers!',
+          icons: ['⚡', '👓', '📚', '✏️'],
+          badge: 'Day 22 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'great-americans',
+            icon: '⚡',
+            prompt: 'What did Benjamin Franklin discover when he flew a kite with a key in a thunderstorm?',
+            options: [
+              'That lightning is ELECTRICITY ⚡',
+              'That clouds are made of sugar',
+              'That birds wear hats',
+              'That kites eat rain',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'great-americans',
+            icon: '🏠',
+            prompt: 'What did Ben Franklin invent to protect wooden houses from lightning fires?',
+            options: [
+              'The LIGHTNING ROD on the roof ⚡',
+              'A giant umbrella for cities',
+              'A water cannon',
+              'A rubber roof',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'great-americans',
+            icon: '📚',
+            prompt: 'What wonderful community place did Benjamin Franklin help create for borrowing books?',
+            options: ['The first PUBLIC LIBRARY 📚', 'A toy store', 'A candy factory', 'An ice rink'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'great-americans',
+            icon: '👓',
+            prompt: 'What did Ben Franklin invent so people could see both close-up and far away with one pair of glasses?',
+            options: ['BIFOCAL eyeglasses 👓', 'A telescope hat', 'A magnifying helmet', 'A camera'],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Ben Franklin', 'Lightning = Power', 'Public Library', 'Curious Inventor!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'That lightning is ELECTRICITY ⚡' },
+          { number: 2, solution: 'The LIGHTNING ROD on the roof ⚡' },
+          { number: 3, solution: 'The first PUBLIC LIBRARY 📚' },
+          { number: 4, solution: 'BIFOCAL eyeglasses 👓' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 23: Great Americans: Helen Keller & Anne Sullivan
+    // -------------------------------------------------------------------------
+    {
+      day: 23,
+      title: 'Great Americans: Helen Keller & Anne Sullivan',
+      standard: 'CKHG Kindergarten Unit 3: Great Americans (Helen Keller & Anne Sullivan)',
+      strictBoundary: 'Communication through touch (fingerspelling in hand, braille dots). Perseverance and learning.',
+      script: {
+        say: '“Helen Keller was deaf and blind as a young child. But with the patience of her teacher Anne Sullivan, Helen learned that everything has a name by spelling letters into her palm: W-A-T-E-R!”',
+        do: 'Gently trace the letters \'C-A-T\' with your finger onto your child\'s palm. Show how touch can spell words.',
+        lookFor: 'Understands that people who cannot see or hear can read and communicate using touch, sign language, and braille.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d23-v${variant}`,
+        title: 'Social Studies Day 23: Helen Keller & Anne Sullivan',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Learn how Helen Keller overcame challenges with the help of her teacher Anne Sullivan!',
+        kidDirections: {
+          text: '🖐️ Fingerspelling in the palm! 💧 W-A-T-E-R! ✏️ Circle the answers!',
+          icons: ['🖐️', '💧', '⭐', '✏️'],
+          badge: 'Day 23 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'great-americans',
+            icon: '🖐️',
+            prompt: 'How did teacher Anne Sullivan spell words into Helen Keller\'s hand?',
+            options: [
+              'By tapping sign language letters into her PALM 🖐️',
+              'By shouting through a megaphone',
+              'By writing on a chalkboard',
+              'By showing flashcards',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'great-americans',
+            icon: '💧',
+            prompt: 'What was the famous first word Helen understood while cool water pumped over her hand?',
+            options: ['WATER 💧', 'Apple', 'Bicycle', 'Puppy'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'great-americans',
+            icon: '📖',
+            prompt: 'What is the system of raised bumpy dots that blind people read with their fingertips?',
+            options: ['BRAILLE ⠿', 'Crayon drawings', 'Secret codes', 'Stickers'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'great-americans',
+            icon: '🌟',
+            prompt: 'What does Helen Keller\'s life teach all of us?',
+            options: [
+              'Never give up, and you can overcome big challenges 🌟',
+              'To never read books',
+              'To stay home from school',
+              'To dislike teachers',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Helen Keller', 'Teacher Anne', 'W-A-T-E-R', 'Braille Dots!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'By tapping sign language letters into her PALM 🖐️' },
+          { number: 2, solution: 'WATER 💧' },
+          { number: 3, solution: 'BRAILLE ⠿' },
+          { number: 4, solution: 'Never give up, and you can overcome big challenges 🌟' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 24: Community Landmarks: Libraries, Parks, and Post Offices
+    // -------------------------------------------------------------------------
+    {
+      day: 24,
+      title: 'Community Landmarks: Libraries, Parks, and Post Offices',
+      standard: 'CKHG Kindergarten Unit 4: Our Community & Public Places',
+      strictBoundary: 'Identifying common public places that serve all families in a town or city.',
+      script: {
+        say: '“Every town has special public places that belong to EVERY family! The library lets us borrow books for free, the post office mails letters, and the park gives us green grass and swings!”',
+        do: 'Talk about the public places in your neighborhood: "Where do we go when we want to read books? Where do we mail letters?"',
+        lookFor: 'Identifies the community functions of libraries, parks, fire stations, and post offices.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d24-v${variant}`,
+        title: 'Social Studies Day 24: Community Landmarks',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Match community helpers and buildings with the services they provide to families!',
+        kidDirections: {
+          text: '📚 Library has books! ✉️ Post office mails letters! 🛝 Park has swings! ✏️ Circle the answers!',
+          icons: ['📚', '✉️', '🛝', '✏️'],
+          badge: 'Day 24 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'community-helpers',
+            icon: '📚',
+            prompt: 'Where can you borrow storybooks for free using a special card?',
+            options: ['The PUBLIC LIBRARY 📚', 'The grocery store', 'The gas station', 'The bank'],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'community-helpers',
+            icon: '✉️',
+            prompt: 'Where do you take a letter with a stamp to be delivered to grandma across the country?',
+            options: ['The POST OFFICE ✉️', 'The pet shelter', 'The bakery', 'The playground'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'community-helpers',
+            icon: '🛝',
+            prompt: 'Where can children run, swing, slide, and have picnics outdoors?',
+            options: ['The community PARK / PLAYGROUND 🛝', 'Inside the bank vault', 'A highway', 'A parking lot'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'community-helpers',
+            icon: '🚒',
+            prompt: 'Where do brave firefighters keep their giant red ladder trucks ready for emergencies?',
+            options: ['The FIRE STATION 🚒', 'The bowling alley', 'The ice cream shop', 'The car wash'],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Public Library', 'Post Office Mail', 'Town Park', 'Fire Station!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'The PUBLIC LIBRARY 📚' },
+          { number: 2, solution: 'The POST OFFICE ✉️' },
+          { number: 3, solution: 'The community PARK / PLAYGROUND 🛝' },
+          { number: 4, solution: 'The FIRE STATION 🚒' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 25: Reading a Neighborhood Street Map
+    // -------------------------------------------------------------------------
+    {
+      day: 25,
+      title: 'Reading a Neighborhood Street Map (Crosswalks & Signs)',
+      standard: 'CKHG Kindergarten Unit 4: Neighborhood Geography and Street Maps',
+      strictBoundary: 'Simple grid map of streets, intersections, and street safety symbols.',
+      script: {
+        say: '“Look at this neighborhood map! Paved streets connect houses and parks. White stripes across the road are CROSSWALKS where pedestrians cross safely when the light is green!”',
+        do: 'Draw a cross shape with two intersecting streets on paper. Put a house in one corner and a park in another.',
+        lookFor: 'Traces paths along streets, identifies crosswalks, and explains street crossing safety.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d25-v${variant}`,
+        title: 'Social Studies Day 25: Reading a Neighborhood Map',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Read streets, traffic lights, and crosswalks on a neighborhood map!',
+        kidDirections: {
+          text: '🛑 Red means STOP! 🚦 Green means GO! 🚶 White stripes are CROSSWALKS! ✏️ Circle the answers!',
+          icons: ['🛑', '🚦', '🚶', '✏️'],
+          badge: 'Day 25 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'maps-globes',
+            icon: '🚶',
+            prompt: 'What are the white striped painted lines on a street where walkers cross safely?',
+            options: ['A CROSSWALK 🚶', 'A hopscotch game', 'A parking spot', 'A bike jump'],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'maps-globes',
+            icon: '🛑',
+            prompt: 'What shape and color is an octagonal STOP sign for cars?',
+            options: ['A RED 8-sided octagon 🛑', 'A yellow circle', 'A green triangle', 'A blue square'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'maps-globes',
+            icon: '🚦',
+            prompt: 'When you are walking with a grown-up, what color traffic light means it is safe to GO?',
+            options: ['GREEN 🟢', 'RED 🔴', 'PURPLE 🟣', 'BLACK ⚫'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'maps-globes',
+            icon: '🗺️',
+            prompt: 'What shows you the symbols and colors on a neighborhood map?',
+            options: ['The MAP KEY / LEGEND 🗝️', 'A bookmark', 'A pencil sharpener', 'A compass magnet'],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Crosswalk Lines', 'Red Stop Sign', 'Green Light Go', 'Map Key Legend!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'A CROSSWALK 🚶' },
+          { number: 2, solution: 'A RED 8-sided octagon 🛑' },
+          { number: 3, solution: 'GREEN 🟢' },
+          { number: 4, solution: 'The MAP KEY / LEGEND 🗝️' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 26: Voting & Making Fair Decisions (Majority Rule)
+    // -------------------------------------------------------------------------
+    {
+      day: 26,
+      title: 'Voting & Making Fair Decisions (Majority Rule)',
+      standard: 'CKHG Kindergarten Civics: Rules, Responsibilities, and Fair Voting',
+      strictBoundary: 'Casting a vote to choose fairly (raising hands, secret paper vote). Respecting the group choice.',
+      script: {
+        say: '“How do citizens make fair choices when they disagree? We VOTE! Everyone gets ONE vote. The choice with the most votes wins: that is called MAJORITY RULE!”',
+        do: 'Hold a family vote right now: "Do you vote for apples or strawberries for snack?" Count the hands.',
+        lookFor: 'Understands that voting gives everyone an equal voice, and that good citizens respect the winning choice.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d26-v${variant}`,
+        title: 'Social Studies Day 26: Voting and Fair Choices',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Learn how democratic voting helps groups make fair, peaceful decisions!',
+        kidDirections: {
+          text: '🗳️ Everyone gets ONE vote! 🙋 Raise your hand! 🤝 Respect the group choice! ✏️ Circle the answers!',
+          icons: ['🗳️', '🙋', '🤝', '✏️'],
+          badge: 'Day 26 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'civics-rules',
+            icon: '🗳️',
+            prompt: 'In a fair election or vote, how many votes does each person receive?',
+            options: ['ONE vote per person 🗳️', 'Ten votes for the loudest', 'Five votes for the oldest', 'Zero votes'],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'civics-rules',
+            icon: '🙋',
+            prompt: 'How can a classroom vote on which storybook to read at circle time?',
+            options: [
+              'By RAISING HANDS and counting each vote 🙋',
+              'By having an arm wrestling match',
+              'By shouting the loudest',
+              'By flipping a coin',
+            ],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'civics-rules',
+            icon: '⭐',
+            prompt: 'Which option wins in a vote?',
+            options: [
+              'The choice that gets the MOST votes (Majority) ⭐',
+              'The choice with the fewest votes',
+              'The choice nobody picked',
+              'The last choice',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'civics-rules',
+            icon: '🤝',
+            prompt: 'If your favorite choice does NOT win the vote, what does a good citizen do?',
+            options: [
+              'Smile, support the group decision, and play fairly 🤝',
+              'Throw a tantrum on the rug',
+              'Refuse to participate',
+              'Rip up the paper',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['One Person Vote', 'Raise Hands', 'Majority Wins', 'Fair Citizenship!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'ONE vote per person 🗳️' },
+          { number: 2, solution: 'By RAISING HANDS and counting each vote 🙋' },
+          { number: 3, solution: 'The choice that gets the MOST votes (Majority) ⭐' },
+          { number: 4, solution: 'Smile, support the group decision, and play fairly 🤝' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 27: Good Sportsmanship & Resolving Conflicts
+    // -------------------------------------------------------------------------
+    {
+      day: 27,
+      title: 'Good Sportsmanship & Resolving Conflicts (Fair Play)',
+      standard: 'CKHG Kindergarten Civics & SEL: Citizenship and Fair Play',
+      strictBoundary: 'Fair play, taking turns, cheering for peers, using calm words when there is a disagreement.',
+      script: {
+        say: '“Good citizens are great sports! When we play games, we follow the rules, wait our turn patiently, and cheer for our friends: \'Good game!\' whether we win or lose!”',
+        do: 'Practice saying "Good game, high five!" to each other with a smile.',
+        lookFor: 'Explains how taking turns and using calm words resolves playground conflicts.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d27-v${variant}`,
+        title: 'Social Studies Day 27: Good Sportsmanship',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Practice fairness, taking turns, and resolving disagreements with polite words!',
+        kidDirections: {
+          text: '🤝 Take turns! 🗣️ Use kind words! 👏 Say "Good game!" win or lose! ✏️ Circle the answers!',
+          icons: ['🤝', '🗣️', '👏', '✏️'],
+          badge: 'Day 27 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'citizenship',
+            icon: '🤝',
+            prompt: 'When two friends want to use the same playground swing, what should they do?',
+            options: [
+              'Take turns using a timer or counting pushes 🤝',
+              'Push each other off the swing',
+              'Yell and scream',
+              'Never go to the park again',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'citizenship',
+            icon: '👏',
+            prompt: 'What does a good sport say at the end of a board game or soccer match?',
+            options: ['“Good game!” with a high five or handshake 👏', '“I am the best and you are bad!”', '“I won\'t talk to you!”', '“You cheated!”'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'citizenship',
+            icon: '🗣️',
+            prompt: 'If you feel upset or angry during play, what is the best way to resolve it?',
+            options: [
+              'Use calm WORDS to say how you feel 🗣️',
+              'Hit or kick',
+              'Throw game pieces across the room',
+              'Hide under a table',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'citizenship',
+            icon: '⭐',
+            prompt: 'Why do games have rules that everyone must follow?',
+            options: [
+              'So games are safe, fun, and FAIR for all players ⭐',
+              'To make everyone unhappy',
+              'To take a long time',
+              'To confuse people',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Take Turns', 'High Five Play', 'Use Calm Words', 'Rules Keep Us Fair!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'Take turns using a timer or counting pushes 🤝' },
+          { number: 2, solution: '“Good game!” with a high five or handshake 👏' },
+          { number: 3, solution: 'Use calm WORDS to say how you feel 🗣️' },
+          { number: 4, solution: 'So games are safe, fun, and FAIR for all players ⭐' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 28: Cultures & Celebrations Around the World
+    // -------------------------------------------------------------------------
+    {
+      day: 28,
+      title: 'Cultures & Celebrations Around the World',
+      standard: 'CKHG Kindergarten World Geography & Cultural Traditions',
+      strictBoundary: 'Appreciating that families around the world have diverse traditions, delicious foods, and celebrations.',
+      script: {
+        say: '“Planet Earth has many wonderful cultures! Families everywhere share love, but celebrate with different traditional clothes, music, and delicious holiday feasts!”',
+        do: 'Talk about your family’s favorite celebration or holiday food, and celebrate cultural differences.',
+        lookFor: 'Shows respect and curiosity for cultural traditions, diverse foods, and holidays around the globe.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d28-v${variant}`,
+        title: 'Social Studies Day 28: World Cultures & Celebrations',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Celebrate the beautiful diversity of cultures, foods, and holidays around our Earth!',
+        kidDirections: {
+          text: '🌍 Many cultures on planet Earth! 🏮 Diverse foods & celebrations! ✏️ Circle the answers!',
+          icons: ['🌍', '🏮', '🌮', '✏️'],
+          badge: 'Day 28 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'world-cultures',
+            icon: '🌍',
+            prompt: 'What does the word CULTURE mean?',
+            options: [
+              'The traditions, foods, languages, and celebrations of a group of people 🌍',
+              'The kind of car you drive',
+              'A type of flower',
+              'A pair of shoes',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'world-cultures',
+            icon: '🏮',
+            prompt: 'In many Asian cultures, what red glowing decorations light up the Lunar New Year?',
+            options: ['Red paper LANTERNS 🏮', 'Snowmen', 'Jack-o-lanterns', 'Christmas stockings'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'world-cultures',
+            icon: '🌮',
+            prompt: 'Which delicious corn or flour food is traditional in Mexican culture?',
+            options: ['Warm TACOS and tortillas 🌮', 'Popsicles', 'Cheeseburgers', 'French fries'],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'world-cultures',
+            icon: '🤝',
+            prompt: 'What makes having many different cultures in our communities special?',
+            options: [
+              'We learn from each other and celebrate together 🤝',
+              'It makes everyone look exactly the same',
+              'It closes libraries',
+              'It stops music',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Global Cultures', 'Red Lanterns', 'Traditional Foods', 'Earth Is Diverse!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'The traditions, foods, languages, and celebrations of a group of people 🌍' },
+          { number: 2, solution: 'Red paper LANTERNS 🏮' },
+          { number: 3, solution: 'Warm TACOS and tortillas 🌮' },
+          { number: 4, solution: 'We learn from each other and celebrate together 🤝' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 29: Caring for Our Earth: Reduce, Reuse, Recycle
+    // -------------------------------------------------------------------------
+    {
+      day: 29,
+      title: 'Caring for Our Earth: Reduce, Reuse, Recycle (The 3 R’s)',
+      standard: 'CKHG Kindergarten Citizenship & Environmental Stewardship',
+      strictBoundary: 'Sorting trash vs recycling (blue bins: paper, plastic, cans) and keeping parks clean.',
+      script: {
+        say: '“We can be Earth Heroes! The 3 R\'s are REDUCE (use less waste), REUSE (use tote bags and boxes again), and RECYCLE (put paper, plastic bottles, and metal cans in the blue recycling bin)!”',
+        do: 'Look inside your home recycling bin: identify clean cardboard, a plastic water bottle, or an aluminum can.',
+        lookFor: 'Sorts recyclables (clean paper, plastic, aluminum) into the recycling bin instead of the trash bin.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d29-v${variant}`,
+        title: 'Social Studies Day 29: Caring for Earth (The 3 R’s)',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Learn how reducing, reusing, and recycling protects our planet Earth!',
+        kidDirections: {
+          text: '♻️ REDUCE waste! 📦 REUSE boxes! 🥫 RECYCLE paper and cans! ✏️ Circle the answers!',
+          icons: ['♻️', '📦', '🥫', '✏️'],
+          badge: 'Day 29 Social Studies',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'earth-care',
+            icon: '♻️',
+            prompt: 'Which special color bin is used in most towns for RECYCLING paper and bottles?',
+            options: ['The BLUE recycling bin ♻️', 'A black trash bag', 'A laundry basket', 'A toolbox'],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'earth-care',
+            icon: '📦',
+            prompt: 'When you turn an empty cardboard shoebox into a doll bed or toy garage, what are you doing?',
+            options: ['REUSING it creatively 📦', 'Throwing it in the river', 'Burning it', 'Losing it'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'earth-care',
+            icon: '🥫',
+            prompt: 'Which items can be recycled into brand-new products?',
+            options: [
+              'Clean cardboard paper, plastic bottles, and aluminum cans 🥫',
+              'Leftover apple cores',
+              'Muddy dirt',
+              'Wet leaves',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'earth-care',
+            icon: '🚯',
+            prompt: 'If you see an empty snack wrapper on the playground grass, what is the best thing to do?',
+            options: [
+              'Pick it up and throw it in the trash can 🚯',
+              'Kick it into the bushes',
+              'Leave it on the slide',
+              'Ignore it completely',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Reduce Waste', 'Reuse Boxes', 'Recycle Cans', 'Earth Hero!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'The BLUE recycling bin ♻️' },
+          { number: 2, solution: 'REUSING it creatively 📦' },
+          { number: 3, solution: 'Clean cardboard paper, plastic bottles, and aluminum cans 🥫' },
+          { number: 4, solution: 'Pick it up and throw it in the trash can 🚯' },
+        ],
+      }),
+    },
+
+    // -------------------------------------------------------------------------
+    // DAY 30: Junior Global Leader Month 2 Grand Champion Review
+    // -------------------------------------------------------------------------
+    {
+      day: 30,
+      title: 'Junior Global Leader Month 2 Grand Champion Review',
+      standard: 'CKHG Kindergarten Units 3 & 4 (Cumulative Month 2 Civics and Geography Review)',
+      strictBoundary: 'Cumulative review of great Americans, community citizenship, and Earth stewardship.',
+      script: {
+        say: '“Day 30 Grand Champion Citizen! You know great American inventors like Carver and Franklin, inspiring heroes like Helen Keller, community landmarks, voting fairly, and taking care of planet Earth! You are an outstanding citizen!”',
+        do: 'Celebrate 30 days of social studies and citizenship! Present an imaginary medal for being a caring community citizen.',
+        lookFor: 'Demonstrates comprehensive understanding of history, community helpers, and responsible citizenship.',
+      },
+      generateSheet: (variant = 1) => ({
+        id: `soc-d30-v${variant}`,
+        title: 'Social Studies Day 30: Month 2 Junior Global Leader Grand Champion',
+        subject: 'socialStudies',
+        grade: 'K',
+        instructions: 'Celebrate 30 days of history, geography, and citizenship on this Grand Champion challenge!',
+        kidDirections: {
+          text: '🏆 Day 30 Citizen Champion! 🌎 Show your knowledge of heroes & community! ✏️ Circle the answers!',
+          icons: ['🏆', '🌎', '⭐', '✏️'],
+          badge: 'Day 30 Social Studies Champion',
+        },
+        problems: [
+          {
+            id: 'p1',
+            type: 'social-studies',
+            number: 1,
+            topic: 'great-americans',
+            icon: '🥜',
+            prompt: 'Which famous scientist discovered 300 uses for peanuts and helped farmers?',
+            options: [
+              'Dr. George Washington Carver 🥜',
+              'Christopher Columbus',
+              'George Washington',
+              'Abraham Lincoln',
+            ],
+          },
+          {
+            id: 'p2',
+            type: 'social-studies',
+            number: 2,
+            topic: 'great-americans',
+            icon: '⚡',
+            prompt: 'Which inventor discovered that lightning was electricity using a kite?',
+            options: ['Benjamin Franklin ⚡', 'Thomas Edison', 'Alexander Bell', 'Henry Ford'],
+          },
+          {
+            id: 'p3',
+            type: 'social-studies',
+            number: 3,
+            topic: 'great-americans',
+            icon: '🖐️',
+            prompt: 'How did Helen Keller learn to read words from her teacher Anne Sullivan?',
+            options: [
+              'Fingerspelling in her palm and reading braille dots 🖐️',
+              'Using a telephone',
+              'Watching television',
+              'Listening to radio',
+            ],
+          },
+          {
+            id: 'p4',
+            type: 'social-studies',
+            number: 4,
+            topic: 'earth-care',
+            icon: '♻️',
+            prompt: 'What are the 3 R\'s for taking care of our planet Earth?',
+            options: [
+              'REDUCE, REUSE, RECYCLE ♻️',
+              'Run, Rest, Repeat',
+              'Read, Write, Rest',
+              'Red, Yellow, Blue',
+            ],
+          },
+        ],
+        cutStrip: {
+          type: 'straight-strips',
+          stage: 'Ages 3-5 (Bottom-Edge Cut)',
+          items: ['Carver Peanuts', 'Franklin Lightning', 'Keller Braille', '🏆 Day 30 Global Citizen!'],
+        },
+        answerKey: [
+          { number: 1, solution: 'Dr. George Washington Carver 🥜' },
+          { number: 2, solution: 'Benjamin Franklin ⚡' },
+          { number: 3, solution: 'Fingerspelling in her palm and reading braille dots 🖐️' },
+          { number: 4, solution: 'REDUCE, REUSE, RECYCLE ♻️' },
+        ],
+      }),
+    },
   ],
 };
 
 /**
  * Retrieves the lesson object for a given subject and day number.
  * @param {'math'|'phonics'|'science'|'socialStudies'} subject 
- * @param {number} dayNumber (1 to 20)
+ * @param {number} dayNumber (1 to 30)
  * @returns {object}
  */
 export function getDailyLesson(subject, dayNumber) {
   const track = DAILY_CURRICULUM[subject] || DAILY_CURRICULUM.math;
-  const maxDay = track.length || 20;
+  const maxDay = track.length || 30;
   const safeDay = Math.max(1, Math.min(maxDay, dayNumber));
   return track.find((d) => d.day === safeDay) || track[0];
 }

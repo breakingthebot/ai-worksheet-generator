@@ -151,7 +151,9 @@ export default function WorksheetCanvas({ worksheet, showCountingDots = false })
                 if (
                   problem.type === 'counting-objects' ||
                   problem.type === 'quantity-comparison' ||
-                  problem.type === 'numeral-comparison'
+                  problem.type === 'numeral-comparison' ||
+                  problem.type === 'concrete-addition' ||
+                  problem.type === 'concrete-subtraction'
                 ) {
                   return <CountingObjectsView key={problem.id} problem={problem} />;
                 }
