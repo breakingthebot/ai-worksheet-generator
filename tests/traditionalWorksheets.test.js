@@ -4,7 +4,11 @@
 // Created: 2026-09-22
 
 import { describe, it, expect } from 'vitest';
+import React from 'react';
+import { render } from '@testing-library/react';
 import { getWorksheetById, getAllWorksheets, getTraditionalWorksheets } from '../src/data/worksheets.js';
+import ScaffoldedNumber from '../src/components/math/ScaffoldedNumber.jsx';
+import VerticalMathGrid from '../src/components/traditional/VerticalMathGrid.jsx';
 
 describe('Traditional Classroom Worksheets', () => {
   it('loads traditional math worksheet with 12 stacked drills and 2 word problems', () => {
@@ -88,5 +92,53 @@ describe('Traditional Classroom Worksheets', () => {
       expect(p.topNumber).toBeLessThanOrEqual(5);
       expect(p.bottomNumber).toBeLessThanOrEqual(5);
     });
+  });
+
+  it('renders ScaffoldedNumber with and without concrete 5-structured counting dots', () => {
+    // When showDots is false: numeral only, no dots container
+    const { container: c1 } = render(React.createElement(ScaffoldedNumber, { value: 4, showDots: false }));
+    expect(c1.textContent).toBe('4');
+    expect(c1.querySelector('[data-testid="counting-dots-container"]')).toBeNull();
+
+    // When showDots is true: displays touch counting dots
+    const { container: c2 } = render(React.createElement(ScaffoldedNumber, { value: 3, showDots: true, color: 'indigo' }));
+    expect(c2.textContent).toBe('3');
+    const dotsContainer3 = c2.querySelector('[data-testid="counting-dots-container"]');
+    expect(dotsContainer3).not.toBeNull();
+    // 3 dots in row 1
+    const dots3 = dotsContainer3.querySelectorAll('span');
+    expect(dots3.length).toBe(3);
+
+    // When value is 7 (5 + 2 structure):
+    const { container: c3 } = render(React.createElement(ScaffoldedNumber, { value: 7, showDots: true, color: 'amber' }));
+    expect(c3.textContent).toBe('7');
+    const dotsContainer7 = c3.querySelector('[data-testid="counting-dots-container"]');
+    expect(dotsContainer7).not.toBeNull();
+    // 7 dots total across row 1 (5) and row 2 (2)
+    const dots7 = dotsContainer7.querySelectorAll('span');
+    expect(dots7.length).toBe(7);
+  });
+
+  it('renders VerticalMathGrid with counting dots toggle button', () => {
+    const problems = [
+      { number: 1, topNumber: 3, bottomNumber: 2, operator: '+' },
+      { number: 2, topNumber: 5, bottomNumber: 1, operator: '-' },
+    ];
+
+    const { getByRole } = render(
+      React.createElement(VerticalMathGrid, { problems, title: 'Test Drills', showCountingDots: false })
+    );
+
+    // Button should be present
+    const toggleButton = getByRole('button');
+    expect(toggleButton).toBeDefined();
+    expect(toggleButton.textContent).toContain('Counting Dots: OFF');
+
+    // Render with showCountingDots=true
+    const { container: cWithDots } = render(
+      React.createElement(VerticalMathGrid, { problems, title: 'Test Drills', showCountingDots: true })
+    );
+    const dots = cWithDots.querySelectorAll('[data-testid="counting-dots-container"]');
+    expect(dots.length).toBe(4); // 2 problems * 2 numbers each = 4 dot containers
   });
 });

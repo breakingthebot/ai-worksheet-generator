@@ -32,6 +32,7 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
 - **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts across **Math, Phonics, Science, and Social Studies**.
 - **Traditional Classroom Multi-Section Worksheets**:
   - *Math*: 12-problem vertical addition/subtraction drills, real-world story problems, and scratchpad drawing boxes.
+  - *Concrete Visual Scaffolding Toggle (Touch-Point Counting Dots)*: 1-click toggle that displays 5-structured tactile counting dots directly beside or on vertical numerals (TouchMath style) to bridge concrete CPA manipulatives with abstract vertical calculations.
   - *Reading Comprehension*: Informational passages with line numbers, highlighted vocabulary banks, multiple-choice bubbles, and written short-answer lines.
   - *Grammar & Mechanics*: Sentence editing clinic (capitalization & ending punctuation corrections) and 2-column parts-of-speech matching.
   - *Science Diagrams*: Anatomy matching (roots, stems, leaves, flowers) and photosynthesis inquiry questions.

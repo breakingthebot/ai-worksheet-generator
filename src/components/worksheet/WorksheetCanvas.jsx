@@ -19,7 +19,7 @@ import SentenceEditingView from '../traditional/SentenceEditingView.jsx';
 import CountingObjectsView from '../math/CountingObjectsView.jsx';
 import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 
-export default function WorksheetCanvas({ worksheet }) {
+export default function WorksheetCanvas({ worksheet, showCountingDots = false }) {
   if (!worksheet) return null;
 
   const [isGuideOpen, setIsGuideOpen] = useState(true);
@@ -118,7 +118,13 @@ export default function WorksheetCanvas({ worksheet }) {
           {readingPassage && <ReadingPassageView passageData={readingPassage} />}
 
           {/* TRADITIONAL COMPONENT 2: Vertical Stacked Arithmetic Drills */}
-          {verticalMath && <VerticalMathGrid problems={verticalMath.problems} title={verticalMath.title} />}
+          {verticalMath && (
+            <VerticalMathGrid
+              problems={verticalMath.problems}
+              title={verticalMath.title}
+              showCountingDots={showCountingDots}
+            />
+          )}
 
           {/* TRADITIONAL COMPONENT 3: Story Word Problems */}
           {wordProblems && wordProblems.length > 0 && (
