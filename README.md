@@ -4,6 +4,24 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
 
 ## Features
 
+- **📅 Full Daily Block Architecture & Time-Scheduled Pacing (Golden Master)**:
+  - Establishes a complete, realistic daily learning routine structured into 7 distinct time blocks:
+    1. *Morning Circle & Phonics* (Auditory discrimination & prewriting strokes)
+    2. *Hands-On Math Lab* (Concrete manipulatives & visual discrimination)
+    3. *Sensory Motor Break & Healthy Snack* (Gross-motor stretching & sensory transition)
+    4. *Science Discovery Lab* (Sensory observation & living vs. non-living)
+    5. *Social Studies Community Circle* (Helping hands & family/school roles)
+    6. *Experiential Field Trip & Real-World Immersion* (Real-world scavenger quests)
+    7. *Daily Reflection & Star Mastery* (Coloring golden stars & refrigerator gallery)
+  - Features real-time completion check-offs, step-by-step hands-on activities, consolidated daily materials checklist, and word-for-word parent coaching scripts.
+- **🧭 Experiential Field Trip & Real-World Immersion Engine**:
+  - Bridges abstract classroom concepts with the physical world through targeted daily field trip missions.
+  - Dual-track flexibility: **Outdoor Community / Nature Quest** (neighborhood walks, parks, local trails) and **Indoor / Low-Prep Alternative** (kitchen pantry detective hunt, living room sensory audit).
+  - Interactive on-the-go scavenger checklists with tap-to-complete feedback.
+  - 3 Conversational Walk Prompts with educator talking points for sparking critical thinking on the move.
+- **📋 1-Page Printable Daily Agenda & Field Trip Plan**:
+  - Print-optimized single-page 8.5×11 Letter agenda (`@media print`) designed to be clipped to a teacher's clipboard or pinned to the family refrigerator.
+  - Consolidated morning materials checklist, time schedule table with check boxes, field trip scavenger tasks, and daily star mastery stamp block.
 - **📅 180-Day School Year Academic Pacing Engine**:
   - Full standard 180-day US school year structured across **36 Weeks and 4 Quarters** (9 weeks / 45 days per quarter).
   - Integrated **36-Week Pacing Guide Modal** with thematic weekly anchors across all four subjects, quarter milestones (100th Day Celebration, Mid-Year Assessment, Kindergarten Graduation Bridge), and 1-click day jumping.

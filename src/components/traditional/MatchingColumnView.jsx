@@ -8,11 +8,25 @@ import React from 'react';
 export default function MatchingColumnView({ matchingData }) {
   if (!matchingData) return null;
 
+  const columnA = matchingData.columnA
+    ? matchingData.columnA
+    : matchingData.leftColumn
+    ? matchingData.leftColumn.map((item) => ({ text: `${item.emoji ? item.emoji + ' ' : ''}${item.label || item.text || ''}` }))
+    : matchingData.pairs
+    ? matchingData.pairs.map((p) => ({ text: p.left }))
+    : [];
+
+  const columnB = matchingData.columnB
+    ? matchingData.columnB
+    : matchingData.rightColumn
+    ? matchingData.rightColumn.map((item) => ({ text: `${item.emoji ? item.emoji + ' ' : ''}${item.label || item.text || ''}` }))
+    : matchingData.pairs
+    ? matchingData.pairs.map((p) => ({ text: p.right }))
+    : [];
+
   const {
     title = 'Section: Matching Columns',
     instructions = 'Draw a straight line from Column A to its matching partner in Column B.',
-    columnA = matchingData.pairs ? matchingData.pairs.map((p) => ({ text: p.left })) : [],
-    columnB = matchingData.pairs ? matchingData.pairs.map((p) => ({ text: p.right })) : [],
   } = matchingData;
 
   return (

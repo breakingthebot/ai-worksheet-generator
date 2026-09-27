@@ -29,17 +29,32 @@ export default function StudentHeader({ title, framework }) {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-slate-700 pt-2 border-t border-slate-200">
-        <div className="flex-1 min-w-[200px] flex items-end">
-          <span className="mr-2 text-indigo-900 font-extrabold flex items-center gap-1">
+        <div className="flex-1 min-w-[220px] flex items-center gap-2">
+          <span className="text-indigo-950 font-black text-xs shrink-0 flex items-center gap-1">
             <span>✏️</span> Star Student:
           </span>
-          <span className="flex-1 border-b-2 border-dashed border-indigo-200 h-5"></span>
+          <div className="relative h-7 flex-1 border-t border-b border-slate-700 bg-white shadow-2xs">
+            {/* Top Headline */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-sky-500/80" />
+            {/* Dashed Midline */}
+            <div className="absolute top-[13px] left-0 right-0 border-b border-dashed border-rose-300" />
+            {/* Baseline */}
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-slate-900" />
+            {/* Green Starter Dot */}
+            <div
+              className="absolute left-2 top-[13px] w-2 h-2 rounded-full bg-emerald-500 z-10 -translate-y-1/2"
+              title="Start pencil here"
+            />
+          </div>
         </div>
-        <div className="w-48 flex items-end">
-          <span className="mr-2 text-slate-500 font-bold flex items-center gap-1">
+        <div className="w-48 flex items-center gap-2">
+          <span className="text-slate-600 font-bold text-xs shrink-0 flex items-center gap-1">
             <span>📅</span> Date:
           </span>
-          <span className="flex-1 border-b-2 border-dashed border-slate-300 h-5"></span>
+          <div className="relative h-7 flex-1 border-t border-b border-slate-400 bg-white">
+            <div className="absolute top-[13px] left-0 right-0 border-b border-dashed border-slate-300" />
+            <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-slate-700" />
+          </div>
         </div>
       </div>
     </header>
