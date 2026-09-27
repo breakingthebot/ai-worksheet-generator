@@ -96,22 +96,33 @@ export default function WorksheetCanvas({ worksheet, showCountingDots = false })
           <StudentHeader title={title} framework={framework || parentGuide?.standard} />
 
           {/* Kid-Centric Directions Callout */}
-          <div className="bg-amber-50/70 border-2 border-amber-300/80 rounded-xl p-3.5 mb-6">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-200/80 px-2 py-0.5 rounded">
-                {kidDirections?.badge || 'Student Directions'}
-              </span>
+          <div className="bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 border-2 border-amber-300 rounded-2xl p-4 mb-6 shadow-xs">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div className="flex items-center gap-1.5">
+                <span className="text-base select-none">🚀</span>
+                <span className="text-xs font-black uppercase tracking-wider text-amber-950 bg-amber-200/90 px-3 py-1 rounded-full border border-amber-300 shadow-2xs">
+                  {kidDirections?.badge || "Today's Superstar Mission"}
+                </span>
+              </div>
               {kidDirections?.icons && (
-                <div className="flex gap-1 text-sm">
+                <div className="flex items-center gap-1.5 bg-white/80 px-2 py-0.5 rounded-lg border border-amber-200/60 text-sm select-none">
                   {kidDirections.icons.map((icon, i) => (
                     <span key={i}>{icon}</span>
                   ))}
                 </div>
               )}
             </div>
-            <p className="text-xs sm:text-sm font-bold text-amber-950 leading-snug">
+            <p className="text-sm sm:text-base font-black text-amber-950 leading-snug tracking-wide">
               {kidDirections?.text || instructions}
             </p>
+            <div className="mt-2 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[11px] font-bold text-amber-800">
+              <span className="flex items-center gap-1">
+                <span>⭐</span> Take your time and do your best!
+              </span>
+              <span className="hidden sm:inline-block text-amber-700 font-semibold italic">
+                You can do it! ✨
+              </span>
+            </div>
           </div>
 
           {/* TRADITIONAL COMPONENT 1: Reading Comprehension Passage */}

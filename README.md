@@ -66,7 +66,15 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - Weaves high-interest custom topics (dinosaurs, space rockets, pirate islands, treehouse safaris) into authentic Common Core & NGSS challenges.
   - Generates reading passages, ruled primary handwriting lines for writing, and dedicated scratchpad drawing boxes for showing math work.
   - Powered by Google Gemini API with a zero-setup, offline deterministic curriculum engine fallback.
-- **Dual-Mode Daily Teaching Cockpit**: Switch seamlessly between **Guided Foundation Lessons (CPA)** and **Traditional Classroom Drill Packets** with 1-click printing and word-for-word parent scripts across **Math, Phonics, Science, and Social Studies**.
+- **🖨️ Streamlined Distraction-Free Daily Worksheet Studio**:
+  - The printable worksheet is **front and center** (full width, centered, identical to paper output).
+  - Sleek top control bar with 4 Subject pills (`Math`, `Phonics`, `Science`, `Social Studies`), clean Day Stepper, and quick-jump dropdown across all 40 lessons.
+  - Prominent **`🖨️ Print Worksheet`** button for instant 1-click printing on standard 8.5×11 Letter paper.
+  - Quick **`Done, Next Day`** button to advance effortlessly upon lesson completion.
+  - Collapsible **`💡 Parent Teaching Script`** dropdown banner that provides verbal prompts (`🗣️ Say this`, `🖐️ What to do`, `👁️ What to look for`) on demand without cluttering or shrinking the worksheet.
+- **🚀 Exciting Kid-Friendly Directions & Star Reward Header**:
+  - Cheerful, high-legibility directions banner (`🚀 TODAY'S SUPERSTAR MISSION:`) with motivational cheers (`⭐ Take your time and do your best! You can do it! ✨`).
+  - Developmental Star Reward Header (`⭐ Color My Stars!`) with 3 color-in stars and playful student name line (`✏️ Star Student: ____________`).
 - **Traditional Classroom Multi-Section Worksheets**:
   - *Math*: 12-problem vertical addition/subtraction drills, real-world story problems, and scratchpad drawing boxes.
   - *Concrete Visual Scaffolding Toggle (Touch-Point Counting Dots)*: 1-click toggle that displays 5-structured tactile counting dots directly beside or on vertical numerals (TouchMath style) to bridge concrete CPA manipulatives with abstract vertical calculations.
@@ -75,9 +83,6 @@ An evidence-based educational studio that combines a structured K-1 curriculum r
   - *Science Diagrams*: Anatomy matching (roots, stems, leaves, flowers) and photosynthesis inquiry questions.
   - *Social Studies Drills*: Geographic matching, compass rose direction drills, and history facts.
 - **Curriculum Roadmap & Milestone Tracking**: Progressive learning pathways for Mathematics, Phonics, Science, and Social Studies with explicit criteria for *"When to Move On"* (mastery) versus *"When to Keep Practicing"* (warning signs).
-- **"Why We Are Doing This" Parent & Educator Guides**: Collapsible guidance banner on every worksheet explaining the cognitive goal, curriculum standard, and verbal coaching prompts.
-- **Kid-Friendly Directions**: Age-tailored directions with visual emoji icons (✏️, ✂️, 🔢, 🧭) so young learners can understand tasks independently.
-- **Local Session Observation Storage**: In-app logging tool that saves session scores, timing, and qualitative child observations directly to `student_progress.json` for AI progress analysis.
 - **Singapore Math & CCSS Numeracy**: 2×5 Ten-Frames for perceptual subitizing and part-whole Number Bonds alongside vertical arithmetic drills.
 - **Orton-Gillingham Phonics**: Controlled decodable CVC words with Elkonin sound boxes and handwriting guidelines.
 - **Core Knowledge & Inquiry Science**: Biological classification (Living vs. Non-Living) and outdoor wilderness survival STEM (Rule of Threes).

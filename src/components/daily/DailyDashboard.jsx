@@ -1,9 +1,10 @@
 // src/components/daily/DailyDashboard.jsx
-// Zero-friction daily teaching cockpit with word-for-word parent scripts, traditional packets, and 1-click progression.
+// Streamlined, distraction-free Print & Progress teaching studio.
+// Puts the printable worksheet front and center with 1-click day navigation, kid-friendly directions, and collapsible parent coaching.
 // Connects to: src/domain/curriculum/dailySchedule.js, src/data/worksheets.js, src/components/worksheet/WorksheetCanvas.jsx
-// Created: 2026-09-22
+// Created: 2026-09-22 / Refactored: 2026-09-27
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getDailyLesson } from '../../domain/curriculum/dailySchedule.js';
 import { getTraditionalWorksheets } from '../../data/worksheets.js';
 import {
@@ -15,23 +16,23 @@ import {
 import WorksheetCanvas from '../worksheet/WorksheetCanvas.jsx';
 import {
   Printer,
-  CheckCircle2,
-  RotateCcw,
-  ArrowRight,
-  MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+  GraduationCap,
   Sparkles,
   BookOpen,
   FileText,
-  ChevronLeft,
-  ChevronRight,
-  Undo2,
-  GraduationCap,
-  Calendar,
-  Layers,
-  Award,
-  X,
-  Eye,
+  ChevronDown,
+  ChevronUp,
   ShieldAlert,
+  Award,
+  Layers,
+  RotateCcw,
+  CheckCircle2,
+  Eye,
+  Calendar,
+  X,
+  ArrowRight,
 } from 'lucide-react';
 
 export default function DailyDashboard({
@@ -47,8 +48,7 @@ export default function DailyDashboard({
   const [selectedTradIndex, setSelectedTradIndex] = useState(0);
   const [showCountingDots, setShowCountingDots] = useState(false);
   const [variantSeeds, setVariantSeeds] = useState({ math: 1, phonics: 1, science: 1, socialStudies: 1 });
-  const [quickNote, setQuickNote] = useState('');
-  const [noteSaved, setNoteSaved] = useState(false);
+  const [isTeachingGuideOpen, setIsTeachingGuideOpen] = useState(false);
   const [isPacingModalOpen, setIsPacingModalOpen] = useState(false);
   const [selectedQuarterTab, setSelectedQuarterTab] = useState(1);
 
@@ -60,10 +60,13 @@ export default function DailyDashboard({
   const tradSheets = getTraditionalWorksheets(activeSubject, currentGrade);
   const activeTradSheet = tradSheets[selectedTradIndex] || tradSheets[0];
 
-  const activeSheet = sheetMode === 'daily' ? lesson.generateSheet(currentVariant) : (activeTradSheet || lesson.generateSheet(currentVariant));
+  const activeSheet =
+    sheetMode === 'daily'
+      ? lesson.generateSheet(currentVariant)
+      : activeTradSheet || lesson.generateSheet(currentVariant);
 
-  // Reset selected traditional sheet when subject or grade changes
-  React.useEffect(() => {
+  // Reset traditional sheet selection when subject or grade changes
+  useEffect(() => {
     setSelectedTradIndex(0);
   }, [activeSubject, currentGrade]);
 
@@ -91,105 +94,33 @@ export default function DailyDashboard({
   };
 
   const handleKeepPracticing = () => {
-    // Generate a fresh practice variant for the same day
     setVariantSeeds((prev) => ({ ...prev, [activeSubject]: (prev[activeSubject] || 1) + 1 }));
-  };
-
-  const handleSaveNote = async () => {
-    if (!quickNote.trim()) return;
-    await onLogQuickNote({
-      subject: activeSubject,
-      day: currentDayNumber,
-      title: lesson.title,
-      note: quickNote.trim(),
-      date: new Date().toISOString().split('T')[0],
-    });
-    setQuickNote('');
-    setNoteSaved(true);
-    setTimeout(() => setNoteSaved(false), 2500);
   };
 
   const handlePrint = () => {
     window.print();
   };
 
+  // Build options for quick-jump day selector
+  const dayOptions = Array.from({ length: 40 }, (_, i) => {
+    const d = i + 1;
+    const l = getDailyLesson(activeSubject, d);
+    return {
+      day: d,
+      title: l.title,
+    };
+  });
+
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-6">
-      {/* 1. Daily Track Selector & Print Bar */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4 no-print">
-        {/* Left: Subject Tracks and Format Switcher */}
-        <div className="flex flex-col gap-3">
-          {/* Grade Level Badge & Reset Helper */}
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
-            <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-indigo-900 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-xl">
-                <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-                {currentGrade} Level
-              </span>
-              <span className="text-[11px] text-slate-500 font-semibold">
-                ● Kindergarten Foundational Bedrock (Day {currentDayNumber} of 40)
-              </span>
-            </div>
-            {onResetToDay1 && (
-              <button
-                type="button"
-                onClick={onResetToDay1}
-                className="text-[11px] font-bold text-slate-500 hover:text-indigo-700 underline transition-colors cursor-pointer"
-                title="Reset all tracks back to Kindergarten Day 1"
-              >
-                Reset to Kindergarten Day 1
-              </button>
-            )}
-          </div>
-
-          {/* 180-Day School Year Pacing Banner */}
-          <div className="flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-indigo-50/80 via-slate-50 to-amber-50/80 border border-indigo-100 rounded-xl p-2.5">
-            <div className="flex items-center gap-2.5">
-              <span className="p-1.5 bg-indigo-600 text-white rounded-lg shrink-0">
-                <Calendar className="w-4 h-4" />
-              </span>
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-black text-indigo-950">
-                    Quarter {pacing.quarter} • Week {pacing.week}
-                  </span>
-                  <span className="text-[11px] font-semibold text-slate-500">
-                    (Instructional Day {currentDayNumber} of 180)
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-600 font-medium">
-                  Theme: {pacing.theme}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="hidden sm:flex items-center gap-2">
-                <div className="w-20 bg-slate-200 h-2 rounded-full overflow-hidden">
-                  <div
-                    className="bg-indigo-600 h-full rounded-full transition-all"
-                    style={{ width: `${Math.max(4, pacing.progressPercent)}%` }}
-                  ></div>
-                </div>
-                <span className="text-[10px] font-extrabold text-slate-600">
-                  {pacing.progressPercent}%
-                </span>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setIsPacingModalOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-indigo-50 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-200 shadow-2xs transition-colors cursor-pointer"
-                title="Open complete 36-week academic calendar"
-              >
-                <Layers className="w-3.5 h-3.5 text-indigo-600" />
-                <span>36-Week Pacing Guide</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Subject Track Switchers */}
-          <div className="flex flex-wrap gap-2">
+    <div className="w-full max-w-5xl mx-auto space-y-5">
+      {/* ========================================================================= */}
+      {/* 1. TOP CONTROL BAR: Clean, Distraction-Free Print & Progression Cockpit  */}
+      {/* ========================================================================= */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4 no-print">
+        {/* ROW 1: Subject Selector Tabs & Grade Badge */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+          {/* Subject Pills */}
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {[
               { id: 'math', label: 'Math', icon: '📐' },
               { id: 'phonics', label: 'Phonics', icon: '🔤' },
@@ -202,16 +133,16 @@ export default function DailyDashboard({
                 <button
                   key={sub.id}
                   onClick={() => handleSubjectChange(sub.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-indigo-600 text-white shadow-sm'
+                      ? 'bg-indigo-600 text-white shadow-xs'
                       : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                   }`}
                 >
-                  <span>{sub.icon}</span>
+                  <span className="text-sm">{sub.icon}</span>
                   <span>{sub.label}</span>
                   <span
-                    className={`text-[10px] font-black px-1.5 py-0.5 rounded-full ${
+                    className={`text-[10px] font-black px-1.5 py-0.2 rounded-md ${
                       isSelected ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
                     }`}
                   >
@@ -222,454 +153,399 @@ export default function DailyDashboard({
             })}
           </div>
 
-          {/* Mode Switcher: Daily Lesson vs Traditional Packet */}
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
-              <button
-                onClick={() => setSheetMode('daily')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-                  sheetMode === 'daily'
-                    ? 'bg-white text-indigo-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                Day {currentDayNumber} Guided Lesson (CPA)
-              </button>
-              <button
-                onClick={() => setSheetMode('traditional')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-                  sheetMode === 'traditional'
-                    ? 'bg-white text-indigo-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <FileText className="w-3.5 h-3.5" />
-                Traditional Classroom Drill ({tradSheets.length})
-              </button>
-            </div>
-
-            {/* Sub-tabs if multiple traditional sheets exist for this grade */}
-            {sheetMode === 'traditional' && tradSheets.length > 1 && (
-              <div className="flex items-center gap-1 bg-amber-50 p-1 rounded-xl border border-amber-200">
-                {tradSheets.map((ts, idx) => {
-                  const label =
-                    ts.id === 'ws-trad-math-k-counting'
-                      ? 'Day 1: Counting & Sets'
-                      : ts.id === 'ws-trad-math-k-fluency'
-                      ? 'Q2 Target: Addition within 5'
-                      : ts.id === 'ws-trad-math-addition'
-                      ? 'Grade 1 Facts'
-                      : ts.id === 'ws-trad-reading-k-cvc'
-                      ? 'CVC & Rhyme'
-                      : ts.id === 'ws-trad-reading-beaver'
-                      ? 'Reading Passage'
-                      : ts.id === 'ws-trad-grammar-mechanics'
-                      ? 'Grammar & Mechanics'
-                      : ts.id === 'ws-trad-science-k-living'
-                      ? 'Living vs Non-Living'
-                      : ts.id === 'ws-trad-science-plants'
-                      ? 'Plant Anatomy'
-                      : ts.id === 'ws-trad-social-geography'
-                      ? 'Maps & Compass'
-                      : ts.title.split(':')[1]?.trim() || ts.title.split(':')[0];
-                  return (
-                    <button
-                      key={ts.id}
-                      onClick={() => setSelectedTradIndex(idx)}
-                      className={`px-2.5 py-1 text-[11px] rounded-lg font-bold transition-all cursor-pointer ${
-                        selectedTradIndex === idx
-                          ? 'bg-white text-amber-900 shadow-xs'
-                          : 'text-amber-800 hover:text-amber-950'
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+          {/* Grade Badge & Academic Progress */}
+          <div className="flex items-center gap-2 text-xs">
+            <span className="flex items-center gap-1 text-[11px] font-extrabold uppercase text-indigo-900 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-xl">
+              <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
+              {currentGrade}
+            </span>
+            <span className="hidden sm:inline-block text-[11px] text-slate-500 font-semibold">
+              Quarter {pacing.quarter} • Week {pacing.week}
+            </span>
           </div>
         </div>
 
-        {/* 1-Click Print Button & Scaffolding Controls */}
-        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
-          {/* Visual Scaffolding Toggle for Math Traditional Mode or Sheets with Vertical Math */}
+        {/* ROW 2: Day Progression Stepper + Prominent Print Button */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          {/* Day Stepper & Quick-Jump Dropdown */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handlePrevious}
+              disabled={currentDayNumber <= 1}
+              className="p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+              title="Previous Day"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* Quick-Jump Dropdown with Day Titles */}
+            <div className="relative">
+              <select
+                value={currentDayNumber}
+                onChange={(e) => handleJumpToDay(Number(e.target.value))}
+                className="w-full sm:w-auto appearance-none bg-indigo-50/80 hover:bg-indigo-100/70 border-2 border-indigo-200 text-indigo-950 font-black text-xs sm:text-sm py-2 pl-3.5 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer shadow-2xs transition-colors"
+                title="Jump directly to any day"
+              >
+                {dayOptions.map((opt) => (
+                  <option key={opt.day} value={opt.day}>
+                    Day {opt.day} of 40: {opt.title.replace(/^Day \d+:\s*/, '')}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-indigo-700">
+                <ChevronDown className="w-4 h-4" />
+              </div>
+            </div>
+
+            <button
+              onClick={handleAdvance}
+              disabled={currentDayNumber >= 40}
+              className="p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+              title="Next Day"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            {currentVariant > 1 && (
+              <span className="text-[10px] text-amber-700 bg-amber-50 px-2 py-1 rounded-lg font-bold border border-amber-200">
+                Variant #{currentVariant}
+              </span>
+            )}
+          </div>
+
+          {/* Action Buttons: Big Print Button */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handlePrint}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-98 text-white text-xs sm:text-sm font-black rounded-xl shadow-xs transition-all cursor-pointer"
+              title="Print this worksheet directly on standard Letter paper"
+            >
+              <Printer className="w-4 h-4" />
+              <span>Print Worksheet</span>
+            </button>
+
+            <button
+              onClick={handleAdvance}
+              disabled={currentDayNumber >= 40}
+              className="hidden md:flex items-center gap-1.5 px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-bold transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+              title="Mark this day complete and advance to next day"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Done, Next Day</span>
+              <ArrowRight className="w-3 h-3 text-emerald-700" />
+            </button>
+          </div>
+        </div>
+
+        {/* ROW 3: Secondary Helpers (Teaching Guide Toggle, Practice Variant, Traditional Mode) */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Parent Coaching Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsTeachingGuideOpen((prev) => !prev)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-colors cursor-pointer ${
+                isTeachingGuideOpen
+                  ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+              title="Toggle word-for-word parent coaching script"
+            >
+              <span>💡</span>
+              <span>{isTeachingGuideOpen ? 'Hide Parent Guide' : 'Show Parent Teaching Script'}</span>
+              {isTeachingGuideOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            </button>
+
+            {/* Fresh Practice Variant */}
+            <button
+              type="button"
+              onClick={handleKeepPracticing}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 font-semibold transition-colors cursor-pointer"
+              title="Generate a fresh set of numbers/words for this day"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+              <span>Fresh Variant</span>
+            </button>
+
+            {/* Traditional Classroom Drill Mode (Subtle) */}
+            <div className="flex items-center gap-1 border-l border-slate-200 pl-2">
+              <button
+                type="button"
+                onClick={() => setSheetMode('daily')}
+                className={`px-2 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
+                  sheetMode === 'daily'
+                    ? 'bg-slate-800 text-white shadow-2xs'
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                Daily Progression
+              </button>
+              <button
+                type="button"
+                onClick={() => setSheetMode('traditional')}
+                className={`px-2 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
+                  sheetMode === 'traditional'
+                    ? 'bg-slate-800 text-white shadow-2xs'
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                Traditional Drill
+              </button>
+            </div>
+
+            {/* Traditional Sub-sheets if in Traditional Mode */}
+            {sheetMode === 'traditional' && tradSheets.length > 1 && (
+              <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-200">
+                {tradSheets.map((ts, idx) => (
+                  <button
+                    key={ts.id}
+                    onClick={() => setSelectedTradIndex(idx)}
+                    className={`px-2 py-0.5 text-[10px] rounded font-bold cursor-pointer ${
+                      selectedTradIndex === idx
+                        ? 'bg-white text-amber-900 shadow-2xs'
+                        : 'text-amber-800 hover:text-amber-950'
+                    }`}
+                  >
+                    {ts.title.split(':')[1]?.trim() || ts.title.split('-')[0]}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Counting Dots Scaffolding Toggle (For Math) */}
           {(activeSubject === 'math' || activeSheet?.verticalMath) && (
             <button
               type="button"
               onClick={() => setShowCountingDots((prev) => !prev)}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-colors cursor-pointer ${
                 showCountingDots
-                  ? 'bg-indigo-600 text-white border-indigo-700 shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
+                  ? 'bg-indigo-600 text-white border-indigo-700'
+                  : 'bg-slate-50 hover:bg-slate-100 text-slate-600 border-slate-200'
               }`}
-              title="Toggle touch-point counting dots on numbers for concrete arithmetic scaffolding"
+              title="Show touch-point counting dots on numbers"
             >
-              <Eye className="w-3.5 h-3.5" />
+              <Eye className="w-3 h-3" />
               <span>Counting Dots: {showCountingDots ? 'ON' : 'OFF'}</span>
             </button>
           )}
-
-          <button
-            onClick={handlePrint}
-            className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-xs transition-all cursor-pointer"
-          >
-            <Printer className="w-4 h-4" />
-            Print {sheetMode === 'traditional' ? 'Traditional' : `Day ${currentDayNumber}`}{' '}
-            {activeSubject.toUpperCase()} Sheet
-          </button>
         </div>
       </div>
 
-      {/* 2. Main Two-Column Layout (Left: Zero-Thinking Parent Guide; Right: Live Sheet) */}
-      <div className="flex flex-col lg:flex-row gap-8 items-start">
-        {/* Left Column: Parent Guide & Progression */}
-        <aside className="w-full lg:w-96 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-5 no-print">
-          {sheetMode === 'daily' ? (
-            <>
-              {/* Day Header with Previous/Next Controls */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      onClick={handlePrevious}
-                      disabled={currentDayNumber <= 1}
-                      title="Step back to previous day"
-                      className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
-                    >
-                      <ChevronLeft className="w-3.5 h-3.5 text-slate-700" />
-                    </button>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
-                      {currentGrade.toUpperCase()} {activeSubject.toUpperCase()} • DAY {currentDayNumber} OF 40
-                    </span>
-                    <button
-                      onClick={handleAdvance}
-                      disabled={currentDayNumber >= 40}
-                      title="Advance to next day"
-                      className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
-                    >
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-700" />
-                    </button>
-                  </div>
-                  {currentVariant > 1 && (
-                    <span className="text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full font-bold border border-amber-200">
-                      Variant #{currentVariant}
-                    </span>
-                  )}
-                </div>
-
-                {/* 40-Day Quick Jump Timeline */}
-                <div className="space-y-1 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
-                  <div className="flex items-center justify-between px-1 text-[9px] font-black uppercase text-slate-500">
-                    <span>Days 1–10 (W1–2)</span>
-                    <span>Days 11–20 (W3–4)</span>
-                    <span>Days 21–30 (W5–6)</span>
-                    <span>Days 31–40 (W7–8)</span>
-                  </div>
-                  <div className="grid grid-cols-10 gap-1">
-                    {Array.from({ length: 40 }, (_, i) => i + 1).map((d) => (
-                      <button
-                        key={d}
-                        onClick={() => handleJumpToDay(d)}
-                        className={`py-1 rounded-lg text-[10px] font-extrabold transition-all text-center ${
-                          d === currentDayNumber
-                            ? 'bg-indigo-600 text-white shadow-xs'
-                            : d < currentDayNumber
-                            ? 'bg-white text-indigo-900 border border-slate-200 hover:bg-indigo-50'
-                            : 'text-slate-400 hover:text-slate-700'
-                        }`}
-                        title={`Jump directly to Day ${d}`}
-                      >
-                        {d}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <h3 className="text-base font-extrabold text-slate-900 leading-snug">{lesson.title}</h3>
-                <p className="text-[11px] text-slate-400 font-medium">{lesson.standard}</p>
-
-                {/* 180-Day Curriculum Focus Anchor */}
-                <div className="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3 space-y-1 text-xs">
-                  <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-indigo-800">
-                    <span>Q{pacing.quarter} • Week {pacing.week} Anchor</span>
-                    <span>180-Day School Year</span>
-                  </div>
-                  <div className="font-extrabold text-indigo-950 text-xs leading-snug">
-                    {activeSubject === 'math' && pacing.mathFocus}
-                    {activeSubject === 'phonics' && pacing.phonicsFocus}
-                    {activeSubject === 'science' && pacing.scienceFocus}
-                    {activeSubject === 'socialStudies' && pacing.socialStudiesFocus}
-                  </div>
-                  {pacing.milestone && (
-                    <div className="pt-1.5 border-t border-indigo-200/60 flex items-center gap-1.5 text-[11px] font-bold text-amber-800">
-                      <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                      <span>{pacing.milestone}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Strict Daily Progression Boundary ("No Further") Guardrail */}
-                {lesson.strictBoundary && (
-                  <div className="bg-rose-50/80 border border-rose-200/90 rounded-xl p-3 text-xs space-y-1">
-                    <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-rose-800">
-                      <ShieldAlert className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-                      <span>Progression Boundary ("No Further")</span>
-                    </div>
-                    <p className="text-rose-950 font-bold leading-snug">
-                      {lesson.strictBoundary}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {/* Word-for-Word Parent Script Box */}
-              <div className="space-y-3 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs">
-                <div>
-                  <span className="font-bold text-indigo-900 block mb-1 flex items-center gap-1.5">
-                    🗣️ Say This Word-for-Word:
-                  </span>
-                  <p className="italic text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200">
-                    {lesson.script.say}
-                  </p>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-800 block mb-0.5">🖐️ What to Do:</span>
-                  <p className="text-slate-600 leading-relaxed">{lesson.script.do}</p>
-                </div>
-                <div>
-                  <span className="font-bold text-emerald-800 block mb-0.5">👁️ What to Look For:</span>
-                  <p className="text-emerald-950 leading-relaxed">{lesson.script.lookFor}</p>
-                </div>
-              </div>
-
-              {/* 3-Button End of Lesson Decision */}
-              <div className="space-y-2 pt-2 border-t border-slate-200">
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-                  End-of-Lesson Decision:
-                </span>
-                <button
-                  onClick={handleAdvance}
-                  disabled={currentDayNumber >= 40}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold rounded-xl shadow-xs transition-all disabled:opacity-50"
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  {currentDayNumber >= 40
-                    ? 'Track Completed!'
-                    : `Mastered! Advance to Day ${currentDayNumber + 1}`}
-                  <ArrowRight className="w-4 h-4 ml-0.5" />
-                </button>
-                <button
-                  onClick={handleKeepPracticing}
-                  className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 text-xs font-bold rounded-xl transition-all"
-                >
-                  <RotateCcw className="w-3.5 h-3.5 text-amber-700" />
-                  Stay on Day {currentDayNumber} (Generate Fresh Sheet)
-                </button>
-                <button
-                  onClick={handlePrevious}
-                  disabled={currentDayNumber <= 1}
-                  className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all disabled:opacity-40 disabled:pointer-events-none"
-                >
-                  <Undo2 className="w-3.5 h-3.5 text-slate-500" />
-                  {currentDayNumber <= 1
-                    ? 'At Day 1 (First Lesson)'
-                    : `Step Back / Revisit Day ${currentDayNumber - 1}`}
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              {/* Traditional Worksheet Parent Guide */}
-              <div>
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
-                    {activeTradSheet.grade === 'K' ? 'KINDERGARTEN LEVEL' : `GRADE ${activeTradSheet.grade}`} • TRADITIONAL CLASSROOM DRILL
-                  </span>
-                </div>
-                <h3 className="text-base font-extrabold text-slate-900">{activeTradSheet.title}</h3>
-                <p className="text-[11px] text-slate-400 font-medium">
-                  {activeTradSheet.parentGuide?.standard || 'Elementary Standard'}
-                </p>
-              </div>
-
-              <div className="space-y-3 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs">
-                <div>
-                  <span className="font-bold text-slate-800 block mb-0.5">💡 Why We Are Doing This:</span>
-                  <p className="text-slate-600 leading-relaxed">
-                    {activeTradSheet.parentGuide?.whyWeAreDoingThis}
-                  </p>
-                </div>
-                {activeTradSheet.parentGuide?.verbalCue && (
-                  <div>
-                    <span className="font-bold text-indigo-900 block mb-1 flex items-center gap-1.5">
-                      🗣️ Verbal Cue:
-                    </span>
-                    <p className="italic text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200">
-                      {activeTradSheet.parentGuide.verbalCue}
-                    </p>
-                  </div>
-                )}
-                <div>
-                  <span className="font-bold text-emerald-800 block mb-0.5">👁️ What to Watch For:</span>
-                  <p className="text-emerald-950 leading-relaxed">
-                    {activeTradSheet.parentGuide?.whatToWatchFor}
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-900 space-y-1">
-                <span className="font-bold block">📝 Administration Tip:</span>
-                <p className="text-amber-800 leading-normal">
-                  You can set a 3-minute timer for fact fluency drills, or let your child complete it at their own pace. Review together with a red or green pencil.
-                </p>
-              </div>
-            </>
-          )}
-
-          {/* Quick Note Logger */}
-          <div className="pt-2 border-t border-slate-200 space-y-2">
-            <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">
-              Quick Note for Antigravity (Saved to Disk)
-            </label>
-            <textarea
-              rows="2"
-              value={quickNote}
-              onChange={(e) => setQuickNote(e.target.value)}
-              placeholder="e.g. Struggled with 7, counted with finger. Did great with 6."
-              className="w-full text-xs border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:bg-white focus:outline-none placeholder:text-slate-400"
-            ></textarea>
-
-            {noteSaved && (
-              <span className="text-[11px] text-emerald-600 font-bold block">
-                ✓ Saved to student_progress.json!
+      {/* ========================================================================= */}
+      {/* 2. COLLAPSIBLE TEACHING GUIDE: Open on demand, stays out of the way       */}
+      {/* ========================================================================= */}
+      {isTeachingGuideOpen && sheetMode === 'daily' && (
+        <div className="bg-white border-2 border-indigo-100 rounded-2xl p-5 shadow-xs space-y-4 no-print animate-in fade-in duration-200">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+                Day {currentDayNumber} Parent Teaching Guide
               </span>
-            )}
-
+              <h3 className="text-base font-extrabold text-slate-900 mt-1">{lesson.title}</h3>
+              <p className="text-[11px] text-slate-400 font-medium">{lesson.standard}</p>
+            </div>
             <button
-              type="button"
-              onClick={handleSaveNote}
-              disabled={!quickNote.trim()}
-              className="w-full py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors disabled:opacity-40"
+              onClick={() => setIsTeachingGuideOpen(false)}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 cursor-pointer"
+              title="Close Guide"
             >
-              Save Note to Disk
+              <X className="w-4 h-4" />
             </button>
           </div>
-        </aside>
 
-        {/* Right Column: Live Printable Sheet */}
-        <section className="flex-1 w-full overflow-x-auto pb-8">
-          <WorksheetCanvas worksheet={activeSheet} showCountingDots={showCountingDots} />
-        </section>
-      </div>
+          {/* Strict Progression Boundary ("No Further") Guardrail */}
+          {lesson.strictBoundary && (
+            <div className="bg-rose-50/80 border border-rose-200 rounded-xl p-3 text-xs flex items-start gap-2">
+              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-extrabold text-rose-900 block text-[11px] uppercase tracking-wider">
+                  Progression Boundary ("No Further"):
+                </span>
+                <p className="text-rose-950 font-medium">{lesson.strictBoundary}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Word-for-Word Scripts */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div className="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3 space-y-1">
+              <span className="font-extrabold text-indigo-900 block text-[11px] uppercase tracking-wider">
+                🗣️ Say This to Your Child:
+              </span>
+              <p className="italic text-slate-800 leading-relaxed bg-white p-2.5 rounded-lg border border-indigo-100">
+                {lesson.script.say}
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-1">
+              <span className="font-extrabold text-slate-800 block text-[11px] uppercase tracking-wider">
+                🖐️ What to Do:
+              </span>
+              <p className="text-slate-700 leading-relaxed bg-white p-2.5 rounded-lg border border-slate-200">
+                {lesson.script.do}
+              </p>
+            </div>
+
+            <div className="bg-emerald-50/60 border border-emerald-100 rounded-xl p-3 space-y-1">
+              <span className="font-extrabold text-emerald-900 block text-[11px] uppercase tracking-wider">
+                👁️ What to Look For:
+              </span>
+              <p className="text-emerald-950 leading-relaxed bg-white p-2.5 rounded-lg border border-emerald-100">
+                {lesson.script.lookFor}
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Advance / Stay Options */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
+            <div className="text-[11px] text-slate-500 font-semibold">
+              Pacing Goal: Quarter {pacing.quarter} • Week {pacing.week}
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleKeepPracticing}
+                className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors cursor-pointer"
+              >
+                Practice Again Today
+              </button>
+              <button
+                onClick={handleAdvance}
+                disabled={currentDayNumber >= 40}
+                className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-colors disabled:opacity-40 cursor-pointer"
+              >
+                Mastered! Advance to Day {Math.min(40, currentDayNumber + 1)}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* 3. CENTERED WORKSHEET PREVIEW: Front and Center, exactly like paper      */}
+      {/* ========================================================================= */}
+      <section className="w-full flex justify-center pb-12">
+        <WorksheetCanvas worksheet={activeSheet} showCountingDots={showCountingDots} />
+      </section>
 
       {/* 180-Day Academic Calendar & Pacing Guide Modal */}
       {isPacingModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs no-print">
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col border border-slate-200 overflow-hidden">
             {/* Modal Header */}
-            <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+            <div className="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
               <div className="flex items-center gap-2.5">
-                <span className="p-2 bg-indigo-600 text-white rounded-xl shadow-xs">
+                <span className="p-2 bg-indigo-600 text-white rounded-xl">
                   <Calendar className="w-5 h-5" />
                 </span>
                 <div>
-                  <h2 className="text-base sm:text-lg font-black text-slate-900">
-                    180-Day Academic Calendar & Curriculum Pacing Guide
-                  </h2>
-                  <p className="text-xs text-slate-500">
-                    36 Weeks × 5 Days across 4 Quarters • CCSS, Singapore Math CPA, Orton-Gillingham, CKSci & CKHG
+                  <h3 className="text-base font-extrabold text-slate-900">
+                    180-Day Academic School Year Pacing Guide
+                  </h3>
+                  <p className="text-xs text-slate-500 font-medium">
+                    Standard US Kindergarten 36-Week Curriculum • 4 Quarters • 180 Days
                   </p>
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setIsPacingModalOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Quarter Selector Tabs */}
-            <div className="px-5 pt-3 border-b border-slate-200 bg-white flex flex-wrap gap-2">
+            {/* Quarter Tabs */}
+            <div className="flex border-b border-slate-200 bg-white px-4 sm:px-6 gap-2">
               {QUARTERS.map((q) => (
                 <button
                   key={q.quarter}
+                  type="button"
                   onClick={() => setSelectedQuarterTab(q.quarter)}
-                  className={`px-4 py-2 text-xs font-bold rounded-t-xl transition-all border-b-2 cursor-pointer ${
+                  className={`py-3 px-3 sm:px-4 text-xs font-black border-b-2 transition-all cursor-pointer ${
                     selectedQuarterTab === q.quarter
                       ? 'border-indigo-600 text-indigo-700 bg-indigo-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      : 'border-transparent text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  Quarter {q.quarter} (Days {q.days[0]}–{q.days[1]})
+                  Q{q.quarter}: {q.title} ({q.weeks})
                 </button>
               ))}
             </div>
 
-            {/* Modal Body: Weeks List */}
-            <div className="p-5 overflow-y-auto space-y-4 divide-y divide-slate-100">
-              <div className="mb-2 p-3 bg-indigo-50/60 rounded-xl border border-indigo-100 text-xs text-indigo-950">
-                <span className="font-extrabold">{QUARTERS[selectedQuarterTab - 1].name}: </span>
-                {QUARTERS[selectedQuarterTab - 1].description}
-                <div className="mt-1 text-[11px] font-bold text-indigo-700">
-                  🎯 Quarter Milestone: {QUARTERS[selectedQuarterTab - 1].milestone}
-                </div>
-              </div>
+            {/* Week List for Selected Quarter */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+              {getWeeksForQuarter(selectedQuarterTab).map((wk) => {
+                const isCurrentWeek = pacing.week === wk.week;
+                return (
+                  <div
+                    key={wk.week}
+                    className={`border rounded-xl p-4 transition-all ${
+                      isCurrentWeek
+                        ? 'border-indigo-500 bg-indigo-50/40 shadow-xs ring-1 ring-indigo-500'
+                        : 'border-slate-200 bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-black text-indigo-900 bg-indigo-100 px-2.5 py-0.5 rounded-lg">
+                          Week {wk.week}
+                        </span>
+                        <span className="text-xs font-bold text-slate-500">
+                          (Days {wk.days[0]}–{wk.days[1]})
+                        </span>
+                        <h4 className="text-sm font-extrabold text-slate-900">{wk.theme}</h4>
+                      </div>
+                      {isCurrentWeek && (
+                        <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-600 text-white px-2 py-0.5 rounded-full">
+                          Current Instructional Week
+                        </span>
+                      )}
+                    </div>
 
-              {getWeeksForQuarter(selectedQuarterTab).map((w) => (
-                <div key={w.week} className="pt-3 first:pt-0 space-y-2">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-black bg-indigo-600 text-white">
-                        Week {w.week}
-                      </span>
-                      <span className="text-xs font-bold text-slate-500">
-                        Days {w.days[0]}–{w.days[1]}
-                      </span>
-                      <span className="text-xs font-black text-slate-900">
-                        • {w.theme}
-                      </span>
-                    </div>
-                    {w.milestone && (
-                      <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-                        🏆 {w.milestone}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* 4 Subjects Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 text-[11px]">
-                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
-                      <span className="font-bold text-indigo-900 block mb-0.5">📐 Math</span>
-                      <span className="text-slate-700">{w.mathFocus}</span>
-                    </div>
-                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
-                      <span className="font-bold text-purple-900 block mb-0.5">🔤 Phonics</span>
-                      <span className="text-slate-700">{w.phonicsFocus}</span>
-                    </div>
-                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
-                      <span className="font-bold text-emerald-900 block mb-0.5">🔬 Science</span>
-                      <span className="text-slate-700">{w.scienceFocus}</span>
-                    </div>
-                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
-                      <span className="font-bold text-amber-900 block mb-0.5">🗺️ Social Studies</span>
-                      <span className="text-slate-700">{w.socialStudiesFocus}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs pt-2 border-t border-slate-100">
+                      <div className="bg-slate-50 p-2 rounded-lg">
+                        <span className="font-bold text-slate-500 block text-[10px] uppercase">
+                          📐 Math
+                        </span>
+                        <span className="font-semibold text-slate-800">{wk.mathFocus}</span>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded-lg">
+                        <span className="font-bold text-slate-500 block text-[10px] uppercase">
+                          🔤 Phonics
+                        </span>
+                        <span className="font-semibold text-slate-800">{wk.phonicsFocus}</span>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded-lg">
+                        <span className="font-bold text-slate-500 block text-[10px] uppercase">
+                          🔬 Science
+                        </span>
+                        <span className="font-semibold text-slate-800">{wk.scienceFocus}</span>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded-lg">
+                        <span className="font-bold text-slate-500 block text-[10px] uppercase">
+                          🗺️ Social Studies
+                        </span>
+                        <span className="font-semibold text-slate-800">{wk.socialStudiesFocus}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
-              <span>Full 180-Day School Year • Kindergarten to Grade 5 Continuum</span>
+            <div className="p-4 border-t border-slate-200 bg-slate-50 flex justify-between items-center text-xs">
+              <span className="text-slate-500 font-semibold">
+                Instructional Day {currentDayNumber} of 180 ({pacing.progressPercent}% Completed)
+              </span>
               <button
+                type="button"
                 onClick={() => setIsPacingModalOpen(false)}
-                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-colors cursor-pointer"
+                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-colors"
               >
-                Close Pacing Guide
+                Close Calendar
               </button>
             </div>
           </div>
