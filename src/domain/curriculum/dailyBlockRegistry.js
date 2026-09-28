@@ -4,6 +4,7 @@
 // Created: 2026-09-27
 
 import { KINDERGARTEN_DAY_01_BLOCK } from './kindergarten/day01Block.js';
+import { KINDERGARTEN_DAY_02_BLOCK } from './kindergarten/day02Block.js';
 import { validateDailyBlock } from './dailyBlockModel.js';
 
 /**
@@ -13,6 +14,7 @@ import { validateDailyBlock } from './dailyBlockModel.js';
 const DAILY_BLOCK_REGISTRY = {
   Kindergarten: {
     1: KINDERGARTEN_DAY_01_BLOCK,
+    2: KINDERGARTEN_DAY_02_BLOCK,
   },
 };
 

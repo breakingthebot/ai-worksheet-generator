@@ -11,6 +11,7 @@ import {
   BLOCK_CATEGORIES,
 } from '../src/domain/curriculum/dailyBlockModel.js';
 import { KINDERGARTEN_DAY_01_BLOCK } from '../src/domain/curriculum/kindergarten/day01Block.js';
+import { KINDERGARTEN_DAY_02_BLOCK } from '../src/domain/curriculum/kindergarten/day02Block.js';
 import { getDailyBlock, hasDailyBlock } from '../src/domain/curriculum/dailyBlockRegistry.js';
 
 describe('Daily Block Model & Validation Engine', () => {
@@ -110,5 +111,53 @@ describe('Kindergarten Day 1 Golden Master Block Integrity', () => {
     // Verify Social Studies Sheet
     expect(sheets.socialStudies.problems.length).toBe(4);
     expect(sheets.socialStudies.answerKey.length).toBeGreaterThan(0);
+  });
+});
+
+describe('Kindergarten Day 2 Block Integrity & Curriculum Flow', () => {
+  it('is properly registered and retrievable via getDailyBlock', () => {
+    expect(hasDailyBlock('Kindergarten', 2)).toBe(true);
+    const block = getDailyBlock('Kindergarten', 2);
+    expect(block).toBeDefined();
+    expect(block.day).toBe(2);
+    expect(block.theme).toContain('Auditory Wonder');
+  });
+
+  it('validates Kindergarten Day 2 against the schema successfully', () => {
+    const result = validateDailyBlock(KINDERGARTEN_DAY_02_BLOCK);
+    expect(result.isValid).toBe(true);
+    expect(result.errors).toHaveLength(0);
+  });
+
+  it('defines explicit pedagogical progression connecting Day 1 to Day 2', () => {
+    const flow = KINDERGARTEN_DAY_02_BLOCK.pedagogicalProgression;
+    expect(flow).toBeDefined();
+    expect(flow.math).toContain('odd-one-out');
+    expect(flow.phonics).toContain('horizontal');
+    expect(flow.science).toContain('hearing');
+    expect(flow.socialStudies).toContain('rules');
+    expect(flow.fieldTrip).toContain('Loud & Quiet');
+  });
+
+  it('contains 7 time blocks totaling 240 instructional minutes', () => {
+    expect(KINDERGARTEN_DAY_02_BLOCK.timeBlocks).toHaveLength(7);
+    const totalMinutes = calculateTotalBlockMinutes(KINDERGARTEN_DAY_02_BLOCK);
+    expect(totalMinutes).toBe(240);
+  });
+
+  it('provides matching accredited worksheets for all 4 subjects on Day 2', () => {
+    const { sheets } = KINDERGARTEN_DAY_02_BLOCK;
+    expect(sheets.math.id).toBe('k-math-day-2');
+    expect(sheets.math.problems.length).toBe(4);
+    expect(sheets.math.strictBoundary).toBeTruthy();
+
+    expect(sheets.phonics.id).toBe('k-phonics-day-2');
+    expect(sheets.phonics.problems.length).toBe(4);
+
+    expect(sheets.science.id).toBe('k-science-day-2');
+    expect(sheets.science.matchingData.leftColumn.length).toBe(4);
+
+    expect(sheets.socialStudies.id).toBe('k-social-day-2');
+    expect(sheets.socialStudies.problems.length).toBe(4);
   });
 });

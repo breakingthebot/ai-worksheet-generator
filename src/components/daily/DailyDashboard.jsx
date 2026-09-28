@@ -1,16 +1,13 @@
 // src/components/daily/DailyDashboard.jsx
 // Streamlined, distraction-free Print & Progress teaching studio.
-// Puts the printable worksheet front and center with 1-click day navigation, kid-friendly directions, and collapsible parent coaching.
-// Connects to: src/domain/curriculum/dailySchedule.js, src/data/worksheets.js, src/components/worksheet/WorksheetCanvas.jsx
+// Features: Full Daily Schedule timeline, experiential field trip cards, and 4 accredited daily worksheets.
+// Connects to: src/domain/curriculum/dailyBlockRegistry.js, src/components/worksheet/WorksheetCanvas.jsx
 // Created: 2026-09-22 / Refactored: 2026-09-27
 
-import React, { useState, useEffect } from 'react';
-import { getDailyLesson } from '../../domain/curriculum/dailySchedule.js';
-import { getTraditionalWorksheets } from '../../data/worksheets.js';
+import React, { useState } from 'react';
 import {
   getAcademicPacingForDay,
   QUARTERS,
-  WEEKLY_PACING_36,
   getWeeksForQuarter,
 } from '../../domain/curriculum/academicYear180.js';
 import WorksheetCanvas from '../worksheet/WorksheetCanvas.jsx';
@@ -18,7 +15,12 @@ import AlphabetReferenceModal from '../phonics/AlphabetReferenceModal.jsx';
 import DailyScheduleTimeline from './DailyScheduleTimeline.jsx';
 import FieldTripCard from './FieldTripCard.jsx';
 import DailyAgendaPrintView from './DailyAgendaPrintView.jsx';
-import { getDailyBlock, hasDailyBlock } from '../../domain/curriculum/dailyBlockRegistry.js';
+import AnswerKeyModal from '../worksheet/AnswerKeyModal.jsx';
+import {
+  getDailyBlock,
+  hasDailyBlock,
+  getAvailableBlocksForGrade,
+} from '../../domain/curriculum/dailyBlockRegistry.js';
 import {
   Printer,
   ChevronLeft,
@@ -30,54 +32,51 @@ import {
   ChevronDown,
   ChevronUp,
   ShieldAlert,
-  Award,
-  Layers,
-  RotateCcw,
   CheckCircle2,
   Eye,
   Calendar,
   X,
   ArrowRight,
-  Compass,
   Clock,
-  PrinterCheck,
+  CheckSquare,
 } from 'lucide-react';
 
+/**
+ * Main Daily Teaching Dashboard component.
+ * 
+ * @param {Object} props
+ * @param {Object} props.studentDays - Current day per subject
+ * @param {string} props.currentGrade - Current grade level
+ * @param {Function} props.onUpdateDay - Callback to change day
+ * @param {Function} props.onUpdateGrade - Callback to change grade
+ * @param {Function} props.onResetToDay1 - Callback to reset to Day 1
+ */
 export default function DailyDashboard({
   studentDays = { math: 1, phonics: 1, science: 1, socialStudies: 1 },
   currentGrade = 'Kindergarten',
   onUpdateDay,
   onUpdateGrade,
   onResetToDay1,
-  onLogQuickNote,
 }) {
   const [dashboardTab, setDashboardTab] = useState('block'); // 'block' | 'worksheet'
   const [isAgendaModalOpen, setIsAgendaModalOpen] = useState(false);
   const [isPrintingAgenda, setIsPrintingAgenda] = useState(false);
+  const [isAnswerKeyOpen, setIsAnswerKeyOpen] = useState(false);
   const [activeSubject, setActiveSubject] = useState('math');
-  const [sheetMode, setSheetMode] = useState('daily'); // 'daily' | 'traditional'
-  const [selectedTradIndex, setSelectedTradIndex] = useState(0);
   const [showCountingDots, setShowCountingDots] = useState(false);
-  const [variantSeeds, setVariantSeeds] = useState({ math: 1, phonics: 1, science: 1, socialStudies: 1 });
   const [isTeachingGuideOpen, setIsTeachingGuideOpen] = useState(false);
   const [isPacingModalOpen, setIsPacingModalOpen] = useState(false);
   const [isAlphabetModalOpen, setIsAlphabetModalOpen] = useState(false);
   const [selectedQuarterTab, setSelectedQuarterTab] = useState(1);
 
   const currentDayNumber = studentDays[activeSubject] || 1;
-  const currentVariant = variantSeeds[activeSubject] || 1;
-  const lesson = getDailyLesson(activeSubject, currentDayNumber);
   const pacing = getAcademicPacingForDay(currentDayNumber);
 
+  const availableBlocks = getAvailableBlocksForGrade(currentGrade);
+  const maxAvailableDay = availableBlocks.length > 0 ? Math.max(...availableBlocks.map((b) => b.day)) : 1;
+
   const dailyBlock = getDailyBlock(currentGrade, currentDayNumber);
-
-  const tradSheets = getTraditionalWorksheets(activeSubject, currentGrade);
-  const activeTradSheet = tradSheets[selectedTradIndex] || tradSheets[0];
-
-  const activeSheet =
-    sheetMode === 'daily'
-      ? (dailyBlock?.sheets?.[activeSubject] || lesson.generateSheet(currentVariant))
-      : activeTradSheet || lesson.generateSheet(currentVariant);
+  const activeSheet = dailyBlock?.sheets?.[activeSubject] || null;
 
   const handleJumpToWorksheetFromTimeline = (worksheetId) => {
     if (worksheetId.includes('math')) setActiveSubject('math');
@@ -87,36 +86,23 @@ export default function DailyDashboard({
     setDashboardTab('worksheet');
   };
 
-  // Reset traditional sheet selection when subject or grade changes
-  useEffect(() => {
-    setSelectedTradIndex(0);
-  }, [activeSubject, currentGrade]);
-
   const handleSubjectChange = (subjectId) => {
     setActiveSubject(subjectId);
-    setSelectedTradIndex(0);
   };
 
   const handleAdvance = () => {
-    const nextDay = Math.min(40, currentDayNumber + 1);
+    const nextDay = Math.min(maxAvailableDay, currentDayNumber + 1);
     onUpdateDay(activeSubject, nextDay);
-    setVariantSeeds((prev) => ({ ...prev, [activeSubject]: 1 }));
   };
 
   const handlePrevious = () => {
     const prevDay = Math.max(1, currentDayNumber - 1);
     onUpdateDay(activeSubject, prevDay);
-    setVariantSeeds((prev) => ({ ...prev, [activeSubject]: 1 }));
   };
 
   const handleJumpToDay = (day) => {
-    const target = Math.max(1, Math.min(40, day));
+    const target = Math.max(1, Math.min(maxAvailableDay, day));
     onUpdateDay(activeSubject, target);
-    setVariantSeeds((prev) => ({ ...prev, [activeSubject]: 1 }));
-  };
-
-  const handleKeepPracticing = () => {
-    setVariantSeeds((prev) => ({ ...prev, [activeSubject]: (prev[activeSubject] || 1) + 1 }));
   };
 
   const handlePrint = () => {
@@ -133,15 +119,10 @@ export default function DailyDashboard({
     }, 150);
   };
 
-  // Build options for quick-jump day selector
-  const dayOptions = Array.from({ length: 40 }, (_, i) => {
-    const d = i + 1;
-    const l = getDailyLesson(activeSubject, d);
-    return {
-      day: d,
-      title: l.title,
-    };
-  });
+  const dayOptions = availableBlocks.map((b) => ({
+    day: b.day,
+    title: `Day ${b.day}: ${b.theme}`,
+  }));
 
   if (isPrintingAgenda && dailyBlock) {
     return (
@@ -169,9 +150,11 @@ export default function DailyDashboard({
             >
               <Calendar className="w-4 h-4" />
               <span>Full Day Schedule & Field Trip</span>
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
-                dashboardTab === 'block' ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
-              }`}>
+              <span
+                className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                  dashboardTab === 'block' ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
+                }`}
+              >
                 Day {currentDayNumber}
               </span>
             </button>
@@ -187,11 +170,36 @@ export default function DailyDashboard({
           >
             <FileText className="w-4 h-4" />
             <span>Printable Worksheet Studio</span>
-            <span className={`text-[10px] px-2 py-0.5 rounded-full font-black uppercase ${
-              dashboardTab === 'worksheet' ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
-            }`}>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-black uppercase ${
+                dashboardTab === 'worksheet' ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
+              }`}
+            >
               {activeSubject}
             </span>
+          </button>
+        </div>
+
+        {/* Universal Day Stepper */}
+        <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+          <button
+            onClick={handlePrevious}
+            disabled={currentDayNumber <= 1}
+            className="p-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer shadow-2xs"
+            title="Previous Day"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <span className="text-xs font-black text-indigo-950 px-2 select-none">
+            Day {currentDayNumber} of {maxAvailableDay}
+          </span>
+          <button
+            onClick={handleAdvance}
+            disabled={currentDayNumber >= maxAvailableDay}
+            className="p-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer shadow-2xs"
+            title="Next Day"
+          >
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -251,6 +259,36 @@ export default function DailyDashboard({
                 {dailyBlock.overview}
               </p>
             </div>
+
+            {/* Curriculum Flow Banner (How Today Connects to Yesterday) */}
+            {dailyBlock.pedagogicalProgression && (
+              <div className="bg-indigo-950/70 border border-indigo-700/60 rounded-2xl p-4 space-y-2.5 text-xs text-indigo-100">
+                <div className="flex items-center gap-2 text-amber-300 font-extrabold text-[11px] uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>
+                    Curriculum Progression Flow: How Day {dailyBlock.day} Connects to Day {dailyBlock.day - 1}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-1 text-[11px]">
+                  <div className="bg-indigo-900/50 p-2.5 rounded-xl border border-indigo-800/80">
+                    <span className="font-bold text-blue-300 block mb-0.5">📐 Math Progression:</span>
+                    <span>{dailyBlock.pedagogicalProgression.math}</span>
+                  </div>
+                  <div className="bg-indigo-900/50 p-2.5 rounded-xl border border-indigo-800/80">
+                    <span className="font-bold text-purple-300 block mb-0.5">🔤 Phonics Progression:</span>
+                    <span>{dailyBlock.pedagogicalProgression.phonics}</span>
+                  </div>
+                  <div className="bg-indigo-900/50 p-2.5 rounded-xl border border-indigo-800/80">
+                    <span className="font-bold text-teal-300 block mb-0.5">🔬 Science Progression:</span>
+                    <span>{dailyBlock.pedagogicalProgression.science}</span>
+                  </div>
+                  <div className="bg-indigo-900/50 p-2.5 rounded-xl border border-indigo-800/80">
+                    <span className="font-bold text-rose-300 block mb-0.5">🗺️ Social Studies Progression:</span>
+                    <span>{dailyBlock.pedagogicalProgression.socialStudies}</span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Quick Actions inside Hero */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -420,7 +458,7 @@ export default function DailyDashboard({
                   >
                     {dayOptions.map((opt) => (
                       <option key={opt.day} value={opt.day}>
-                        Day {opt.day} of 40: {opt.title.replace(/^Day \d+:\s*/, '')}
+                        {opt.title}
                       </option>
                     ))}
                   </select>
@@ -431,21 +469,15 @@ export default function DailyDashboard({
 
                 <button
                   onClick={handleAdvance}
-                  disabled={currentDayNumber >= 40}
+                  disabled={currentDayNumber >= maxAvailableDay}
                   className="p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
                   title="Next Day"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
-
-                {currentVariant > 1 && (
-                  <span className="text-[10px] text-amber-700 bg-amber-50 px-2 py-1 rounded-lg font-bold border border-amber-200">
-                    Variant #{currentVariant}
-                  </span>
-                )}
               </div>
 
-              {/* Action Buttons: Big Print Button */}
+              {/* Action Buttons: Print Button & Answer Key */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrint}
@@ -456,37 +488,50 @@ export default function DailyDashboard({
                   <span>Print Worksheet</span>
                 </button>
 
+                {activeSheet?.answerKey && (
+                  <button
+                    onClick={() => setIsAnswerKeyOpen(true)}
+                    className="flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                    title="View verified teacher answer key and rubric"
+                  >
+                    <CheckSquare className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Answer Key</span>
+                  </button>
+                )}
+
                 <button
                   onClick={handleAdvance}
-                  disabled={currentDayNumber >= 40}
+                  disabled={currentDayNumber >= maxAvailableDay}
                   className="hidden md:flex items-center gap-1.5 px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-bold transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
-                  title="Mark this day complete and advance to next day"
+                  title="Advance to next instructional day"
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Done, Next Day</span>
+                  <span>Next Day</span>
                   <ArrowRight className="w-3 h-3 text-emerald-700" />
                 </button>
               </div>
             </div>
 
-            {/* ROW 3: Secondary Helpers (Teaching Guide Toggle, Practice Variant, Traditional Mode) */}
+            {/* ROW 3: Secondary Helpers (Teaching Guide Toggle, Alphabet Modal, Counting Dots) */}
             <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
               <div className="flex flex-wrap items-center gap-2">
                 {/* Parent Coaching Toggle */}
-                <button
-                  type="button"
-                  onClick={() => setIsTeachingGuideOpen((prev) => !prev)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-colors cursor-pointer ${
-                    isTeachingGuideOpen
-                      ? 'bg-amber-100 text-amber-900 border border-amber-300'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                  }`}
-                  title="Toggle word-for-word parent coaching script"
-                >
-                  <span>💡</span>
-                  <span>{isTeachingGuideOpen ? 'Hide Parent Guide' : 'Show Parent Teaching Script'}</span>
-                  {isTeachingGuideOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                </button>
+                {activeSheet?.parentGuide && (
+                  <button
+                    type="button"
+                    onClick={() => setIsTeachingGuideOpen((prev) => !prev)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-colors cursor-pointer ${
+                      isTeachingGuideOpen
+                        ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                    }`}
+                    title="Toggle word-for-word parent coaching script"
+                  >
+                    <span>💡</span>
+                    <span>{isTeachingGuideOpen ? 'Hide Parent Guide' : 'Show Parent Teaching Script'}</span>
+                    {isTeachingGuideOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  </button>
+                )}
 
                 {/* Alphabet A-Z Master Guide */}
                 <button
@@ -498,66 +543,10 @@ export default function DailyDashboard({
                   <span>🔤</span>
                   <span>Alphabet A–Z Guide</span>
                 </button>
-
-                {/* Fresh Practice Variant */}
-                <button
-                  type="button"
-                  onClick={handleKeepPracticing}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 font-semibold transition-colors cursor-pointer"
-                  title="Generate a fresh set of numbers/words for this day"
-                >
-                  <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
-                  <span>Fresh Variant</span>
-                </button>
-
-                {/* Traditional Classroom Drill Mode (Subtle) */}
-                <div className="flex items-center gap-1 border-l border-slate-200 pl-2">
-                  <button
-                    type="button"
-                    onClick={() => setSheetMode('daily')}
-                    className={`px-2 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
-                      sheetMode === 'daily'
-                        ? 'bg-slate-800 text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    Daily Progression
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSheetMode('traditional')}
-                    className={`px-2 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
-                      sheetMode === 'traditional'
-                        ? 'bg-slate-800 text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    Traditional Drill
-                  </button>
-                </div>
-
-                {/* Traditional Sub-sheets if in Traditional Mode */}
-                {sheetMode === 'traditional' && tradSheets.length > 1 && (
-                  <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-200">
-                    {tradSheets.map((ts, idx) => (
-                      <button
-                        key={ts.id}
-                        onClick={() => setSelectedTradIndex(idx)}
-                        className={`px-2 py-0.5 text-[10px] rounded font-bold cursor-pointer ${
-                          selectedTradIndex === idx
-                            ? 'bg-white text-amber-900 shadow-2xs'
-                            : 'text-amber-800 hover:text-amber-950'
-                        }`}
-                      >
-                        {ts.title.split(':')[1]?.trim() || ts.title.split('-')[0]}
-                      </button>
-                    ))}
-                  </div>
-                )}
               </div>
 
               {/* Counting Dots Scaffolding Toggle (For Math) */}
-              {(activeSubject === 'math' || activeSheet?.verticalMath) && (
+              {activeSubject === 'math' && (
                 <button
                   type="button"
                   onClick={() => setShowCountingDots((prev) => !prev)}
@@ -576,15 +565,15 @@ export default function DailyDashboard({
           </div>
 
           {/* 2. COLLAPSIBLE TEACHING GUIDE: Open on demand, stays out of the way */}
-          {isTeachingGuideOpen && sheetMode === 'daily' && (
+          {isTeachingGuideOpen && activeSheet?.parentGuide && (
             <div className="bg-white border-2 border-indigo-100 rounded-2xl p-5 shadow-xs space-y-4 no-print animate-in fade-in duration-200">
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
-                    Day {currentDayNumber} Parent Teaching Guide
+                    Day {currentDayNumber} Parent Teaching Guide ({activeSubject.toUpperCase()})
                   </span>
-                  <h3 className="text-base font-extrabold text-slate-900 mt-1">{lesson.title}</h3>
-                  <p className="text-[11px] text-slate-400 font-medium">{lesson.standard}</p>
+                  <h3 className="text-base font-extrabold text-slate-900 mt-1">{activeSheet.title}</h3>
+                  <p className="text-[11px] text-slate-400 font-medium">{activeSheet.parentGuide.standard || activeSheet.framework}</p>
                 </div>
                 <button
                   onClick={() => setIsTeachingGuideOpen(false)}
@@ -595,19 +584,6 @@ export default function DailyDashboard({
                 </button>
               </div>
 
-              {/* Strict Progression Boundary ("No Further") Guardrail */}
-              {lesson.strictBoundary && (
-                <div className="bg-rose-50/80 border border-rose-200 rounded-xl p-3 text-xs flex items-start gap-2">
-                  <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-extrabold text-rose-900 block text-[11px] uppercase tracking-wider">
-                      Progression Boundary ("No Further"):
-                    </span>
-                    <p className="text-rose-950 font-medium">{lesson.strictBoundary}</p>
-                  </div>
-                </div>
-              )}
-
               {/* Word-for-Word Scripts */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
                 <div className="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3 space-y-1">
@@ -615,16 +591,16 @@ export default function DailyDashboard({
                     🗣️ Say This to Your Child:
                   </span>
                   <p className="italic text-slate-800 leading-relaxed bg-white p-2.5 rounded-lg border border-indigo-100">
-                    {lesson.script.say}
+                    {activeSheet.parentGuide.verbalCue || 'Guide student to observe and explain their thinking.'}
                   </p>
                 </div>
 
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-1">
                   <span className="font-extrabold text-slate-800 block text-[11px] uppercase tracking-wider">
-                    🖐️ What to Do:
+                    🎯 Cognitive Goal:
                   </span>
                   <p className="text-slate-700 leading-relaxed bg-white p-2.5 rounded-lg border border-slate-200">
-                    {lesson.script.do}
+                    {activeSheet.parentGuide.whyWeAreDoingThis}
                   </p>
                 </div>
 
@@ -633,30 +609,8 @@ export default function DailyDashboard({
                     👁️ What to Look For:
                   </span>
                   <p className="text-emerald-950 leading-relaxed bg-white p-2.5 rounded-lg border border-emerald-100">
-                    {lesson.script.lookFor}
+                    {activeSheet.parentGuide.whatToWatchFor || 'Watch for steady pencil grip and clear verbal explanation.'}
                   </p>
-                </div>
-              </div>
-
-              {/* Quick Advance / Stay Options */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
-                <div className="text-[11px] text-slate-500 font-semibold">
-                  Pacing Goal: Quarter {pacing.quarter} • Week {pacing.week}
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={handleKeepPracticing}
-                    className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors cursor-pointer"
-                  >
-                    Practice Again Today
-                  </button>
-                  <button
-                    onClick={handleAdvance}
-                    disabled={currentDayNumber >= 40}
-                    className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-colors disabled:opacity-40 cursor-pointer"
-                  >
-                    Mastered! Advance to Day {Math.min(40, currentDayNumber + 1)}
-                  </button>
                 </div>
               </div>
             </div>
@@ -664,7 +618,13 @@ export default function DailyDashboard({
 
           {/* 3. CENTERED WORKSHEET PREVIEW: Front and Center, exactly like paper */}
           <section className="w-full flex justify-center pb-12">
-            <WorksheetCanvas worksheet={activeSheet} showCountingDots={showCountingDots} />
+            {activeSheet ? (
+              <WorksheetCanvas worksheet={activeSheet} showCountingDots={showCountingDots} />
+            ) : (
+              <div className="p-8 text-center bg-white rounded-2xl border border-slate-200 text-slate-500">
+                No worksheet found for this subject on Day {currentDayNumber}.
+              </div>
+            )}
           </section>
         </div>
       )}
@@ -710,7 +670,7 @@ export default function DailyDashboard({
                       : 'border-transparent text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  Q{q.quarter}: {q.title} ({q.weeks})
+                  Q{q.quarter}: {q.name.split(':')[1]?.trim() || q.name} ({q.weeks[0]}–{q.weeks[1]})
                 </button>
               ))}
             </div>
@@ -784,7 +744,7 @@ export default function DailyDashboard({
               <button
                 type="button"
                 onClick={() => setIsPacingModalOpen(false)}
-                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-colors"
+                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Close Calendar
               </button>
@@ -842,6 +802,13 @@ export default function DailyDashboard({
           </div>
         </div>
       )}
+
+      {/* Answer Key & Rubric Modal */}
+      <AnswerKeyModal
+        isOpen={isAnswerKeyOpen}
+        onClose={() => setIsAnswerKeyOpen(false)}
+        worksheet={activeSheet}
+      />
 
       {/* Alphabet A-Z Master Guide Modal */}
       <AlphabetReferenceModal

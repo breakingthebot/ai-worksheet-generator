@@ -1,10 +1,17 @@
-// src/components/traditional/MatchingColumnView.jsx
-// Traditional matching column activity (Draw a line from Column A to Column B).
+// src/components/worksheet/MatchingColumnView.jsx
+// Matching column activity (Connect items in Column A with Column B).
 // Connects to: src/components/worksheet/WorksheetCanvas.jsx
-// Created: 2026-09-22
+// Created: 2026-09-22 / Refactored: 2026-09-27
 
 import React from 'react';
 
+/**
+ * Renders two columns of items with connecting dots for line-drawing matching activities.
+ * 
+ * @param {Object} props
+ * @param {Object} props.matchingData - Matching column data
+ * @returns {JSX.Element}
+ */
 export default function MatchingColumnView({ matchingData }) {
   if (!matchingData) return null;
 

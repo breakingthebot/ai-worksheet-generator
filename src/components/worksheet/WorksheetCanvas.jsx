@@ -11,11 +11,7 @@ import DictationGrid from '../phonics/DictationGrid.jsx';
 import ScienceSection from '../science/ScienceSection.jsx';
 import SocialStudiesSection from '../social/SocialStudiesSection.jsx';
 import ScissorCutStrip from '../ergonomics/ScissorCutStrip.jsx';
-import VerticalMathGrid from '../traditional/VerticalMathGrid.jsx';
-import ReadingPassageView from '../traditional/ReadingPassageView.jsx';
-import WordProblemCard from '../traditional/WordProblemCard.jsx';
-import MatchingColumnView from '../traditional/MatchingColumnView.jsx';
-import SentenceEditingView from '../traditional/SentenceEditingView.jsx';
+import MatchingColumnView from './MatchingColumnView.jsx';
 import CountingObjectsView from '../math/CountingObjectsView.jsx';
 import PrimaryThreeLine from '../scaffolds/PrimaryThreeLine.jsx';
 import FiveTenFrame from '../scaffolds/FiveTenFrame.jsx';
@@ -31,11 +27,7 @@ export default function WorksheetCanvas({ worksheet, showCountingDots = false })
     framework,
     instructions,
     problems = [],
-    verticalMath,
-    readingPassage,
-    wordProblems = [],
     matchingData,
-    editingData,
     cutStrip,
     nonsenseDrill,
     parentGuide,
@@ -146,32 +138,8 @@ export default function WorksheetCanvas({ worksheet, showCountingDots = false })
             </div>
           </div>
 
-          {/* TRADITIONAL COMPONENT 1: Reading Comprehension Passage */}
-          {readingPassage && <ReadingPassageView passageData={readingPassage} />}
-
-          {/* TRADITIONAL COMPONENT 2: Vertical Stacked Arithmetic Drills */}
-          {verticalMath && (
-            <VerticalMathGrid
-              problems={verticalMath.problems}
-              title={verticalMath.title}
-              showCountingDots={showCountingDots}
-            />
-          )}
-
-          {/* TRADITIONAL COMPONENT 3: Story Word Problems */}
-          {wordProblems && wordProblems.length > 0 && (
-            <div className="space-y-4 mb-6">
-              {wordProblems.map((wp) => (
-                <WordProblemCard key={wp.id || wp.number} problem={wp} />
-              ))}
-            </div>
-          )}
-
-          {/* TRADITIONAL COMPONENT 4: Matching Columns */}
+          {/* Matching Columns (Eureka Math / CKLA Sorting & Connecting) */}
           {matchingData && <MatchingColumnView matchingData={matchingData} />}
-
-          {/* TRADITIONAL COMPONENT 5: Sentence Editing & Grammar */}
-          {editingData && <SentenceEditingView editingData={editingData} />}
 
           {/* DEVELOPMENTAL COMPONENT: Standard Problem Grid (Ten-frames, Bonds, etc.) */}
           {problems && problems.length > 0 && (

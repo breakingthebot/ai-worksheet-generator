@@ -1,37 +1,22 @@
 // src/App.jsx
-// Main application uniting the Daily Teaching Dashboard, Curriculum Roadmap, and Local Notes Storage.
-// Connects to: src/components/daily/DailyDashboard.jsx, src/components/roadmap/RoadmapView.jsx
-// Created: 2026-09-22
+// Main application container uniting the Day-by-Day Accredited Curriculum & Printable Studio.
+// Connects to: src/components/daily/DailyDashboard.jsx
+// Created: 2026-09-22 / Refactored: 2026-09-27
 
 import React, { useState, useEffect } from 'react';
 import DailyDashboard from './components/daily/DailyDashboard.jsx';
-import CustomAdventureStudio from './components/custom/CustomAdventureStudio.jsx';
-import ControlPanel from './components/controls/ControlPanel.jsx';
-import WorksheetCanvas from './components/worksheet/WorksheetCanvas.jsx';
-import RoadmapView from './components/roadmap/RoadmapView.jsx';
-import SessionNotesDrawer from './components/notes/SessionNotesDrawer.jsx';
-import AnswerKeyModal from './components/worksheet/AnswerKeyModal.jsx';
-import { getWorksheetById, addCustomWorksheet } from './data/worksheets.js';
-import { getMilestoneById } from './domain/curriculum/roadmap.js';
-import { Calendar, BookOpen, Map, PenTool, Sparkles, GraduationCap } from 'lucide-react';
+import { GraduationCap, Sparkles } from 'lucide-react';
 
+/**
+ * Main application component.
+ * Manages grade level and student progress persistence across instructional days.
+ */
 export default function App() {
-  const [activeView, setActiveView] = useState('daily'); // 'daily' | 'adventure' | 'worksheet' | 'roadmap'
-  const [activeWorksheetId, setActiveWorksheetId] = useState('ws-math-tenframe-complements');
-  const [isNotesDrawerOpen, setIsNotesDrawerOpen] = useState(false);
-  const [isAnswerKeyOpen, setIsAnswerKeyOpen] = useState(false);
-  const [activeMilestone, setActiveMilestone] = useState(null);
-
   const [progressData, setProgressData] = useState({
     selectedGrade: 'Kindergarten',
     studentDays: { math: 1, phonics: 1, science: 1, socialStudies: 1 },
-    sessions: [],
-    milestoneStatus: {},
   });
 
-  const activeWorksheet = getWorksheetById(activeWorksheetId);
-
-  // Load progress notes on mount
   useEffect(() => {
     loadProgress();
   }, []);
@@ -44,27 +29,24 @@ export default function App() {
         setProgressData({
           selectedGrade: data.selectedGrade || 'Kindergarten',
           studentDays: data.studentDays || { math: 1, phonics: 1, science: 1, socialStudies: 1 },
-          sessions: data.sessions || [],
-          milestoneStatus: data.milestoneStatus || {},
         });
       }
     } catch (err) {
-      console.warn('Could not load student progress from disk:', err);
+      // Progress API is optional for local offline runs
+      console.info('Running with in-memory student progress.');
     }
   };
 
   const handleSaveProgress = async (newPayload) => {
+    setProgressData(newPayload);
     try {
-      const res = await fetch('/api/progress', {
+      await fetch('/api/progress', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPayload, null, 2),
       });
-      if (res.ok) {
-        setProgressData(newPayload);
-      }
     } catch (err) {
-      console.error('Failed to save progress to disk:', err);
+      // Local fallback in memory
     }
   };
 
@@ -79,39 +61,6 @@ export default function App() {
       lastUpdated: new Date().toISOString(),
     };
     await handleSaveProgress(updatedPayload);
-  };
-
-  const handleLogQuickNote = async ({ subject, day, title, note, date }) => {
-    const newSession = {
-      id: `quick-${Date.now()}`,
-      date,
-      subject,
-      day,
-      milestoneTitle: `${subject.toUpperCase()} Day ${day}: ${title}`,
-      notes: note,
-    };
-    const updatedSessions = [newSession, ...(progressData.sessions || [])];
-    const updatedPayload = {
-      ...progressData,
-      sessions: updatedSessions,
-      lastUpdated: new Date().toISOString(),
-    };
-    await handleSaveProgress(updatedPayload);
-  };
-
-  const handleSelectWorksheetFromRoadmap = (wsId) => {
-    setActiveWorksheetId(wsId);
-    setActiveView('worksheet');
-  };
-
-  const handleOpenNotesForMilestone = (milestone) => {
-    setActiveMilestone(milestone);
-    setIsNotesDrawerOpen(true);
-  };
-
-  const handleSaveCustomToLibrary = (customSheet) => {
-    addCustomWorksheet(customSheet);
-    setActiveWorksheetId(customSheet.id);
   };
 
   const handleUpdateGrade = async (newGrade) => {
@@ -134,7 +83,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col text-slate-900 font-sans">
-      {/* Top Navigation */}
+      {/* Top Application Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-3.5 flex flex-wrap justify-between items-center gap-3 shadow-xs no-print">
         <div className="flex items-center gap-3">
           <span className="font-black text-indigo-700 tracking-tight text-lg">
@@ -145,55 +94,7 @@ export default function App() {
           </span>
         </div>
 
-        {/* View Switcher Pills */}
-        <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button
-            onClick={() => setActiveView('daily')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              activeView === 'daily'
-                ? 'bg-indigo-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Calendar className="w-3.5 h-3.5" />
-            Today's Lesson
-          </button>
-          <button
-            onClick={() => setActiveView('adventure')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              activeView === 'adventure'
-                ? 'bg-gradient-to-r from-indigo-600 to-pink-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Custom Adventure
-          </button>
-          <button
-            onClick={() => setActiveView('worksheet')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              activeView === 'worksheet'
-                ? 'bg-indigo-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            Library Canvas
-          </button>
-          <button
-            onClick={() => setActiveView('roadmap')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              activeView === 'roadmap'
-                ? 'bg-indigo-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Map className="w-3.5 h-3.5" />
-            Full Roadmap
-          </button>
-        </div>
-
-        {/* Grade Selector & Child Notes */}
+        {/* Grade Selector */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
             <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
@@ -204,83 +105,21 @@ export default function App() {
               className="bg-white border border-slate-200 rounded-lg px-2 py-0.5 text-xs font-black text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
             >
               <option value="Kindergarten">Kindergarten (K)</option>
-              <option value="1st Grade">1st Grade</option>
-              <option value="2nd Grade">2nd Grade</option>
-              <option value="3rd Grade">3rd Grade</option>
             </select>
           </div>
-
-          <button
-            onClick={() => setIsNotesDrawerOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-700 font-bold text-xs rounded-lg border border-indigo-200 hover:bg-indigo-100 transition-colors"
-          >
-            <PenTool className="w-3.5 h-3.5" />
-            Child Notes ({progressData.sessions?.length || 0})
-          </button>
         </div>
       </header>
 
-      {/* Main Content Area */}
+      {/* Main Day-by-Day Instructional Studio */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-        {activeView === 'daily' && (
-          <DailyDashboard
-            studentDays={progressData.studentDays}
-            currentGrade={progressData.selectedGrade || 'Kindergarten'}
-            onUpdateDay={handleUpdateStudentDay}
-            onUpdateGrade={handleUpdateGrade}
-            onResetToDay1={handleResetToDay1}
-            onLogQuickNote={handleLogQuickNote}
-          />
-        )}
-
-        {activeView === 'adventure' && (
-          <CustomAdventureStudio onSaveToLibrary={handleSaveCustomToLibrary} />
-        )}
-
-        {activeView === 'worksheet' && (
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <ControlPanel
-              activeWorksheetId={activeWorksheetId}
-              onSelectWorksheet={setActiveWorksheetId}
-              activeView={activeView}
-              onChangeView={setActiveView}
-              onOpenNotes={() => {
-                const linked = getMilestoneById(activeWorksheet.milestoneId);
-                setActiveMilestone(linked || null);
-                setIsNotesDrawerOpen(true);
-              }}
-              onOpenAnswerKey={() => setIsAnswerKeyOpen(true)}
-              progressData={progressData}
-            />
-            <section className="flex-1 w-full overflow-x-auto pb-8">
-              <WorksheetCanvas worksheet={activeWorksheet} />
-            </section>
-          </div>
-        )}
-
-        {activeView === 'roadmap' && (
-          <RoadmapView
-            onSelectWorksheet={handleSelectWorksheetFromRoadmap}
-            onOpenNotes={handleOpenNotesForMilestone}
-            milestoneStatus={progressData.milestoneStatus}
-          />
-        )}
+        <DailyDashboard
+          studentDays={progressData.studentDays}
+          currentGrade={progressData.selectedGrade || 'Kindergarten'}
+          onUpdateDay={handleUpdateStudentDay}
+          onUpdateGrade={handleUpdateGrade}
+          onResetToDay1={handleResetToDay1}
+        />
       </main>
-
-      {/* Modals */}
-      <SessionNotesDrawer
-        isOpen={isNotesDrawerOpen}
-        onClose={() => setIsNotesDrawerOpen(false)}
-        activeMilestone={activeMilestone || getMilestoneById(activeWorksheet?.milestoneId)}
-        progressData={progressData}
-        onSaveProgress={handleSaveProgress}
-      />
-
-      <AnswerKeyModal
-        isOpen={isAnswerKeyOpen}
-        onClose={() => setIsAnswerKeyOpen(false)}
-        worksheet={activeWorksheet}
-      />
     </div>
   );
 }
